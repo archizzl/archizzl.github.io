@@ -1,2 +1,2 @@
 # archizzl.github.io
-:heart: personal website 
+personal website 
