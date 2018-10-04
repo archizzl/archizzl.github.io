@@ -4,57 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
     #container {
       height: 100vh;
       width: 100vw;
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
       align-items: center;
     }
-
-    #container > div {
-      margin: 20px;
-      font-family: Comic Sans MS;
-      font-size: 140px;
-      color: white;
+    
+    #m1 {
+      height: 100vh;
+      width: 70vw;
     }
 
-    @keyframes hecc {
-      100% {
-        transform: rotate(360deg)
-      }
+    #mOth {
+      height: 100px;
+      width: 100px;
+    }
+
+    #lAmp {
+      height: 500px;
+      width: auto;
     }
   </style>
     <script type="text/javascript">
       window.onload = function(){
-      let container = document.getElementById('container')
-      let words = ['can', 'u', 'dont']
-      for(i = 0; i < words.length; i++){
-        let curr = document.createElement('div')
-        container.appendChild(curr)
-        curr.setAttribute('id', words[i])
-        let currtwo = document.getElementById(words[i])
-        currtwo.innerHTML = words[i]
+        console.log('what it do')
       }
-      i = 0;
-      let loop = setInterval(function(){
-        if(i<3){
-          let curr = document.getElementById(words[i])
-          curr.style.color = 'black'
-          i++
-        }
-        else{
-          window.clearInterval(loop)
-        }
-      }, 1000)
-      let please = document.getElementById('dont')
-      please.style.fontSize = '300px';
-      please.style.animation = 'hecc 0.5s linear infinite';
-    }
   </script>
 </head>
 <body>
 <div id="container">
+  <img src="https://i.imgur.com/jSKGjlj.jpg" id="lAmp">
+  <marquee direction="down" behavior="alternate" id="m1" scrollamount="50">
+    <marquee behavior="alternate" scrollamount="50" id="m2">
+      <div id="dot"><img src="https://i.imgur.com/qhEOO22.jpg" id="mOth"></div>
+    </marquee>
+  </marquee>
 </div>
 </body>
 </html>
