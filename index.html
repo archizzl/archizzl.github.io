@@ -3,7 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href='
+  <style type="text/css">
+    #container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #container > div {
+      margin: 20px;
+      font-family: Comic Sans MS;
+      font-size: 140px;
+      color: white;
+    }
+
+    @keyframes hecc {
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+  </style>
+    <script type="text/javascript">
+      window.onload = function(){
+      let container = document.getElementById('container')
+      let words = ['can', 'u', 'dont']
+      for(i = 0; i < words.length; i++){
+        let curr = document.createElement('div')
+        container.appendChild(curr)
+        curr.setAttribute('id', words[i])
+        let currtwo = document.getElementById(words[i])
+        currtwo.innerHTML = words[i]
+      }
+      i = 0;
+      let loop = setInterval(function(){
+        if(i<3){
+          let curr = document.getElementById(words[i])
+          curr.style.color = 'black'
+          i++
+        }
+        else{
+          window.clearInterval(loop)
+        }
+      }, 1000)
+      let please = document.getElementById('dont')
+      please.style.fontSize = '300px';
+      please.style.animation = 'hecc 0.1s linear infinite';
+    }
+  </script>
 </head>
 <body>
 <div id="container">
