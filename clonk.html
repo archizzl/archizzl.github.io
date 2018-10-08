@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  @keyframes rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  overflow: hidden;
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  overflow: hidden;
+}
+
+#time {
+  position: absolute;
+  font-family: 'Lato';
+  font-size: 200px;
+  opacity: 0.0420;
+  z-index: -15;
+  font-color: gray;
+}
+
+.circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.half {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hand {
+  width: 2px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="container">
+  <pre>
+               12
+
+
+
+
+
+
+
+09                            03
+
+
+
+
+
+
+
+               06</pre>
+  </div>
+</body>
+<script>
+window.onload = function(){
+  curr = new Date();
+  h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
+  m = 6 * curr.getMinutes();
+  s = 6 * curr.getSeconds();
+  console.log(h, m, s)
+  let container = document.getElementById('container');
+  let num = 3;
+  let dimens = 50;
+  for(i = 0; i<num ; i++){
+    let currCircle = 'circle' + i;
+    let currHalf = 'half' + i;
+    let currHand = 'hand' + i;
+    let circle = document.createElement('div');
+    circle.setAttribute('id', currCircle);
+    circle.setAttribute('class', 'circle')
+    container.appendChild(circle);
+    let circleCurr = document.getElementById(currCircle)
+    circleCurr.style.height = dimens + 'px';
+    circleCurr.style.width = dimens + 'px';
+    switch(i){
+      case 0:
+        circleCurr.style.transform = 'rotate(' + h + 'deg)';
+        break;
+      case 1:
+        circleCurr.style.transform = 'rotate(' + m + 'deg)';
+        break;
+      case 2:
+        circleCurr.style.transform = 'rotate(' + s + 'deg)';
+        break;
+    }
+    let half = document.createElement('div');
+    half.setAttribute('id', currHalf);
+    half.setAttribute('class', 'half')
+    circleCurr.appendChild(half)
+
+    let halfCurr = document.getElementById(currHalf);
+    halfCurr.style.width = dimens + 'px';
+    halfCurr.style.height = (dimens/2) + 'px';
+
+    let hand = document.createElement('div');
+    hand.setAttribute('id', currHand);
+    hand.setAttribute('class', 'hand')
+    half.appendChild(hand)
+
+    let handCurr = document.getElementById(currHand)
+    hand.style.height = dimens/2 + 'px';
+    hand.style.backgroundColor = 'black';
+
+    dimens+=50;
+  }
+  setInterval(function(){
+    function r(el, deg) {
+      let r = document.getElementById(el)
+      r.style.transform = 'rotate(' + deg + 'deg)';
+    }
+    let curr = new Date();
+    s = curr.getSeconds()
+    if(s == 360){
+      s = 0;
+    }
+    r('circle2', 6 * s);
+    r('circle1', 6 * curr.getMinutes());
+    r('circle0', 30 * (curr.getHours() % 12) + curr.getMinutes() / 2);
+  }, 1000)
+}
+</script>
+</html>
