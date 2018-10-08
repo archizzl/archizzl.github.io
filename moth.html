@@ -14,6 +14,19 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-image: url('https://i.imgur.com/jSKGjlj.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#m1 {
+  height: 100vh;
+  width: 43vw;
+}
+
+#mOth {
+  height: 100px;
+  width: 100px;
 }
   </style>
     <script type="text/javascript">
@@ -24,7 +37,11 @@
 </head>
 <body>
 <div id="container">
-  h
+  <marquee direction="down" behavior="alternate" id="m1" scrollamount="100">
+    <marquee behavior="alternate" scrollamount="100" id="m2">
+      <div id="dot"><img src="https://i.imgur.com/qhEOO22.jpg" id="mOth"></div>
+    </marquee>
+  </marquee>
 </div>
 </body>
 </html>
