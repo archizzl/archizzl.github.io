@@ -10,11 +10,25 @@
     }
     #spreadsheet {
       height: 100vh;
+      width: 49vw;
+    }
+    #container {
+      height: 100vh;
       width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
 <body>
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTShhqSg9CgeWK1NEQspPFf_U-3fjlPgGO2fI36zE262_zRnKAxWk1ETB_35iaSfkpJP18sf67KRL98/pubhtml?widget=true&amp;headers=false" id="spreadsheet"></iframe>
+  <div id="container">
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS7gsYn9u7LCcL4o1unKSfJdoLbjpVK30tdCij6pVjPyQhFP3QtbllhZ84LhjFAHGWjrxVxwP5GIJC3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" id="spreadsheet"></iframe>
+</div>
 </body>
+<script>
+window.onload = function(){
+  console.log(window.find("half"))
+}
+</script>
 </html>
