@@ -19,9 +19,9 @@
       justify-content: center;
       align-items: center;
     }
-    @media screen {
-      #spreadsheet {
-        width: 90vw;
+    @media only screen and (max-width: 320px) {
+      #container {
+        background-color: red;
       }
     }
   </style>
@@ -32,8 +32,6 @@
 </div>
 </body>
 <script>
-window.onload = function(){
-  console.log(window.find("half"))
-}
+//js if needed
 </script>
 </html>
