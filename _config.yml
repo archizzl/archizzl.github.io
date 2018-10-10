@@ -1,0 +1,7 @@
+
+webserver_headers:
+  "Access-Control-Allow-Origin": "*"
+
+webrick:
+  headers:
+    Access-Control-Allow-Origin: "*"
