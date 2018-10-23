@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>fashion</title>
+      <style>
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  overflow: hidden;
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+
+#startscreen {
+  height: 100vh;
+  width: 100vw;
+  background-color: lightblue;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#circle {
+  height: 250px;
+  width: 250px;
+  border-radius: 250px;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Lobster';
+  border: 10px solid black;
+  transition: 0.75s;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  height: 15vh;
+  width: 0px;
+  background-color: white;
+  border: 8px solid black;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Mali';
+  font-size: 30px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+#buttonLine {
+  width: 0px;
+  height: 10px;
+  background-color: black;
+  transition: 1s;
+}
+
+#mini {
+  height: 50px;
+  width: 225px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: 10px;
+  color: black;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Charmonman';
+}
+
+.miniButton {
+  cursor: pointer;
+}
+
+.slash {
+  margin: 5px;
+  cursor: default;
+}
+
+#aboutContainer {
+  position: absolute;
+  height: 0vh;
+  width: 0vw;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+#aboutContent {
+  height: 0vh;
+  width: 0vw;
+  background-color: white;
+  position: absolute;
+  z-index: 3;
+  transition: 0.3s;
+}
+
+#aboutClose {
+  height: 0vh;
+  width: 0vw;
+  transition: 0.3s;
+}
+
+#LUKE {
+  height: 50vh;
+  width: 50vw;
+}
+
+    </style>
+
+</head>
+
+<body translate="no" >
+
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Charmonman|Libre+Barcode+39+Extended+Text|Lobster|Mali|Oswald" rel="stylesheet">
+
+<div id="container">
+
+  <!-- start screen -->
+
+    <div id="startscreen">
+
+      <div id="circle">Chs<br/>Fashion<br/>Club</div>
+      <div id="articlesContainer" class="button">
+        <div id="articlesTitle">articles</div>
+        <div id="articlesContent"></div>
+      </div>
+      <div id="buttonLine"></div>
+      <div id="photosContainer" class="button"><div id="photosTitle">photos</div></div>
+
+    </div>
+
+  </div>
+
+  <!-- non-slides content area, for about / contact us, etc -->
+
+  <div id="mini">
+    <div id="aboutButton" class="miniButton">about</div>
+    <div class="slash">/</div>
+    <div id="contactButton" class="miniButton">contact us</div>
+    <div class="slash">/</div>
+    <div id="instaButton" class="miniButton">insta</div>
+  </div>
+
+  <!-- container for the about section -->
+
+  <div id="aboutContainer">
+    <div id="aboutContent">
+      <img src="LUKE.png" id="LUKE">
+    </div>
+    <div id="aboutClose"></div>
+  </div>
+
+</div>
+
+    <script >
+      /* on hover over the circle, does a 360 loop and two boxes pop out, one for articles and one for photos*/
+
+window.onload = function(){
+  //articles expand
+
+  let articlesContainer = document.getElementById('articlesContainer')
+
+
+
+
+  /* trigger buttons poppin tf out */
+  let click = 0;
+  let circle = document.getElementById('circle');
+  let buttonLine = document.getElementById('buttonLine')
+  let button = document.querySelectorAll('.button')
+  circle.onclick = function(){
+    if(click%2==0){
+      circle.style.transform = 'rotate(360deg)';
+      buttonLine.style.width = '30vw'
+      for(var i=0; i<button.length; i++){
+        button[i].style.width = '13vw'
+        button[i].style.fontSize = '30px'
+      }
+    }
+    else {
+      circle.style.transform = 'rotate(0deg)';
+      buttonLine.style.width = '0vw'
+      for(var i=0; i<button.length; i++){
+        button[i].style.width = '0vw'
+        button[i].style.fontSize = '0px'
+      }
+    }
+    click++
+  }
+  /* trigger about modal */
+  let aboutButton = document.getElementById('aboutButton')
+  let aboutContainer = document.getElementById('aboutContainer')
+  let aboutContent = document.getElementById('aboutContent')
+  let aboutClose = document.getElementById('aboutClose')
+  aboutButton.onclick = function(){
+    aboutContainer.style.height = '100vh'
+    aboutContainer.style.width = '100vw'
+    aboutClose.style.height = '100vh'
+    aboutClose.style.width = '100vw'
+    aboutContent.style.height = '50vh'
+    aboutContent.style.width = '50vw'
+    aboutContent.style.border = '10px solid'
+  }
+  /* close about modal */
+  aboutClose.onclick = function(){
+    aboutContainer.style.height = '0vh'
+    aboutContainer.style.width = '0vw'
+    aboutClose.style.height = '0vh'
+    aboutClose.style.width = '0vw'
+    aboutContent.style.height = '0vh'
+    aboutContent.style.width = '0vw'
+    aboutContent.style.border = 'none'
+  }
+
+}
+    </script>
+
+</body>
+
+</html>f

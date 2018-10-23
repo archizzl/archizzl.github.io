@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #midcirc {
+    height: 100px;
+    width: 100px;
+    border-radius: 500px;
+    background-color: lightblue;
+    border: 10px solid black;
+    position: absolute;
+    z-index: 9;
+  }
+  #line {
+    height: 700px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    animation: rotate 0.1s linear infinite;
+  }
+  #midline {
+    height: 10px;
+    width: 500px;
+    background-color: black;
+    animation: length 0.1s linear infinite;
+  }
+  .circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 5px solid black;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg)
+    }
+  }
+  @keyframes length {
+    0% {
+      width: 500px;
+    }
+    25% {
+      width: 450px;
+    }
+    50% {
+      width: 400px;
+    }
+    75% {
+      width: 450px;
+    }
+    100% {
+      width: 500px;
+    }
+  }
+</style>
+<body>
+  <div id="container">
+      <div id="midcirc"></div>
+      <div id="line">
+        <div id="leftcirc" class="circle"></div>
+        <div id="midline"></div>
+        <div id="rightcirc" class="circle"></div>
+      </div>
+  </div>
+</body>
+<script>
+</script>
+</html>
