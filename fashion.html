@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" >
+
 <head>
+
   <meta charset="UTF-8">
-  <title>fashion</title>
+
       <style>
-* {
+      * {
   padding: 0;
   margin: 0;
   user-select: none;
@@ -17,9 +19,10 @@
   display: flex;
   flex-flow: column nowrap;
   overflow: hidden;
+  position: absolute;
 }
 
-#startscreen {
+#home {
   height: 100vh;
   width: 100vw;
   background-color: lightblue;
@@ -29,6 +32,7 @@
   align-items: center;
 }
 
+/*start screen buttons*/
 #circle {
   height: 250px;
   width: 250px;
@@ -45,7 +49,6 @@
   transition: 0.75s;
   cursor: pointer;
 }
-
 .button {
   display: flex;
   height: 15vh;
@@ -59,7 +62,6 @@
   transition: 1s;
   cursor: pointer;
 }
-
 #buttonLine {
   width: 0px;
   height: 10px;
@@ -67,14 +69,15 @@
   transition: 1s;
 }
 
+/*mini menu stuff*/
 #mini {
-  height: 50px;
-  width: 225px;
+  height: 60px;
+  width: 100vw;
   border-radius: 5px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
-  bottom: 10px;
-  right: 10px;
+  bottom: 0px;
+  left: 0px;
   color: black;
   display: flex;
   flex-flow: row nowrap;
@@ -82,16 +85,15 @@
   align-items: center;
   font-family: 'Charmonman';
 }
-
 .miniButton {
   cursor: pointer;
 }
-
 .slash {
   margin: 5px;
   cursor: default;
 }
 
+/*about section stuff*/
 #aboutContainer {
   position: absolute;
   height: 0vh;
@@ -105,7 +107,6 @@
   align-items: center;
   transition: 0.3s;
 }
-
 #aboutContent {
   height: 0vh;
   width: 0vw;
@@ -114,19 +115,51 @@
   z-index: 3;
   transition: 0.3s;
 }
-
 #aboutClose {
   height: 0vh;
   width: 0vw;
   transition: 0.3s;
 }
 
-#LUKE {
-  height: 50vh;
-  width: 50vw;
-}
+/*section containers and that stuff*/
 
+.sectionContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  transition: 1s;
+}
+#articlesContainer {
+  left: -100vw;
+}
+#photosContainer {
+  right: -100vw;
+}
+.sectionContent {
+  height: 100vh;
+  width: 80vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+}
+.sectionClose {
+  height: 100vh;
+  width: 20vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
     </style>
+
+
+
+
+
 
 </head>
 
@@ -136,23 +169,23 @@
 
 <div id="container">
 
-  <!-- start screen -->
+  <div id="home">
 
-    <div id="startscreen">
+    <div id="circle">
 
-      <div id="circle">Chs<br/>Fashion<br/>Club</div>
-      <div id="articlesContainer" class="button">
-        <div id="articlesTitle">articles</div>
-        <div id="articlesContent"></div>
+      <div id="title">
+        Chs<br/>Fashion<br/>Club
       </div>
-      <div id="buttonLine"></div>
-      <div id="photosContainer" class="button"><div id="photosTitle">photos</div></div>
 
     </div>
 
-  </div>
+    <div id="articlesButton" class="button">articles</div>
 
-  <!-- non-slides content area, for about / contact us, etc -->
+    <div id="buttonLine"></div>
+
+    <div id="photosButton" class="button">photos</div>
+
+  </div>
 
   <div id="mini">
     <div id="aboutButton" class="miniButton">about</div>
@@ -162,8 +195,6 @@
     <div id="instaButton" class="miniButton">insta</div>
   </div>
 
-  <!-- container for the about section -->
-
   <div id="aboutContainer">
     <div id="aboutContent">
       <img src="LUKE.png" id="LUKE">
@@ -171,48 +202,92 @@
     <div id="aboutClose"></div>
   </div>
 
+  <div id="articlesContainer" class="sectionContainer">
+    <div id="articlesClose" class="sectionClose"></div>
+    <div id="articlesContent" class="sectionContent">articles time >:D!</div>
+  </div>
+
+  <div id="photosContainer" class="sectionContainer">
+    <div id="photosContent" class="sectionContent">nudes</div>
+    <div id="photosClose" class="sectionClose"></div>
+  </div>
+
 </div>
 
+
+
+
     <script >
-      /* on hover over the circle, does a 360 loop and two boxes pop out, one for articles and one for photos*/
+      window.onload = function(){
 
-window.onload = function(){
-  //articles expand
-
-  let articlesContainer = document.getElementById('articlesContainer')
-
-
-
-
-  /* trigger buttons poppin tf out */
-  let click = 0;
+  //circle
   let circle = document.getElementById('circle');
   let buttonLine = document.getElementById('buttonLine')
   let button = document.querySelectorAll('.button')
-  circle.onclick = function(){
-    if(click%2==0){
-      circle.style.transform = 'rotate(360deg)';
-      buttonLine.style.width = '30vw'
-      for(var i=0; i<button.length; i++){
-        button[i].style.width = '13vw'
-        button[i].style.fontSize = '30px'
-      }
+  let circleBool = false;
+  //open the circle
+  function openCircle(){
+    circle.style.transform = 'rotate(360deg)';
+    buttonLine.style.width = '30vw'
+    for(var i=0; i<button.length; i++){
+      button[i].style.width = '13vw'
+      button[i].style.fontSize = '30px'
     }
-    else {
-      circle.style.transform = 'rotate(0deg)';
-      buttonLine.style.width = '0vw'
-      for(var i=0; i<button.length; i++){
-        button[i].style.width = '0vw'
-        button[i].style.fontSize = '0px'
-      }
-    }
-    click++
+    circleBool = true;
   }
-  /* trigger about modal */
+  //close the circle
+  function closeCircle(){
+    circle.style.transform = 'rotate(0deg)';
+    buttonLine.style.width = '0vw'
+    for(var i=0; i<button.length; i++){
+      button[i].style.width = '0vw'
+      button[i].style.fontSize = '0px'
+    }
+    circleBool = false;
+  }
+  circle.onclick = function(){
+    if(circleBool == false){
+      openCircle()
+    }
+    else if(circleBool == true){
+      closeCircle()
+    }
+  }
+  //articles
+  let articlesButton = document.getElementById('articlesButton')
+  let articlesContainer = document.getElementById('articlesContainer')
+  let articlesContent = document.getElementById('articlesContent')
+  let articlesClose = document.getElementById('articlesClose')
+  articlesButton.onclick = function(){
+    closeCircle()
+    articlesContainer.style.left = '0vw'
+  }
+  articlesClose.onclick = function(){
+    articlesContainer.style.left = '-100vw'
+    openCircle()
+  }
+
+  //photos
+  let photosButton = document.getElementById('photosButton')
+  let photosContainer = document.getElementById('photosContainer')
+  let photosContent = document.getElementById('photosContent')
+  let photosClose = document.getElementById('photosClose')
+  photosButton.onclick = function(){
+    closeCircle()
+    photosContainer.style.right = '0vw'
+  }
+  photosClose.onclick = function(){
+    photosContainer.style.right = '-100vw'
+    openCircle()
+  }
+
+  //modal
+
   let aboutButton = document.getElementById('aboutButton')
   let aboutContainer = document.getElementById('aboutContainer')
   let aboutContent = document.getElementById('aboutContent')
   let aboutClose = document.getElementById('aboutClose')
+  //open modal
   aboutButton.onclick = function(){
     aboutContainer.style.height = '100vh'
     aboutContainer.style.width = '100vw'
@@ -222,7 +297,7 @@ window.onload = function(){
     aboutContent.style.width = '50vw'
     aboutContent.style.border = '10px solid'
   }
-  /* close about modal */
+  //close about modal
   aboutClose.onclick = function(){
     aboutContainer.style.height = '0vh'
     aboutContainer.style.width = '0vw'
@@ -236,6 +311,12 @@ window.onload = function(){
 }
     </script>
 
+
+
+
+
+
+  <script src="https://static.codepen.io/assets/editor/live/css_reload-2a5c7ad0fe826f66e054c6020c99c1e1c63210256b6ba07eb41d7a4cb0d0adab.js"></script>
 </body>
 
-</html>f
+</html>
