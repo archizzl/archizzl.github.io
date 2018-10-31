@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <style type="text/css">
-* {
+
+  <meta charset="UTF-8">
+
+
+
+
+      <style>
+      * {
+  user-select: none;
   margin: 0;
   padding: 0;
 }
@@ -12,19 +18,168 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+}
+.thing {
+  display: none;
+  margin: 50px;
+}
+#ig {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 570px;
+}
+#owo {
+  font-size: 18px;
+}
+#ig2 {
+  display: flex;
+  flex-flow: column nowrap;
+}
+#homework {
+  height: 500px;
+  width: 400px;
+  font-size: 30px;
+  outline: 0px solid transparent;
+  overflow: scroll;
+}
+#spygear {
+  height: 100px;
+  width: 300px;
+}
+#donedid {
+  height: 200px;
+  width: 400px;
+  overflow: scroll;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+#tings {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
   align-items: center;
 }
-  </style>
-    <script type="text/javascript">
-      window.onload = function(){
-        console.log('what it do')
-      }
-  </script>
+#wig {
+  font-size: 25px;
+}
+.link {
+  margin: 5px;
+}
+#b4 {
+  font-family: 'Comic Sans MS'
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#ARCHIE {
+  font-size: 45px;
+  position: fixed;
+}
+    </style>
+
+
+
+
+
+
 </head>
-<body>
-<div id="container">
-  h
+
+<body translate="no" >
+
+  <div id="container">
+  <div id="ig">
+  <pre id="owo" class="thing">
+  ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
+ ♡           happy           ♡
+ ♡      <div id="date"></div> ♡
+ ╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
+            O
+              °
+ 〃∩　∧＿∧
+ ⊂⌒（ ´・ω・）
+     ヽ_っ＿/￣￣￣/
+ 　 　   ＼/＿＿＿/
+  </pre>
+  <div id="donedid">
+    <div id="wig">wow he alos did thta : </div>
+    <div id="tings"></div>
+  </div>
+  </div>
+  <div id="ig2">
+    <div id="homework" contenteditable="true" class="thing">
+      <pre id="b4">write ur homewrok here
+
+
+
+
+
+
+
+
+
+                             :O</pre>
+    </div>
+    <div id="spygear">
+      go check out the <a href="https://archizzl.com/fashion.html" target="_blank">fashion site!!!!!</a> or all fo my social smedia stuff like <a href="https://instagram.com/archizzl" target="_blank">instagrams</a> or <a href="https://twitter.com/archizzl" target="_blank">twita</a>
+    </div>
+  </div>
 </div>
+<div id="ARCHIE">archi c dot com </div>
+
+
+
+
+    <script >
+      window.onload = function(){
+
+
+  //immprt
+  let sites = ['moth', 'h', 'clonk', 'LUKE', 'coolthingidea', 'fashion']
+  //imprso
+
+
+
+  let rn = new Date()
+  let date = document.getElementById('date')
+  date.innerHTML = rn
+  let thing = document.querySelectorAll('.thing')
+  for(i=0;i<thing.length;i++){
+    thing[i].style.display = 'block';
+  }
+  setInterval(function(){
+    let rn = new Date()
+    date.innerHTML = rn
+  })
+  let tings = document.getElementById('tings')
+  for(i=0;i<sites.length;i++){
+    let currLink = document.createElement('a');
+    currLink.setAttribute('id', sites[i])
+    currLink.setAttribute('class', 'link')
+    currLink.href = 'https://archizzl.com/' + sites[i];
+    currLink.setAttribute('target', '_blank')
+    currLink.innerHTML = sites[i];
+    tings.appendChild(currLink)
+  }
+  let homework = document.getElementById('homework')
+  homework.onclick = function(){
+    homework.innerHTML = ''
+  }
+}
+    </script>
+
+
+
+
+
+
 </body>
+
 </html>
