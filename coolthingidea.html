@@ -13,30 +13,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  #midcirc {
-    height: 100px;
-    width: 100px;
-    border-radius: 500px;
-    background-color: lightblue;
-    border: 10px solid black;
+    overflow: hidden;
     position: absolute;
-    z-index: 9;
   }
-  #line {
-    height: 700px;
-    width: 700px;
+  .line {
+    height: 500px;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: row nowrap;
-    animation: rotate 0.1s linear infinite;
+    position: absolute;
   }
-  #midline {
-    height: 10px;
-    width: 500px;
+  .midline {
+    height: 5px;
+    width: 200px;
     background-color: black;
-    animation: length 0.1s linear infinite;
+    animation: length 5s linear infinite;
   }
   .circle {
     height: 50px;
@@ -49,34 +42,60 @@
       transform: rotate(360deg)
     }
   }
-  @keyframes length {
-    0% {
-      width: 500px;
-    }
-    25% {
-      width: 450px;
-    }
-    50% {
-      width: 400px;
-    }
-    75% {
-      width: 450px;
-    }
-    100% {
-      width: 500px;
-    }
+  #slidbox {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 50px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
   }
 </style>
 <body>
   <div id="container">
-      <div id="midcirc"></div>
-      <div id="line">
-        <div id="leftcirc" class="circle"></div>
-        <div id="midline"></div>
-        <div id="rightcirc" class="circle"></div>
-      </div>
+  </div>
+  <div id="slidbox">
+  <input type="range" min="0" max="100" value="50" id="numSlider">
   </div>
 </body>
 <script>
+
+//write function that allows you to add as many as you want and have it be just above 0
+
+window.onload = function(){
+  let container = document.getElementById('container')
+  let num = 100;
+  let seconds = (num*0.1) + 0.1
+  function draw(){
+    for(i=0;i<num;i++){
+      let linecurr = document.createElement('div')
+      linecurr.setAttribute('class', 'line')
+      linecurr.style.animation = 'rotate ' + seconds +'s linear infinite';
+      let leftcurr = document.createElement('div')
+      leftcurr.setAttribute('class', 'leftcirc circle')
+      let midcurr = document.createElement('div')
+      midcurr.setAttribute('class', 'midline')
+      let rightcurr = document.createElement('div')
+      rightcurr.setAttribute('class', 'rightcirc circle')
+      linecurr.appendChild(leftcurr)
+      linecurr.appendChild(midcurr)
+      linecurr.appendChild(rightcurr)
+      container.appendChild(linecurr)
+      seconds = seconds-0.1;
+    }
+  }
+  draw()
+  let numSlider = document.getElementById("numSlider");
+  numSlider.oninput = function() {
+  container.innerHTML = ''
+  num = this.value;
+  seconds = (num*0.1) + 0.1
+  draw()
+  }
+}
 </script>
 </html>
