@@ -15,30 +15,20 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row wrap;
   overflow: hidden;
   position: absolute;
 }
 .box {
   display: none;
-  margin: 50px;
-}
-#column1 {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  height: 600px;
+  margin: 5px;
+  border: 1px solid black;
 }
 #dateContainer {
   font-size: 18px;
 }
-#column2 {
-  display: flex;
-  flex-flow: column nowrap;
-}
 #homeworkContainer {
-  height: 500px;
+  height: 400px;
   width: 400px;
   font-size: 30px;
   outline: 0px solid transparent;
@@ -59,6 +49,7 @@
 }
 #websitesTitle {
   font-size: 20px;
+  text-decoration: underline;
 }
 #websitesList {
   display: flex;
@@ -66,8 +57,10 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-#wig {
-  font-size: 25px;
+#twitterContainer {
+  height: 180px;
+  width: 500px;
+  overflow: scroll;
 }
 .link {
   margin: 5px;
@@ -79,15 +72,11 @@ a {
   text-decoration: none;
   color: black;
 }
-#ARCHIE {
-  font-size: 45px;
-  position: fixed;
-}
 </style>
 </head>
-<body translate="no" >
+<body translate="no">
+  <audio id="backgroundmusic" src="indexbackground.m4a" type="audio/m4a" autoplay="true"></audio>
   <div id="container">
-  <div id="column1">
     <pre id="dateContainer" class="box">
     ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
     ♡           happy           ♡
@@ -101,13 +90,17 @@ a {
     　 　   ＼/＿＿＿/
     </pre>
     <div id="websitesContainer" class="box">
-      <div id="websitesTitle">wow he alos did thta : </div>
+      <div id="websitesTitle">i did this: </div>
       <div id="websitesList"></div>
     </div>
-  </div>
-  <div id="column2">
+      <div id="twitterContainer" class="box">
+        <a class="twitter-timeline" href="https://twitter.com/archizzl?ref_src=twsrc%5Etfw" id="twitterTimeline"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+
+
+
     <div id="homeworkContainer" contenteditable="true" class="box">
-      <pre id="homeworkPre"> write ur homewrok here
+      <pre id="homeworkPre"> edit me
 
 
 
@@ -118,13 +111,13 @@ a {
                              :O</pre>
     </div>
     <div id="infoContainer" class="box">
-      go check out the <a href="https://archizzl.com/fashion.html" target="_blank">fashion site!!!!!</a> or all fo my social smedia stuff like <a href="https://instagram.com/archizzl" target="_blank">instagrams</a> or <a href="https://twitter.com/archizzl" target="_blank">twita</a>
+      go check out the <a href="https://archizzl.com/fashion.html" target="_blank">fashion site!!!!!</a> or all of my social media stuff like <a href="https://instagram.com/archizzl" target="_blank">instagram</a> or <a href="https://twitter.com/archizzl" target="_blank">twitter!</a>
     </div>
-  </div>
 </div>
-<div id="ARCHIE">archi zzl ! </div>
     <script >
       window.onload = function(){
+        let music = document.getElementById('backgroundmusic')
+        backgroundmusic.play()
 
 
   //immprt
