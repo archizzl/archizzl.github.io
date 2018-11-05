@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+      <style>
+      * {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+}
+.box {
+  position: absolute;
+}
+#inputBox {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  height: 50px;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+#input {
+  width: 100px;
+}
+    </style>
+</head>
+<body translate="no" >
+  <div id="container"></div>
+<div id="inputBox">
+  <input id="input" type="text"></input>
+</div>
+    <script >
+      window.onload = function(){
+  let i = 0;
+  let size = 50;
+  let dimens = 100;
+  let word = '';
+  let container = document.getElementById('container')
+  setInterval(function(){
+    let curr = document.createElement('div');
+    curr.setAttribute('class', 'box');
+    curr.setAttribute('id', 'box' + i);
+    curr.innerHTML = word;
+    container.appendChild(curr);
+    curr.style.top = Math.floor(Math.random()*dimens) + 'vh';
+    curr.style.left = Math.floor(Math.random()*dimens) + 'vw';
+    curr.style.fontSize = Math.floor(Math.random()*size) + 'px';
+    i++;
+    console.log(word)
+    if (i == 2500){
+      container.innerHTML = ''
+      i = 0;
+    }
+  }, 1)
+  let wordInput = document.getElementById('input')
+  wordInput.oninput = function(){
+    word = this.value;
+  }
+}
+    </script>
+</body>
+</html>
