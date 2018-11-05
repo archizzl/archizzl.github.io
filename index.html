@@ -75,7 +75,8 @@ a {
 </style>
 </head>
 <body translate="no">
-  <audio id="backgroundmusic" src="indexbackground.m4a" type="audio/m4a" autoplay="true"></audio>
+  <iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;">
+</iframe>
   <div id="container">
     <pre id="dateContainer" class="box">
     ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
@@ -116,8 +117,6 @@ a {
 </div>
     <script >
       window.onload = function(){
-        let music = document.getElementById('backgroundmusic')
-        backgroundmusic.play()
 
 
   //immprt
