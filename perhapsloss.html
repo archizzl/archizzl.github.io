@@ -44,28 +44,16 @@ input {
   width: 100px;
 }
     </style>
-
-
-
-
-
-
 </head>
-
 <body translate="no" >
-
   <div id="container">
   <div id="box"></div>
 </div>
 <div id="slidbox">
-<input type="range" min="0" max="100" value="50" id="lineheight">
+  <input type="range" min="0" max="100" value="50" id="lineheight">
 </div>
-
-
-
-
-    <script >
-      window.onload = function(){
+<script>
+window.onload = function(){
   let chars = ['|', '_', '_', '_',]
   let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   let box = document.getElementById('box')
@@ -99,13 +87,6 @@ input {
     box.style.lineHeight = (this.value/10) + 'px';
   }
 }
-    </script>
-
-
-
-
-
-
+</script>
 </body>
-
 </html>

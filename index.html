@@ -16,7 +16,7 @@
   width: 100vw;
   display: flex;
   flex-flow: row wrap;
-  overflow: hidden;
+  overflow: scroll;
   position: absolute;
 }
 .box {
@@ -78,28 +78,29 @@ a {
   <iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;">
 </iframe>
   <div id="container">
-    <pre id="dateContainer" class="box">
-    ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
-    ♡           happy           ♡
-    ♡      <div id="date"></div> ♡
-    ╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
-              O
-                °
-    〃∩　∧＿∧
-    ⊂⌒（ ´・ω・）
-       ヽ_っ＿/￣￣￣/
-    　 　   ＼/＿＿＿/
-    </pre>
+    <div id="dateContainer" class="box">
+        <pre id="datePre">
+          ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
+          ♡           happy           ♡
+          ♡      <div id="date"></div> ♡
+          ╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
+                    O
+                      °
+          〃∩　∧＿∧
+          ⊂⌒（ ´・ω・）
+             ヽ_っ＿/￣￣￣/
+          　 　   ＼/＿＿＿/
+        </pre></div>
     <div id="websitesContainer" class="box">
       <div id="websitesTitle">i did this: </div>
       <div id="websitesList"></div>
     </div>
-      <div id="twitterContainer" class="box">
+    <div id="infoContainer" class="box">
+      hi! i'm archie! i'm a student at Columbia High School, and I taught myself to code! i upkeep the <a href="https://archizzl.com/fashion.html" target="_blank">columbia high school fashion website,</a> and i also have a very average <a href="https://instagram.com/archizzl" target="_blank">instagram!</a>
+    </div>
+    <div id="twitterContainer" class="box">
         <a class="twitter-timeline" href="https://twitter.com/archizzl?ref_src=twsrc%5Etfw" id="twitterTimeline"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-
-
-
     <div id="homeworkContainer" contenteditable="true" class="box">
       <pre id="homeworkPre"> edit me
 
@@ -110,9 +111,6 @@ a {
 
 
                              :O</pre>
-    </div>
-    <div id="infoContainer" class="box">
-      go check out the <a href="https://archizzl.com/fashion.html" target="_blank">fashion site!!!!!</a> or all of my social media stuff like <a href="https://instagram.com/archizzl" target="_blank">instagram</a> or <a href="https://twitter.com/archizzl" target="_blank">twitter!</a>
     </div>
 </div>
     <script >
