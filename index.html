@@ -15,14 +15,35 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   overflow: scroll;
   position: absolute;
+  background-color: transparent;
+  z-index: 1;
+}
+#dotContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+.dotRow {
+  display: flex;
+  flex-flow: row nowrap;
 }
 .box {
   display: none;
-  margin: 5px;
-  border: 1px solid black;
+  margin: 10px;
+  background-color: white;
+  border: 5px solid black;
+  padding: 5px;
 }
 #dateContainer {
   font-size: 18px;
@@ -37,8 +58,8 @@
 #infoContainer {
   height: 100px;
   width: 300px;
-}
-#websitesContanier {
+3}
+#websitesContainer {
   height: 200px;
   width: 400px;
   overflow: hidden;
@@ -77,6 +98,8 @@ a {
 <body translate="no">
   <iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;">
 </iframe>
+  <div id="dotContainer">
+  </div>
   <div id="container">
     <div id="dateContainer" class="box">
         <pre id="datePre">
@@ -86,22 +109,22 @@ a {
           ╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
                     O
                       °
-          〃∩　∧＿∧
+           〃∩　∧＿∧
           ⊂⌒（ ´・ω・）
              ヽ_っ＿/￣￣￣/
-          　 　   ＼/＿＿＿/
+          　 　  ＼/＿＿＿/
         </pre></div>
-    <div id="websitesContainer" class="box">
-      <div id="websitesTitle">i did this: </div>
-      <div id="websitesList"></div>
-    </div>
     <div id="infoContainer" class="box">
-      hi! i'm archie! i'm a student at Columbia High School, and I taught myself to code! i upkeep the <a href="https://archizzl.com/fashion.html" target="_blank">columbia high school fashion website,</a> and i also have a very average <a href="https://instagram.com/archizzl" target="_blank">instagram!</a>
-    </div>
-    <div id="twitterContainer" class="box">
-        <a class="twitter-timeline" href="https://twitter.com/archizzl?ref_src=twsrc%5Etfw" id="twitterTimeline"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          hi, i'm archie! i'm a student at Columbia High School, and I taught myself to code! i upkeep the <a href="https://archizzl.com/fashion.html" target="_blank">columbia high school fashion website,</a> and i also have a very average <a href="https://instagram.com/archizzl" target="_blank">instagram!</a>
+        </div>
+    <div id="websitesContainer" class="box">
+        <div id="websitesTitle">i did this: </div>
+        <div id="websitesList"></div>
       </div>
-    <div id="homeworkContainer" contenteditable="true" class="box">
+    <!--<div id="twitterContainer" class="box">
+          <a class="twitter-timeline" href="https://twitter.com/archizzl?ref_src=twsrc%5Etfw" id="twitterTimeline"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>-->
+    <!--<div id="homeworkContainer" contenteditable="true" class="box">
       <pre id="homeworkPre"> edit me
 
 
@@ -111,49 +134,94 @@ a {
 
 
                              :O</pre>
-    </div>
+    </div>-->
 </div>
-    <script >
-      window.onload = function(){
+<script >
+  window.onload = function(){
+    //immprt
+    let sites = ['writeout', 'spam', 'perhapsloss', 'clonk', 'LUKE', 'h', 'spinny', 'sheetstest', 'fashion', 'moth']
+    //imprso
 
-
-  //immprt
-  let sites = ['writeout', 'spam', 'perhapsloss', 'clonk', 'LUKE', 'h', 'spinny', 'fashion', 'moth']
-  //imprso
-
-
-
-  let rn = new Date()
-  let date = document.getElementById('date')
-  date.innerHTML = rn
-  let box = document.querySelectorAll('.box')
-  for(i=0;i<box.length;i++){
-    box[i].style.display = 'block';
-  }
-  setInterval(function(){
     let rn = new Date()
+    let date = document.getElementById('date')
     date.innerHTML = rn
-  })
-  let websitesList = document.getElementById('websitesList')
-  for(i=0;i<sites.length;i++){
-    let currLink = document.createElement('a');
-    currLink.setAttribute('id', sites[i])
-    currLink.setAttribute('class', 'link')
-    currLink.href = 'https://archizzl.com/' + sites[i];
-    currLink.setAttribute('target', '_blank')
-    currLink.innerHTML = sites[i];
-    websitesList.appendChild(currLink)
-  }
-  let homeworkPre = document.getElementById('homeworkPre')
-  let homeworkClick = 0;
-  homeworkPre.onclick = function(){
-    if(homeworkClick == 0){
-      homeworkPre.innerHTML = ''
-      homeworkClick++
+    let box = document.querySelectorAll('.box')
+    for(i=0;i<box.length;i++){
+      box[i].style.display = 'block';
     }
+    setInterval(function(){
+      let rn = new Date()
+      date.innerHTML = rn
+    })
+    let websitesList = document.getElementById('websitesList')
+    for(i=0;i<sites.length;i++){
+      let currLink = document.createElement('a');
+      currLink.setAttribute('id', sites[i])
+      currLink.setAttribute('class', 'link')
+      currLink.href = 'https://archizzl.com/' + sites[i];
+      currLink.setAttribute('target', '_blank')
+      currLink.innerHTML = sites[i];
+      websitesList.appendChild(currLink)
+    }
+    /*
+    let homeworkPre = document.getElementById('homeworkPre')
+    let homeworkClick = 0;
+    homeworkPre.onclick = function(){
+      if(homeworkClick == 0){
+        homeworkPre.innerHTML = ''
+        homeworkClick++
+      }
+    }
+    */
+
+    let dotVar = 1;
+    let dotNum = 64;
+    let dotDimens = 5;
+    let dotMargin = 10;
+    let dotTime = 500;
+    let dotRunning = true;
+    let dotContainer = document.getElementById('dotContainer')
+
+    //draws the grid
+    function drawGrid(){
+      for(x = 1; x<dotNum+1; x++){
+        let rowid = 'row' + x;
+        let rowcurr = document.createElement('div')
+        rowcurr.setAttribute('id', rowid)
+        rowcurr.setAttribute('class', 'dotRow')
+        dotContainer.appendChild(rowcurr)
+        for(y = 1; y<dotNum+1; y++){
+          let boxid = 'dot' + dotVar
+          let boxcurr = document.createElement('div')
+          boxcurr.setAttribute('id', boxid)
+          boxcurr.setAttribute('class', 'boxes')
+          boxcurr.style.height = dotDimens + 'px';
+          boxcurr.style.width = dotDimens + 'px';
+          boxcurr.style.margin = dotMargin + 'px';
+          boxcurr.style.minHeight = dotDimens + 'px';
+          boxcurr.style.minWidth = dotDimens + 'px';
+          rowcurr.appendChild(boxcurr)
+          dotVar++
+        }
+      }
+    }
+
+    //changes the colors
+    setInterval(function(){
+      if(dotRunning==true){
+        for(i = 1; i < (dotNum*dotNum)+1; i++){
+          let spec = 'dot' + i;
+          let colorcurr = document.getElementById(spec)
+          colorcurr.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+      }
+    }, dotTime)
+
+    //draw grid
+    drawGrid();
+
   }
-}
-    </script>
+</script>
 
 
 
