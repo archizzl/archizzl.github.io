@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+
+
+
+
+      <style>
+      * {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+}
+.thing {
+  display: none;
+  margin: 50px;
+}
+#ig {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 570px;
+}
+#owo {
+  font-size: 18px;
+}
+    </style>
+
+
+
+
+
+
+</head>
+
+<body translate="no" >
+
+  <div id="container">
+  <pre id="owo">
+  ╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
+ ♡           happy           ♡
+ ♡      <div id="date"></div> ♡
+ ╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
+            O
+              °
+ 〃∩　∧＿∧
+ ⊂⌒（ ´・ω・）
+     ヽ_っ＿/￣￣￣/
+ 　 　   ＼/＿＿＿/
+  </pre>
+</div>
+
+
+
+
+    <script >
+      window.onload = function(){
+  let rn = new Date()
+  let date = document.getElementById('date')
+  date.innerHTML = rn
+  let thing = document.querySelectorAll('.thing')
+  for(i=0;i<thing.length;i++){
+    thing[i].style.display = 'block';
+  }
+  setInterval(function(){
+    let rn = new Date()
+    date.innerHTML = rn
+  })
+}
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
