@@ -11,17 +11,14 @@
         width: 100vw;
         overflow: hidden;
         position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 0;
+        z-index: -2;
         user-select: none;
       }
       .box {
         position: absolute;
         bottom: 0px;
         animation: move 10s linear forwards;
-        z-index: 1;
+        z-index: -1;
       }
       @keyframes move {
         100% {
@@ -29,44 +26,56 @@
         }
       }
       #content {
+        height: 75vh;
+        width: 75vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        /*background-color: rgba(0, 0, 0, 0.5)*/
+      }
+      .selector {
+        height: 100px;
+        width: 400px;
         color: white;
-        font-size: 125px;
-        font-family: Comic Sans MS;
+        font-size: 50px;
       }
       #header {
         font-size: 125px;
         color: white;
-        position: absolute;
-        z-index: 5;
+        outline-width: 0;
+        padding: 20px;
+        cursor: default;
       }
-      #about {
-        position: absolute;
-        z-index: 5;
-        top: 5px;
-        right: 5px;
+      .link {
         color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
+        text-decoration: none;
+        position: absolute;
+        z-index: 5;
       }
-      #about > div {
-        margin: 5px;
+      .selector {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+      .carrot {
+        height: 50px;
+        width: 50px;
       }
     </style>
   </head>
   <body translate="no">
     <iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;"></iframe>
     <div id="container">
-      <div id="header">
-        archie o'connell
-      </div>
-      <div id="about">
-        <div id="works">works</div>
-        <div class="slash">/</div>
-        <div id="social">social</div>
-        <div class="slash">/</div>
-        <div id="bio">bio</div>
+      <div id="content">
+        <div id="header">
+          archie o'connell
+        </div>
+        <div id="about" class="selector">
+          <div id="aboutCarrot" class="carrot"></div><div id="aboutCaption" class="caption">about me</div>
+        </div>
+        <div id="work" class="selector">
+          <div id="workCarrot" class="carrot"></div><div id="worksCaption" class="caption">my works</div>
+        </div>
       </div>
     </div>
     <script>
@@ -96,15 +105,51 @@
           removeVar++
         }, 250)
       }, 10000)
+      //selectors
+      let aboutCarrot = document.getElementById('aboutCarrot')
+      let workCarrot = document.getElementById('workCarrot')
+      let carrot = false;
+      let carrotCurr = aboutCarrot
+      let carrots = document.querySelectorAll('.carrot')
+      setInterval(function(){
+        if(carrot == false){
+          for(i = 0; i<carrots.length; i++){
+            carrots[i].innerHTML = ''
+          }
+          carrotCurr.innerHTML = '>'
+          carrot = true;
+        }
+        else if (carrot == true){
+          for(i = 0; i<carrots.length; i++){
+            carrots[i].innerHTML = ''
+          }
+          carrotCurr.innerHTML = ''
+          carrot = false;
+        }
+      }, 500)
+      document.onkeypress = function(e){
+        if(e.keyCode == 119){
+          if(carrotCurr == workCarrot){
+            carrotCurr = aboutCarrot
+            for(i = 0; i<carrots.length; i++){
+              carrots[i].innerHTML = ''
+            }
+            carrotCurr.innerHTML = '>'
+            carrot = true;
+          }
+        }
+        else if(e.keyCode == 115){
+          if(carrotCurr == aboutCarrot){
+            carrotCurr = workCarrot
+            for(i = 0; i<carrots.length; i++){
+              carrots[i].innerHTML = ''
+            }
+            carrotCurr.innerHTML = '>'
+            carrot = true;
+          }
+        }
+      }
     }
-    //about
-    /*
-    let bio = document.getElementById('bio')
-    let header = document.getElementById('header')
-    bio.onclick = function(){
-      header.innerHTML = 'hi, im archie. i go to columbia high school and like to code'
-    }
-    */
     </script>
   </body>
 </html>
