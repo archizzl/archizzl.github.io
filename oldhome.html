@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<style>
+* {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  position: absolute;
+  background-color: transparent;
+  z-index: 1;
+}
+.box {
+  display: none;
+  margin: 10px;
+  background-color: white;
+}
+#websitesContainer {
+  height: 200px;
+  width: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+}
+#websitesList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.link {
+  margin: 5px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+</style>
+</head>
+<body translate="no">
+<iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;"></iframe>
+  <div id="container">
+    <div id="websitesContainer" class="box">
+        <div id="websitesList"></div>
+      </div>
+</div>
+<script >
+  window.onload = function(){
+    //immprt
+    let sites = ['writeout', 'spam', 'perhapsloss', 'clonk', 'LUKE', 'h', 'spinny', 'sheetstest', 'fashion', 'moth']
+    //imprso
+
+    let websitesList = document.getElementById('websitesList')
+    for(i=0;i<sites.length;i++){
+      let currLink = document.createElement('a');
+      currLink.setAttribute('id', sites[i])
+      currLink.setAttribute('class', 'link')
+      currLink.href = 'https://archizzl.com/' + sites[i];
+      currLink.setAttribute('target', '_blank')
+      currLink.innerHTML = sites[i];
+      websitesList.appendChild(currLink)
+    }
+
+  }
+</script>
+
+
+
+
+
+
+</body>
+
+</html>

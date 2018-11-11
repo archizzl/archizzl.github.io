@@ -1,86 +1,109 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-<meta charset="UTF-8">
-<style>
-* {
-  user-select: none;
-  margin: 0;
-  padding: 0;
-}
-#container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  overflow: scroll;
-  position: absolute;
-  background-color: transparent;
-  z-index: 1;
-}
-.box {
-  display: none;
-  margin: 10px;
-  background-color: white;
-}
-#websitesContainer {
-  height: 200px;
-  width: 400px;
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-flow: column nowrap;
-}
-#websitesList {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.link {
-  margin: 5px;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-</style>
-</head>
-<body translate="no">
-<iframe src="indexbackground.m4a" allow="autoplay" id="iframeAudio" style="display: none;"></iframe>
-  <div id="container">
-    <div id="websitesContainer" class="box">
-        <div id="websitesList"></div>
+  <head>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #container {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 0;
+        user-select: none;
+      }
+      .box {
+        position: absolute;
+        bottom: 0px;
+        animation: move 10s linear forwards;
+        z-index: 1;
+      }
+      @keyframes move {
+        100% {
+          bottom: 100vh;
+        }
+      }
+      #content {
+        color: white;
+        font-size: 125px;
+        font-family: Comic Sans MS;
+      }
+      #header {
+        font-size: 125px;
+        color: white;
+        position: absolute;
+        z-index: 5;
+      }
+      #about {
+        position: absolute;
+        z-index: 5;
+        top: 5px;
+        right: 5px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+      #about > div {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body translate="no">
+    <div id="container">
+      <div id="header">
+        archie o'connell
       </div>
-</div>
-<script >
-  window.onload = function(){
-    //immprt
-    let sites = ['writeout', 'spam', 'perhapsloss', 'clonk', 'LUKE', 'h', 'spinny', 'sheetstest', 'fashion', 'moth']
-    //imprso
-
-    let websitesList = document.getElementById('websitesList')
-    for(i=0;i<sites.length;i++){
-      let currLink = document.createElement('a');
-      currLink.setAttribute('id', sites[i])
-      currLink.setAttribute('class', 'link')
-      currLink.href = 'https://archizzl.com/' + sites[i];
-      currLink.setAttribute('target', '_blank')
-      currLink.innerHTML = sites[i];
-      websitesList.appendChild(currLink)
+      <div id="about">
+        <div id="works">works</div>
+        <div class="slash">/</div>
+        <div id="social">social</div>
+        <div class="slash">/</div>
+        <div id="bio">bio</div>
+      </div>
+    </div>
+    <script>
+    window.onload = function(){
+      //balloons
+      let container = document.getElementById('container')
+      let addVar = 0;
+      setInterval(function(){
+        let dimens = Math.floor((Math.random()*500) + 500)
+        let boxCurr = document.createElement('div')
+        boxCurr.setAttribute('class', 'box')
+        boxCurr.setAttribute('id', 'box' + addVar)
+        boxCurr.style.left = Math.floor((Math.random()*100)-25) + 'vw'
+        boxCurr.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        boxCurr.style.height = dimens + 'px';
+        boxCurr.style.width = dimens + 'px';
+        boxCurr.style.borderRadius = dimens / 2 + 'px'
+        boxCurr.style.bottom = -1 * dimens + 'px';
+        container.appendChild(boxCurr)
+        addVar++
+      }, 250)
+      let removeVar = 0;
+      setTimeout(function(){
+        setInterval(function(){
+          let removeCurr = document.getElementById('box' + removeVar)
+          container.removeChild(removeCurr)
+          removeVar++
+        }, 250)
+      }, 10000)
     }
-
-  }
-</script>
-
-
-
-
-
-
-</body>
-
+    //about
+    /*
+    let bio = document.getElementById('bio')
+    let header = document.getElementById('header')
+    bio.onclick = function(){
+      header.innerHTML = 'hi, im archie. i go to columbia high school and like to code'
+    }
+    */
+    </script>
+  </body>
 </html>
