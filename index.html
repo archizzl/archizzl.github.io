@@ -27,7 +27,7 @@
       }
       #content {
         height: 75vh;
-        width: 75vw;
+        width: 70vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -46,19 +46,45 @@
         padding: 20px;
         cursor: default;
       }
-      .link {
-        color: white;
-        text-decoration: none;
-        position: absolute;
-        z-index: 5;
-      }
       .selector {
         display: flex;
         flex-flow: row nowrap;
+        cursor: pointer;
       }
       .carrot {
         height: 50px;
         width: 50px;
+      }
+      #helloBox {
+        bottom: 10vh;
+        right: 7vw;
+      }
+      #aboutBox {
+        bottom: -60vh;
+        right: 7vw;
+      }
+      #projectsBox {
+        bottom: 10vh;
+        right: -45vw;
+      }
+      #contactBox {
+        top: -60vh;
+        right: 7vw;
+      }
+      #dateBox {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: white;
+        font-size: 1px;
+      }
+      .contentBox {
+        transition: 0.5s;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        height: 60vh;
+        width: 45vw;
       }
     </style>
   </head>
@@ -69,17 +95,50 @@
         <div id="header">
           archie o'connell
         </div>
+        <div id="hello" class="selector">
+          <div id="helloCarrot" class="carrot"></div><div id="helloCaption" class="caption">hello!</div>
+        </div>
         <div id="about" class="selector">
           <div id="aboutCarrot" class="carrot"></div><div id="aboutCaption" class="caption">about me</div>
         </div>
-        <div id="work" class="selector">
-          <div id="workCarrot" class="carrot"></div><div id="worksCaption" class="caption">my works</div>
+        <div id="projects" class="selector">
+          <div id="projectsCarrot" class="carrot"></div><div id="projectsCaption" class="caption">projects</div>
         </div>
+        <div id="contact" class="selector">
+          <div id="contactCarrot" class="carrot"></div><div id="contactCaption" class="caption">contact info</div>
+        </dvi>
       </div>
+      <div id="helloBox" class="contentBox">
+      </div>
+      <div id="aboutBox" class="contentBox">
+        <div id="aboutHeader">about me</div>
+      </div>
+      <div id="projectsBox" class="contentBox">
+        <div id="projectsHeader">projects</div>
+      </div>
+      <div id="contactBox" class="contentBox">
+        <div id="contactHeader">contact me</div>
+      </div>
+    </div>
+    <div id="dateBox">
+      <pre id="datePre">
+╭ ◜◝ ͡ ◜◝ ͡  ◜◝ ͡ ◜◝ ͡  ◜◝ ╮
+♡           happy           ♡
+♡      <div id="date"></div> ♡
+╰ ◟◞ ͜  ◟ ͜   ◟◞ ͜  ◟ ͜   ◟◞ ╯
+        O
+          °
+〃∩　∧＿∧
+⊂⌒（ ´・ω・）
+ ヽ_っ＿/￣￣￣/
+　 　   ＼/＿＿＿/
+</pre>
     </div>
     <script>
     window.onload = function(){
+
       //balloons
+
       let container = document.getElementById('container')
       let addVar = 0;
       setInterval(function(){
@@ -104,11 +163,17 @@
           removeVar++
         }, 250)
       }, 10000)
-      //selectors
+
+      //carrots!
+
+      //abstraction yeeehaw
+
+      let helloCarrot = document.getElementById('helloCarrot')
       let aboutCarrot = document.getElementById('aboutCarrot')
-      let workCarrot = document.getElementById('workCarrot')
-      let carrot = false;
-      let carrotCurr = aboutCarrot
+      let projectsCarrot = document.getElementById('projectsCarrot')
+      let contactCarrot = document.getElementById('contactCarrot')
+      let carrotCurr = helloCarrot;
+      let carrot = true;
       let carrots = document.querySelectorAll('.carrot')
       setInterval(function(){
         if(carrot == false){
@@ -126,28 +191,41 @@
           carrot = false;
         }
       }, 444.444444444)
-      document.onkeypress = function(e){
-        if(e.keyCode == 119){
-          if(carrotCurr == workCarrot){
-            carrotCurr = aboutCarrot
-            for(i = 0; i<carrots.length; i++){
-              carrots[i].innerHTML = ''
-            }
-            carrotCurr.innerHTML = '>'
-            carrot = true;
-          }
-        }
-        else if(e.keyCode == 115){
-          if(carrotCurr == aboutCarrot){
-            carrotCurr = workCarrot
-            for(i = 0; i<carrots.length; i++){
-              carrots[i].innerHTML = ''
-            }
-            carrotCurr.innerHTML = '>'
-            carrot = true;
-          }
-        }
+
+      //moving boxes in
+
+      let hello = document.getElementById('hello')
+      let about = document.getElementById('about')
+      let projects = document.getElementById('projects')
+      let contact = document.getElementById('contact')
+      let aboutBox = document.getElementById('aboutBox')
+      let projectsBox = document.getElementById('projectsBox')
+      about.onclick = function(){
+        aboutBox.style.bottom = '10vh';
+        projectsBox.style.right = '-45vw';
+        carrotCurr = aboutCarrot;
+        carrotStart = true;
       }
+      projects.onclick = function(){
+        projectsBox.style.right = '7vw';
+        aboutBox.style.bottom = '-60vh';
+        carrotCurr = projectsCarrot;
+        carrotStart = true;
+      }
+
+      //clock!
+      let rn = new Date()
+      let date = document.getElementById('date')
+      date.innerHTML = rn
+      setInterval(function(){
+        let rn = new Date()
+        date.innerHTML = rn
+      })
+
+
+
+
+      //this is the bracket to close the window onload make sure its here lmao
     }
     </script>
   </body>

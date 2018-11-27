@@ -121,6 +121,11 @@
   transition: 0.3s;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 /*section containers and that stuff*/
 
 .sectionContainer {
@@ -190,14 +195,14 @@
   <div id="mini">
     <div id="aboutButton" class="miniButton">about</div>
     <div class="slash">/</div>
-    <div id="contactButton" class="miniButton">contact us</div>
+    <div id="contactButton" class="miniButton"><a href="mailto:archie.oconnell@gmail.com?Subject=Hello%20again" target="_top">contact us</a></div>
     <div class="slash">/</div>
-    <div id="instaButton" class="miniButton">insta</div>
+    <div id="instaButton" class="miniButton"><a href="https://www.instagram.com/thechsfashion/" target="_blank">insta</a></div>
   </div>
 
   <div id="aboutContainer">
     <div id="aboutContent">
-      <img src="LUKE.png" id="LUKE">
+      hello
     </div>
     <div id="aboutClose"></div>
   </div>
@@ -218,7 +223,7 @@
 
 
     <script >
-      window.onload = function(){
+  window.onload = function(){
 
   //circle
   let circle = document.getElementById('circle');
@@ -315,8 +320,6 @@
 
 
 
-
-  <script src="https://static.codepen.io/assets/editor/live/css_reload-2a5c7ad0fe826f66e054c6020c99c1e1c63210256b6ba07eb41d7a4cb0d0adab.js"></script>
 </body>
 
 </html>
