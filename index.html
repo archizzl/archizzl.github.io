@@ -55,20 +55,24 @@
         height: 50px;
         width: 50px;
       }
-      #helloBox {
+      #moodBox {
+        /*comes from right*/
         bottom: 10vh;
-        right: 7vw;
+        right: 145vw;
       }
       #aboutBox {
+        /*comes from bottom*/
         bottom: -60vh;
         right: 7vw;
       }
       #projectsBox {
+        /*comes from right*/
         bottom: 10vh;
         right: -45vw;
       }
       #contactBox {
-        top: -60vh;
+        /*comes from bottom*/
+        bottom: -60vh;
         right: 7vw;
       }
       #dateBox {
@@ -79,12 +83,19 @@
         font-size: 1px;
       }
       .contentBox {
-        transition: 0.5s;
+        transition: 1s;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 0;
         height: 60vh;
         width: 45vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header {
+        font-size: 100px;
+        color: white;
       }
     </style>
   </head>
@@ -95,8 +106,8 @@
         <div id="header">
           archie o'connell
         </div>
-        <div id="hello" class="selector">
-          <div id="helloCarrot" class="carrot"></div><div id="helloCaption" class="caption">hello!</div>
+        <div id="mood" class="selector">
+          <div id="moodCarrot" class="carrot"></div><div id="moodCaption" class="caption">mood!</div>
         </div>
         <div id="about" class="selector">
           <div id="aboutCarrot" class="carrot"></div><div id="aboutCaption" class="caption">about me</div>
@@ -108,16 +119,17 @@
           <div id="contactCarrot" class="carrot"></div><div id="contactCaption" class="caption">contact info</div>
         </dvi>
       </div>
-      <div id="helloBox" class="contentBox">
+      <div id="moodBox" class="contentBox">
+        <div id="moodHeader" class="header">MOOD</div>
       </div>
       <div id="aboutBox" class="contentBox">
-        <div id="aboutHeader">about me</div>
+        <div id="aboutHeader" class="header">ABOUT</div>
       </div>
       <div id="projectsBox" class="contentBox">
-        <div id="projectsHeader">projects</div>
+        <div id="projectsHeader" class="header">PROJECTS</div>
       </div>
       <div id="contactBox" class="contentBox">
-        <div id="contactHeader">contact me</div>
+        <div id="contactHeader" class="header">CONTACT ME</div>
       </div>
     </div>
     <div id="dateBox">
@@ -135,7 +147,14 @@
 </pre>
     </div>
     <script>
+
     window.onload = function(){
+      let clicked = false;
+      setTimeout(function(){
+        if(clicked == false){
+          moodBox.style.right = '7vw';
+        }
+      }, 7500)
 
       //balloons
 
@@ -168,49 +187,74 @@
 
       //abstraction yeeehaw
 
-      let helloCarrot = document.getElementById('helloCarrot')
+      let moodCarrot = document.getElementById('moodCarrot')
       let aboutCarrot = document.getElementById('aboutCarrot')
       let projectsCarrot = document.getElementById('projectsCarrot')
       let contactCarrot = document.getElementById('contactCarrot')
-      let carrotCurr = helloCarrot;
+      let carrotCurr = moodCarrot;
       let carrot = true;
       let carrots = document.querySelectorAll('.carrot')
       setInterval(function(){
         if(carrot == false){
           for(i = 0; i<carrots.length; i++){
-            carrots[i].innerHTML = ''
+            carrots[i].innerHTML = '-'
           }
           carrotCurr.innerHTML = '>'
           carrot = true;
         }
         else if (carrot == true){
           for(i = 0; i<carrots.length; i++){
-            carrots[i].innerHTML = ''
+            carrots[i].innerHTML = '-'
           }
-          carrotCurr.innerHTML = ''
+          carrotCurr.innerHTML = '-'
           carrot = false;
         }
       }, 444.444444444)
 
       //moving boxes in
 
-      let hello = document.getElementById('hello')
+      let mood = document.getElementById('mood')
       let about = document.getElementById('about')
       let projects = document.getElementById('projects')
       let contact = document.getElementById('contact')
+      let moodBox = document.getElementById('moodBox')
       let aboutBox = document.getElementById('aboutBox')
       let projectsBox = document.getElementById('projectsBox')
+      let contactBox = document.getElementById('contactBox')
+
+
+      //for it to be in view: bottom 10vh right 7vw
+      mood.onclick = function(){
+        moodBox.style.right = '7vw';//
+        aboutBox.style.bottom = '-60vh'
+        projectsBox.style.right = '-45vw'
+        contactBox.style.bottom = '-60vh'
+        clicked = true;
+        carrotCurr = moodCarrot;
+      }
       about.onclick = function(){
-        aboutBox.style.bottom = '10vh';
+        moodBox.style.right = '-45vw';
+        aboutBox.style.bottom = '10vh';//
         projectsBox.style.right = '-45vw';
+        contactBox.style.bottom = '-60vh';
+        clicked = true;
         carrotCurr = aboutCarrot;
-        carrotStart = true;
       }
       projects.onclick = function(){
-        projectsBox.style.right = '7vw';
+        moodBox.style.right = '-45vw';
         aboutBox.style.bottom = '-60vh';
+        projectsBox.style.right = '7vw';//
+        contactBox.style.bottom = '-60vh';
+        clicked = true;
         carrotCurr = projectsCarrot;
-        carrotStart = true;
+      }
+      contact.onclick = function(){
+        moodBox.style.right = '-45vw';
+        aboutBox.style.bottom = '-60vh';
+        projectsBox.style.right = '-45vw';
+        contactBox.style.bottom = '10vh';//
+        clicked = true;
+        carrotCurr = contactCarrot;
       }
 
       //clock!
