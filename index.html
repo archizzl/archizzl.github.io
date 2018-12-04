@@ -120,7 +120,7 @@
         </dvi>
       </div>
       <div id="moodBox" class="contentBox">
-        <div id="moodHeader" class="header">MOOD</div>
+        <div id="moodHeader" class="header"><img src="homepageMood1.png"></div>
       </div>
       <div id="aboutBox" class="contentBox">
         <div id="aboutHeader" class="header">ABOUT</div>
@@ -143,17 +143,15 @@
 〃∩　∧＿∧
 ⊂⌒（ ´・ω・）
  ヽ_っ＿/￣￣￣/
-　 　   ＼/＿＿＿/
+　 　 ＼/＿＿＿/
 </pre>
     </div>
     <script>
 
     window.onload = function(){
-      let clicked = false;
       setTimeout(function(){
-        if(clicked == false){
-          moodBox.style.right = '7vw';
-        }
+        moodBox.style.right = '7vw';
+        let started = true;
       }, 7500)
 
       //balloons
@@ -186,6 +184,7 @@
       //carrots!
 
       //abstraction yeeehaw
+      //hey archie what the fuck does this mean
 
       let moodCarrot = document.getElementById('moodCarrot')
       let aboutCarrot = document.getElementById('aboutCarrot')
@@ -225,36 +224,40 @@
 
       //for it to be in view: bottom 10vh right 7vw
       mood.onclick = function(){
-        moodBox.style.right = '7vw';//
-        aboutBox.style.bottom = '-60vh'
-        projectsBox.style.right = '-45vw'
-        contactBox.style.bottom = '-60vh'
-        clicked = true;
-        carrotCurr = moodCarrot;
+        if(started==true){
+          moodBox.style.right = '7vw';//
+          aboutBox.style.bottom = '-60vh'
+          projectsBox.style.right = '-45vw'
+          contactBox.style.bottom = '-60vh'
+          carrotCurr = moodCarrot;
+        }
       }
       about.onclick = function(){
-        moodBox.style.right = '-45vw';
-        aboutBox.style.bottom = '10vh';//
-        projectsBox.style.right = '-45vw';
-        contactBox.style.bottom = '-60vh';
-        clicked = true;
-        carrotCurr = aboutCarrot;
+        if(started==true){
+          moodBox.style.right = '-45vw';
+          aboutBox.style.bottom = '10vh';//
+          projectsBox.style.right = '-45vw';
+          contactBox.style.bottom = '-60vh';
+          carrotCurr = aboutCarrot;
+        }
       }
       projects.onclick = function(){
-        moodBox.style.right = '-45vw';
-        aboutBox.style.bottom = '-60vh';
-        projectsBox.style.right = '7vw';//
-        contactBox.style.bottom = '-60vh';
-        clicked = true;
-        carrotCurr = projectsCarrot;
+        if(started==true){
+          moodBox.style.right = '-45vw';
+          aboutBox.style.bottom = '-60vh';
+          projectsBox.style.right = '7vw';//
+          contactBox.style.bottom = '-60vh';
+          carrotCurr = projectsCarrot;
+        }
       }
       contact.onclick = function(){
-        moodBox.style.right = '-45vw';
-        aboutBox.style.bottom = '-60vh';
-        projectsBox.style.right = '-45vw';
-        contactBox.style.bottom = '10vh';//
-        clicked = true;
-        carrotCurr = contactCarrot;
+        if(started==true){
+          moodBox.style.right = '-45vw';
+          aboutBox.style.bottom = '-60vh';
+          projectsBox.style.right = '-45vw';
+          contactBox.style.bottom = '10vh';//
+          carrotCurr = contactCarrot;
+        }
       }
 
       //clock!
