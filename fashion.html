@@ -25,7 +25,6 @@
 #home {
   height: 100vh;
   width: 100vw;
-  background-color: lightblue;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -313,6 +312,21 @@ a {
     aboutContent.style.border = 'none'
   }
 
+  let i = 0;
+  let slides = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+  let home = document.getElementById('home')
+  home.style.backgroundColor = slides[i]
+  setInterval(function(){
+    i++
+    if(i==slides.length){
+      i=0;
+    }
+    home.style.backgroundColor = slides[i];
+  }, 1000)
+
+
+
+  //this is the window onload close, please do not delete this one thank u <3
 }
     </script>
 
