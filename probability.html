@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #header {
+    font-size: 100px;
+  }
+  </style>
+</head>
+<body>
+<div id="header"></div>
+<script>
+window.onload = function(){
+  outof = 5;
+  done = false;
+  matches = 0;
+  highest = 0;
+  highests = []
+  header = document.getElementById('header')
+  function sum(a,b){
+    return a+b;
+  }
+  setInterval(function(){
+    for(h = 0; h<100; h++){
+      for(i=0; i<10000; i++){
+        num = Math.floor(Math.random()*outof)
+        rand = Math.floor(Math.random()*outof)
+        while(done==false){
+          if(rand==num){
+            ++matches
+            rand = Math.floor(Math.random()*outof)
+          }
+          else {
+            done = true;
+            if(matches > highest){
+              highest = matches;
+            }
+            matches = 0;
+          }
+        }
+        done = false;
+      }
+      highests.push(highest)
+    }
+    header.innerHTML = ((highests.reduce(sum, 0))/highests.length)
+    highests = []
+  }, 2000)
+}
+</script>
+</body>
+</html>

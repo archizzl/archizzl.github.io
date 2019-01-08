@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <style>
+      * {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+}
+.box {
+  position: absolute;
+}
+#amount {
+  font-size: 100px;
+  color: black;
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+}
+#slidbox {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  height: 50px;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  z-index: 100000;
+}
+    </style>
+</head>
+<body translate="no" >
+  <div id="container">
+    <div id="slidContainer">
+      <div id="slidbox">
+      <input type="range" min="1" max="100" value="50" id="numSlider">
+      </div>
+    </div>
+</div>
+    <script >
+window.onload = function(){
+  let container = document.getElementById('container')
+  let amount = document.getElementById('amount')
+  let i = 0;
+  let remove = 0;
+  let second = false;
+  let maxdimens = 1000;
+  let rate = 1000;
+  let transparency = 0.5;
+  setInterval(function(){
+    dimens = Math.floor(Math.random()*maxdimens)
+    boxCurr = document.createElement('div')
+    boxCurr.setAttribute('class', 'box')
+    boxCurr.setAttribute('id', 'box' + i)
+    boxCurr.style.backgroundColor = 'rgba(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)  + ',' + transparency + ')'
+    boxCurr.style.height = dimens + 'px';
+    boxCurr.style.width = dimens + 'px';
+    boxCurr.style.zIndex = 1/dimens;
+    boxCurr.style.top = Math.floor(Math.random()*100)-8 + 'vh';
+    boxCurr.style.left = Math.floor(Math.random()*100)-8 + 'vw';
+    container.appendChild(boxCurr)
+    boxCount = document.querySelectorAll('.box')
+    i++
+    if(second == true){
+      removeCurr = document.getElementById('box' + remove)
+      container.removeChild(removeCurr)
+      remove++
+    }
+  }, rate)
+  setTimeout(function(){second = true}, rate*1000)
+}
+</script>
+</body>
+</html>
