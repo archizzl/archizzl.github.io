@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
 <style>
 * {
-padding: 0;
-margin: 0;
+  padding: 0;
+  margin: 0;
 }
 #container {
-height: 100vh;
-width: 100vw;
-display: flex;
-justify-content: center;
-align-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#left {
+  height: 100vh;
+  width: 40vw;
+  background-color: #fcb620;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#cute {
+  transform: scale(1);
+  outline: 5px solid white;
+}
+#menu {
+  outline: 5px solid white;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 22.7vw;
+}
+.menuChild {
+  text-align: center;
+  font-family: 'Cabin';
+  font-size: 22px;
+  margin: 5px;
+}
+#right {
+  height: 100vh;
+  width: 60vw;
 }
 </style>
 </head>
 <body>
-<div id="container"></div>
+<div id="container">
+  <div id="left">
+    <img src="cute2.png" id="cute">
+    <div id="menu" class="leftBox">
+      <div class="menuChild">resume</div>
+      <div class="menuChild">about</div>
+      <div class="menuChild">coding</div>
+      <div class="menuChild">music</div>
+      <div class="menuChild">writing</div>
+    </div>
+  </div>
+  <div id="right"></div>
+</div>
 <script>
 window.onload = function(){
 

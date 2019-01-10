@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+      <style>
+        * {
+          padding: 0;
+          margin: 0;
+        }
+        #container {
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-flow: row;
+          position: absolute;
+          overflow: hidden;
+        }
+        .menuChild {
+        }
+    </style>
+</head>
+<body translate="no" >
+  <div id="container">
+</div>
+    <script >
+  window.onload = function(){
+    function toRadians (angle) {
+      return angle * (Math.PI / 180);
+    }
+    let container = document.getElementById('container')
+    x = 0;
+    for(i=0; i<24; i++){
+      let curr = document.createElement('div')
+      curr.setAttribute('class', 'menuChild')
+      curr.innerHTML = '-'
+      curr.setAttribute('id', 'sin' + i)
+      curr.dataset.phase = x;
+      container.appendChild(curr)
+      x+=30
+    }
+    //DATA TAGS, MOTHERFUCKERRR
+    let children = document.querySelectorAll('.menuChild')
+    num = 0;
+    setInterval(function(){
+      for(i = 0; i<children.length; i++){
+        children[i].style.marginTop =(Math.sin(toRadians(children[i].getAttribute('data-phase') + num)) * 50) + 'px';
+      }
+      num+=15
+    }, 100)
+  }
+    </script>
+</body>
+</html>
