@@ -12,13 +12,14 @@
           width: 100vw;
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-end;
           flex-flow: row;
           position: absolute;
           overflow: hidden;
         }
         .menuChild {
-          font-size: 30px;
+          background-color: red;
+          border-radius: 1px 1px 0px 0px;
         }
     </style>
 </head>
@@ -38,20 +39,22 @@
 
       let curr = document.createElement('span')
       curr.setAttribute('class', 'menuChild')
-      curr.innerHTML = '-'
+      curr.innerHTML = '&nbsp'
       curr.setAttribute('id', 'sin' + i)
       curr.dataset.phase = x;
       container.appendChild(curr)
     }
 
     let children = document.querySelectorAll('.menuChild')
+    for(i = 0; i<children.length; i++){
+      children[i].style.width = (100/ne) + 'vw'
+    }
     setInterval( function(){
       for(i = 0; i<children.length; i++){
 
         let p = children[i].getAttribute('data-phase') ;
         let s = Math.sin( toRadians( p ) );
-
-        children[i].style.marginBottom = ( 100 * s ) + 'px';
+        children[i].style.height = 50 + ( 1 * s ) + 'vh';
 
         p = ( parseInt( p ) + 2 ) % 360
         children[i].setAttribute( 'data-phase', p ) ;
