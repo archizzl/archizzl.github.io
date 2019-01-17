@@ -13,13 +13,15 @@
           width: 100vw;
           display: flex;
           justify-content: center;
-          align-items: flex-end;
-          flex-flow: row;
+          align-items: center;
+          flex-flow: column nowrap;
           position: absolute;
           overflow: hidden;
+          background-color: transparent;
         }
-        .menuChild {
+        .waveChild {
           background-color: black;
+          margin: 0;
         }
         #name1 {
           position: absolute;
@@ -35,50 +37,121 @@
           bottom: 25vh;
           color:rgba(0,0,0,0.2);
         }
+        #menu {
+          position: absolute;
+          z-index: 2;
+          bottom: 8vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-flow: column nowrap;
+          font-family: 'Arial';
+          color:rgba(255,255,255,0.2);
+        }
+        .menuChild {
+          font-size: 20px;
+          margin: 5px;
+        }
+        .menuChild:hover {
+          cursor: pointer;
+        }
+        #content {
+          height: 60vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+        }
+        #header {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: flex-end;
+          align-items: center;
+          width: 100vw;
+          height: 40vh;
+          background-color: transparent;
+        }
+        #sinediv {
+          display: flex;
+          flex-flow: row nowrap;
+          width: 100vw;
+          justify-content: center;
+          align-items: flex-end;
+          background-color: transparent;
+        }
+        #backgroundImage {
+          height: 100vh;
+          width: 100vw;
+          position: absolute;
+          z-index: -1;
+          background-image: url('background1.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          top: 0;
+          left: 0;
+        }
     </style>
 </head>
-<body translate="no" >
+<body translate="no">
+  <div id="backgroundImage"></div>
   <div id="container">
-    <div id="name1">archie o'connell</div>
-    <div id="name2">archie o'connell</div>
-</div>
-<script>
-  window.onload = function(){
-    let container = document.getElementById('container')
 
-    //sin wave
-    function toRadians (angle) {
-      return angle * (Math.PI / 180);
-    }
-    x = 0;
-    ne = 120
-    for(i=0; i<ne; i++){
-      x += 360 / ne // 15;
+    <div id="content"></div>
 
-      let curr = document.createElement('span')
-      curr.setAttribute('class', 'menuChild')
-      curr.innerHTML = '&nbsp'
-      curr.setAttribute('id', 'sin' + i)
-      curr.dataset.phase = x;
-      container.appendChild(curr)
-    }
-    let children = document.querySelectorAll('.menuChild')
-    for(i = 0; i<children.length; i++){
-      children[i].style.width = (100/ne) + 'vw'
-    }
-    setInterval( function(){
-      for(i = 0; i<children.length; i++){
+    <div id="header">
+      <div id="name1">archie o'connell</div>
+      <div id="name2">archie o'connell</div>
+      <div id="menu">
+        <div class="menuChild">about me</div>
+        <div class="menuChild">resume</div>
+        <div class="menuChild">projects</div>
+        <div class="menuChild">music</div>
+      </div>
+      <div id="sinediv">
+      </div>
+    </div>
 
-        let p = children[i].getAttribute('data-phase') ;
-        let s = Math.sin( toRadians( p ) );
-        children[i].style.height = 30 + ( 1 * s ) + 'vh';
+  </div>
+  <script>
+    window.onload = function(){
+      let sinediv = document.getElementById('sinediv')
 
-        p = ( parseInt( p ) + 1.5 ) % 360
-        children[i].setAttribute( 'data-phase', p ) ;
+      //sin wave
+      function toRadians (angle) {
+        return angle * (Math.PI / 180);
       }
-    }, 5)
+      //keep x at 0
+      x = 0;
+      //number of elements
+      ne = 100;
+      for(i=0; i<ne; i++){
+        x += 360 / ne // 15;
 
-  }
-</script>
+        let curr = document.createElement('span')
+        curr.setAttribute('class', 'waveChild')
+        curr.innerHTML = '&nbsp'
+        curr.setAttribute('id', 'sin' + i)
+        curr.dataset.phase = x;
+        sinediv.appendChild(curr)
+      }
+      let children = document.querySelectorAll('.waveChild')
+      for(i = 0; i<children.length; i++){
+        children[i].style.width = (100/ne) + 'vw'
+      }
+      setInterval( function(){
+        for(i = 0; i<children.length; i++){
+
+          let p = children[i].getAttribute('data-phase') ;
+          let s = Math.sin( toRadians( p ) );
+          children[i].style.height = 30 + ( 2 * s ) + 'vh';
+
+          p = ( parseInt( p ) + 1 ) % 360
+          children[i].setAttribute( 'data-phase', p ) ;
+        }
+      }, 5)
+
+    }
+  </script>
 </body>
 </html>
