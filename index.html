@@ -4,9 +4,23 @@
   <title>archizzl dot com</title>
   <meta charset="UTF-8">
       <style>
+        /*
+        #backgroundImage {
+          height: 100vh;
+          width: 100vw;
+          position: absolute;
+          z-index: -1;
+          background-image: url('background1.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          top: 0;
+          left: 0;
+        }
+        */
         * {
           padding: 0;
           margin: 0;
+          user-select: none;
         }
         #container {
           height: 100vh;
@@ -22,13 +36,15 @@
         .waveChild {
           background-color: black;
           margin: 0;
+          border-top: 5px solid red;
+          outline: 1px solid black;
         }
         #name1 {
           position: absolute;
           font-family: 'Arial';
           font-size: 80px;
           bottom: 25vh;
-          color:rgba(255,255,255,0.2);
+          color:rgba(255,255,255,0.6);
         }
         #name2 {
           position: absolute;
@@ -38,15 +54,15 @@
           color:rgba(0,0,0,0.2);
         }
         #menu {
+          margin-top: 8px;
           position: absolute;
-          z-index: 2;
-          bottom: 8vh;
+          z-index: 5;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-flow: column nowrap;
           font-family: 'Arial';
-          color:rgba(255,255,255,0.2);
+          color:rgba(255,255,255,0.5);
         }
         .menuChild {
           font-size: 20px;
@@ -55,22 +71,13 @@
         .menuChild:hover {
           cursor: pointer;
         }
-        #content {
-          height: 60vh;
-          width: 100vw;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: transparent;
-        }
         #header {
           display: flex;
           flex-flow: column nowrap;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
           width: 100vw;
-          height: 40vh;
-          background-color: transparent;
+          height: 31vh;
         }
         #sinediv {
           display: flex;
@@ -80,41 +87,109 @@
           align-items: flex-end;
           background-color: transparent;
         }
-        #backgroundImage {
-          height: 100vh;
-          width: 100vw;
+
+        .circle {
           position: absolute;
-          z-index: -1;
-          background-image: url('background1.jpg');
-          background-size: cover;
-          background-repeat: no-repeat;
-          top: 0;
-          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        .half {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+
+        .hand {
+          width: 2px;
+        }
+        #content {
+          height: 69vh;
+          width: 100vw;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center;
+        }
+        #content > div {
+          margin-left: 50px;
+          margin-right: 50px;
+        }
+
+        #clock {
+          height: 350px;
+          width: 350px;
+          border-radius: 1000px;
+          border: 1px solid black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #clock > div {
+          outline: 1px solid black;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+          margin: 0;
+          padding: 0;
+          font-weight: 0;
+        }
+        #image {
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
         }
     </style>
 </head>
 <body translate="no">
-  <div id="backgroundImage"></div>
+
   <div id="container">
 
-    <div id="content"></div>
+    <div id="content">
+      <div id="image"><img src="background1.jpg">Pictured: Archie O'Connell (me!) outside of an improv show, doing a great job holding that plate.</div>
+      <div id="clock"></div>
+    </div>
 
     <div id="header">
-      <div id="name1">archie o'connell</div>
-      <div id="name2">archie o'connell</div>
+      <!--
+        <div id="name1">archie o'connell</div>
+        <div id="name2">archie o'connell</div>
+      -->
       <div id="menu">
-        <div class="menuChild">about me</div>
-        <div class="menuChild">resume</div>
-        <div class="menuChild">projects</div>
-        <div class="menuChild">music</div>
+        <div class="menuChild" id="resumeButton">resume</div>
+        <div class="menuChild" id="projectsButton"><a href="https://codepen.io/archizzl" target="_blank">projects</a></div>
+        <div class="menuChild" ><a href="https://soundcloud.com/ayyrale" target = "_blank">music</a></div>
+        <div class="menuChild"><a href="https://instagram.com/archizzl" target="_blank">instagram</a></div>
+        <div class="menuChild" id="ahbsButton">ahbs</div>
+        <div class="menuChild" id="contact"><a href="mailto:archie.oconnell@gmail.com" target="_top">contact me</div>
       </div>
       <div id="sinediv">
       </div>
     </div>
-
   </div>
+
+  <div id="backgroundImage"></div>
   <script>
     window.onload = function(){
+
+      //menu
+      let resume = document.getElementById('resumeButton')
+      resume.onclick = function(){
+        alert('under maintenence haha, come back later')
+      }
+
+      let projects = document.getElementById('projectsButton')
+      projects.onclick = function(){
+        alert('temporary solution, still in development')
+      }
+
+      let ahbs = document.getElementById('ahbsButton')
+      ahbs.onclick = function(){
+        alert('very under maintenence, you will know when this is done')
+      }
+
       let sinediv = document.getElementById('sinediv')
 
       //sin wave
@@ -144,13 +219,83 @@
 
           let p = children[i].getAttribute('data-phase') ;
           let s = Math.sin( toRadians( p ) );
-          children[i].style.height = 30 + ( 2 * s ) + 'vh';
+          children[i].style.height = 30 + ( 1 * s ) + 'vh';
 
           p = ( parseInt( p ) + 1 ) % 360
-          children[i].setAttribute( 'data-phase', p ) ;
+          children[i].setAttribute( 'data-phase', p );
         }
       }, 5)
 
+      curr = new Date();
+      h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
+      m = 6 * curr.getMinutes();
+      s = 6 * curr.getSeconds();
+      console.log(h, m, s)
+      let clock = document.getElementById('clock');
+      let num = 3;
+      let dimens = 200;
+      for(i = 0; i<num ; i++){
+        let currCircle = 'circle' + i;
+        let currHalf = 'half' + i;
+        let currHand = 'hand' + i;
+        let circle = document.createElement('div');
+        circle.setAttribute('id', currCircle);
+        circle.setAttribute('class', 'circle')
+        clock.appendChild(circle);
+        let circleCurr = document.getElementById(currCircle)
+        circleCurr.style.height = dimens + 'px';
+        circleCurr.style.width = dimens + 'px';
+        switch(i){
+          case 0:
+            circleCurr.style.transform = 'rotate(' + h + 'deg)';
+            break;
+          case 1:
+            circleCurr.style.transform = 'rotate(' + m + 'deg)';
+            break;
+          case 2:
+            circleCurr.style.transform = 'rotate(' + s + 'deg)';
+            break;
+        }
+        let half = document.createElement('div');
+        half.setAttribute('id', currHalf);
+        half.setAttribute('class', 'half')
+        circleCurr.appendChild(half)
+
+        let halfCurr = document.getElementById(currHalf);
+        halfCurr.style.width = dimens + 'px';
+        halfCurr.style.height = (dimens/2) + 'px';
+
+        let hand = document.createElement('div');
+        hand.setAttribute('id', currHand);
+        hand.setAttribute('class', 'hand')
+        half.appendChild(hand)
+
+        let handCurr = document.getElementById(currHand)
+        hand.style.height = dimens/2 + 'px';
+        hand.style.backgroundColor = 'black';
+
+        dimens+=50;
+      }
+      setInterval(function(){
+        function r(el, deg) {
+          let r = document.getElementById(el)
+          r.style.transform = 'rotate(' + deg + 'deg)';
+        }
+        let curr = new Date();
+        s = curr.getSeconds()
+        if(s == 360){
+          s = 0;
+        }
+        r('circle2', 6 * s);
+        r('circle1', 6 * curr.getMinutes());
+        r('circle0', 30 * (curr.getHours() % 12) + curr.getMinutes() / 2);
+      }, 1000)
+
+
+
+
+
+    //keep me
     }
   </script>
 </body>
