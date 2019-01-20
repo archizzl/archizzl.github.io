@@ -22,28 +22,11 @@
   bottom: 100px;
   left: 100px;
 }
-#slidbox {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  height: 50px;
-  width: 200px;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column nowrap;
-  z-index: 100000;
-}
     </style>
 </head>
 <body translate="no" >
   <div id="container">
-    <div id="slidContainer">
-      <div id="slidbox">
-      <input type="range" min="1" max="100" value="50" id="numSlider">
-      </div>
-    </div>
+
 </div>
     <script >
 window.onload = function(){
@@ -53,7 +36,7 @@ window.onload = function(){
   let remove = 0;
   let second = false;
   let maxdimens = 1000;
-  let rate = 1000;
+  let rate = 250;
   let transparency = 0.5;
   setInterval(function(){
     dimens = Math.floor(Math.random()*maxdimens)
@@ -64,8 +47,8 @@ window.onload = function(){
     boxCurr.style.height = dimens + 'px';
     boxCurr.style.width = dimens + 'px';
     boxCurr.style.zIndex = 1/dimens;
-    boxCurr.style.top = Math.floor(Math.random()*100)-8 + 'vh';
-    boxCurr.style.left = Math.floor(Math.random()*100)-8 + 'vw';
+    boxCurr.style.top = Math.floor(Math.random()*100)-15 + 'vh';
+    boxCurr.style.left = Math.floor(Math.random()*100)-15 + 'vw';
     container.appendChild(boxCurr)
     boxCount = document.querySelectorAll('.box')
     i++
