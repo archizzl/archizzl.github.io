@@ -6,56 +6,75 @@
     margin: 0;
     padding: 0;
   }
-  body {
+  #container {
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: left;
+    align-items: flex-end;
+  }
+  .column {
+    height: 0px;
+    width: 100px;
+    background-color: black;
+    color: white;
   }
   #header {
-    font-size: 100px;
+    position: absolute;
   }
   </style>
 </head>
 <body>
 <div id="header"></div>
+<div id="container"></div>
 <script>
 window.onload = function(){
   outof = 5;
   done = false;
   matches = 0;
   highest = 0;
-  highests = []
+  total = 0;
   header = document.getElementById('header')
-  function sum(a,b){
-    return a+b;
+  for(i = 0; i<10; i++){
+    c = document.createElement('div')
+    c.setAttribute('id', 'c' + i)
+    c.setAttribute('class', 'column')
+    container.appendChild(c)
   }
+  cs = document.querySelectorAll('.column')
+  console.log(cs)
   setInterval(function(){
-    for(h = 0; h<100; h++){
-      for(i=0; i<10000; i++){
-        num = Math.floor(Math.random()*outof)
-        rand = Math.floor(Math.random()*outof)
-        while(done==false){
-          if(rand==num){
-            ++matches
-            rand = Math.floor(Math.random()*outof)
-          }
-          else {
-            done = true;
-            if(matches > highest){
-              highest = matches;
-            }
-            matches = 0;
-          }
+    for(i=0; i<10; i++){
+      num = Math.floor(Math.random()*outof)
+      rand = Math.floor(Math.random()*outof)
+      while(done==false){
+        if(rand==num){
+          ++matches
+          rand = Math.floor(Math.random()*outof)
         }
-        done = false;
+        else {
+          done = true;
+          if(matches > highest){
+            highest = matches;
+          }
+          total++
+          height = cs[matches].scrollHeight;
+          ++height;
+          cs[matches].style.height = height + 'px'
+          cs[matches].innerHTML = height
+          matches = 0;
+        }
       }
-      highests.push(highest)
+      done = false;
+      header.innerHTML = total
     }
-    header.innerHTML = ((highests.reduce(sum, 0))/highests.length)
-    highests = []
-  }, 2000)
+    for(i = 0; i<cs.length; i++){
+      ch = cs[i].scrollHeight
+      ch = ch/total
+      cs[i].style.height = ch + 'vh'
+    }
+  }, 500)
 }
 </script>
 </body>
