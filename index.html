@@ -4,23 +4,10 @@
   <title>archizzl dot com</title>
   <meta charset="UTF-8">
       <style>
-        /*
-        #backgroundImage {
-          height: 100vh;
-          width: 100vw;
-          position: absolute;
-          z-index: -1;
-          background-image: url('background1.jpg');
-          background-size: cover;
-          background-repeat: no-repeat;
-          top: 0;
-          left: 0;
-        }
-        */
         * {
+          user-select: none;
           padding: 0;
           margin: 0;
-          user-select: none;
         }
         #container {
           height: 100vh;
@@ -141,6 +128,7 @@
           flex-flow: column nowrap;
           align-items: center;
         }
+
     </style>
 </head>
 <body translate="no">
@@ -153,10 +141,6 @@
     </div>
 
     <div id="header">
-      <!--
-        <div id="name1">archie o'connell</div>
-        <div id="name2">archie o'connell</div>
-      -->
       <div id="menu">
         <!--<div class="menuChild" id="resumeButton">resume</div>-->
         <div class="menuChild" id="projectsButton"><a href="https://archizzl.com/projects.html" target="_blank">projects</a></div>
@@ -173,21 +157,6 @@
   <div id="backgroundImage"></div>
   <script>
     window.onload = function(){
-
-      //menu
-      /*
-      let resume = document.getElementById('resumeButton')
-      resume.onclick = function(){
-        alert('under maintenence haha, come back later')
-      }
-
-
-      let ahbs = document.getElementById('ahbsButton')
-      ahbs.onclick = function(){
-        alert('very under maintenence, you will know when this is done')
-      }
-      */
-
       let sinediv = document.getElementById('sinediv')
 
       //sin wave
@@ -200,15 +169,35 @@
       ne = 50;
       for(i=0; i<ne; i++){
         x += 360 / ne // 15;
+        if(i==42){
+          console.log(i)
 
-        let curr = document.createElement('span')
-        curr.setAttribute('class', 'waveChild')
-        curr.innerHTML = '&nbsp'
-        curr.setAttribute('id', 'sin' + i)
-        curr.dataset.phase = x;
-        sinediv.appendChild(curr)
+          let curr = document.createElement('span')
+          curr.setAttribute('class', 'waveChild')
+          curr.innerHTML = '&nbsp'
+          curr.setAttribute('id', 'sin' + i)
+          curr.dataset.phase = x;
+          sinediv.appendChild(curr)
+
+          let linkBox = document.createElement('a')
+          linkBox.setAttribute('href', 'https://tinyurl.com/shistar')
+          linkBox.setAttribute('target', '_blank')
+          linkBox.setAttribute('id', 'lopez')
+          linkBox.innerHTML = 'ayo'
+          curr.appendChild(linkBox)
+
+        }
+        else{
+          let curr = document.createElement('span')
+          curr.setAttribute('class', 'waveChild')
+          curr.innerHTML = '&nbsp'
+          curr.setAttribute('id', 'sin' + i)
+          curr.dataset.phase = x;
+          sinediv.appendChild(curr)
+        }
       }
       let children = document.querySelectorAll('.waveChild')
+      console.log(children)
       for(i = 0; i<children.length; i++){
         children[i].style.width = (100/ne) + 'vw'
       }
@@ -228,7 +217,6 @@
       h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
       m = 6 * curr.getMinutes();
       s = 6 * curr.getSeconds();
-      console.log(h, m, s)
       let clock = document.getElementById('clock');
       let num = 3;
       let dimens = 200;
