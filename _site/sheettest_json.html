@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>jQuery Demo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+
+// https://docs.google.com/spreadsheets/d/e/2PACX-1vS7gsYn9u7LCcL4o1unKSfJdoLbjpVK30tdCij6pVjPyQhFP3QtbllhZ84LhjFAHGWjrxVxwP5GIJC3/pubhtml?gid=0&single=true
+
+var sheet_key = '2PACX-1vS7gsYn9u7LCcL4o1unKSfJdoLbjpVK30tdCij6pVjPyQhFP3QtbllhZ84LhjFAHGWjrxVxwP5GIJC3' ;
+var json_url = 'https://spreadsheets.google.com/feeds/list/' + sheet_key + '/od6/public/values?alt=json-in-script&callback=' ;
+// var json_url = 'http://cors.io/spreadsheets.google.com/feeds/list/' + sheet_key + '/od6/public/values?alt=json'
+json_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS7gsYn9u7LCcL4o1unKSfJdoLbjpVK30tdCij6pVjPyQhFP3QtbllhZ84LhjFAHGWjrxVxwP5GIJC3/pub?output=tsv'
+
+console.log( json_url ) ;
+
+$.ajax(
+  json_url,
+  function(data) {
+    console.log( data ) ;
+  }
+);
+
+</script>
+
+</body>
+
+</html>

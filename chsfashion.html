@@ -29,6 +29,9 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  background-image: url('fashbg1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*start screen buttons*/
@@ -43,29 +46,9 @@
   align-items: center;
   text-align: center;
   font-size: 50px;
-  font-family: 'Lobster';
-  border: 10px solid black;
+  border: 2px solid black;
   transition: 0.75s;
   cursor: pointer;
-}
-.button {
-  display: flex;
-  height: 15vh;
-  width: 0px;
-  background-color: white;
-  border: 8px solid black;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Mali';
-  font-size: 30px;
-  transition: 1s;
-  cursor: pointer;
-}
-#buttonLine {
-  width: 0px;
-  height: 10px;
-  background-color: black;
-  transition: 1s;
 }
 
 /*mini menu stuff*/
@@ -82,7 +65,7 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  font-family: 'Charmonman';
+  font-family: 'Nanum Gothic';
 }
 .miniButton {
   cursor: pointer;
@@ -107,6 +90,9 @@
   transition: 0.3s;
 }
 #aboutContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 0vh;
   width: 0vw;
   background-color: white;
@@ -169,7 +155,7 @@ a {
 
 <body translate="no" >
 
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Charmonman|Libre+Barcode+39+Extended+Text|Lobster|Mali|Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic" rel="stylesheet">
 
 <div id="container">
 
@@ -183,11 +169,6 @@ a {
 
     </div>
 
-    <div id="articlesButton" class="button">articles</div>
-
-    <div id="buttonLine"></div>
-
-    <div id="photosButton" class="button">photos</div>
 
   </div>
 
@@ -201,7 +182,9 @@ a {
 
   <div id="aboutContainer">
     <div id="aboutContent">
-      hello
+      We are a group of highschoolers who are passionate about photography, styling, and inclusive fashion.
+
+We are located at Columbia High School, and we meet in room D100. Our photoshoots, which include a diverse cast of models and young photographers, occur seasonally with themes ranging from minimalism to fashion throughout history.
     </div>
     <div id="aboutClose"></div>
   </div>
@@ -226,27 +209,15 @@ a {
 
   //circle
   let circle = document.getElementById('circle');
-  let buttonLine = document.getElementById('buttonLine')
-  let button = document.querySelectorAll('.button')
   let circleBool = false;
   //open the circle
   function openCircle(){
     circle.style.transform = 'rotate(360deg)';
-    buttonLine.style.width = '30vw'
-    for(var i=0; i<button.length; i++){
-      button[i].style.width = '13vw'
-      button[i].style.fontSize = '30px'
-    }
     circleBool = true;
   }
   //close the circle
   function closeCircle(){
     circle.style.transform = 'rotate(0deg)';
-    buttonLine.style.width = '0vw'
-    for(var i=0; i<button.length; i++){
-      button[i].style.width = '0vw'
-      button[i].style.fontSize = '0px'
-    }
     circleBool = false;
   }
   circle.onclick = function(){
@@ -257,26 +228,9 @@ a {
       closeCircle()
     }
   }
-  //articles
-  let articlesButton = document.getElementById('articlesButton')
-  let articlesContainer = document.getElementById('articlesContainer')
-  let articlesContent = document.getElementById('articlesContent')
-  let articlesClose = document.getElementById('articlesClose')
-  articlesButton.onclick = function(){
-    closeCircle()
-    articlesContainer.style.left = '0vw'
-  }
-  articlesClose.onclick = function(){
-    articlesContainer.style.left = '-100vw'
-    openCircle()
-  }
 
   //photos
-  let photosButton = document.getElementById('photosButton')
-  let photosContainer = document.getElementById('photosContainer')
-  let photosContent = document.getElementById('photosContent')
-  let photosClose = document.getElementById('photosClose')
-  photosButton.onclick = function(){
+  circle.onclick = function(){
     closeCircle()
     photosContainer.style.right = '0vw'
   }
@@ -299,7 +253,7 @@ a {
     aboutClose.style.width = '100vw'
     aboutContent.style.height = '50vh'
     aboutContent.style.width = '50vw'
-    aboutContent.style.border = '10px solid'
+    aboutContent.style.border = '5px solid'
   }
   //close about modal
   aboutClose.onclick = function(){

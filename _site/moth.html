@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url('https://i.imgur.com/jSKGjlj.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#m1 {
+  height: 100vh;
+  width: 43vw;
+}
+
+#mOth {
+  height: 100px;
+  width: 100px;
+}
+  </style>
+    <script type="text/javascript">
+      window.onload = function(){
+        console.log('what it do')
+      }
+  </script>
+</head>
+<body>
+<div id="container">
+  <marquee direction="down" behavior="alternate" id="m1" scrollamount="100">
+    <marquee behavior="alternate" scrollamount="100" id="m2">
+      <div id="dot"><img src="https://i.imgur.com/qhEOO22.jpg" id="mOth"></div>
+    </marquee>
+  </marquee>
+</div>
+</body>
+</html>
