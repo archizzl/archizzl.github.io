@@ -1,295 +1,113 @@
 <!DOCTYPE html>
-<html lang="en" >
-
+<html>
 <head>
-
-  <meta charset="UTF-8">
-
-      <style>
-      * {
-  padding: 0;
-  margin: 0;
-  user-select: none;
-  overflow: hidden;
-}
-
-#container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column nowrap;
-  overflow: hidden;
-  position: absolute;
-}
-
-#home {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  background-image: url('fashbg1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/*start screen buttons*/
-#circle {
-  height: 250px;
-  width: 250px;
-  border-radius: 250px;
-  background-color: white;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 50px;
-  border: 2px solid black;
-  transition: 0.75s;
-  cursor: pointer;
-}
-
-/*mini menu stuff*/
-#mini {
-  height: 60px;
-  width: 100vw;
-  border-radius: 5px;
-  position: fixed;
-  z-index: 1;
-  bottom: 0px;
-  left: 0px;
-  color: black;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Nanum Gothic';
-}
-.miniButton {
-  cursor: pointer;
-}
-.slash {
-  margin: 5px;
-  cursor: default;
-}
-
-/*about section stuff*/
-#aboutContainer {
-  position: absolute;
-  height: 0vh;
-  width: 0vw;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-  transition: 0.3s;
-}
-#aboutContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 0vh;
-  width: 0vw;
-  background-color: white;
-  position: absolute;
-  z-index: 3;
-  transition: 0.3s;
-}
-#aboutClose {
-  height: 0vh;
-  width: 0vw;
-  transition: 0.3s;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-/*section containers and that stuff*/
-
-.sectionContainer {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-  transition: 1s;
-}
-#articlesContainer {
-  left: -100vw;
-}
-#photosContainer {
-  right: -100vw;
-}
-.sectionContent {
-  height: 100vh;
-  width: 80vw;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 120px;
-}
-.sectionClose {
-  height: 100vh;
-  width: 20vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-    </style>
-
-
-
-
-
-
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  #menu {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 40vw;
+    transition: 1s;
+  }
+  #menu > * {
+    margin: 5px;
+  }
+  #title {
+    font-size: 30px;
+  }
+  #line {
+    height: 0px;
+    width: 20vw;
+    border-bottom: 0.5px solid black;
+    border-top: 0.5px solid black;
+    overflow: hidden;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #buttons {
+    width: 8vw;
+    display: flex;
+    justify-content: space-around;
+    width: 13vw;
+    transition: 2s;
+  }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  .button {
+    cursor: pointer;
+  }
+</style>
 </head>
-
-<body translate="no" >
-
-  <link href="https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic" rel="stylesheet">
-
+<body>
 <div id="container">
 
-  <div id="home">
 
-    <div id="circle">
+<div id="menu">
+  <img src="fashbg2.jpg" id="bg1">
+  <div id="title">chs fashion club</div>
+  <div id="line">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 
-      <div id="title">
-        Chs<br/>Fashion<br/>Club
-      </div>
-
-    </div>
-
-
+</div>
+  <div id="buttons">
+    <div id="photosbtn" class="button">photos</div>
+    <div id="aboutbtn" class="button">about</div>
+    <a href="https://instagram.com/thechsfashion" target="_blank"><div id="instabtn">insta</div></a>
   </div>
-
-  <div id="mini">
-    <div id="aboutButton" class="miniButton">about</div>
-    <div class="slash">/</div>
-    <div id="contactButton" class="miniButton"><a href="mailto:thefashionclubchs@gmail.com?Subject=Hello%20again" target="_top">contact us</a></div>
-    <div class="slash">/</div>
-    <div id="instaButton" class="miniButton"><a href="https://www.instagram.com/thechsfashion/" target="_blank">insta</a></div>
-  </div>
-
-  <div id="aboutContainer">
-    <div id="aboutContent">
-      We are a group of highschoolers who are passionate about photography, styling, and inclusive fashion.
-
-We are located at Columbia High School, and we meet in room D100. Our photoshoots, which include a diverse cast of models and young photographers, occur seasonally with themes ranging from minimalism to fashion throughout history.
-    </div>
-    <div id="aboutClose"></div>
-  </div>
-
-  <div id="articlesContainer" class="sectionContainer">
-    <div id="articlesClose" class="sectionClose"></div>
-    <div id="articlesContent" class="sectionContent">articles time >:D!</div>
-  </div>
-
-  <div id="photosContainer" class="sectionContainer">
-    <div id="photosContent" class="sectionContent">photography</div>
-    <div id="photosClose" class="sectionClose"></div>
-  </div>
-
 </div>
 
 
-
-
-    <script >
-  window.onload = function(){
-
-  //circle
-  let circle = document.getElementById('circle');
-  let circleBool = false;
-  //open the circle
-  function openCircle(){
-    circle.style.transform = 'rotate(360deg)';
-    circleBool = true;
-  }
-  //close the circle
-  function closeCircle(){
-    circle.style.transform = 'rotate(0deg)';
-    circleBool = false;
-  }
-  circle.onclick = function(){
-    if(circleBool == false){
-      openCircle()
-    }
-    else if(circleBool == true){
-      closeCircle()
-    }
-  }
-
-  //photos
-  circle.onclick = function(){
-    closeCircle()
-    photosContainer.style.right = '0vw'
-  }
-  photosClose.onclick = function(){
-    photosContainer.style.right = '-100vw'
-    openCircle()
-  }
-
-  //modal
-
-  let aboutButton = document.getElementById('aboutButton')
-  let aboutContainer = document.getElementById('aboutContainer')
-  let aboutContent = document.getElementById('aboutContent')
-  let aboutClose = document.getElementById('aboutClose')
-  //open modal
-  aboutButton.onclick = function(){
-    aboutContainer.style.height = '100vh'
-    aboutContainer.style.width = '100vw'
-    aboutClose.style.height = '100vh'
-    aboutClose.style.width = '100vw'
-    aboutContent.style.height = '50vh'
-    aboutContent.style.width = '50vw'
-    aboutContent.style.border = '5px solid'
-  }
-  //close about modal
-  aboutClose.onclick = function(){
-    aboutContainer.style.height = '0vh'
-    aboutContainer.style.width = '0vw'
-    aboutClose.style.height = '0vh'
-    aboutClose.style.width = '0vw'
-    aboutContent.style.height = '0vh'
-    aboutContent.style.width = '0vw'
-    aboutContent.style.border = 'none'
-  }
-
-  /*
-  let i = 0;
-  let slides = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-  let home = document.getElementById('home')
-  home.style.backgroundColor = slides[i]
-  setInterval(function(){
-    i++
-    if(i==slides.length){
-      i=0;
-    }
-    home.style.backgroundColor = slides[i];
-  }, 1000)
-  */
-
-
-
-  //this is the window onload close, please do not delete this one thank u <3
-}
-    </script>
-
-
-
-
-
+</div>
 </body>
+<script>
+  window.onload = function(){
+    let photosbtn = document.getElementById('photosbtn')
+    let aboutbtn = document.getElementById('aboutbtn')
+    let line = document.getElementById('line')
+    let buttondiv = document.getElementById('buttons')
+    let opened = 'nuthin';
 
+    aboutbtn.onclick = function(){
+      if(opened != 'about'){
+        line.style.height = '20vh'
+        aboutbtn.style.fontWeight = 'bold'
+        opened = 'about';
+      }
+      else if(opened=='about'){
+        line.style.height = '0px'
+        aboutbtn.style.fontWeight = 'normal'
+        opened = 'nuthin'
+      }
+    }
+    photosbtn.onclick = function(){
+      if(opened != 'photos'){
+        line.style.height = '0px'
+        aboutbtn.style.fontWeight = 'normal'
+        opened = 'photos'
+      }
+      else if(opened == 'photos'){
+        opened = 'nuthin'
+      }
+    }
+  }
+</script>
 </html>

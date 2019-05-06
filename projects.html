@@ -69,6 +69,12 @@ a {
 a:visited {
   color: black;
 }
+#back {
+  position: absolute;
+  z-index: 99999999999999;
+  bottom: 5px;
+  left: 5px;
+}
     </style>
 </head>
 <body translate="no">
@@ -89,6 +95,8 @@ a:visited {
     </div>
   </div>
 
+  <div id="back"><a href="https://archizzl.com">back 2 home</a></div>
+
   <script id="rendered-js">
     window.onload = function(){
       let funsites = ['perhaps', 'backgroundboxes', 'clonk', 'colorboxes', 'date', 'h', 'hacker', 'LUKE', 'moth', 'perhapsloss', 'sinwave', 'slideshow', 'spam', 'spinny', 'swirly']
@@ -103,7 +111,7 @@ a:visited {
         funprojectsList.appendChild(currLink)
       }
 
-      let worksites = ['dance']
+      let worksites = ['dance', 'chsfashion']
       let workprojectsList = document.getElementById('workprojectsList')
       for(i=0;i<worksites.length;i++){
         let currLink = document.createElement('a')
