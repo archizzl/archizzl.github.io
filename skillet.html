@@ -40,14 +40,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10px;
+  font-size: 15px;
 }
 #header {
   color: black;
   position: absolute;
   z-index: 1000;
-  font-size: 130px;
-  text-shadow: 3px 3px orange;
+  font-size: 40px;
+  text-shadow: 2px 2px orange;
 }
 
 </style>
@@ -64,7 +64,9 @@
 
 window.onload = function(){
   container = document.getElementById('container')
-  for(i = 0; i<100; i++){
+  labels = ['photos', 'instagram', 'about']
+  bg = ['sky.png', 'sky2.png', 'luke.png']
+  for(i = 0; i<3; i++){
     pc = document.createElement('div')
     ppc = document.createElement('div')
     ptc = document.createElement('div')
@@ -79,8 +81,8 @@ window.onload = function(){
     pc.style.zIndex = i
     ac = Math.floor(Math.random()*(8*(Math.random() < 0.5 ? -1 : 1)))
     pc.style.transform = 'rotate(' + ac + 'deg)'
-    ppc.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-    ptc.innerHTML = Math.random().toString(36).substring(7);
+    ppc.style.backgroundImage = 'url(' + bg[i] + ')'
+    ptc.innerHTML = labels[i]
 
     container.appendChild(pc)
   }

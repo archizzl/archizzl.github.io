@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header {
+  position: fixed;
+  top: 0;
+  font-size: 120px;
+  text-shadow: 2px 2px orange;
+  z-index: 1000;
+}
+.box {
+  height: 250px;
+  width: 250px;
+  position: absolute;
+}
+#info {
+  position: fixed;
+  font-size: 20px;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<div id="header">skyler jones</div>
+<div id="info">info</div>
+</div>
+</body>
+<script>
+window.onload = function(){
+  let container = document.getElementById('container')
+  for(i=0; i<50; i++){
+    c = document.createElement('div')
+    c.setAttribute('class', 'box')
+    c.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    c.style.zIndex = i;
+    c.style.left = Math.floor(Math.random()*80) + 'vw'
+    c.style.top = Math.floor(Math.random()*300) + 'vh'
+    container.appendChild(c)
+  }
+  let info = document.getElementById('info')
+  info.onclick = function(){
+    i = document.createElement('div')
+    i.style.height = '500px'
+    i.style.width = '500px'
+    i.style.borderRadius = '250px'
+    i.innerHTML = 'info and shit'
+    i.style.zIndex = '999'
+    i.style.backgroundColor = 'white'
+    i.style.display = 'flex';
+    i.style.border = '5px solid black'
+    i.style.justifyContent = 'center'
+    i.style.alignItems = 'center'
+    container.appendChild(i)
+  }
+}
+</script>
+</html>
