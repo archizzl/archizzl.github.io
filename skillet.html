@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
   <meta name="google" content="notranslate">
 
 <style>
 * {
-  padding: 0;
-  margin: 0;
-}
-#container {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  user-select: none;
 }
 .polaroid {
   height: 18vh;
@@ -44,40 +36,51 @@
 }
 #header {
   color: black;
-  position: absolute;
-  z-index: 1000;
-  font-size: 40px;
+  font-size: 120px;
   text-shadow: 2px 2px orange;
 }
-
+.testbox {
+  position: absolute;
+  background-color: black;
+  color: white;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-flow: column nowrap;
+}
 </style>
 </head>
 <body>
 <div id="container">
-
-<div id="header">skyler jones</div>
-
-
 </div>
+<div id="triangle"></div>
 </body>
 <script>
 
 window.onload = function(){
   container = document.getElementById('container')
-  labels = ['photos', 'instagram', 'about']
-  bg = ['sky.png', 'sky2.png', 'luke.png']
-  for(i = 0; i<3; i++){
+  labels = ['photos', 'instagram', 'acting', 'dance', 'writing', '1', '2', '3', '4', '5']
+  bg = ['sky.png', 'sky2.png', 'luke.png', 'skilletpic1.jpg', 'perhaps.jpeg']
+  for(i = 0; i<labels.length; i++){
     pc = document.createElement('div')
     ppc = document.createElement('div')
     ptc = document.createElement('div')
     pc.setAttribute('class', 'polaroid')
+    pc.setAttribute('draggable', true)
     ppc.setAttribute('class', 'polaroidPhoto')
     ptc.setAttribute('class', 'polaroidTag')
     pc.appendChild(ppc)
     pc.appendChild(ptc)
+    xc = Math.floor(Math.random()*80) + 5
+    yc = Math.floor(Math.random()*40) + 3
 
-    pc.style.top = Math.floor(Math.random()*80) + 'vh'
-    pc.style.left = Math.floor(Math.random()*90) + 'vw'
+    pc.style.left = xc + 'vw'
+    pc.style.top = yc + 'vh'
     pc.style.zIndex = i
     ac = Math.floor(Math.random()*(8*(Math.random() < 0.5 ? -1 : 1)))
     pc.style.transform = 'rotate(' + ac + 'deg)'
@@ -86,23 +89,19 @@ window.onload = function(){
 
     container.appendChild(pc)
   }
+
+  z = labels.length
+  ps = document.querySelectorAll('.polaroid')
+  for(p = 0; p<ps.length; p++){
+    ps[p].onclick = function(e){
+      z++
+      e = event.srcElement
+      t = e.parentElement
+      t.style.zIndex = z
+    }
+  }
 }
 
 
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- poop -->

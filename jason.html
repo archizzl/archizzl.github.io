@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+padding: 0;
+margin: 0;
+user-select: none;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+<script>
+window.onload = function(){
+  container = document.getElementById('container')
+  for(i =0; i<1000; i++){
+    r = document.createElement('div')
+    r.style.height = Math.floor(Math.random()*100) + 'px'
+    r.style.width = Math.floor(Math.random()*50) + 'px'
+    r.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    r.style.position = 'absolute'
+    r.style.top = Math.floor(Math.random()*20) + 10 + 'vh'
+    r.style.left = Math.floor(Math.random()*30) + 15 + 'vw'
+    container.appendChild(r)
+  }
+}
+</script>
+</html>
