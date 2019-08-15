@@ -15,42 +15,39 @@
   flex-flow: column;
   align-items: flex-start;
 }
-/*
-cantata
-kdam thmor
-*/
 #header {
   font-family: 'Nanum Myeongjo';
-  position: fixed;
-  top: 0;
   font-size: 120px;
   text-shadow: 4px 4px 0px rgb(25, 70, 7), -0px -0px 0px  rgb(25, 70, 7), 4px -0px 0px  rgb(25, 70, 7), 0px 0px 0px  rgb(25, 70, 7);
-  z-index: 1000;
   color: grey;
   letter-spacing: 25px;
-}
-#hc {
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: 999;
-}
-.box {
+  position: fixed;
+  text-align: center;
+  background-color: transparent;
 }
 #info {
-  position: fixed;
   font-size: 20px;
   top: 20px;
   left: 20px;
   z-index: 1000;
+  height: 10px;
+  width: 10px;
+  position: fixed;
+}
+#hc {
+  height: 500px;
+  width: 500px;
+  background-color: black;
 }
 </style>
 </head>
 <body>
+  <div id="header">skyler jones</div>
+  <div id="info">info</div>
 <div id="container">
-<div id="hc"><div id="header">skyler jones</div></hc>
-<div id="info">info</div>
+  <div id="hc"></div>
+</div>
 </div>
 </body>
 <script>
@@ -64,21 +61,6 @@ window.onload = function(){
     c.style.marginTop = '5px'
     c.style.marginBottom = '5px'
     container.appendChild(c)
-  }
-  let info = document.getElementById('info')
-  info.onclick = function(){
-    i = document.createElement('div')
-    i.style.height = '500px'
-    i.style.width = '500px'
-    i.style.borderRadius = '250px'
-    i.innerHTML = 'info and shit'
-    i.style.zIndex = '999'
-    i.style.backgroundColor = 'white'
-    i.style.display = 'flex';
-    i.style.border = '5px solid black'
-    i.style.justifyContent = 'center'
-    i.style.alignItems = 'center'
-    container.appendChild(i)
   }
 }
 </script>
