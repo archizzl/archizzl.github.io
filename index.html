@@ -67,6 +67,22 @@ a:hover {
     sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     container.appendChild(sc)
   }
+  dots = document.querySelectorAll('.star')
+  for(i=0; i<dots.length; i++){
+    dots[i].onmouseover = function(){
+      container.removeChild(this)
+      sc = document.createElement('div')
+      sc.setAttribute('class', 'star')
+      sc.setAttribute('id', 's'+i)
+      sc.style.opacity = Math.random()*0.4
+      sc.style.top = Math.random()*100+'vh'
+      sc.style.left = Math.random()*100+'vw'
+      sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+      container.appendChild(sc)
+      dots = document.querySelectorAll('.star')
+      console.log(dots.length)
+    }
+  }
   /*setInterval(function(){
     if(sr == true){
       let stars = document.querySelectorAll('.star')
