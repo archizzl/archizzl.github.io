@@ -1,287 +1,99 @@
+
+
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <title>archizzl dot com</title>
-  <meta charset="UTF-8">
-      <style>
-        * {
-          user-select: none;
-          padding: 0;
-          margin: 0;
-        }
-        #container {
-          height: 100vh;
-          width: 100vw;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-flow: column nowrap;
-          position: absolute;
-          overflow: hidden;
-          background-color: transparent;
-        }
-        .waveChild {
-          background-color: black;
-          margin: 0;
-          border-top: 5px solid red;
-          outline: 1px solid black;
-        }
-        #name1 {
-          position: absolute;
-          font-family: 'Arial';
-          font-size: 80px;
-          bottom: 25vh;
-          color:rgba(255,255,255,0.6);
-        }
-        #name2 {
-          position: absolute;
-          font-family: 'Arial';
-          font-size: 80px;
-          bottom: 25vh;
-          color:rgba(0,0,0,0.2);
-        }
-        #menu {
-          margin-top: 8px;
-          position: absolute;
-          z-index: 5;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-flow: column nowrap;
-          font-family: 'Arial';
-          color:rgba(255,255,255,0.5);
-        }
-        .menuChild {
-          font-size: 20px;
-          margin: 5px;
-        }
-        .menuChild:hover {
-          cursor: pointer;
-        }
-        #header {
-          display: flex;
-          flex-flow: column nowrap;
-          justify-content: center;
-          align-items: center;
-          width: 100vw;
-          height: 31vh;
-        }
-        #sinediv {
-          display: flex;
-          flex-flow: row nowrap;
-          width: 100vw;
-          justify-content: center;
-          align-items: flex-end;
-          background-color: transparent;
-        }
+<style>
 
-        .circle {
-          position: absolute;
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-        }
-
-        .half {
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-        }
-
-        .hand {
-          width: 2px;
-        }
-        #content {
-          height: 69vh;
-          width: 100vw;
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: center;
-          align-items: center;
-        }
-        #content > div {
-          margin-left: 50px;
-          margin-right: 50px;
-        }
-
-        #clock {
-          height: 350px;
-          width: 350px;
-          border-radius: 1000px;
-          border: 1px solid black;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        #clock > div {
-          outline: 1px solid black;
-        }
-        a {
-          text-decoration: none;
-          color: inherit;
-          margin: 0;
-          padding: 0;
-          font-weight: 0;
-        }
-        #image {
-          display: flex;
-          flex-flow: column nowrap;
-          align-items: center;
-        }
-
-    </style>
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -6;
+  animation: pulse 4s linear infinite;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.star {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  border-radius: 15px;
+  z-index: -5;
+}
+#name {
+  color: white;
+  font-size: 35px;
+  position: absolute;
+}
+a{
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+a:hover {
+  opacity: 0.85;
+}
+  </style>
 </head>
 <body translate="no">
+<div id="container">
+  <div id="name"><a href="https://instagram.com/archizzl" target="_blank">archie o'connell</a> / <a href="https://archizzl.com/projects" target="_blank">projects</a> / <a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a> / <a href="mailto:archie.oconnell@gmail.com" target="_blank">contact me</a></div>
 
-  <div id="container">
-
-    <div id="content">
-      <div id="image"><img src="background1.jpg">Pictured: Archie O'Connell (me!) outside of my improv show, doing a great job holding that plate.</div>
-      <div id="clock"></div>
-    </div>
-
-    <div id="header">
-      <div id="menu">
-        <div class="menuChild" id="resumeButton"><a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a></div>
-        <div class="menuChild" id="projectsButton"><a href="https://archizzl.com/projects.html" target="_blank">projects</a></div>
-        <div class="menuChild" ><a href="https://soundcloud.com/ayyrale" target = "_blank">music</a></div>
-        <div class="menuChild"><a href="https://instagram.com/archizzl" target="_blank">instagram</a></div>
-        <div class="menuChild" id="contact"><a href="mailto:archie.oconnell@gmail.com" target="_top">contact me</a></div>
-      </div>
-      <div id="sinediv">
-      </div>
-    </div>
-  </div>
-
-  <div id="backgroundImage"></div>
-  <script>
-    window.onload = function(){
-      let sinediv = document.getElementById('sinediv')
-
-      //sin wave
-      function toRadians (angle) {
-        return angle * (Math.PI / 180);
+</div>
+<div id="info">
+</div>
+<script>
+  let cont = document.getElementById('container')
+  let n = document.getElementById('name')
+  let sr = false;
+  for(i = 0; i<5000; i++){
+    sc = document.createElement('div')
+    sc.setAttribute('class', 'star')
+    sc.setAttribute('id', 's'+i)
+    sc.style.opacity = Math.random()*0.4
+    sc.style.top = Math.random()*100+'vh'
+    sc.style.left = Math.random()*100+'vw'
+    sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    container.appendChild(sc)
+  }
+  /*setInterval(function(){
+    if(sr == true){
+      let stars = document.querySelectorAll('.star')
+      for(i=0;i<stars.length;i++){
+        container.removeChild(stars[i])
       }
-      //keep x at 0
-      x = 0;
-      //number of elements
-      ne = 50;
-      for(i=0; i<ne; i++){
-        x += 360 / ne // 15;
-        if(i==42){
-          console.log(i)
-
-          let curr = document.createElement('span')
-          curr.setAttribute('class', 'waveChild')
-          curr.innerHTML = '&nbsp'
-          curr.setAttribute('id', 'sin' + i)
-          curr.dataset.phase = x;
-          sinediv.appendChild(curr)
-
-          let linkBox = document.createElement('a')
-          linkBox.setAttribute('href', 'https://tinyurl.com/shistar')
-          linkBox.setAttribute('target', '_blank')
-          linkBox.setAttribute('id', 'lopez')
-          linkBox.innerHTML = 'ayo'
-          curr.appendChild(linkBox)
-
-        }
-        else{
-          let curr = document.createElement('span')
-          curr.setAttribute('class', 'waveChild')
-          curr.innerHTML = '&nbsp'
-          curr.setAttribute('id', 'sin' + i)
-          curr.dataset.phase = x;
-          sinediv.appendChild(curr)
-        }
+      for(i = 0; i<5000; i++){
+        sc = document.createElement('div')
+        sc.setAttribute('class', 'star')
+        sc.setAttribute('id', 's'+i)
+        sc.style.top = Math.random()*100+'vh'
+        sc.style.left = Math.random()*100+'vw'
+        sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+        container.appendChild(sc)
       }
-      let children = document.querySelectorAll('.waveChild')
-      console.log(children)
-      for(i = 0; i<children.length; i++){
-        children[i].style.width = (100/ne) + 'vw'
-      }
-      setInterval( function(){
-        for(i = 0; i<children.length; i++){
-
-          let p = children[i].getAttribute('data-phase') ;
-          let s = Math.sin( toRadians( p ) );
-          children[i].style.height = 30 + ( 1 * s ) + 'vh';
-
-          p = ( parseInt( p ) + 1 ) % 360
-          children[i].setAttribute( 'data-phase', p );
-        }
-      }, 5)
-
-      curr = new Date();
-      h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
-      m = 6 * curr.getMinutes();
-      s = 6 * curr.getSeconds();
-      let clock = document.getElementById('clock');
-      let num = 3;
-      let dimens = 200;
-      for(i = 0; i<num ; i++){
-        let currCircle = 'circle' + i;
-        let currHalf = 'half' + i;
-        let currHand = 'hand' + i;
-        let circle = document.createElement('div');
-        circle.setAttribute('id', currCircle);
-        circle.setAttribute('class', 'circle')
-        clock.appendChild(circle);
-        let circleCurr = document.getElementById(currCircle)
-        circleCurr.style.height = dimens + 'px';
-        circleCurr.style.width = dimens + 'px';
-        switch(i){
-          case 0:
-            circleCurr.style.transform = 'rotate(' + h + 'deg)';
-            break;
-          case 1:
-            circleCurr.style.transform = 'rotate(' + m + 'deg)';
-            break;
-          case 2:
-            circleCurr.style.transform = 'rotate(' + s + 'deg)';
-            break;
-        }
-        let half = document.createElement('div');
-        half.setAttribute('id', currHalf);
-        half.setAttribute('class', 'half')
-        circleCurr.appendChild(half)
-
-        let halfCurr = document.getElementById(currHalf);
-        halfCurr.style.width = dimens + 'px';
-        halfCurr.style.height = (dimens/2) + 'px';
-
-        let hand = document.createElement('div');
-        hand.setAttribute('id', currHand);
-        hand.setAttribute('class', 'hand')
-        half.appendChild(hand)
-
-        let handCurr = document.getElementById(currHand)
-        hand.style.height = dimens/2 + 'px';
-        hand.style.backgroundColor = 'black';
-
-        dimens+=50;
-      }
-      setInterval(function(){
-        function r(el, deg) {
-          let r = document.getElementById(el)
-          r.style.transform = 'rotate(' + deg + 'deg)';
-        }
-        let curr = new Date();
-        s = curr.getSeconds()
-        if(s == 360){
-          s = 0;
-        }
-        r('circle2', 6 * s);
-        r('circle1', 6 * curr.getMinutes());
-        r('circle0', 30 * (curr.getHours() % 12) + curr.getMinutes() / 2);
-      }, 1000)
-
-
-
-
-
-    //keep me
     }
-  </script>
+  }, 1000)*/
+  /*document.onkeydown = function(e){
+    if(e.keyCode==32){
+      if(sr == true){
+        sr = false;
+      }
+      else{
+        sr = true;
+      }
+    }
+  }*/
+    </script>
 </body>
 </html>
