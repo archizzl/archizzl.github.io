@@ -67,6 +67,10 @@ a:hover {
     sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     container.appendChild(sc)
   }
+  // start page
+
+
+function removeDots(){
   dots = document.querySelectorAll('.star')
   for(i=0; i<dots.length; i++){
     dots[i].onmouseover = function(){
@@ -80,9 +84,11 @@ a:hover {
       sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
       container.appendChild(sc)
       dots = document.querySelectorAll('.star')
-      console.log(dots.length)
+      removeDots()
     }
   }
+}
+removeDots()
   /*setInterval(function(){
     if(sr == true){
       let stars = document.querySelectorAll('.star')
