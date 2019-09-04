@@ -26,9 +26,7 @@
 }
 .star {
   position: absolute;
-  height: 24px;
-  width: 24px;
-  border-radius: 15px;
+  border-radius: 1000px;
   z-index: -5;
 }
 #name {
@@ -57,13 +55,17 @@ a:hover {
   let cont = document.getElementById('container')
   let n = document.getElementById('name')
   let sr = false;
-  for(i = 0; i<5000; i++){
+  let dotsNum = 2500;
+  for(i = 0; i<dotsNum; i++){
     sc = document.createElement('div')
     sc.setAttribute('class', 'star')
     sc.setAttribute('id', 's'+i)
     sc.style.opacity = Math.random()*0.4
     sc.style.top = Math.random()*100+'vh'
     sc.style.left = Math.random()*100+'vw'
+    dim = Math.floor(Math.random()*20) + 15
+    sc.style.height = dim + 'px'
+    sc.style.width = dim + 'px'
     sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     container.appendChild(sc)
   }
@@ -81,6 +83,9 @@ function removeDots(){
       sc.style.opacity = Math.random()*0.4
       sc.style.top = Math.random()*100+'vh'
       sc.style.left = Math.random()*100+'vw'
+      dim = Math.floor(Math.random()*20) + 15
+      sc.style.height = dim + 'px'
+      sc.style.width = dim + 'px'
       sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
       container.appendChild(sc)
       dots = document.querySelectorAll('.star')
