@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    * {
+  margin: 0px;
+  padding: 0px;
+}
+
+.shapecenter {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shape {
+  height: 120px;
+  width: 120px;
+  margin: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 25px;
+  border-radius: 0px;
+  box-shadow: 0px 0px 5px grey;
+  animation:
+    shape 3s alternate infinite,
+    twirl 3s linear infinite,
+    spin 3s linear infinite;
+}
+
+.twirl {
+  animation:
+    twirl 3s alternate infinite;
+}
+
+.spin {
+  animation:
+    spin 3s linear infinite;
+}
+
+.flip {
+  animation:
+    flip 3s linear infinite;
+}
+
+#pink {
+  background-color: #ffc0cb;
+}
+
+#aqua {
+  background-color: #cbffc0;
+}
+
+#blue {
+  background-color: #c0cbff;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes twirl {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes flip {
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes shape {
+  from {
+    border-radius: 0px;
+  }
+  to {
+    border-radius: 60px;
+  }
+}
+
+@keyframes pink {
+  0% {
+    background-color: #ffc0cb;
+  }
+  10% {
+    background-color: #ffc6do;
+  }
+  20% {
+    background-color: #ffccd5;
+  }
+  30% {
+    background-color: #ffd2da;
+  }
+  40% {
+    background-color: #ffd9df;
+  }
+  50% {
+    background-color: #ffdfe5;
+  }
+  60% {
+    background-color: #ffe5ea;
+  }
+  70% {
+    background-color: #ffecef;
+  }
+  80% {
+    background-color: #fff2f4;
+  }
+  90% {
+    background-color: #fff8f9;
+  }
+  100% {
+    background-color: #ffffff;
+  }
+}
+
+@keyframes aqua {
+  0% {
+    background-color: #cbffc0;
+  }
+  10% {
+    background-color: #d0ffc6;
+  }
+  20% {
+    background-color: #d5ffcc;
+  }
+  30% {
+    background-color: #daffd2
+  }
+  40% {
+    background-color: #dfffd9;
+  }
+  50% {
+    background-color: #e5ffdf;
+  }
+  60% {
+    background-color: #eaffe55;
+  }
+  70% {
+    background-color: #efffec;
+  }
+  80% {
+    background-color: #f4fff2;
+  }
+  90% {
+    background-color: #f9fff8;
+  }
+  100% {
+    background-color: #ffffff;
+  }
+}
+
+@keyframes blue {
+  0% {
+    background-color: #c0cbff;
+  }
+  10% {
+    background-color: #c6d0ff;
+  }
+  20% {
+    background-color: #ccd5ff;
+  }
+  30% {
+    background-color: #d2daff;
+  }
+  40% {
+    background-color: #d9dfff;
+  }
+  50% {
+    background-color: #dfe5ff;
+  }
+  60% {
+    background-color: #e5eaff;
+  }
+  70% {
+    background-color: #ecefff;
+  }
+  80% {
+    background-color: #f2f4ff;
+  }
+  90% {
+    background-color: #f8f9ff;
+  }
+  100% {
+    background-color: #ffffff;
+  }
+}
+  </style>
+</head>
+<body translate="no">
+<div class="shapecenter">
+<div class="spin">
+<div class="twirl">
+<div class="flip">
+<div class="shape" id="pink">
+trippy
+</div>
+</div>
+</div>
+<div class="twirl">
+<div class="flip">
+<div class="shape" id="aqua">
+trippy
+</div>
+</div>
+</div>
+<div class="twirl">
+<div class="flip">
+<div class="shape" id="blue">
+trippy
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

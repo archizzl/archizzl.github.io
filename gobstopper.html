@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    * {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  position: absolute;
+}
+#amount {
+  font-size: 100px;
+  color: black;
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+}
+  </style>
+</head>
+<body translate="no">
+<div id="container">
+<div id="amount"></div>
+</div>
+<script id="rendered-js">
+      window.onload = function(){
+  let container = document.getElementById('container')
+  let amount = document.getElementById('amount')
+  let i = 0;
+  let remove = 0;
+  let second = false;
+  let margin = 1000;
+  setInterval(function(){
+    dimens = Math.floor(Math.random()*500)
+    boxCurr = document.createElement('div')
+    boxCurr.setAttribute('class', 'box')
+    boxCurr.setAttribute('id', 'box' + i)
+    boxCurr.style.backgroundColor = 'rgba(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)  + ',0.1)'
+    boxCurr.style.height = dimens + 'px';
+    boxCurr.style.width = dimens + 'px';
+    boxCurr.style.zIndex = 1/dimens;
+    boxCurr.style.borderRadius = dimens / 2 + 'px';
+    container.appendChild(boxCurr)
+    boxCount = document.querySelectorAll('.box')
+    amount.innerHTML = boxCount.length;
+    i++
+    if(second == true){
+      removeCurr = document.getElementById('box' + remove)
+      container.removeChild(removeCurr)
+      remove++
+    }
+  }, 10)
+  setTimeout(function(){second = true}, 800)
+}
+    </script>
+</body>
+</html>

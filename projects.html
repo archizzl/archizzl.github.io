@@ -48,7 +48,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-flow: column nowrap;
-  background-color: rgba(0,0,0,0.1);
+  /*background-color: rgba(0,0,0,0.1);*/
 }
 .projectList {
   display: flex;
@@ -89,12 +89,14 @@ a:visited {
 
   <div id="container2">
     <div id="websitesContainer">
-      Projects for Fun
+      things ive made
       <div id="funprojectsList" class="projectList">
       </div>
+      <!--
       Projects for People
       <div id="workprojectsList" class="projectList">
       </div>
+    -->
     </div>
   </div>
 
@@ -102,7 +104,7 @@ a:visited {
 
   <script id="rendered-js">
     window.onload = function(){
-      let funsites = ['perhaps', 'backgroundboxes', 'clonk', 'colorboxes', 'date', 'h', 'hacker', 'LUKE', 'perhapsloss', 'sinwave', 'spam', 'spinny', 'swirly']
+      let funsites = ['perhaps', 'backgroundboxes', 'clonk', 'date', 'h', 'hacker', 'LUKE', 'perhapsloss', 'sinwave', 'spam', 'spinny', 'swirly', 'moth', 'kalm', 'pierreshirt', 'gobstopper', 'firstkeyframes']
       let funprojectsList = document.getElementById('funprojectsList')
       for(i=0;i<funsites.length;i++){
         let currLink = document.createElement('a');
@@ -114,6 +116,7 @@ a:visited {
         funprojectsList.appendChild(currLink)
       }
 
+      /*
       let worksites = ['dance', 'chsfashion']
       let workprojectsList = document.getElementById('workprojectsList')
       for(i=0;i<worksites.length;i++){
@@ -125,6 +128,7 @@ a:visited {
         currLink.innerHTML = worksites[i];
         workprojectsList.appendChild(currLink)
       }
+      */
 
       //background circles
       let container = document.getElementById('container')

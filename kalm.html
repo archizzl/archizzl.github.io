@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    * {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+#question {
+  font-size: 60px;
+  margin: 8px;
+}
+#answer {
+  font-size: 60px;
+  margin: 8px;
+}
+#qa {
+  display: flex;
+  flex-flow: row nowrap;
+}
+#also {
+  font-size: 20px;
+}
+  </style>
+</head>
+<body translate="no">
+<div id="container">
+<div id="qa">
+<div id="question">is kitchen a la mode open right now?</div>
+<div id="answer"></div>
+</div>
+<div id="also"></div>
+</div>
+<script id="rendered-js">
+      window.onload = function(){
+  let answer = document.getElementById('answer')
+  let also = document.getElementById('also')
+  setInterval(function(){
+    date = new Date()
+    day = (date.getDay()).toString()
+    hour = date.getHours()
+    console.log(hour)
+    //if sunday
+    if(day == 7){
+      //if open
+      if(10 < hour && hour < 16){
+        answer.innerHTML = 'yes!'
+        answer.style.color = 'green'
+        also.innerHTML = 'and we will be open until 5pm!'
+      }
+      //if not open
+      else {
+        answer.innerHTML = 'no!'
+        answer.style.color = 'red'
+        if(hour < 10){
+          also.innerHTML = 'but we open at 10am!'
+        }
+        if(hour > 5){
+          also.innerHTML = 'but we open tomorrow morning at 10am ;)'
+        }
+      }
+    }
+    //if not sunday
+    else {
+      //if open
+      if(10 < hour && hour < 18){
+        answer.innerHTML = 'yes!'
+        answer.style.color = 'green'
+        also.innerHTML = 'and we will be open until 7pm!'
+      }
+      //if not open
+      else {
+        answer.innerHTML = 'no!'
+        answer.style.color = 'red'
+        if(hour < 10){
+          also.innerHTML = 'but we open at 10am!'
+        }
+        if(hour > 7){
+          also.innerHTML = 'but we open tomorrow morning at 10am ;)'
+        }
+      }
+    }
+  }, 1000)
+}
+    </script>
+</body>
+</html>

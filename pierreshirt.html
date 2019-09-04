@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    * {
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  font-size: 20px;
+}
+.letter {
+  position: absolute;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+#header {
+  font-size: 100px;
+  color: black;
+  position: absolute;
+  font-family: Comic Sans MS
+}
+@keyframes rotate {
+  100% {
+    rotate(360deg)
+  }
+}
+  </style>
+</head>
+<body translate="no">
+<div id="container"></div>
+<script id="rendered-js">
+      window.onload = function(){
+  bottom = 1500;
+  distance = 50;
+  container = document.getElementById('container')
+  for(h = 1; h<10; h++){
+    for(i = 0; i<bottom/h; i++){
+      cvalue = Math.random() * 0xFF | 0;
+      cgrayscale = (cvalue << 16) | (cvalue << 8) | cvalue;
+      ccolor = '#' + cgrayscale.toString(16);
+      curr = document.createElement('div')
+      curr.setAttribute('class', 'letter')
+      curr.style.bottom = Math.floor(Math.random()*100) - distance*1.5 + distance*h + 'px'
+      curr.style.left = Math.floor(Math.random()*100) + 'vw'
+      curr.style.color = ccolor
+      curr.style.transform = 'rotate(' + Math.floor(Math.random()*360) + 'deg)'
+      curr.innerHTML = Math.floor(Math.random()*10)
+      container.appendChild(curr)
+    }
+  }
+}
+    </script>
+</body>
+</html>
