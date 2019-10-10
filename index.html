@@ -23,46 +23,51 @@
   a {
     color: black;
   }
-  #i {
-    height: 400px;
-    width: auto;
-    margin: 15px;
-  }
   #v {
     height: 400px;
     width: auto;
     margin: 15px;
   }
   #t {
+    text-align: center;
   }
   #a {
     display: none;
   }
+
 </style>
 
 </head>
 <body>
-<div id="container" onclick="b()">
-<video src="./hpi/salmon.mov" autoplay muted id="v"></video>
+<div id="container">
+<video src="./hpi/salmon.mov" autoplay muted loop id="v" alt="credit to my love, livvy krakower"></video>
 
 <audio controls id="a">
   <source src="./hpi/indexbackground.mp4" type="audio/mp4">
 </audio>
 
 <div id="t">archie o'connell<br/><a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a> & <a href="https://archizzl.com/projects" target="_blank">projects</a><br/>
-click me</div>
+<div id="b">click me to play beautiful music</div>video credits to livvy krakower</div>
+
 </div>
 
 
 </body>
 <script>
+  let c = document.getElementById('container')
   let images = ['fishy.png']
   let i = document.getElementById('i')
   let a = document.getElementById('a')
+  let b = document.getElementById('b')
   p = 0
-  function b (){
-    if(p==0){
+  c.onclick = function(){
+    if(p%2==0){
       a.play()
+      b.innerHTML = 'click me to pause beautiful music'
+    }
+    if(p%2==1){
+      a.pause()
+      b.innerHTML = 'click me to play beautiful music'
     }
     p++
   }
