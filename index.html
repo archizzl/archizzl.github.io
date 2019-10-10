@@ -1,126 +1,59 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <style>
-
-* {
-  padding: 0;
-  margin: 0;
-  user-select: none;
-}
-#container {
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -6;
-  animation: pulse 4s linear infinite;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.star {
-  position: absolute;
-  border-radius: 1000px;
-  z-index: -5;
-}
-#name {
-  color: white;
-  font-size: 35px;
-  position: absolute;
-}
-a{
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-}
-a:hover {
-  opacity: 0.85;
-}
-  </style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  #container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  a {
+    color: black;
+  }
+  #i {
+    height: 500px;
+    width: auto;
+    margin: 15px;
+  }
+  #t {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 15px;
+    font-size: 20px;
+  }
+</style>
 </head>
-<body translate="no">
+<body>
 <div id="container">
-  <div id="name"><a href="https://instagram.com/archizzl" target="_blank">archie o'connell</a> / <a href="https://archizzl.com/projects" target="_blank">projects</a> / <a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a> / <a href="mailto:archie.oconnell@gmail.com" target="_blank">contact me</a></div>
-
+<img id="i" src="./hpi/hp13.jpg">
+<input type="range" min="0" max="48" value="13" id="s">
+<div id="t">hi, my name is archie! click here for my resume and here for the projects i've been working on!</div>
 </div>
-<div id="info">
-</div>
-<script>
-  let cont = document.getElementById('container')
-  let n = document.getElementById('name')
-  let sr = false;
-  let dotsNum = 2500;
-  for(i = 0; i<dotsNum; i++){
-    sc = document.createElement('div')
-    sc.setAttribute('class', 'star')
-    sc.setAttribute('id', 's'+i)
-    sc.style.opacity = Math.random()*0.4
-    sc.style.top = Math.random()*100+'vh'
-    sc.style.left = Math.random()*100+'vw'
-    dim = Math.floor(Math.random()*20) + 15
-    sc.style.height = dim + 'px'
-    sc.style.width = dim + 'px'
-    sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-    container.appendChild(sc)
-  }
-  // start page
 
 
-function removeDots(){
-  dots = document.querySelectorAll('.star')
-  for(i=0; i<dots.length; i++){
-    dots[i].onmouseover = function(){
-      container.removeChild(this)
-      sc = document.createElement('div')
-      sc.setAttribute('class', 'star')
-      sc.setAttribute('id', 's'+i)
-      sc.style.opacity = Math.random()*0.4
-      sc.style.top = Math.random()*100+'vh'
-      sc.style.left = Math.random()*100+'vw'
-      dim = Math.floor(Math.random()*20) + 15
-      sc.style.height = dim + 'px'
-      sc.style.width = dim + 'px'
-      sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-      container.appendChild(sc)
-      dots = document.querySelectorAll('.star')
-      removeDots()
-    }
-  }
-}
-removeDots()
-  /*setInterval(function(){
-    if(sr == true){
-      let stars = document.querySelectorAll('.star')
-      for(i=0;i<stars.length;i++){
-        container.removeChild(stars[i])
-      }
-      for(i = 0; i<5000; i++){
-        sc = document.createElement('div')
-        sc.setAttribute('class', 'star')
-        sc.setAttribute('id', 's'+i)
-        sc.style.top = Math.random()*100+'vh'
-        sc.style.left = Math.random()*100+'vw'
-        sc.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-        container.appendChild(sc)
-      }
-    }
-  }, 1000)*/
-  /*document.onkeydown = function(e){
-    if(e.keyCode==32){
-      if(sr == true){
-        sr = false;
-      }
-      else{
-        sr = true;
-      }
-    }
-  }*/
-    </script>
 </body>
+<script>
+  i = document.getElementById('i')
+  s = document.getElementById("s");
+  h = Math.floor(Math.random()*48)
+  i.setAttribute('src', './hpi/hp' + h + '.jpg')
+  s.setAttribute('value', h)
+    s.oninput = function() {
+    e = this.value;
+    i.setAttribute('src', './hpi/hp' + e + '.jpg')
+  }
+</script>
 </html>
