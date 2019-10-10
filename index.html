@@ -24,41 +24,47 @@
     color: black;
   }
   #i {
-    height: 500px;
+    height: 400px;
+    width: auto;
+    margin: 15px;
+  }
+  #v {
+    height: 400px;
     width: auto;
     margin: 15px;
   }
   #t {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    margin: 15px;
-    font-size: 15px;
+  }
+  #a {
+    display: none;
   }
 </style>
+
 </head>
 <body>
-<div id="container">
-<img id="i" src="./hpi/hp13.jpg">
-<div id="n"></div>
-<input type="range" min="0" max="57" value="13" id="s">
-<div id="t">hi, my name is archie! <br/>click <a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">here</a> for my resume and <a href="https://archizzl.com/projects" target="_blank">here</a> for the projects i've been working on!</div>
+<div id="container" onclick="b()">
+<video src="./hpi/salmon.mov" autoplay muted id="v"></video>
+
+<audio controls id="a">
+  <source src="./hpi/indexbackground.mp4" type="audio/mp4">
+</audio>
+
+<div id="t">archie o'connell<br/><a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a> & <a href="https://archizzl.com/projects" target="_blank">projects</a><br/>
+click me</div>
 </div>
 
 
 </body>
 <script>
+  let images = ['fishy.png']
   let i = document.getElementById('i')
-  s = document.getElementById('s');
-  n = document.getElementById('n')
-  h = Math.floor(Math.random()*57)
-  i.setAttribute('src', './hpi/hp' + h + '.jpg')
-  s.setAttribute('value', h)
-  n.innerHTML = h
-    s.oninput = function() {
-    e = this.value;
-    i.setAttribute('src', './hpi/hp' + e + '.jpg')
-    n.innerHTML = e
+  let a = document.getElementById('a')
+  p = 0
+  function b (){
+    if(p==0){
+      a.play()
+    }
+    p++
   }
 </script>
 </html>
