@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+      * {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  z-index: -2;
+  user-select: none;
+}
+#container2 {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+.box {
+  position: absolute;
+  bottom: 0px;
+  animation: move 10s linear forwards;
+  z-index: -1;
+}
+@keyframes move {
+  100% {
+    bottom: 100vh;
+  }
+}
+#websitesContainer {
+  padding: 20px;
+  height: 200px;
+  width: 400px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  /*background-color: rgba(0,0,0,0.1);*/
+}
+.projectList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.link {
+  margin: 5px;
+}
+.link:hover {
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  color: black;
+}
+#back {
+  position: absolute;
+  z-index: 99999999999999;
+  bottom: 5px;
+  left: 5px;
+}
+#song {
+  display: none;
+}
+    </style>
+</head>
+<body translate="no">
+
+
+  <div id="container">
+  </div>
+
+
+
+  <script id="rendered-js">
+    window.onload = function(){
+
+      //background circles
+      let container = document.getElementById('container')
+      let addVar = 0;
+      setInterval(function(){
+        let dimens = Math.floor((Math.random()*500) + 500)
+        let boxCurr = document.createElement('div')
+        boxCurr.setAttribute('class', 'box')
+        boxCurr.setAttribute('id', 'box' + addVar)
+        boxCurr.style.left = Math.floor((Math.random()*100)-25) + 'vw'
+        boxCurr.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        boxCurr.style.height = dimens + 'px';
+        boxCurr.style.width = dimens + 'px';
+        boxCurr.style.borderRadius = dimens / 2 + 'px'
+        boxCurr.style.bottom = -1 * dimens + 'px';
+        container.appendChild(boxCurr)
+        addVar++
+      }, 250)
+      let removeVar = 0;
+      setTimeout(function(){
+        setInterval(function(){
+          let removeCurr = document.getElementById('box' + removeVar)
+          container.removeChild(removeCurr)
+          removeVar++
+        }, 250)
+      }, 10000)
+
+        //dont delete this one haha
+    }
+  </script>
+</body>
+</html>

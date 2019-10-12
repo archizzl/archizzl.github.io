@@ -99,11 +99,10 @@ a:visited {
     </div>
   </div>
 
-  <div id="back"><a href="https://archizzl.com">back 2 home</a></div>
 
   <script id="rendered-js">
     window.onload = function(){
-      let funsites = ['jason', 'cubegame', 'clonk','h','perhapsloss', 'hacker', 'LUKE', 'backgroundboxes', 'sinwave', 'swirly', 'pierreshirt',]
+      let funsites = ['balloons', 'jason', 'cubegame', 'clonk','h','perhapsloss', 'sinwave', 'swirly',]
       let funprojectsList = document.getElementById('funprojectsList')
       for(i=0;i<funsites.length;i++){
         let currLink = document.createElement('a');
@@ -129,33 +128,6 @@ a:visited {
       }
       */
 
-      //background circles
-      let container = document.getElementById('container')
-      let addVar = 0;
-      setInterval(function(){
-        let dimens = Math.floor((Math.random()*500) + 500)
-        let boxCurr = document.createElement('div')
-        boxCurr.setAttribute('class', 'box')
-        boxCurr.setAttribute('id', 'box' + addVar)
-        boxCurr.style.left = Math.floor((Math.random()*100)-25) + 'vw'
-        boxCurr.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-        boxCurr.style.height = dimens + 'px';
-        boxCurr.style.width = dimens + 'px';
-        boxCurr.style.borderRadius = dimens / 2 + 'px'
-        boxCurr.style.bottom = -1 * dimens + 'px';
-        container.appendChild(boxCurr)
-        addVar++
-      }, 250)
-      let removeVar = 0;
-      setTimeout(function(){
-        setInterval(function(){
-          let removeCurr = document.getElementById('box' + removeVar)
-          container.removeChild(removeCurr)
-          removeVar++
-        }, 250)
-      }, 10000)
-
-        //dont delete this one haha
     }
   </script>
 </body>
