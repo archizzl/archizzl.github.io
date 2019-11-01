@@ -12,55 +12,17 @@
 #container {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  position: absolute;
-  z-index: -2;
-  user-select: none;
-}
-#container2 {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
   position: absolute;
   z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: transparent;
   user-select: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column nowrap;
-}
-.box {
-  position: absolute;
-  bottom: 0px;
-  animation: move 10s linear forwards;
-  z-index: -1;
-}
-@keyframes move {
-  100% {
-    bottom: 100vh;
-  }
-}
-#websitesContainer {
-  padding: 20px;
-  height: 200px;
-  width: 400px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-flow: column nowrap;
-  /*background-color: rgba(0,0,0,0.1);*/
-}
-.projectList {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  overflow: hidden;
 }
 .link {
-  margin: 5px;
-}
-.link:hover {
-  color: white;
+    position: absolute;
+    z-index: 2;
 }
 a {
   text-decoration: none;
@@ -69,65 +31,59 @@ a {
 a:visited {
   color: black;
 }
-#back {
+#m {
+  height: 100vh;
+  width: 100vw;
   position: absolute;
-  z-index: 99999999999999;
-  bottom: 5px;
-  left: 5px;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: -5;
 }
-#song {
-  display: none;
+#t {
+  font-size: 50px;
+}
+a:hover {
+  text-decoration: underline;
 }
     </style>
 </head>
 <body translate="no">
 
-
   <div id="container">
+
   </div>
 
-  <div id="container2">
-    <div id="websitesContainer">
-      things ive made
-      <div id="funprojectsList" class="projectList">
-      </div>
-      <!--
-      Projects for People
-      <div id="workprojectsList" class="projectList">
-      </div>
-    -->
-    </div>
-  </div>
-
+<marquee direction="down" behavior="alternate"scrollamount="15" id="m">
+<marquee behavior="alternate" scrollamount="15">
+  <span id="t">things i made</span>
+</marquee>
+</marquee>
 
   <script id="rendered-js">
     window.onload = function(){
-      let funsites = ['balloons', 'jason', 'cubegame', 'clonk','h','perhapsloss', 'sinwave', 'swirly',]
-      let funprojectsList = document.getElementById('funprojectsList')
-      for(i=0;i<funsites.length;i++){
-        let currLink = document.createElement('a');
-        currLink.setAttribute('id', funsites[i])
-        currLink.setAttribute('class', 'link')
-        currLink.href = 'https://archizzl.com/' + funsites[i];
-        currLink.setAttribute('target', '_blank')
-        currLink.innerHTML = funsites[i];
-        funprojectsList.appendChild(currLink)
+      let sites = ['balloons', 'colors_for_jason', 'cube_game', 'clock','optical_illusion','linespacing_experimentation', 'sinwave', 'fun_with_equations',]
+      let container = document.getElementById('container')
+      for(i=0;i<sites.length;i++){
+        let cl = document.createElement('a');
+        cl.setAttribute('id', sites[i])
+        cl.setAttribute('class', 'link')
+        cl.href = 'https://archizzl.com/' + sites[i];
+        cl.setAttribute('target', '_blank')
+        cl.innerHTML = sites[i];
+        cl.style.top = Math.random()*93 + 'vh'
+        cl.style.left = Math.random()*93 + 'vw'
+        container.appendChild(cl)
       }
-
-      /*
-      let worksites = ['dance', 'chsfashion']
-      let workprojectsList = document.getElementById('workprojectsList')
-      for(i=0;i<worksites.length;i++){
-        let currLink = document.createElement('a')
-        currLink.setAttribute('id', worksites[i])
-        currLink.setAttribute('class', 'link')
-        currLink.href = 'https://archizzl.com/' + worksites[i];
-        currLink.setAttribute('target', '_blank')
-        currLink.innerHTML = worksites[i];
-        workprojectsList.appendChild(currLink)
+      z = 2;
+      ls = document.querySelectorAll('.link')
+      for(k = 0; k<ls.length; k++){
+        ls[k].onmouseover = function(){
+          z++
+          this.style.zIndex = z;
+        }
       }
-      */
-
     }
   </script>
 </body>
