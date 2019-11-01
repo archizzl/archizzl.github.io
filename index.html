@@ -47,7 +47,7 @@
 </audio>
 
 <div id="t">archie o'connell<br/><a href="https://docs.google.com/document/d/1Ovn00Muq-_NuZPyIfh7nyTgGefoK0DELRzLryRr2awA/edit?usp=sharing" target="_blank">resume</a> & <a href="https://archizzl.com/projects" target="_blank">projects</a><br/>
-<div id="b">click me to play beautiful music</div>video credits to livvy krakower</div>
+<div id="b">click me to play beautiful music</div>video credits to <a href="https://instagram.com/livvykrakower" target="_blank">livvy krakower</a><br/>song credits to <a href="https://instagram.com/klintalex" target="_blank">alex klint</a></div>
 
 </div>
 
@@ -60,18 +60,29 @@
   let b = document.getElementById('b')
   let v = document.getElementById('v')
   p = 0
+  p = 0;
+  h = 0;
   b.onclick = function(){
     if(p%2==0){
       a.play()
-      v.play()
       b.innerHTML = 'click me to pause beautiful music'
+      h = 2;
     }
     if(p%2==1){
       a.pause()
-      v.pause()
+      h = 3;
       b.innerHTML = 'click me to play beautiful music'
     }
     p++
+  }
+  v.onclick = function(){
+    if(h%2==0){
+      v.pause()
+    }
+    else {
+      v.play();
+    }
+    h++
   }
 </script>
 </html>
