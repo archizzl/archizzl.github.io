@@ -58,14 +58,17 @@
   let i = document.getElementById('i')
   let a = document.getElementById('a')
   let b = document.getElementById('b')
+  let v = document.getElementById('v')
   p = 0
   b.onclick = function(){
     if(p%2==0){
       a.play()
+      v.play()
       b.innerHTML = 'click me to pause beautiful music'
     }
     if(p%2==1){
       a.pause()
+      v.pause()
       b.innerHTML = 'click me to play beautiful music'
     }
     p++
