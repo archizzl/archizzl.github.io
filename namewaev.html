@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+      <style>
+        * {
+          padding: 0;
+          margin: 0;
+        }
+        #container {
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-flow: row;
+          position: absolute;
+          overflow: hidden;
+        }
+        .menuChild {
+          font-size: 55px;
+        }
+    </style>
+</head>
+<body translate="no" >
+  <div id="container">
+</div>
+<script >
+  window.onload = function(){
+    function toRadians (angle) {
+      return angle * (Math.PI / 180);
+    }
+    let container = document.getElementById('container')
+    x = 0;
+    ne = 120
+    nar = ['t', 'h', 'i', 'n', 'g', 's', '&nbsp', 'i', '&nbsp', 'm', 'a', 'd', 'e']
+    for(i=0; i<nar.length; i++){
+      x += 360 / ne // 15;
+      let curr = document.createElement('span')
+      curr.setAttribute('class', 'menuChild')
+      curr.innerHTML = nar[i]
+      console.log(nar[i])
+      curr.setAttribute('id', 'sin' + i)
+      curr.dataset.phase = x;
+      container.appendChild(curr)
+    }
+
+    let children = document.querySelectorAll('.menuChild')
+    setInterval( function(){
+      for(i = 0; i<children.length; i++){
+
+        let p = children[i].getAttribute('data-phase') ;
+        let s = Math.sin( toRadians( p ) );
+
+        children[i].style.marginBottom = ( 25 * s ) + 'px';
+
+        p = ( parseInt( p ) + 2 ) % 360
+        children[i].setAttribute( 'data-phase', p ) ;
+      }
+    }, 5)
+  }
+</script>
+</body>
+</html>

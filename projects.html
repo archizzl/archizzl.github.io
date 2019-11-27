@@ -19,6 +19,9 @@
   background-color: transparent;
   user-select: none;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .link {
     position: absolute;
@@ -47,6 +50,10 @@ a:visited {
 a:hover {
   text-decoration: underline;
 }
+.menuChild {
+  font-size: 55px;
+}
+
     </style>
 </head>
 <body translate="no">
@@ -54,16 +61,9 @@ a:hover {
   <div id="container">
 
   </div>
-
-<marquee direction="down" behavior="alternate"scrollamount="15" id="m">
-<marquee behavior="alternate" scrollamount="15">
-  <span id="t">things i made</span>
-</marquee>
-</marquee>
-
   <script id="rendered-js">
     window.onload = function(){
-      let sites = ['balloons', 'colors_for_jason', 'cube_game', 'clock','optical_illusion','linespacing_experimentation', 'sinwave', 'fun_with_equations',]
+      let sites = ['balloons', 'colors_for_jason', 'cube_game', 'clock','optical_illusion','lineheight_experimentation', 'sinwave', 'fun_with_equations', 'transitions_demo', 'bubbles_or_lack_thereof', 'learning_keyframes']
       let container = document.getElementById('container')
       for(i=0;i<sites.length;i++){
         let cl = document.createElement('a');
@@ -84,6 +84,38 @@ a:hover {
           this.style.zIndex = z;
         }
       }
+
+
+      function toRadians (angle) {
+        return angle * (Math.PI / 180);
+      }
+      x = 0;
+      ne = 120
+      nar = ['t', 'h', 'i', 'n', 'g', 's', '&nbsp', 'i', '&nbsp', 'm', 'a', 'd', 'e']
+      for(i=0; i<nar.length; i++){
+        x += 360 / ne // 15;
+        let curr = document.createElement('span')
+        curr.setAttribute('class', 'menuChild')
+        curr.innerHTML = nar[i]
+        console.log(nar[i])
+        curr.setAttribute('id', 'sin' + i)
+        curr.dataset.phase = x;
+        container.appendChild(curr)
+      }
+
+      let children = document.querySelectorAll('.menuChild')
+      setInterval( function(){
+        for(i = 0; i<children.length; i++){
+
+          let p = children[i].getAttribute('data-phase') ;
+          let s = Math.sin( toRadians( p ) );
+
+          children[i].style.marginBottom = ( 25 * s ) + 'px';
+
+          p = ( parseInt( p ) + 2 ) % 360
+          children[i].setAttribute( 'data-phase', p ) ;
+        }
+      }, 5)
     }
   </script>
 </body>

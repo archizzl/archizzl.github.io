@@ -19,18 +19,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 #slidbox {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
   height: 50px;
   width: 200px;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column nowrap;
+  bottom: 10px;
 }
 #box {
   height: 500px;
@@ -47,10 +41,11 @@ input {
 </head>
 <body translate="no" >
   <div id="container">
+    move to change line height<br/>rate is fixed, space bar to pause<br/>line height can be adjusted while paused
+    <div id="slidbox">
+      <input type="range" min="0.00" max="100.00" value="50.00" id="lineheight">
+    </div>
   <div id="box"></div>
-</div>
-<div id="slidbox">
-  <input type="range" min="0" max="100" value="50" id="lineheight">
 </div>
 <script>
 window.onload = function(){
