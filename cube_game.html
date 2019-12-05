@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <style>
-    * {
+* {
   margin: 0;
   padding: 0;
 }
@@ -37,7 +37,7 @@
   right: 50px;
   font-size: 30px;
 }
-  </style>
+</style>
 </head>
 <body translate="no">
 <div id="container">
@@ -48,7 +48,9 @@
 <div id="color">the hitboxes are so janky n once u get too fast the box breaks and i cant be bothered to fix it lmao so eventually its just stay on the page sdkjfhsdkjfhsf have fun!
 <br/>update; thank u github, hitboxes have been FIXED</div>
 <script id="rendered-js">
-      let angle = 0;
+
+
+let angle = 0;
 let t = 0;
 let l = 0;
 let c = document.getElementById('cube')
@@ -57,11 +59,19 @@ let gameover = false;
 let scoreBox = document.getElementById('score')
 let score = 0;
 let highscore = 0;
+
+
 setInterval(function(){
+
+
   t = t+Math.sin(angle*Math.PI)
   l = l+Math.cos(angle*Math.PI)
   c.style.top = (t*speed) + 'px';
   c.style.left = (l*speed) + 'px';
+
+
+
+
   document.onkeydown = function(e){
     if(e.keyCode==39){
       angle+=(1/3)
@@ -70,6 +80,10 @@ setInterval(function(){
       angle-=(1/3)
     }
   }
+
+
+
+
   var coords = c.getBoundingClientRect();
   if((coords.top>570 || coords.bottom<0) || (coords.right>1000 || coords.left<0)){
     if(gameover==false){
@@ -82,7 +96,13 @@ setInterval(function(){
       gameover = false;
     }
   }
+
+
+
+
   speed+=0.001
+
+  
 }, 1)
 setInterval(function(){
   if(gameover==false){
