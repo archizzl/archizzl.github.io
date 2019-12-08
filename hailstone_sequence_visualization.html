@@ -13,13 +13,15 @@
   display: flex;
   flex-flow: row;
   align-items: flex-end;
+  overflow: hidden;
 }
 .c {
   outline: 1px solid black;
   display: flex;
   color: black;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+
 }
 #count {
   position: absolute;
@@ -45,6 +47,13 @@
   position: absolute;
   top: 51vh;
   right:0;
+}
+.cc {
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 </style>
 </head>
@@ -82,16 +91,21 @@ ran = true;
   h = n;
   let hello = setInterval(function(){
     a++
+    cc = document.createElement('div')
+    cc.setAttribute('class', 'cc')
     c = document.createElement('div')
+    cn = document.createElement('div')
+    cn.innerHTML = n;
+    cc.appendChild(cn)
     c.setAttribute('class', 'c')
     if(n==1){
-      c.style.color = 'red'
+      cn.style.color = 'red'
     }
     c.style.height = n * (198/ns) + 'vh'
     c.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     c.setAttribute('data', n)
-    c.innerHTML = n
-    container.appendChild(c)
+    container.appendChild(cc)
+    cc.appendChild(c)
     count.innerHTML = 'total hailstone count: ' + a
     if(n!=1){
       if(n%2==0){
@@ -109,8 +123,10 @@ ran = true;
       h = n;
     }
     cs = document.querySelectorAll('.c')
+    ccs = document.querySelectorAll('.cc')
     for(i=0; i<cs.length; i++){
       cs[i].style.width = 100/a + 'vw'
+      ccs[i].style.width = 100/a + 'vw'
       cs[i].style.height = cs[i].getAttribute('data') * (99/h) + 'vh';
     }
     butt.style.display = 'block'
