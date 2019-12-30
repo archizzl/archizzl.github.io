@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
+<style>
+* {
+  padding: 0;
+  margin: 0;
+}
+#page1 {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('ombg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#page2 {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  background-image: url('ombg2.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#container1 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+#vc {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bgv {
+  height: 85vh;
+  width: 85vw;
+  position: absolute;
+  z-index: 5;
+  border: 5px solid black;
+}
+#p1c1 {
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background-color: transparent;
+}
+#p1c2 {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-flow: column;
+  background-color: transparent;
+}
+#h1 {
+  color: white;
+  font-size: 100px;
+  text-shadow: 5px 5px 0px black;
+  font-weight: bold;
+}
+#h2 {
+  color: white;
+  font-size: 30px;
+}
+#u {
+  text-decoration: underline;
+  color: white;
+}
+#cb1 {
+  height: 20vh;
+  width: 40vw;
+  border: 5px solid black;
+  border-bottom: 0px;
+  background-color: white;
+}
+#cb2 {
+  height: 20vh;
+  width: 40vw;
+  border: 5px solid black;
+  border-top: 0px;
+  background-color: white;
+}
+</style>
+<body>
+
+<div id="page1">
+  <div id="vc">
+    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="bgv"></video>-->
+    <iframe id="bgv" src="https://www.youtube.com/embed/wy3lmt5mUAk?autoplay=1&mute=1&controls=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div id="container1">
+    <div id="p1c1">
+      <div id="h1">MAPSO OPEN MICS</div>
+      <div id="h2">a <a href="https://instagram.com/sasha.sink" target="_blank" id="u">sasha sinkler</a> production</div>
+    </div>
+    <div id="p1c2">
+      <div id="cb1">blah blah blah</div>
+    </div>
+  </div>
+</div>
+
+
+<div id="page2">
+  <div id="container2">
+    <div id="p1c1">
+      <div id="cb2"></div>
+    </div>
+    <div id="p1c2">
+    </div>
+  </div>
+</div>
+
+
+<script>
+u = document.getElementById('u')
+window.onload = function(){
+  ublink = true;
+  setInterval(function(){
+    if(ublink == true){
+      u.style.textDecoration = 'none'
+      ublink = false;
+    }
+    else {
+      u.style.textDecoration = 'underline'
+      ublink = true;
+    }
+  }, 1000)
+}
+</script>
+
+</div>
+</html>
