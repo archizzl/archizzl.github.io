@@ -8,6 +8,13 @@
   padding: 0;
   margin: 0;
 }
+a {
+  color: inherit;
+}
+#u {
+  text-decoration: underline;
+  color: white;
+}
 #page1 {
   height: 100vh;
   width: 100vw;
@@ -15,154 +22,170 @@
   top: 0;
   left: 0;
   /*background-image: url('ombg.jpeg');*/
-  background-image: linear-gradient(#ffc0cb, #ffd2da);
+  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
 }
+        #videocontainer {
+          height: 100vh;
+          width: 100vw;
+          position: absolute;
+          z-index: 5;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #backgroundvideo {
+          height: 85vh;
+          width: 85vw;
+          position: absolute;
+          z-index: 5;
+          border: 5px solid black;
+        }
+        #container1 {
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+          position: absolute;
+          overflow: hidden;
+          top: 0;
+          left: 0;
+          z-index: 10;
+        }
+                #page1container1 {
+                  height: 20vh;
+                  width: 100vw;
+                  display: flex;
+                  flex-flow: column;
+                  justify-content: center;
+                  align-items: center;
+                  flex-flow: column;
+                  background-color: transparent;
+                }
+                        #header1 {
+                          color: white;
+                          font-size: 100px;
+                          text-shadow: 5px 5px 0px black;
+                          font-weight: bold;
+                        }
+                        #header2 {
+                          color: white;
+                          font-size: 30px;
+                        }
+                #page1container2 {
+                  height: 80vh;
+                  width: 100vw;
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                  flex-flow: column;
+                  background-color: transparent;
+                }
+                        #aboutboxpart1 {
+                          height: 20vh;
+                          width: 40vw;
+                          border: 5px solid black;
+                          border-bottom: 0px;
+                          background-color: white;
+                        }
 #page2 {
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 100vh;
   left: 0;
-  background-image: linear-gradient( #ffd2da, #ffc0cb);
-  /*background-image: url('ombg2.jpeg');*/
+  background-image: url('./hpi/fishy.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
-#container1 {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-#vc {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#bgv {
-  height: 85vh;
-  width: 85vw;
-  position: absolute;
-  z-index: 5;
-  border: 5px solid black;
-}
-#p1c1 {
-  height: 20vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-  background-color: transparent;
-}
-#p1c2 {
-  height: 80vh;
-  width: 100vw;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-flow: column;
-  background-color: transparent;
-}
-#h1 {
-  color: white;
-  font-size: 100px;
-  text-shadow: 5px 5px 0px black;
-  font-weight: bold;
-}
-#h2 {
-  color: white;
-  font-size: 30px;
-}
-#u {
-  text-decoration: underline;
-  color: white;
-}
-#cb1 {
-  height: 20vh;
-  width: 40vw;
-  border: 5px solid black;
-  border-bottom: 0px;
-  background-color: white;
-}
-#cb2 {
-  height: 20vh;
-  width: 40vw;
-  border: 5px solid black;
-  border-top: 0px;
-  background-color: white;
-}
-#container2 {
-  display: flex;
-  flex-flow: column nowrap;
-}
-#p2c1 {
-  height: 88vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-#p2c2 {
-  height: 12vh;
-  width: 100vw;
-  background-color: #191314;
-}
-#bw {
-  height: 12vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  color: #999999;
-}
-a {
-  color: inherit;
-}
+        #container2 {
+          display: flex;
+          flex-flow: column nowrap;
+        }
+                #page2container1 {
+                  height: 88vh;
+                  width: 100vw;
+                  display: flex;
+                  flex-flow: column;
+                  justify-content: center;
+                  align-items: center;
+                }
+                        #aboutboxpart2 {
+                          height: 20vh;
+                          width: 40vw;
+                          border: 5px solid black;
+                          border-top: 0px;
+                          background-color: white;
+                        }
+                        #pastandfuturecontainer {
+                          height: 68vh;
+                          width: 100vw;
+                          display: flex;
+                          flex-flow: row nowrap;
+                          justify-content: space-around;
+                          align-items: center;
+                        }
+                                .boxes {
+                                  height: 35vh;
+                                  width: 35vw;
+                                  outline: 5px solid black;
+                                }
+                                #pastbox {
+
+                                }
+                                #futurebox {
+
+                                }
+                #page2container2 {
+                  height: 12vh;
+                  width: 100vw;
+                  background-color: #191314;
+                }
+                        #bottomwrapper {
+                          height: 12vh;
+                          width: 100vw;
+                          display: flex;
+                          flex-flow: column nowrap;
+                          justify-content: center;
+                          align-items: center;
+                          color: #999999;
+                        }
 </style>
 <body>
 
 <div id="page1">
-  <div id="vc">
-    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="bgv"></video>-->
-    <iframe id="bgv" src="https://www.youtube.com/embed/wy3lmt5mUAk?autoplay=1&mute=1&controls=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
+  <div id="videocontainer">
+    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="backgroundvideo"></video>-->
+    <iframe id="backgroundvideo" src="https://www.youtube.com/embed/wy3lmt5mUAk?autoplay=1&mute=1&controls=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
   </div>
   <div id="container1">
-    <div id="p1c1">
-      <div id="h1">MAPSO OPEN MICS</div>
-      <div id="h2">a <a href="https://instagram.com/sasha.sink" target="_blank" id="u">sasha sinkler</a> production</div>
+    <div id="page1container1">
+      <div id="header1">MAPSO OPEN MICS</div>
+      <div id="header2">a <a href="https://instagram.com/sasha.sink" target="_blank" id="u">sasha sinkler</a> production</div>
     </div>
-    <div id="p1c2">
-      <div id="cb1">blah blah blah</div>
+    <div id="page1container2">
+      <div id="aboutboxpart1">blah blah blah</div>
     </div>
   </div>
 </div>
 
 <div id="page2">
   <div id="container2">
-    <div id="p2c1">
-      <div id="cb2"></div>
+    <div id="page2container1">
+      <div id="aboutboxpart2"></div>
+      <div id="pastandfuturecontainer">
+        <div id="pastbox" class="boxes"></div>
+        <div id="futurebox" class="boxes"></div>
+      </div>
     </div>
-    <div id="p2c2">
-      <div id="bw">
+    <div id="page2container2">
+      <div id="bottomwrapper">
         <div id="num">‭(973) 489-8368‬</div>
         <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
         <div id="madeby">website made by <a href="https://archizzl.com" target="_blank">archie oconnell</a></div>
@@ -185,6 +208,12 @@ window.onload = function(){
       ublink = true;
     }
   }, 1000)
+  p1 = document.getElementById('page1')
+  p1c = ['lightblue', 'pink', '#ffb732']
+  p1.style.backgroundColor = p1c[Math.floor(p1c.length * Math.random())]
+  p2 = document.getElementById('page2')
+  boxes = document.querySelectorAll('.boxes')
+
 }
 </script>
 
