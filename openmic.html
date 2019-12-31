@@ -21,8 +21,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  /*background-image: url('ombg.jpeg');*/
-  background-color: white;
+  background-image: url('ombg1.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -100,7 +99,7 @@ a {
   position: absolute;
   top: 100vh;
   left: 0;
-  background-image: url('./hpi/fishy.png');
+  background-image: url('ombg2.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -132,16 +131,35 @@ a {
                           align-items: center;
                         }
                                 .boxes {
-                                  height: 35vh;
-                                  width: 35vw;
-                                  outline: 5px solid black;
+                                    height: 45vh;
+                                    width: 35vw;
+                                    display: flex;
+                                    flex-flow: column ;
+                                    justify-content: flex-start;
+                                    align-items: center;
                                 }
-                                #pastbox {
-
-                                }
-                                #futurebox {
-
-                                }
+                                        .images {
+                                          height: 42vh;
+                                          width: 35vw;
+                                          outline: 5px solid black;
+                                          margin-top: 6vh;
+                                          transition: 0.25s;
+                                        }
+                                        .images:hover {
+                                          outline: 10px solid black;
+                                        }
+                                        .headers {
+                                          position: absolute;
+                                          color: white;
+                                          font-size: 60px;
+                                          text-shadow: 5px 5px 0px black;
+                                        }
+                                        #pastimage {
+                                          background-image: url('pbg.png');
+                                        }
+                                        #futureimage {
+                                          background-image: url('fbg.png');
+                                        }
                 #page2container2 {
                   height: 12vh;
                   width: 100vw;
@@ -180,8 +198,14 @@ a {
     <div id="page2container1">
       <div id="aboutboxpart2"></div>
       <div id="pastandfuturecontainer">
-        <div id="pastbox" class="boxes"></div>
-        <div id="futurebox" class="boxes"></div>
+        <div id="pastbox" class="boxes">
+          <div id="pastheader" class="headers">PAST SHOWS</div>
+          <div id="pastimage" class="images"></div>
+        </div>
+        <div id="futurebox" class="boxes">
+          <div id="futureheader" class="headers">FUTURE SHOWS</div>
+          <div id="futureimage" class="images"></div>
+        </div>
       </div>
     </div>
     <div id="page2container2">
@@ -208,12 +232,21 @@ window.onload = function(){
       ublink = true;
     }
   }, 1000)
-  p1 = document.getElementById('page1')
-  p1c = ['lightblue', 'pink', '#ffb732']
-  p1.style.backgroundColor = p1c[Math.floor(p1c.length * Math.random())]
-  p2 = document.getElementById('page2')
-  boxes = document.querySelectorAll('.boxes')
 
+/*
+  p1 = document.getElementById('page1')
+  p2 = document.getElementById('page2')
+  pc = ['lightblue', 'pink', '#ffb732']
+  c1n = Math.floor(pc.length * Math.random())
+  p1.style.backgroundColor = pc[c1n]
+  pc.splice(c1n, 1)
+  p2.style.backgroundColor = pc[Math.floor(pc.length * Math.random())]*/
+
+
+  boxes = document.querySelectorAll('.boxes')
+  for(i = 0; i<boxes.length; i++){
+     boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*8)) + 'deg)';
+  }
 }
 </script>
 
