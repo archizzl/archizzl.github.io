@@ -147,6 +147,7 @@ a {
                                         }
                                         .images:hover {
                                           outline: 10px solid black;
+                                          cursor: pointer;
                                         }
                                         .headers {
                                           position: absolute;
@@ -245,7 +246,13 @@ window.onload = function(){
 
   boxes = document.querySelectorAll('.boxes')
   for(i = 0; i<boxes.length; i++){
-     boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*8)) + 'deg)';
+    boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*8)) + 'deg)';
+  }
+  imgs = document.querySelectorAll('.images')
+  for(i = 0; i<imgs.length; i++){
+    imgs[i].onclick = function(){
+      alert('this doesnt do jack shit yet, but get hyped for when it does')
+    }
   }
 }
 </script>
