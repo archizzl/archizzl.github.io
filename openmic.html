@@ -2,6 +2,7 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu|Raleway&display=swap" rel="stylesheet">
+  <script src="https://player.vimeo.com/api/player.js"></script>
 
 <style>
 * {
@@ -23,9 +24,6 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url('IMG_0003.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
         #videocontainer {
           height: 100vh;
@@ -37,13 +35,15 @@ a {
           display: flex;
           justify-content: center;
           align-items: center;
+          overflow: hidden;
         }
         #backgroundvideo {
-          height: 85vh;
-          width: 85vw;
+          height: 105vh;
+          width: 105vw;
           position: absolute;
           z-index: 5;
-          border: 5px solid black;
+          margin: 0;
+          padding: 0;
         }
         #container1 {
           height: 100vh;
@@ -88,23 +88,13 @@ a {
                   flex-flow: column;
                   background-color: transparent;
                 }
-                        #aboutboxpart1 {
-                          height: 20vh;
-                          width: 40vw;
-                          border: 5px solid black;
-                          border-bottom: 0px;
-                          background-color: white;
-                          display: flex;
-                          justify-content: center;
-                        }
 #page2 {
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 100vh;
   left: 0;
-  background-color: orange;
-  background-image: url('IMG_1111.JPG');
+  background-image: url('IMG_0003.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -120,13 +110,6 @@ a {
                   justify-content: center;
                   align-items: center;
                 }
-                        #aboutboxpart2 {
-                          height: 20vh;
-                          width: 40vw;
-                          border: 5px solid black;
-                          border-top: 0px;
-                          background-color: white;
-                        }
                         #pastandfuturecontainer {
                           height: 68vh;
                           width: 100vw;
@@ -136,19 +119,21 @@ a {
                           align-items: center;
                         }
                                 .boxes {
-                                    height: 45vh;
-                                    width: 35vw;
+                                    height: 80vh;
+                                    width: 48vw;
                                     display: flex;
                                     flex-flow: column ;
                                     justify-content: flex-start;
                                     align-items: center;
                                 }
                                         .images {
-                                          height: 42vh;
-                                          width: 35vw;
+                                          height: 77vh;
+                                          width: 45vw;
                                           outline: 5px solid black;
                                           margin-top: 6vh;
                                           transition: 0.25s;
+                                          background-size: cover;
+                                          background-repeat: no-repeat;
                                         }
                                         .images:hover {
                                           outline: 10px solid black;
@@ -166,27 +151,43 @@ a {
                                         #futureimage {
                                           background-image: url('fbg.png');
                                         }
-                #page2container2 {
-                  height: 12vh;
-                  width: 100vw;
-                  background-color: #191314;
-                }
-                        #bottomwrapper {
-                          height: 12vh;
-                          width: 100vw;
-                          display: flex;
-                          flex-flow: column nowrap;
-                          justify-content: center;
-                          align-items: center;
-                          color: #999999;
-                        }
+                                        #bottomwrapper {
+                                          height: 12vh;
+                                          width: 100vw;
+                                          display: flex;
+                                          flex-flow: column nowrap;
+                                          justify-content: center;
+                                          align-items: center;
+                                          color: #999999;
+                                          background-color: #191314;
+                                        }
+#mutebutton {
+  position: fixed;
+  bottom: 0vh;
+  left: 0vw;
+  z-index: 900;
+  font-size: 40px;
+  margin: 15px;
+}
+#about {
+  position: absolute;
+  height: 20vh;
+  width: 30vw;
+  z-index: 900;
+  border: 5px solid black;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  background-color: white;
+}
 </style>
 <body>
 
+<div id="about">about the open mics etc etc </div>
 <div id="page1">
   <div id="videocontainer">
-    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="backgroundvideo"></video>-->
-    <iframe id="backgroundvideo" src="https://www.youtube.com/embed/wy3lmt5mUAk?autoplay=1&mute=1&controls=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
+    <!--<video src="testbgv.mp4" autoplay muted loop id="backgroundvideo"></video>-->
+    <iframe id="backgroundvideo" src="https://player.vimeo.com/video/382989714?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0" frameborder="0"></iframe>
   </div>
   <div id="container1">
     <div id="page1container1">
@@ -194,7 +195,6 @@ a {
       <div id="header2">a <a href="https://instagram.com/sasha.sink" target="_blank" id="u">sasha sinkler</a> production</div>
     </div>
     <div id="page1container2">
-      <div id="aboutboxpart1">blah blah blah</div>
     </div>
   </div>
 </div>
@@ -202,7 +202,6 @@ a {
 <div id="page2">
   <div id="container2">
     <div id="page2container1">
-      <div id="aboutboxpart2"></div>
       <div id="pastandfuturecontainer">
         <div id="pastbox" class="boxes">
           <div id="pastheader" class="headers">PAST SHOWS</div>
@@ -214,15 +213,15 @@ a {
         </div>
       </div>
     </div>
-    <div id="page2container2">
-      <div id="bottomwrapper">
-        <div id="num">‭(973) 489-8368‬</div>
-        <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
-        <div id="madeby">website made by <a href="https://archizzl.com" target="_blank">archie oconnell</a></div>
-      </div>
+    <div id="bottomwrapper">
+      <div id="num">‭(973) 489-8368‬</div>
+      <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
+      <div id="madeby">website made by <a href="https://archizzl.com" target="_blank">archie oconnell</a></div>
     </div>
   </div>
 </div>
+
+<!--<div id="mutebutton">	muted </div>-->
 
 <script>
 u = document.getElementById('u')
@@ -239,15 +238,34 @@ window.onload = function(){
     }
   }, 1000)
 
+  /*
   boxes = document.querySelectorAll('.boxes')
   for(i = 0; i<boxes.length; i++){
-    boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*8)) + 'deg)';
+    boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*5)) + 'deg)';
   }
+  */
+
   imgs = document.querySelectorAll('.images')
   for(i = 0; i<imgs.length; i++){
     imgs[i].onclick = function(){
       alert('this doesnt do jack shit yet, but get hyped for when it does')
     }
+  }
+}
+mutebutton = document.getElementById('mutebutton')
+backgroundvideo = document.getElementById('backgroundvideo')
+var vid = new Vimeo.Player('backgroundvideo');
+bgvm = true;
+mutebutton.onclick = function(){
+  if(bgvm == true){
+    bgvm = false;
+    vid.setVolume(1)
+    mutebutton.innerHTML = 	'unmuted'
+  }
+  else if (bgvm == false){
+    bgvm = true;
+    vid.setVolume(0)
+    mutebutton.innerHTML = 	'muted'
   }
 }
 </script>
