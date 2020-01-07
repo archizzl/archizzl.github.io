@@ -36,15 +36,21 @@ a {
           justify-content: center;
           align-items: center;
           overflow: hidden;
+          background-image: url('ombg1.jpeg');
+          background-size: cover;
+          background-repeat: no-repeat;
         }
-        #backgroundvideo {
-          height: 105vh;
-          width: 105vw;
-          position: absolute;
-          z-index: 5;
-          margin: 0;
-          padding: 0;
-        }
+                #loading {
+                  font-size: 30px;
+                }
+                #backgroundvideo {
+                  height: 105vh;
+                  width: 105vw;
+                  position: absolute;
+                  z-index: 5;
+                  margin: 0;
+                  padding: 0;
+                }
         #container1 {
           height: 100vh;
           width: 100vw;
@@ -183,9 +189,12 @@ a {
 </style>
 <body>
 
-<div id="about">about the open mics etc etc </div>
+<div id="about">about the open mics etc etc
+<div id="nowplaying">now playing</div>
+</div>
 <div id="page1">
   <div id="videocontainer">
+    <span id="loading">the video is loading :)</span>
     <!--<video src="testbgv.mp4" autoplay muted loop id="backgroundvideo"></video>-->
     <iframe id="backgroundvideo" src="https://player.vimeo.com/video/382989714?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0" frameborder="0"></iframe>
   </div>
@@ -224,6 +233,14 @@ a {
 <!--<div id="mutebutton">	muted </div>-->
 
 <script>
+vids = [382992232, 382992059, 382991640, 382991450, 382991271, 382990826, 382990355, 382989848, 382989714, 382989614, 382989306, 382988967, 382988470, 382988107, 382987941, 382987563, 382987081, 382984561, 382983926, 382983667, 382983337, 382982651]
+vidsnames = ['gabi gamberg', 'hudson pollock', 'wallace p', 'jolie h', 'maia s', 'diatonic slave', 'max m', 'shaine hammerberg', 'matt + maia', 'happy birthday hudson', 'emma hankey', 'grizz fizz', 'kate spangler + danny', 'olivia brash', 'wallace + sage', 'luke d + lawson s', 'aiden kk', 'ella + sarina moriber', 'jason and the mclanes / ani ramen house band', 'ella moriber', 'creatagoose', 'ben m + dan f']
+vc = Math.floor(Math.random()*vids.length);
+backgroundvideo = document.getElementById('backgroundvideo')
+nowplaying = document.getElementById('nowplaying')
+backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + vids[vc] + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
+nowplaying.innerHTML = 'now playing: ' + vidsnames[vc]
+console.log('vidsnames[vc]')
 u = document.getElementById('u')
 window.onload = function(){
   ublink = true;
