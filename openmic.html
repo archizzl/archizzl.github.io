@@ -24,6 +24,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
         #videocontainer {
           height: 100vh;
@@ -39,6 +40,7 @@ a {
           background-image: url('ombg1.jpeg');
           background-size: cover;
           background-repeat: no-repeat;
+          pointer-events: auto;
         }
                 #loading {
                   font-size: 30px;
@@ -50,6 +52,7 @@ a {
                   z-index: 5;
                   margin: 0;
                   padding: 0;
+                  pointer-events: auto;
                 }
         #container1 {
           height: 100vh;
@@ -64,6 +67,7 @@ a {
           top: 0;
           left: 0;
           z-index: 10;
+          pointer-events: none;
         }
                 #page1container1 {
                   height: 20vh;
@@ -74,6 +78,7 @@ a {
                   align-items: center;
                   flex-flow: column;
                   background-color: transparent;
+                  pointer-events: none;
                 }
                         #header1 {
                           color: white;
@@ -93,9 +98,10 @@ a {
                   align-items: center;
                   flex-flow: column;
                   background-color: transparent;
+                  pointer-events: none;
                 }
 #page2 {
-  height: 100vh;
+  height: 12vh;
   width: 100vw;
   position: absolute;
   top: 100vh;
@@ -175,22 +181,36 @@ a {
   font-size: 40px;
   margin: 15px;
 }
+#pausebutton {
+  position: fixed;
+  bottom: 0vh;
+  left: 4vw;
+  z-index: 900;
+  font-size: 40px;
+  margin: 15px;
+}
 #about {
   position: absolute;
   height: 20vh;
   width: 30vw;
   z-index: 900;
-  border: 5px solid black;
   bottom: 0;
   right: 0;
   margin: 20px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: lightgray;
+  padding: 10px;
 }
 </style>
 <body>
 
 <div id="about">about the open mics etc etc
 <div id="nowplaying">now playing</div>
+click on the video to be able to control muting and pausing
+<br/>
+ links dont do shit yet but this is essentially gonna be the format of the site<br/>
+<a href="">past shows</a>
+<a href="">future shows</a>
 </div>
 <div id="page1">
   <div id="videocontainer">
@@ -209,6 +229,7 @@ a {
 </div>
 
 <div id="page2">
+  <!--
   <div id="container2">
     <div id="page2container1">
       <div id="pastandfuturecontainer">
@@ -222,6 +243,7 @@ a {
         </div>
       </div>
     </div>
+  -->
     <div id="bottomwrapper">
       <div id="num">‭(973) 489-8368‬</div>
       <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
@@ -230,22 +252,85 @@ a {
   </div>
 </div>
 
-<div id="mutebutton">	muted </div>
+<div id="mutebutton">	&#128263; </div>
+<div id="pausebutton">⏸️</div>
 
 <script>
+
+//setting up background video
+
+//defining elems
 backgroundvideo = document.getElementById('backgroundvideo')
 nowplaying = document.getElementById('nowplaying')
+
+//defining video codes and corresponding names
 vids =      [382992232,       382992059,        382991640,   382991450, 382991271,382990826,       382990355, 382989848,          382989714,     382989614,               382989306,     382988967,    382988470,               382988107,      382987941,        382987563,          382987081,  382984561,                382983926,                                      382983667,      382983337,    382982651]
 vidsnames = ['gabi gamberg', 'hudson pollock', 'wallace p', 'jolie h', 'maia s', 'diatonic slave', 'max m', 'shaine hammerberg', 'matt + maia', 'happy birthday hudson', 'emma hankey', 'grizz fizz', 'kate spangler + danny', 'olivia brash', 'wallace + sage', 'luke d + lawson s', 'aiden kk', 'ella + sarina moriber', 'jason and the mclanes / ani ramen house band', 'ella moriber', 'creatagoose', 'ben m + dan f']
+
+//select random vid and set src of videos
 vc = Math.floor(Math.random()*vids.length);
 backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + vids[vc] + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
 nowplaying.innerHTML = 'now playing: ' + vidsnames[vc]
 console.log(vidsnames[vc])
 
+
+imgs = document.querySelectorAll('.images')
+for(i = 0; i<imgs.length; i++){
+  imgs[i].onclick = function(){
+    alert('this doesnt do jack shit yet, but get hyped for when it does')
+  }
+}
+
+
+//video controls
+
+//defining buttons
+mutebutton = document.getElementById('mutebutton')
+pausebutton = document.getElementById('pausebutton')
+
+//video library shit
+var vidOptions = {
+  id: backgroundvideo
+}
+var vidPlayer = new Vimeo.Player('backgroundvideo', vidOptions)
+
+//button functions
+
+//mute button
+bgvm = true;
+mutebutton.onclick = function(){
+  if(bgvm == true){
+    mutebutton.innerHTML = '&#128266;'
+    bgvm = false;
+    vidPlayer.setVolume(1)
+  }
+  else if (bgvm == false){
+    mutebutton.innerHTML = '&#128263;'
+    bgvm = true;
+    vidPlayer.setVolume(0)
+  }
+}
+
+//pause button
+bgvp = false;
+pausebutton.onclick = function(){
+  if(bgvp == true){
+    pausebutton.innerHTML = '⏸️'
+    bgvp = false;
+    vidPlayer.play()
+  }
+  else if (bgvp == false){
+    pausebutton.innerHTML = '▶️'
+    bgvp = true;
+    vidPlayer.pause()
+  }
+}
+
+//making blinker blink
 u = document.getElementById('u')
-window.onload = function(){
-  ublink = true;
-  setInterval(function(){
+ublink = true;
+setInterval(function(){
+  if(bgvp==false){
     if(ublink == true){
       u.style.textDecoration = 'none'
       ublink = false;
@@ -254,43 +339,10 @@ window.onload = function(){
       u.style.textDecoration = 'underline'
       ublink = true;
     }
-  }, 1000)
+  }
+}, 1000)
 
-  /*
-  boxes = document.querySelectorAll('.boxes')
-  for(i = 0; i<boxes.length; i++){
-    boxes[i].style.transform = 'rotate(' + ((Math.random() < 0.5 ? -1 : 1) * (Math.random()*5)) + 'deg)';
-  }
-  */
 
-  imgs = document.querySelectorAll('.images')
-  for(i = 0; i<imgs.length; i++){
-    imgs[i].onclick = function(){
-      alert('this doesnt do jack shit yet, but get hyped for when it does')
-    }
-  }
-}
-mutebutton = document.getElementById('mutebutton')
-backgroundvideo = document.getElementById('backgroundvideo')
-var vidOptions = {
-  id: backgroundvideo
-}
-var vidPlayer = new Vimeo.Player('backgroundvideo', vidOptions)
-bgvm = true;
-mutebutton.onclick = function(){
-  if(bgvm == true){
-    bgvm = false;
-    vidPlayer.setVolume(1)
-    vidPlayer.play()
-    mutebutton.innerHTML = 	'unmuted'
-  }
-  else if (bgvm == false){
-    bgvm = true;
-    vidPlayer.setVolume(0)
-    vidPlayer.play()
-    mutebutton.innerHTML = 	'muted'
-  }
-}
 </script>
 
 </div>
