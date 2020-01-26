@@ -10,14 +10,16 @@
       padding: 0;
       margin: 0;
       user-select: none;
+      font-family: 'Raleway'
+
     }
     #container {
-      height: 300vh;
+      position: absolute;
+      z-index: 0;
+      height: auto;
       width: 100vw;
       display: flex;
       justify-content: center;
-      background-image: url('IMG_0973.jpg');
-      background-size: cover;
     }
     #header {
       position: fixed;
@@ -33,109 +35,217 @@
       font-family: 'Raleway'
     }
     #thumbnailsContainer {
+      position: absolute;
       margin-top: 2vh;
       width: 90vw;
       display: flex;
       flex-flow: column;
+      z-index: 2;
     }
-    .thumbnailRows {
-      width: 90vw;
-      height: 60vh;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-around;
-      align-items: center;
-    }
-    .thumbnails {
-      height: 50vh;
-      width: 40vw;
-      border: 5px solid black;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-flow: column nowrap;
-      background-color: rgba(0, 0, 0, 0.25)
-    }
-    .vidBoxes {
-      height: 30vh;
-      width: 30vw;
+            .thumbnailRows {
+              width: 90vw;
+              height: 60vh;
+              display: flex;
+              flex-flow: row nowrap;
+              justify-content: space-around;
+              align-items: center;
+            }
+            .thumbnails {
+              height: 50vh;
+              width: 40vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-flow: column nowrap;
+              background-color: rgba(255,255,255, 0.4);
+              font-size: 50px;
+              transition: 0.2s;
+
+            }
+            .thumbnails > div {
+              margin: 10px;
+            }
+            .thumbnails:hover {
+              transform: scale(1.05);
+              cursor: pointer;
+            }
+            .vidBoxes {
+              height: 30vh;
+              width: 30vw;
+              overflow: scroll;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .vids {
+              min-height: 35vh;
+              min-width: 35vw;
+            }
+    #boxesContainer {
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
       overflow: hidden;
+    }
+    .backgroundBox {
+      position: absolute;
+      z-index: 1;
+    }
+    #bottomwrapper {
+      height: 12vh;
+      width: 100vw;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      color: #999999;
+      background-color: #191314;
+      pointer-events: auto;
+    }
+    a {
+      color: inherit;
+    }
+    #wrapperBlock {
+      width: 100vw;
+      background-color: transparent;
+      pointer-events: none;
+    }
+    #wrapperContainer {
+      pointer-events: none;
+
+      height: auto;
+      width: 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
-      outline: 25px solid black;
-    }
-    .vids {
-      height: 35vh;
-      width: 35vw;
+      flex-flow: column;
+      position: absolute;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
   <div id="container">
+    <div id="boxesContainer"></div>
     <div id="header">PAST SHOWS</div>
-    <div id="thumbnailsContainer">
+    <div id="thumbnailsContainer"></div>
+  </div>
+
+  <div id="wrapperContainer">
+    <div id="wrapperBlock"></div>
+    <div id="bottomwrapper">
+      <div id="num">‭(973) 489-8368‬</div>
+      <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
+      <div id="madeby">website made by <a href="https://archizzl.com" target="_blank">archie oconnell</a></div>
     </div>
   </div>
 </body>
 <script>
 
 churchVidCodes =      [382992232,       382992059,        382991640,   382991450, 382991271,382990826,       382990355, 382989848,          382989714,     382989614,               382989306,     382988967,    382988470,               382988107,      382987941,        382987563,          382987081,  382984561,                382983926,                                      382983667,      382983337,    382982651]
-churchVidNames = ['gabi gamberg', 'hudson pollock', 'wallace p', 'jolie h', 'maia s', 'diatonic slave', 'max m', 'shaine hammerberg', 'matt + maia', 'happy birthday hudson', 'emma hankey', 'grizz fizz', 'kate spangler + danny', 'olivia brash', 'wallace + sage', 'luke d + lawson s', 'aiden kk', 'ella + sarina moriber', 'jason and the mclanes / ani ramen house band', 'ella moriber', 'creatagoose', 'ben m + dan f']
+thumbnailsContainer = document.getElementById('thumbnailsContainer')
+shows = ['church', 'backyard', 'campers',]
+links = []
+amountOfThumbnails = Math.ceil((shows.length)/2)
+vidNumber = 0;
+rows=0;
+for(i=0;i<amountOfThumbnails;i++){
 
-
-
-tc = document.getElementById('thumbnailsContainer')
-shows = ['church', 'backyard', 'blackbox', 'campers']
-il = Math.ceil((shows.length)/2)
-x = 0;
-for(i=0;i<il;i++){
-
-  cr = document.createElement('div')
-  cr.setAttribute('class', 'thumbnailRows')
-
+  currentRow = document.createElement('div')
+  currentRow.setAttribute('class', 'thumbnailRows')
+  rows++
   for(h = 0; h<2; h++){
     if(shows.length>0){
-      x++
-      ct = document.createElement('div')
-      ct.setAttribute('class', 'thumbnails')
+      vidNumber++
+
+
+      currentThumbnail = document.createElement('a')
+      currentThumbnail.setAttribute('href', links[i])
+      currentThumbnail.setAttribute('class', 'thumbnails')
+      currentThumbnail.setAttribute('target', '_blank')
       console.log(shows[0])
-      cr.appendChild(ct)
-
-      cvb = document.createElement('div')
-      cvb.setAttribute('class', 'vidBoxes')
+      currentRow.appendChild(currentThumbnail)
 
 
+
+
+      currentVideoBox = document.createElement('div')
+      currentVideoBox.setAttribute('class', 'vidBoxes')
       churchRandomVid = Math.floor(Math.random()*churchVidCodes.length);
-      cv = document.createElement('iframe')
-      cv.setAttribute('id', 'vid' + x)
-      cv.setAttribute('class', 'vids')
-      cv.setAttribute('src', 'https://player.vimeo.com/video/' + churchVidCodes[churchRandomVid] + '?loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0&autopause=0')
-      cvb.appendChild(cv)
-      ct.appendChild(cvb)
-      ct.innerHTML = ct.innerHTML + shows[0]
-      shows.shift()
+      currentVideo = document.createElement('iframe')
+      currentVideo.setAttribute('id', 'vid' + vidNumber)
+      currentVideo.setAttribute('class', 'vids')
+      currentVideo.setAttribute('src', 'https://player.vimeo.com/video/' + churchVidCodes[churchRandomVid] + '?loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0&autopause=0')
 
+
+
+      currentVideoBox.appendChild(currentVideo)
+      currentThumbnail.appendChild(currentVideoBox)
+      currentThumbnail.innerHTML = currentThumbnail.innerHTML + shows[0]
+      shows.shift()
     }
   }
-  tc.appendChild(cr)
+  thumbnailsContainer.appendChild(currentRow)
 }
 
+//make videos play
 allVids = document.querySelectorAll('.vids')
-
 for(j = 1; j<allVids.length+1; j++){
   vidId = 'vid' + j
-
   var vidOptions = {
     id: vidId
   }
   var vidPlayer = new Vimeo.Player(vidId, vidOptions)
-
   vidPlayer.play()
-
-  console.log(allVids[j])
 }
 
+
+
+let boxesContainer = document.getElementById('boxesContainer')
+let wrapperBlock = document.getElementById('wrapperBlock')
+boxesContainer.style.height = thumbnailsContainer.offsetHeight + 50 + 'px'
+wrapperBlock.style.height = thumbnailsContainer.offsetHeight + 50 + 'px'
+
+
+let amount = document.getElementById('amount')
+let boxesI = 0;
+let remove = 0;
+let second = false;
+let maxdimens = 1000;
+let rate = 5000;
+let transparency = 0.5;
+
+function createBox() {
+  dimens = Math.floor(Math.random()*maxdimens)
+  boxCurr = document.createElement('div')
+  boxCurr.setAttribute('class', 'backgroundBox')
+  boxCurr.setAttribute('id', 'backgroundBox' + boxesI)
+  boxCurr.style.backgroundColor = 'rgba(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)  + ',' + transparency + ')'
+  boxCurr.style.height = dimens + 500 + 'px';
+  boxCurr.style.width = dimens + 500 + 'px';
+  boxCurr.style.zIndex = 1/dimens;
+  boxCurr.style.top = Math.floor(Math.random()*(rows*60))-50 + 'vh';
+  boxCurr.style.left = Math.floor(Math.random()*(100)) - 20 + 'vw';
+  boxesContainer.appendChild(boxCurr)
+  boxCount = document.querySelectorAll('.backgroundBox')
+  boxesI++
+}
+for(i<0; i<30; i++){
+  createBox()
+}
+/*
+setInterval(function(){
+  createBox()
+  if(second == true){
+    removeCurr = document.getElementById('backgroundBox' + remove)
+    boxesContainer.removeChild(removeCurr)
+    remove++
+  }
+}, rate)
+setTimeout(function(){second = true}, rate*1000)
+*/
 
 </script>
 </html>

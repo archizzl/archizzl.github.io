@@ -89,6 +89,8 @@ a {
                         #header2 {
                           color: white;
                           font-size: 30px;
+                          pointer-events: auto;
+
                         }
                 #page1container2 {
                   height: 80vh;
@@ -173,22 +175,31 @@ a {
                                           color: #999999;
                                           background-color: #191314;
                                         }
-#mutebutton {
-  position: fixed;
-  bottom: 0vh;
-  left: 0vw;
+#buttons {
+  height: 15vh;
+  width: 25vw;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 900;
-  font-size: 40px;
-  margin: 15px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  margin: 20px;
+  color: lightgray;
+  justify-content: center;
+  align-items: center;
 }
-#pausebutton {
-  position: fixed;
-  bottom: 0vh;
-  left: 4vw;
-  z-index: 900;
-  font-size: 40px;
-  margin: 15px;
-}
+        #buttonsRow{
+          display: flex;
+          flex-flow: row nowrap;
+        }
+                #mutebutton {
+                  font-size: 40px;
+                }
+                #pausebutton {
+                  font-size: 40px;
+                }
 #about {
   position: absolute;
   height: 20vh;
@@ -204,13 +215,11 @@ a {
 </style>
 <body>
 
-<div id="about">about the open mics etc etc
-<div id="nowplaying">now playing</div>
-click on the video to be able to control muting and pausing
-<br/>
- links dont do shit yet but this is essentially gonna be the format of the site<br/>
-<a href="https://archizzl.com/pastshows" target="_blank">past shows</a>
-<a href="">future shows</a>
+<div id="about">Mapso Open Mics is a collective community effort to bring new teenage local artists into the spotlight! It’s a safe space where anyone is welcome to sing, do poetry, standup, etc.  We are always welcome to new styles, genres, and people!
+  <br/><hr/><br/>
+<div id="nowplaying">Now Playing: </div>
+<a href="https://archizzl.com/pastshows" target="_blank">Past Shows</a> |
+<a href="">Future Shows</a>
 </div>
 <div id="page1">
   <div id="videocontainer">
@@ -229,21 +238,6 @@ click on the video to be able to control muting and pausing
 </div>
 
 <div id="page2">
-  <!--
-  <div id="container2">
-    <div id="page2container1">
-      <div id="pastandfuturecontainer">
-        <div id="pastbox" class="boxes">
-          <div id="pastheader" class="headers">PAST SHOWS</div>
-          <div id="pastimage" class="images"></div>
-        </div>
-        <div id="futurebox" class="boxes">
-          <div id="futureheader" class="headers">FUTURE SHOWS</div>
-          <div id="futureimage" class="images"></div>
-        </div>
-      </div>
-    </div>
-  -->
     <div id="bottomwrapper">
       <div id="num">‭(973) 489-8368‬</div>
       <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
@@ -252,8 +246,15 @@ click on the video to be able to control muting and pausing
   </div>
 </div>
 
-<div id="mutebutton">	&#128263; </div>
-<div id="pausebutton">⏸️</div>
+<div id="buttons">
+  <div id="buttonsRow">
+<div id="mutebutton" class="button">	&#128263; </div>
+<div id="pausebutton" class="button">⏸️</div>
+</div>
+<div id="warning">Click on the video to enable controls.</div>
+</div>
+
+
 
 <script>
 
@@ -265,22 +266,13 @@ nowplaying = document.getElementById('nowplaying')
 
 //defining video codes and corresponding names
 vids =      [382992232,       382992059,        382991640,   382991450, 382991271,382990826,       382990355, 382989848,          382989714,     382989614,               382989306,     382988967,    382988470,               382988107,      382987941,        382987563,          382987081,  382984561,                382983926,                                      382983667,      382983337,    382982651]
-vidsnames = ['gabi gamberg', 'hudson pollock', 'wallace p', 'jolie h', 'maia s', 'diatonic slave', 'max m', 'shaine hammerberg', 'matt + maia', 'happy birthday hudson', 'emma hankey', 'grizz fizz', 'kate spangler + danny', 'olivia brash', 'wallace + sage', 'luke d + lawson s', 'aiden kk', 'ella + sarina moriber', 'jason and the mclanes / ani ramen house band', 'ella moriber', 'creatagoose', 'ben m + dan f']
+vidsnames = ['Gabi Gamberg', 'Hudson Pollock', 'Wallace P', 'Jolie H', 'Maia S', 'Diatonic Slave', 'Max M', 'Shaine Hammerberg', 'Matt + Maia', 'Happy Birthday Hudson', 'Emma Hankey', 'Grizz Fizz', 'Kate Spangler + Danny', 'Olivia Brash', 'Wallace + Sage', 'Luke D + Lawson S', 'Aiden KK', 'Ella + Sarina Moriber', 'Jason and the McClanes / Ani Ramen House Band', 'Ella Moriber', 'Creatagoos', 'Ben M + Dan F']
 
 //select random vid and set src of videos
 vc = Math.floor(Math.random()*vids.length);
 backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + vids[vc] + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
-nowplaying.innerHTML = 'now playing: ' + vidsnames[vc]
+nowplaying.innerHTML = 'Now Playing: ' + vidsnames[vc]
 console.log(vidsnames[vc])
-
-
-imgs = document.querySelectorAll('.images')
-for(i = 0; i<imgs.length; i++){
-  imgs[i].onclick = function(){
-    alert('this doesnt do jack shit yet, but get hyped for when it does')
-  }
-}
-
 
 //video controls
 
