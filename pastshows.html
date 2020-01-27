@@ -68,11 +68,12 @@
             .thumbnails:hover {
               transform: scale(1.05);
               cursor: pointer;
+              text-decoration: underline;
             }
             .vidBoxes {
               height: 30vh;
               width: 30vw;
-              overflow: scroll;
+              overflow: hidden;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -106,6 +107,7 @@
     }
     a {
       color: inherit;
+      text-decoration: inherit;
     }
     #wrapperBlock {
       width: 100vw;
@@ -145,9 +147,13 @@
 <script>
 
 churchVidCodes =      [382992232,       382992059,        382991640,   382991450, 382991271,382990826,       382990355, 382989848,          382989714,     382989614,               382989306,     382988967,    382988470,               382988107,      382987941,        382987563,          382987081,  382984561,                382983926,                                      382983667,      382983337,    382982651]
+backyardVidCodes = [365169509, 365183589, 365177336, 365174919]
+campersVidCodes = [304713599, 304673197, 304672815, 304661212]
+
+allVidCodes = [churchVidCodes, backyardVidCodes, campersVidCodes,]
 thumbnailsContainer = document.getElementById('thumbnailsContainer')
 shows = ['church', 'backyard', 'campers',]
-links = []
+links = ['', 'https://vimeo.com/user/2898526/folder/1279214', 'https://vimeo.com/showcase/6359713', 'https://vimeo.com/showcase/5607383']
 amountOfThumbnails = Math.ceil((shows.length)/2)
 vidNumber = 0;
 rows=0;
@@ -162,7 +168,7 @@ for(i=0;i<amountOfThumbnails;i++){
 
 
       currentThumbnail = document.createElement('a')
-      currentThumbnail.setAttribute('href', links[i])
+      currentThumbnail.setAttribute('href', links[vidNumber])
       currentThumbnail.setAttribute('class', 'thumbnails')
       currentThumbnail.setAttribute('target', '_blank')
       console.log(shows[0])
@@ -173,11 +179,14 @@ for(i=0;i<amountOfThumbnails;i++){
 
       currentVideoBox = document.createElement('div')
       currentVideoBox.setAttribute('class', 'vidBoxes')
-      churchRandomVid = Math.floor(Math.random()*churchVidCodes.length);
       currentVideo = document.createElement('iframe')
       currentVideo.setAttribute('id', 'vid' + vidNumber)
       currentVideo.setAttribute('class', 'vids')
-      currentVideo.setAttribute('src', 'https://player.vimeo.com/video/' + churchVidCodes[churchRandomVid] + '?loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0&autopause=0')
+
+
+        randomVid = Math.floor(Math.random()*(allVidCodes[vidNumber-1]).length);
+        currentVideo.setAttribute('src', 'https://player.vimeo.com/video/' + allVidCodes[vidNumber-1][randomVid] + '?loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0&autopause=0')
+
 
 
 
@@ -187,6 +196,8 @@ for(i=0;i<amountOfThumbnails;i++){
       shows.shift()
     }
   }
+
+  //<iframe width="560" height="315" src="https://www.youtube.com/embed/ljT0w4YRz1s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   thumbnailsContainer.appendChild(currentRow)
 }
 
