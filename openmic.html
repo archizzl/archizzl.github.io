@@ -215,12 +215,22 @@ a {
   color: lightgray;
   padding: 10px;
 }
+        #dropDown {
+          cursor: pointer;
+          color: lightgray;
+          pointer-events: auto;
+          border:0;
+          background:none;
+          -webkit-appearance: none;
+          font-size: 16px;
+          width: 20vw;
+        }
 </style>
 <body>
 
 <div id="about">Mapso Open Mics is a collective community effort to bring new teenage local artists into the spotlight! It’s a safe space where anyone is welcome to sing, do poetry, standup, etc.  We are always welcome to new styles, genres, and people!
   <br/><hr/><br/>
-<div id="nowplaying">Now Playing: </div>
+<div id="nowplaying">Now Playing: <select id="dropDown"></select></div>
 <a href="https://archizzl.com/pastshows" target="_blank">Past Shows</a> |
 <a href="https://archizzl.com/futureshows" target="_blank">Future Shows</a>
 </div>
@@ -272,11 +282,24 @@ vids =      [382992232,       382992059,        382991640,   382991450, 38299127
 vidsnames = ['Gabi Gamberg', 'Hudson Pollock', 'Wallace P', 'Jolie H', 'Maia S', 'Diatonic Slave', 'Max M', 'Shaine Hammerberg', 'Matt + Maia', 'Happy Birthday Hudson', 'Emma Hankey', 'Grizz Fizz', 'Kate Spangler + Danny', 'Olivia Brash', 'Wallace + Sage', 'Luke D + Lawson S', 'Aiden KK', 'Ella + Sarina Moriber', 'Jason and the McClanes / Ani Ramen House Band', 'Ella Moriber', 'Creatagoos', 'Ben M + Dan F']
 
 //select random vid and set src of videos
-vc = Math.floor(Math.random()*vids.length);
-backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + vids[vc] + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
-nowplaying.innerHTML = 'Now Playing: ' + vidsnames[vc]
-console.log(vidsnames[vc])
-
+randomVidCode = Math.floor(Math.random()*vids.length);
+backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + vids[randomVidCode] + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
+console.log(vidsnames[randomVidCode])
+dropDown = document.getElementById('dropDown')
+for(i = 0; i<vidsnames.length; i++){
+  curr = document.createElement('option')
+  curr.setAttribute('class', 'options')
+  curr.text = vidsnames[i]
+  curr.value = vids[i]
+  dropDown.add(curr)
+}
+optionsArray = document.querySelectorAll('.options')
+optionsArray[randomVidCode].setAttribute('selected', vidsnames[randomVidCode])
+dropDown.oninput = function(){
+  backgroundvideo.setAttribute('src', 'https://player.vimeo.com/video/' + this.value + '?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
+  mutebutton.innerHTML = '&#128263;'
+  bgvm = true;
+}
 //video controls
 
 //defining buttons
