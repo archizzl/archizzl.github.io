@@ -21,6 +21,7 @@
       width: 100vw;
       display: flex;
       justify-content: center;
+      background-color: transparent;
     }
     #header {
       position: fixed;
@@ -37,32 +38,49 @@
     }
     #thumbnailsContainer {
       position: absolute;
-      margin-top: 2vh;
       width: 90vw;
       display: flex;
       flex-flow: column;
       z-index: 2;
+      height: auto;
+      overflow: scroll;
+      margin-top: 6vh;
     }
             .thumbnailRows {
               width: 90vw;
-              height: 60vh;
+              height: 25vh;
               display: flex;
               flex-flow: row nowrap;
-              justify-content: space-around;
               align-items: center;
-            }
+             }
             .thumbnails {
-              height: 50vh;
-              width: 40vw;
+              height: 20vh;
+              width: 20vw;
               display: flex;
               justify-content: center;
               align-items: center;
               flex-flow: column nowrap;
-              background-color: rgba(255,255,255, 0.4);
-              font-size: 50px;
+              background-color: rgba(0,0,0, 0.4);
+              font-size: 20px;
               transition: 0.2s;
-
+              margin: 20px;
             }
+            .vidBoxes {
+              height: 13vh;
+              width: 13vw;
+              overflow: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .vids {
+              min-height: 15vh;
+              min-width: 15vw;
+            }
+
+
+
+
             .thumbnails > div {
               margin: 10px;
             }
@@ -71,18 +89,6 @@
               cursor: pointer;
               text-decoration: underline;
             }
-            .vidBoxes {
-              height: 30vh;
-              width: 30vw;
-              overflow: hidden;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-            .vids {
-              min-height: 35vh;
-              min-width: 35vw;
-            }
     #boxesContainer {
       width: 100vw;
       position: absolute;
@@ -90,6 +96,7 @@
       left: 0;
       z-index: 1;
       overflow: hidden;
+      min-height: 100vh;
     }
     .backgroundBox {
       position: absolute;
@@ -105,51 +112,46 @@
       color: #999999;
       background-color: #191314;
       pointer-events: auto;
+      position: fixed;
+      bottom: 0px;
+      z-index: 10;
     }
     a {
       color: inherit;
       text-decoration: inherit;
     }
-    #wrapperBlock {
-      width: 100vw;
-      background-color: transparent;
-      pointer-events: none;
+    a:hover {
+      text-decoration: underline;
     }
-    #wrapperContainer {
-      pointer-events: none;
-
-      height: auto;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-flow: column;
-      position: absolute;
-      z-index: 10;
+    #farthestback {
+      height: 100vh;
+      width: 100vh;
+      position: fixed;
+      background-color: gray;
+      z-index: -5;
     }
   </style>
 </head>
 <body>
+  <div id="farthestback"></div>
   <div id="container">
     <div id="boxesContainer"></div>
     <div id="header">PAST SHOWS</div>
     <div id="thumbnailsContainer"></div>
   </div>
 
-  <div id="wrapperContainer">
-    <div id="wrapperBlock"></div>
     <div id="bottomwrapper">
       <div id="num">‭(973) 489-8368‬</div>
       <div id="links"><a href="https://instagram.com/mapsopenmic" target="_blank">instagram</a> / <a href="https://facebook.com/mapsopenmic" target="_blank">facebook</a> / <a href="mailto:sashasinkler@gmail.com" target="_top">email</a></div>
       <div id="madeby">website made by <a href="https://archizzl.com" target="_blank">archie oconnell</a></div>
     </div>
-  </div>
 </body>
 <script>
 
 churchVidCodes =      [382992232,       382992059,        382991640,   382991450, 382991271,382990826,       382990355, 382989848,          382989714,     382989614,               382989306,     382988967,    382988470,               382988107,      382987941,        382987563,          382987081,  382984561,                382983926,                                      382983667,      382983337,    382982651]
 backyardVidCodes = [365169509, 365183589, 365177336, 365174919]
 campersVidCodes = [304713599, 304673197, 304672815, 304661212]
+fuck = []
 
 allVidCodes = [churchVidCodes, backyardVidCodes, campersVidCodes,]
 thumbnailsContainer = document.getElementById('thumbnailsContainer')
@@ -163,7 +165,7 @@ for(i=0;i<amountOfThumbnails;i++){
   currentRow = document.createElement('div')
   currentRow.setAttribute('class', 'thumbnailRows')
   rows++
-  for(h = 0; h<2; h++){
+  for(h = 0; h<4; h++){
     if(shows.length>0){
       vidNumber++
 
@@ -216,9 +218,9 @@ for(j = 1; j<allVids.length+1; j++){
 
 
 let boxesContainer = document.getElementById('boxesContainer')
-let wrapperBlock = document.getElementById('wrapperBlock')
 boxesContainer.style.height = thumbnailsContainer.offsetHeight + 50 + 'px'
-wrapperBlock.style.height = thumbnailsContainer.offsetHeight + 50 + 'px'
+
+
 
 
 let amount = document.getElementById('amount')
