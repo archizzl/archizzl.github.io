@@ -10,10 +10,25 @@ margin: 0;
     min-height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row wrap;
   }
+  iframe {
+    overflow: scroll;
+    border: 0;
+  }
+  .wrap {
+     width: 600px;
+     height: 390px;
+     padding: 0;
+     overflow: hidden;
+   }
+   .frame {
+     width: 800px; height: 520px; border: 1px solid black;
+zoom: 0.1; -moz-transform: scale(0.1); -moz-transform-origin: 0 0;
+   }
+
   </style>
 </head>
 <body>
@@ -23,9 +38,14 @@ margin: 0;
 let container = document.getElementById('container')
 let sites = ['balloons', 'colors_for_jason', 'cube_game', 'clock','optical_illusion','lineheight_experimentation', 'sinwave', 'fun_with_equations', 'transitions_demo', 'bubbles_or_lack_thereof', 'learning_keyframes', 'bucketlist', 'hailstone_sequence_visualization', 'openmic', 'pierre_shirt', 'lesson_on_inputs', 'click_streak']
 for(i = 0; i<sites.length; i++){
+  w = document.createElement('w')
+  w.setAttribute('class', 'wrapper')
   c = document.createElement('iframe')
   c.setAttribute('src', 'https://archizzl.com/' + sites[i])
-  container.appendChild(c)
+  c.setAttribute('class', 'frame')
+  c.sandbox = 'sandbox'
+  w.appendChild(c)
+  container.appendChild(w)
 }
 </script>
 </html>
