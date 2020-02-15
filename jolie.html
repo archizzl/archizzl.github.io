@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Crete+Round|IBM+Plex+Serif|Zilla+Slab&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  overflow: hidden;
+  background-color: #595959;
+}
+#bgv {
+  min-height: 105vh;
+  min-width: 105vw;
+}
+#opac{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 5;
+}
+#content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#header {
+  font-family: 'Arvo';
+  color: white;
+  font-size: 70px;
+}
+#subheader {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.shd {
+  margin: 10px;
+  color: white;
+  font-size: 40px;
+}
+.shd:hover {
+  text-decoration: underline;
+}
+.poop {
+font-size: 40px;
+  color: white;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <iframe src="https://player.vimeo.com/video/382991450?title=0&byline=0&portrait=0&muted=1&controls=0&autoplay=1" id="bgv" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  <div id="opac"></div>
+  <div id="content">
+    <div id="header">Jolie Heriveaux</div>
+    <div id="subheader">
+    <div class="shd">music</div>
+    <div class="poop">&#8226;</div>
+    <div class="shd">film</div>
+    <div class="poop">&#8226;</div>
+    <div class="shd">about</div>
+  </div>
+  </div>
+</body>
+<script>
+
+</script>
+</html>
