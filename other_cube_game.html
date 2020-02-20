@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+#maintenence {
+  font-size: 100px;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.box {
+  background-color: white;
+  margin: 3px;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: 0.1s
+}
+.box:hover {
+  transform: scale(1.02)
+}
+#playagain {
+  font-size: 45px;
+  cursor: pointer;
+}
+#playagain:hover {
+  text-decoration: underline;
+}
+@keyframes shrink {
+  100% {
+    width: 0px;
+  }
+}
+#barCont {
+  margin: 10px;
+
+  width: 300px;
+  height: 20px;
+  background-color: black;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+}
+#bar {
+  height: 20px;
+  width: 300px;
+  animation: shrink 5s linear infinite;
+  background-color: gray;
+}
+</style>
+</head>
+<body translate="no">
+<div id="container">
+<div id="cg">cube game: a concept by lillian petruziello, implemented by archie o'connell <br /> click the cubes to cycle through roygbiv, get them all to be the same color to win! <br />three boxes change to a random color every five seconds</div>
+<div id="playagain">play again?</div>
+<div id="time">your current time: 0.00s</div>
+<div id="ftime">your fastest time: 0.00s</div>
+</div>
+<script id="rendered-js">
+num = 5;
+amount = 3;
+row = 1;
+column = 1;
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+won = false;
+running = true;
+
+
+//create boxes
+cont = document.getElementById('container')
+for(i = 0; i<num;i++){
+  cr = document.createElement('div')
+  cr.setAttribute('class', 'row')
+  for(j=0;j<num;j++){
+    cb = document.createElement('div')
+    cb.setAttribute('class', 'box')
+    cb.setAttribute('id', row + '_' + column)
+    column++
+    cb.style.height = 300/num + 'px'
+    cb.style.width = 300/num + 'px'
+    cb.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)]
+    cr.appendChild(cb)
+  }
+  cont.appendChild(cr)
+  row++
+  column = 1;
+}
+
+barCont = document.createElement('div')
+barCont.setAttribute('id', 'barCont')
+bar = document.createElement('div')
+bar.setAttribute('id', 'bar')
+barCont.appendChild(bar)
+
+cont.appendChild(barCont)
+bx = document.querySelectorAll('.box')
+
+
+//change box colors
+setInterval(function(){
+  if(running == true){
+    selected = []
+    for(i = 0;i<amount;i++){
+      cs = Math.ceil(Math.random()*num) + '_' + Math.ceil(Math.random()*num)
+      csbi = cs.toString()
+      csb = document.getElementById(csbi)
+      csb.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)]
+    }
+  }
+}, 5000)
+
+//run time
+time = 0;
+ftime = 0;
+ft1 = false;
+ftd = document.getElementById('ftime')
+td = document.getElementById('time')
+setInterval(function(){
+  if(running==true){
+    time+=0.01;
+    td.innerHTML = 'your current time: ' + time.toFixed(2) + 's';
+    if(ft1==false){
+      ftime+=0.01;
+    }
+    ftd.innerHTML = 'your fastest time: ' + ftime.toFixed(2) + 's';
+
+  }
+},10)
+
+//win condition
+setInterval(function(){
+  if(running==true){
+    won = true;
+    ac =[]
+
+    //creates array of all
+    for(h=0;h<bx.length;h++){
+      ac.push(bx[h].style.backgroundColor)
+    }
+
+    //tests if all of them are the same
+    for(g = 0; g<ac.length; g++){
+      if(ac[0]==ac[g]){
+      }
+      else {
+        won = false;
+      }
+    }
+
+    //if not all same then won is true
+    if(won == true){
+      if(ft1 == false){
+        ftime = time;
+        ft1 = true;
+      }
+      if(ft1==true){
+        if(time<=ftime){
+          ftime=time
+        }
+      }
+      time==0;
+      td.innerHTML = 'your current time: ' + time.toFixed(2) + 's'
+      ftd.innerHTML = 'your fastest time: ' + ftime.toFixed(2) + 's'
+
+      running = false;
+      for(o = 0; o<bx.length;o++){
+        bx[o].style.pointerEvents = 'none'
+      }
+      bar.style.animation = 'none'
+      pa.style.display = 'block'
+    }
+ }
+
+}, 50)
+
+
+pa = document.getElementById('playagain')
+pa.style.display = 'none'
+
+
+pa.onclick = function(){
+  for(p=0;p<bx.length;p++){
+    bx[p].style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+  }
+    time = 0;
+  running = true;
+        for(o = 0; o<bx.length;o++){
+        bx[o].style.pointerEvents = 'auto'
+      }
+  bar.style.animation = 'shrink 5s linear infinite'
+  pa.style.display = 'none'
+}
+
+
+for(j=0;j<bx.length;j++){
+  bx[j].onclick = function(){
+    cc = this.style.backgroundColor;
+    cci = colors.indexOf(cc)
+    ncc = parseInt(cci)
+    ncc++
+    if(ncc==7){
+      ncc=0
+    }
+    this.style.backgroundColor = colors[ncc]
+  }
+}
+    </script>
+</body>
+</html>
