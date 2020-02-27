@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Rubik|Source+Sans+Pro&display=swap" rel="stylesheet">
+
+<style>
+* {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+#container > div {
+  margin: 20px;
+}
+#header {
+font-size: 60px;
+  font-family: 'Source Sans Pro';
+  line-height: 50px;
+}
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+#shirt {
+  height: 300px;
+  width: 250px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+#aboutShirt:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+#imageShirt {
+  height: 250px;
+  width: 250px;
+  transition: 0.2s;
+}
+#imageShirt:hover {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+img {
+  height: inherit;
+  width: inherit;
+}
+#aboutShirt {
+  height: 50px;
+  width: 250px;
+  background-color: #333333;
+  color: white;
+  font-family: 'Rubik';
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.letters{
+  transition: 0.05s
+}
+</style>
+</head>
+<body translate="no">
+<div id="container">
+<div id="header">
+</div>
+<div id="shirt">
+<div id="imageShirt"><img src="https://www-s.mlo.me/upen/v/201901/20190111/ead94e8a-152f-4f3a-a582-4262aa0b13bb.jpg"></div>
+<div id="aboutShirt">shirt for sale</div>
+</div>
+</div>
+<script id="rendered-js">
+header = document.getElementById('header')
+words = ['s', 'i', 'n', 'k', 'o', 'd', 'i', 'n', 'k', 'o', 'b', 'i', 'n', 'k', 'o']
+z = 0;
+for(i = 0; i<3; i++){
+  chr = document.createElement('div')
+  chr.setAttribute('class', 'row')
+  for(j = 0; j<5; j++){
+    chl = document.createElement('div')
+    chl.innerHTML = words[z].toUpperCase()
+    z++
+    chl.setAttribute('id', 'letter' + z)
+    chl.setAttribute('class', 'letters')
+    chr.appendChild(chl)
+  }
+  header.appendChild(chr)
+}
+setInterval(function(){
+  ls = document.querySelectorAll('.letters')
+  for(h = 0; h<ls.length; h++){
+    ls[h].style.color = 'black'
+    ls[h].style.fontSize = '60px'
+  }
+  clid = 'letter' + Math.floor(Math.random()*words.length)
+  cld = document.getElementById(clid)
+  cld.style.color = 'white'
+  cld.style.fontSize = '300px'
+}, 100)
+    </script>
+</body>
+</html>
