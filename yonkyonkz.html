@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    background-image: url('IMG_1111.jpg');
+    background-size: cover;
+    background-position: middle left;
+  }
+  #headercontainer {
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 60px;
+  }
+  #header {
+    margin: 5px;
+  }
+  #buttoncontainer {
+    height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+  .button {
+    height: 40vh;
+    width: 45vw;
+    border: 5px solid black;
+    transition: 0.3s;
+    background-color: white;
+  }
+  .button:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <div id="container">
+      <div id="headercontainer">
+        <div id="header">Bianca Wertheimer</div>
+      </div>
+      <div id="buttoncontainer">
+        <div class="button"></div>
+        <div class="button"></div>
+        <div class="button"></div>
+        <div class="button"></div>
+      </div>
+  </div>
+</body>
+</html>
