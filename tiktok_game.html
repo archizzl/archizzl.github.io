@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .box {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    margin: 5px;
+  }
+</style>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+<script>
+container = document.getElementById('container')
+  for(i = 1; i<6; i++){
+    current_row = document.createElement('div')
+    current_row.setAttribute('class', 'row')
+    for(j = 1; j<6; j++){
+      current_box = document.createElement('div')
+      current_box.setAttribute('class', 'box')
+      current_box.setAttribute('id', 'r' + i + 'c' + j)
+      current_row.appendChild(current_box)
+    }
+    container.appendChild(current_row)
+  }
+  all_boxes = document.querySelectorAll('.box')
+  setInterval(function(){
+    for(k = 0; k<all_boxes.length; k++){
+      all_boxes[k].style.backgroundColor = 'white'
+    }
+    current_switch = document.getElementById('r' + Math.ceil(Math.random()*5) + 'c' + Math.ceil(Math.random()*5))
+    current_switch.style.backgroundColor = 'red'
+  }, 50)
+  
+</script>
+</html>
