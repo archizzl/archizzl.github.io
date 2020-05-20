@@ -37,7 +37,7 @@
 </head>
 <body>
 <div id="container">
-  <div id="clear">space bar to clear click for circles</div>
+  <div id="clear">click page to clear space bar for circles</div>
 </div>
 </body>
 <script>
@@ -66,31 +66,27 @@ c.onmousemove = function(e){
       wc++;
     }, 1)
 }
-c.onmousedown = function(){
-    clearInterval(ic)
-    hc = 0;
-    wc = 0;
-}
+cb = document.getElementById('clear')
 document.onkeydown = function(e){
   if(e.keyCode == 32){
-    lines = document.querySelectorAll(".square")
-    for(i = 0; i<lines.length; i++){
-      lines[i].remove()
+    if(squares == true){
+      squares = false;
+      cb.innerHTML = 'click page to clear space bar for squares'
     }
+    else {
+      squares = true;
+      cb.innerHTML = 'click page to clear space bar for circles'
+    }
+
+  }
+}
+c.onclick = function(){
+  lines = document.querySelectorAll(".square")
+  for(i = 0; i<lines.length; i++){
+    lines[i].remove()
   }
   hc = 0;
   wc = 0;
-}
-cb = document.getElementById('clear')
-cb.onclick = function(){
-  if(squares == true){
-    squares = false;
-    cb.innerHTML = 'space bar to clear click for squares'
-  }
-  else {
-    squares = true;
-    cb.innerHTML = 'space bar to clear click for circles'
-  }
 }
 </script>
 </html>
