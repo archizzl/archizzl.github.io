@@ -5,6 +5,7 @@
 * {
   padding: 0;
   margin: 0;
+  user-select: none;
 }
 #container {
   position: absolute;
@@ -39,16 +40,17 @@
 </head>
 <body>
 <div id="container">
-  <div id="clear">click page to clear space bar for circles</div>
+  <div id="clear">enter to clear space bar for circles hold down mouse to stop drawing</div>
 </div>
 </body>
 <script>
 c = document.getElementById('container');
 hc = 0;
 wc = 0;
-started = false;
+running = true;
 squares = true;
 c.onmousemove = function(e){
+  if(running == true){
     xc = e.clientX;
     yc = e.clientY;
     sc = document.createElement('div')
@@ -67,28 +69,39 @@ c.onmousemove = function(e){
       hc++;
       wc++;
     }, 1)
+  }
 }
 cb = document.getElementById('clear')
 document.onkeydown = function(e){
+  console.log(e.keyCode)
   if(e.keyCode == 32){
     if(squares == true){
       squares = false;
-      cb.innerHTML = 'click page to clear space bar for squares'
+      cb.innerHTML = 'enter to clear space bar for squares hold down mouse to stop drawing'
     }
     else {
       squares = true;
-      cb.innerHTML = 'click page to clear space bar for circles'
+      cb.innerHTML = 'enter to clear space bar for circles hold down mouse to stop drawing'
     }
-
+  }
+  else if(e.keyCode == 13){
+    lines = document.querySelectorAll(".square")
+    for(i = 0; i<lines.length; i++){
+      lines[i].remove()
+    }
+    hc = 0;
+    wc = 0;
   }
 }
-c.onclick = function(){
-  lines = document.querySelectorAll(".square")
-  for(i = 0; i<lines.length; i++){
-    lines[i].remove()
-  }
+c.onmousedown = function(){
   hc = 0;
   wc = 0;
+running = false;
+}
+c.onmouseup = function(){
+  hc = 0;
+  wc = 0;
+  running = true;
 }
 </script>
 </html>
