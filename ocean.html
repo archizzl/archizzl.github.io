@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+  }
+  .waters {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    transition: 5s;
+  }
+  .tildes {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+  }
+  .ripple {
+    border: 1px solid white;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    z-index: 10;
+    transition: 10s;
+  }
+</style>
+</head>
+<body>
+  <div id='container'></div>
+</body>
+<script>
+colors = ['a6b7bf', '214c61', '6497b1', '335533', '645617', '006666', '49796b',];
+ripples = []
+container = document.getElementById('container')
+for(i = 0; i<colors.length; i++){
+  current_layer = document.createElement('div')
+  current_layer.setAttribute('class', 'waters')
+  current_layer.style.backgroundColor = "#" + colors[i]
+  current_layer.style.opacity = Math.random();
+  container.appendChild(current_layer)
+}
+layers = document.querySelectorAll('.waters')
+setInterval(function(){
+  layers[layers.length-1].style.opacity = Math.random()
+}, 5000)
+for(i = 0; i<20; i++){
+  current_tilde = document.createElement('div')
+  current_tilde.innerHTML = '~~~~~'
+  current_tilde.setAttribute('class', 'tildes')
+  current_tilde.style.top = Math.random()*100 + 'vh'
+  current_tilde.style.left = Math.random()*100 + 'vw'
+  container.appendChild(current_tilde)
+}
+container.onclick = function(e){
+  ch = 0;
+  cw = 0;
+  current_ripple = document.createElement('div')
+  current_ripple.style.top = e.clientY -ch/2 + 'px'
+  current_ripple.style.left = e.clientX -cw/2 + 'px'
+  current_ripple.setAttribute('class', 'ripple')
+  container.appendChild(current_ripple)
+  for(h = 0; h<3000; h++){
+    setTimeout(function(){
+      ch++;
+      cw++;
+      current_top = current_ripple.style.top;
+      current_left = current_ripple.style.left;
+      current_ripple.style.height = ch + 'px';
+      current_ripple.style.width = cw + 'px';
+      current_ripple.style.top = e.clientY - ch/2 + 'px';
+      current_ripple.style.left = e.clientX - cw/2 + 'px';
+      current_ripple.style.borderRadius = cw + 'px'
+    }, 1)
+  }
+}
+</script>
+</html>

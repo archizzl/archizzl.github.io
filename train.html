@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  .coordinates {
+    height: 5px;
+    width: 5px;
+    background-color: red;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+  <div id='container'></div>
+</body>
+<script>
+coords = [];
+container = document.getElementById('container')
+for(i = 0; i<5; i++){
+  x = Math.random()*100;
+  y = Math.random()*100;
+  coords.push(x)
+  coords.push(y)
+}
+for(j = 0; j<coords.length; j++){
+  current_coordinate = document.createElement('div')
+  current_coordinate.setAttribute('class', 'coordinates')
+  current_coordinate.style.left = coords[j] + 'vw'
+  j++
+  current_coordinate.style.top = coords[j] + 'vh'
+  container.appendChild(current_coordinate)
+}
+</script>
+</html>
