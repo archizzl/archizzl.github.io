@@ -12,10 +12,14 @@
     width: 100vw;
     overflow: hidden;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
   }
   .waters {
-    height: 100vh;
-    width: 100vw;
+    height: 500px;
+    width: 1000px;
     position: absolute;
     transition: 5s;
   }
@@ -23,14 +27,22 @@
     color: white;
     font-size: 15px;
     position: absolute;
+    -webkit-animation-fill-mode: forwards;
   }
   .ripple {
     border: 1px solid white;
-    height: 0px;
-    width: 0px;
+    height: 5px;
+    width: 5px;
     position: absolute;
     z-index: 10;
-    transition: 10s;
+  }
+  @keyframes move {
+    0% {
+      left: 0px;
+    }
+    100% {
+      left: 1200px;
+    }
   }
 </style>
 </head>
@@ -38,8 +50,7 @@
   <div id='container'></div>
 </body>
 <script>
-colors = ['a6b7bf', '214c61', '6497b1', '335533', '645617', '006666', '49796b',];
-ripples = []
+colors = [ '214c61', '6497b1', '335533', '006666', '49796b',];
 container = document.getElementById('container')
 for(i = 0; i<colors.length; i++){
   current_layer = document.createElement('div')
@@ -50,37 +61,51 @@ for(i = 0; i<colors.length; i++){
 }
 layers = document.querySelectorAll('.waters')
 setInterval(function(){
-  layers[layers.length-1].style.opacity = Math.random()
-}, 5000)
-for(i = 0; i<20; i++){
-  current_tilde = document.createElement('div')
-  current_tilde.innerHTML = '~~~~~'
-  current_tilde.setAttribute('class', 'tildes')
-  current_tilde.style.top = Math.random()*100 + 'vh'
-  current_tilde.style.left = Math.random()*100 + 'vw'
-  container.appendChild(current_tilde)
-}
-container.onclick = function(e){
-  ch = 0;
-  cw = 0;
-  current_ripple = document.createElement('div')
-  current_ripple.style.top = e.clientY -ch/2 + 'px'
-  current_ripple.style.left = e.clientX -cw/2 + 'px'
-  current_ripple.setAttribute('class', 'ripple')
-  container.appendChild(current_ripple)
-  for(h = 0; h<3000; h++){
-    setTimeout(function(){
-      ch++;
-      cw++;
-      current_top = current_ripple.style.top;
-      current_left = current_ripple.style.left;
-      current_ripple.style.height = ch + 'px';
-      current_ripple.style.width = cw + 'px';
-      current_ripple.style.top = e.clientY - ch/2 + 'px';
-      current_ripple.style.left = e.clientX - cw/2 + 'px';
-      current_ripple.style.borderRadius = cw + 'px'
-    }, 1)
+  for(l = 0; l<layers.length; l++){
+    layers[l].style.opacity = (Math.random())/2 + 0.5;
+    layers[l].style.zIndex = Math.random()
   }
+}, 5000)
+
+
+
+
+
+x_c = []
+y_c = []
+r = 0;
+container.onclick = function(e){
+  r++;
+  ripple = document.createElement('div');
+  ripple.setAttribute('class', 'ripple');
+  ripple.setAttribute('id', 'r'+r);
+  ripple.style.borderRadius = "100000000px";
+  ripple.style.top = e.clientY - 2.5 + 'px'
+  ripple.style.left = e.clientX -2.5 + 'px'
+  x_c.push(e.clientX)
+  y_c.push(e.clientY)
+  container.appendChild(ripple)
 }
+
+setInterval(function(){
+  ripples = document.querySelectorAll('.ripple')
+  for(g = 0; g<ripples.length; g++){
+    dims = ripples[g].offsetHeight
+    ripples[g].style.height = dims++ + 'px'
+    ripples[g].style.width = dims++ + 'px'
+    ripples[g].style.left = x_c[g] - (dims/2) + 'px'
+    ripples[g].style.top = y_c[g] - (dims/2) + 'px'
+    if(ripples[g].offsetWidth >= 2000){
+      ripples[g].remove()
+      x_c.shift()
+      y_c.shift()
+    }
+  }
+},1)
+
+
+
+
+
 </script>
 </html>
