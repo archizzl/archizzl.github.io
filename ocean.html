@@ -15,34 +15,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     cursor: normal;
+    background-color: white;
   }
   .waters {
     height: 500px;
     width: 1000px;
     position: absolute;
     transition: 5s;
-  }
-  .tildes {
-    color: white;
-    font-size: 15px;
-    position: absolute;
-    -webkit-animation-fill-mode: forwards;
+    border-radius: 30px;
   }
   .ripple {
-    border: 1px solid white;
     height: 5px;
     width: 5px;
     position: absolute;
     z-index: 10;
   }
-  @keyframes move {
-    0% {
-      left: 0px;
-    }
+  @keyframes grow {
     100% {
-      left: 1200px;
+      height: 2200px;
+      width: 2200px;
     }
   }
 </style>
@@ -68,50 +60,72 @@ setInterval(function(){
   }
 }, 5000)
 
-
-
+text = document.createElement('div')
+text.innerHTML = 'point and click pov: you are the rain on a bay <br/> press any key to clear all raindrops <br> space bar for night mode/day mode'
+container.appendChild(text)
+text.style.position = 'absolute';
+text.style.zIndex = 2000;
+text.style.color = 'white'
 
 
 x_c = []
 y_c = []
 r = 0;
+
 container.onclick = function(e){
+  if(r==0){
+    text.remove()
+
+  }
   r++;
   ripple = document.createElement('div');
   ripple.setAttribute('class', 'ripple');
   ripple.setAttribute('id', 'r'+r);
+  if(container.style.backgroundColor == 'white'){
+    ripple.style.border = '1px solid white'
+  }
+  else {
+    ripple.style.border = '1px solid black'
+  }
   ripple.style.borderRadius = "100000000px";
   ripple.style.top = e.clientY - 2.5 + 'px'
   ripple.style.left = e.clientX -2.5 + 'px'
+  ripple.style.animation = 'grow ' + (Math.random()*5+5) + 's linear infinite'
   x_c.push(e.clientX)
   y_c.push(e.clientY)
   container.appendChild(ripple)
+  console.log(ripples.length)
 }
 
 setInterval(function(){
   ripples = document.querySelectorAll('.ripple')
   for(g = 0; g<ripples.length; g++){
     dims = ripples[g].offsetHeight
-    ripples[g].style.height = (dims+0.005) + 'px'
-    ripples[g].style.width = (dims+0.005) + 'px'
     ripples[g].style.left = x_c[g] - (dims/2) + 'px'
     ripples[g].style.top = y_c[g] - (dims/2) + 'px'
-    if(ripples[g].offsetWidth >= 2000){
-      ripples[g].remove()
-      x_c.shift()
-      y_c.shift()
+  }
+})
+
+container.style.backgroundColor = 'white'
+document.onkeydown = function(e){
+  if(e.keyCode == 32){
+    if(container.style.backgroundColor == 'white'){
+      container.style.backgroundColor = 'black'
+    }
+    else {
+      container.style.backgroundColor = 'white'
     }
   }
-},1)
+  ripples = document.querySelectorAll('.ripple')
+  for(g = 0; g<ripples.length; g++){
+    ripples[g].remove()
 
-text = document.createElement('div')
-text.innerHTML = 'point and click pov: you are the rain on a bay'
-container.appendChild(text)
-text.style.position = 'absolute';
-text.style.bottom = 0;
-text.style.backgroundColor = 'white'
-
-
+  }
+  x_c = []
+  y_c = []
+  ripples = []
+  r = 0;
+}
 
 </script>
 </html>
