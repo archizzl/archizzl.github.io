@@ -16,6 +16,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    cursor: normal;
   }
   .waters {
     height: 500px;
@@ -91,8 +92,8 @@ setInterval(function(){
   ripples = document.querySelectorAll('.ripple')
   for(g = 0; g<ripples.length; g++){
     dims = ripples[g].offsetHeight
-    ripples[g].style.height = dims++ + 'px'
-    ripples[g].style.width = dims++ + 'px'
+    ripples[g].style.height = (dims+0.005) + 'px'
+    ripples[g].style.width = (dims+0.005) + 'px'
     ripples[g].style.left = x_c[g] - (dims/2) + 'px'
     ripples[g].style.top = y_c[g] - (dims/2) + 'px'
     if(ripples[g].offsetWidth >= 2000){
@@ -103,7 +104,12 @@ setInterval(function(){
   }
 },1)
 
-
+text = document.createElement('div')
+text.innerHTML = 'point and click pov: you are the rain on a bay'
+container.appendChild(text)
+text.style.position = 'absolute';
+text.style.bottom = 0;
+text.style.backgroundColor = 'white'
 
 
 
