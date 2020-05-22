@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+#container > div {
+  margin: 5px;
+}
+#btn {
+  height: 100px;
+  width: 100px;
+  border: 3px solid gray;
+  border-radius: 200px;
+}
+#btn:hover {
+  cursor: pointer;
+  background-color: black;
+  border: 3px solid gray;
+}
+#again {
+  color: white;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div id="header">how many times can you click in ten seconds? <br/> click to begin</div>
+    <div id="btn"></div>
+    <div id="count">count: 0</div>
+    <div id="highest">highest count: 0</div>
+    <div id='time'>time: 10s</div>
+    <duv id="again">go again?</div>
+  </div>
+</body>
+<script>
+btn = document.getElementById('btn')
+count = document.getElementById('count')
+t = document.getElementById('time')
+h = document.getElementById('highest')
+ag = document.getElementById('again')
+running = false;
+score = 0;
+time = 10;
+ugh = 0;
+
+highest = 0;
+function start(){
+  running = true;
+  ag.style.color = 'white'
+  time = 10;
+  score = 0;
+  count.innerHTML = 'count: ' + score;
+  intc = setInterval(function(){
+    time--
+    t.innerHTML = 'time: ' + time + 's'
+  }, 1000)
+  setTimeout(function(){
+    running = false;
+    clearInterval(intc)
+    ag.style.color = 'black'
+    ag.onclick = function(){
+      start()
+    }
+  }, 10000)
+}
+btn.onclick = function(){
+  ugh++
+  if(ugh == 1){
+    running = true;
+    start()
+  }
+  if(running==true){
+    btn.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    score++
+    count.innerHTML = 'count: ' + score;
+    if(score>=highest){
+      highest = score;
+      h.innerHTML = 'highest count: ' + highest
+    }
+  }
+}
+
+
+
+
+
+
+
+</script>
+</html>
