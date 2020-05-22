@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: normal;
+    cursor: none;
     background-color: white;
   }
   .waters {
@@ -24,12 +24,15 @@
     position: absolute;
     transition: 5s;
     border-radius: 30px;
+    cursor: crosshair;
   }
   .ripple {
     height: 5px;
     width: 5px;
     position: absolute;
     z-index: 10;
+    cursor: crosshair;
+
   }
   @keyframes grow {
     100% {
@@ -61,7 +64,7 @@ setInterval(function(){
 }, 5000)
 
 text = document.createElement('div')
-text.innerHTML = 'point and click pov: you are the rain on a bay <br/> press any key to clear all raindrops <br> space bar for night mode/day mode'
+text.innerHTML = 'point and click pov: you are the rain on a bay <br/> press any key to clear all raindrops <br> space bar for night mode/day mode <br/> enter to switch looping off/on'
 container.appendChild(text)
 text.style.position = 'absolute';
 text.style.zIndex = 2000;
@@ -71,6 +74,7 @@ text.style.color = 'white'
 x_c = []
 y_c = []
 r = 0;
+looping = true;
 
 container.onclick = function(e){
   if(r==0){
@@ -90,7 +94,13 @@ container.onclick = function(e){
   ripple.style.borderRadius = "100000000px";
   ripple.style.top = e.clientY - 2.5 + 'px'
   ripple.style.left = e.clientX -2.5 + 'px'
-  ripple.style.animation = 'grow ' + (Math.random()*5+5) + 's linear infinite'
+  if(looping == true){
+    ripple.style.animation = 'grow ' + (Math.random()*5+5) + 's linear infinite';
+  }
+  else {
+    ripple.style.animation = 'grow ' + (Math.random()*5+5) + 's linear';
+    ripple.style.animationFillMode = 'forwards';
+  }
   x_c.push(e.clientX)
   y_c.push(e.clientY)
   container.appendChild(ripple)
@@ -116,10 +126,17 @@ document.onkeydown = function(e){
       container.style.backgroundColor = 'white'
     }
   }
+  if(e.keyCode == 13){
+    if(looping == true){
+      looping = false;
+    }
+    else {
+      looping = true;
+    }
+  }
   ripples = document.querySelectorAll('.ripple')
   for(g = 0; g<ripples.length; g++){
     ripples[g].remove()
-
   }
   x_c = []
   y_c = []
