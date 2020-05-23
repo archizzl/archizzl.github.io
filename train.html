@@ -12,12 +12,26 @@
     width: 100vw;
     position: absolute;
     background-color: black;
+    overflow: hidden;
+    z-index: 1;
   }
   .coordinates {
-    height: 5px;
-    width: 5px;
+    height: 1px;
+    width: 1px;
     background-color: red;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 5;
+  }
+  .bar {
+    background-color: red;
+    position: absolute;
+    z-index: 3;
+    height: 1px;
+    width: 1px;
   }
 </style>
 </head>
@@ -27,9 +41,9 @@
 <script>
 coords = [];
 container = document.getElementById('container')
-for(i = 0; i<2; i++){
-  x = Math.random()*100;
-  y = Math.random()*100;
+for(i = 0; i<10; i++){
+  x = Math.random()*100 - 2;
+  y = Math.random()*100 - 2;
   coords.push(x)
   coords.push(y)
 }
@@ -39,7 +53,59 @@ for(j = 0; j<coords.length; j++){
   current_coordinate.style.left = coords[j] + 'vw'
   j++
   current_coordinate.style.top = coords[j] + 'vh'
+  current_coordinate.innerHTML = j
   container.appendChild(current_coordinate)
 }
+
+function link(x1, y1, x2, y2){
+  console.log(x1 + ',' + y1)
+  console.log(x2 + ',' + y2)
+  //first one's y second one's x
+  console.log(x1 + ',' + y2)
+  mid = document.createElement('div')
+  mid.style.left = x1 + 'vw'
+  mid.style.top = y2 + 'vh'
+  mid.setAttribute('class', 'coordinates')
+  container.appendChild(mid)
+
+
+  hbar = document.createElement('div')
+  hbar.setAttribute('class', 'bar')
+  if(x1>x2){
+    hbar.style.left = x2 + 'vw';
+    hbar.style.width = x1-x2 + 'vw';
+  }
+  else {
+    hbar.style.left = x1 + 'vw';
+    hbar.style.width = x2-x1 + 'vw';
+  }
+  hbar.style.top = y2 + 'vh'
+  container.appendChild(hbar)
+
+  vbar = document.createElement('div')
+  vbar.setAttribute('class', 'bar')
+  if(y1>y2){
+    vbar.style.top = y2 + 'vh'
+    vbar.style.height = y1 - y2 + 'vh'
+  }
+  else {
+    vbar.style.top = y1 + 'vh'
+    vbar.style.height = y2 - y1 + 'vh'
+  }
+  vbar.style.left = x1 + 'vw'
+  container.appendChild(vbar)
+}
+
+link(coords[0],coords[1], coords[2], coords[3])
+link(coords[2], coords[3], coords[4], coords[5])
+link(coords[4], coords[5], coords[6], coords[7])
+link(coords[6], coords[7], coords[8], coords[9])
+link(coords[8], coords[9], coords[10], coords[11])
+link(coords[10], coords[11], coords[12], coords[13])
+link(coords[12], coords[13], coords[14], coords[15])
+link(coords[14], coords[15], coords[16], coords[17])
+link(coords[16], coords[17], coords[19], coords[19])
+
+
 </script>
 </html>
