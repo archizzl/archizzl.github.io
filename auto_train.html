@@ -18,13 +18,14 @@
   .coordinates {
     height: 1px;
     width: 1px;
-    background-color: red;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    opacity: 0.8;
     z-index: 5;
+    transition: 0.1s;
   }
   .bar {
     background-color: red;
@@ -39,29 +40,27 @@
   <div id='container'></div>
 </body>
 <script>
-coords = [];
 container = document.getElementById('container')
-for(i = 0; i<10; i++){
-  x = Math.random()*100 - 2;
-  y = Math.random()*100 - 2;
-  coords.push(x)
-  coords.push(y)
-}
-for(j = 0; j<coords.length; j++){
-  current_coordinate = document.createElement('div')
-  current_coordinate.setAttribute('class', 'coordinates')
-  current_coordinate.style.left = coords[j] + 'vw'
-  j++
-  current_coordinate.style.top = coords[j] + 'vh'
-  current_coordinate.innerHTML = j
-  container.appendChild(current_coordinate)
+
+function create(){
+  coords = [];
+  for(i = 0; i<10; i++){
+    x = Math.random()*100 - 2;
+    y = Math.random()*100 - 2;
+    coords.push(x)
+    coords.push(y)
+  }
+  for(j = 0; j<coords.length; j++){
+    current_coordinate = document.createElement('div')
+    current_coordinate.setAttribute('class', 'coordinates')
+    current_coordinate.style.left = coords[j] + 'vw'
+    j++
+    current_coordinate.style.top = coords[j] + 'vh'
+    container.appendChild(current_coordinate)
+  }
 }
 
 function link(x1, y1, x2, y2){
-  console.log(x1 + ',' + y1)
-  console.log(x2 + ',' + y2)
-  //first one's y second one's x
-  console.log(x1 + ',' + y2)
   mid = document.createElement('div')
   mid.style.left = x1 + 'vw'
   mid.style.top = y2 + 'vh'
@@ -80,6 +79,8 @@ function link(x1, y1, x2, y2){
     hbar.style.width = x2-x1 + 'vw';
   }
   hbar.style.top = y2 + 'vh'
+  hbar.style.opacity = Math.random()*0.5 + 0.5
+  hbar.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
   container.appendChild(hbar)
 
   vbar = document.createElement('div')
@@ -93,19 +94,49 @@ function link(x1, y1, x2, y2){
     vbar.style.height = y2 - y1 + 'vh'
   }
   vbar.style.left = x1 + 'vw'
+  vbar.style.opacity = Math.random()*0.5 + 0.5
+
+  vbar.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
   container.appendChild(vbar)
 }
 
-link(coords[0],coords[1], coords[2], coords[3])
-link(coords[2], coords[3], coords[4], coords[5])
-link(coords[4], coords[5], coords[6], coords[7])
-link(coords[6], coords[7], coords[8], coords[9])
-link(coords[8], coords[9], coords[10], coords[11])
-link(coords[10], coords[11], coords[12], coords[13])
-link(coords[12], coords[13], coords[14], coords[15])
-link(coords[14], coords[15], coords[16], coords[17])
-link(coords[16], coords[17], coords[19], coords[19])
+function draw(){
+  a = 0;
+  b = 1;
+  c = 2;
+  d = 3;
+  for(i = 0; i<(coords.length)/2-1; i++){
+    link(coords[a], coords[b], coords[c], coords[d])
+    a+=2
+    b+=2
+    c+=2
+    d+=2
+  }
+}
+function clear(){
+    bars = document.querySelectorAll('.bar')
+    for(k = 0; k<bars.length; k++){
+      bars[k].remove()
+    }
+    cs = document.querySelectorAll('.coordinates')
+    for(j = 0; j<coords.length; j++){
+      cs[j].remove()
+    }
+}
+function run(){
+  create()
+  link()
+  draw()
+}
+document.onkeydown = function(){
+  clear()
+    run()
 
+}
+
+
+
+run()
 
 </script>
 </html>
