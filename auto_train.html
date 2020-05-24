@@ -16,8 +16,8 @@
     z-index: 1;
   }
   .coordinates {
-    height: 1px;
-    width: 1px;
+    height: 5px;
+    width: 5px;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -31,8 +31,17 @@
     background-color: red;
     position: absolute;
     z-index: 3;
-    height: 1px;
-    width: 1px;
+    height: 5px;
+    width: 5px;
+  }
+  .dots {
+    position: absolute;
+    z-index: 10;
+    height: 5px;
+    width: 5px;
+    background-color: white;
+    opacity: 1;
+    transition: 1s;
   }
 </style>
 </head>
@@ -65,6 +74,7 @@ function create(){
     container.appendChild(current_coordinate)
   }
 }
+
 
 function link(x1, y1, x2, y2){
   mid = document.createElement('div')
@@ -121,25 +131,76 @@ function draw(){
   }
   link(coords[0], coords[1], coords[18], coords[19])
 }
+
+
+
+function draw2(){
+  a = 0;
+  b = 1;
+  c = 2;
+  d = 3;
+  for(i = 0; i<(coords.length)/2-1; i++){
+    zoom(coords[a], coords[b], coords[c], coords[d])
+    a+=2
+    b+=2
+    c+=2
+    d+=2
+  }
+
+  x_int_i = 0;
+  y_int_i = 0;
+  dots = document.querySelectorAll('.dots')
+  x_int = setInterval(function(){
+    if(x_int_i==(dots.length-1)){
+      clearInterval(x_int)
+      y_int = setInterval(function(){
+        if(y_int_i==(dots.length-1)){
+          clearInterval(y_int)
+          y_int = setInterval()
+        }
+        dots[y_int_i].style.top = dots[y_int_i].dataset.ymove + 'vh'
+        y_int_i++
+      })
+    }
+    dots[x_int_i].style.left = dots[x_int_i].dataset.xmove + 'vw'
+    x_int_i++
+  })
+}
+
+
+function zoom(x1, y1, x2, y2){
+  dot = document.createElement('div')
+  dot.setAttribute('class', 'dots')
+  dot.style.left = x1 + 'vw';
+  dot.setAttribute('data-xmove', x2)
+  dot.style.top = y1 + 'vh'
+  dot.setAttribute('data-ymove', y2)
+  container.appendChild(dot)
+}
 function clear(){
+
     bars = document.querySelectorAll('.bar')
     for(k = 0; k<bars.length; k++){
       bars[k].remove()
     }
     cs = document.querySelectorAll('.coordinates')
-    for(j = 0; j<coords.length; j++){
+    for(j = 0; j<cs.length; j++){
       cs[j].remove()
+    }
+    ds = document.querySelectorAll('.dots')
+    for(z = 0; z<(ds.length); z++){
+      ds[z].remove()
     }
 }
 function run(){
   create()
   link()
   draw()
+  draw2()
 }
 document.onclick = function(){
   clear()
-    run()
-
+  run()
 }
 
 
