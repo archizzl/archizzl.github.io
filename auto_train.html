@@ -117,7 +117,9 @@ function draw(){
     b+=2
     c+=2
     d+=2
+    console.log(c + '' + d)
   }
+  link(coords[0], coords[1], coords[18], coords[19])
 }
 function clear(){
     bars = document.querySelectorAll('.bar')
@@ -134,7 +136,7 @@ function run(){
   link()
   draw()
 }
-document.onkeydown = function(){
+document.onclick = function(){
   clear()
     run()
 
