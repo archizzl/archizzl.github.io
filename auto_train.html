@@ -46,7 +46,6 @@
 </head>
 <body>
   <div id='container'>
-  <div id="train"></div>
   </div>
 </body>
 <script>
@@ -54,8 +53,11 @@ container = document.getElementById('container')
 train = document.getElementById('train')
 cid = 0;
 function create(){
+  train = document.createElement('div')
+  train.setAttribute('id', 'train')
+  container.appendChild(train)
   coords = [];
-  for(i = 0; i<2; i++){
+  for(i = 0; i<50; i++){
     x = Math.random()*100;
     if(x==99){
       x-=1
@@ -146,26 +148,33 @@ function clear(){
   for(j = 0; j<cs.length; j++){
     cs[j].remove()
   }
-  ds = document.querySelectorAll('.dots')
-  for(z = 0; z<(ds.length); z++){
-    ds[z].remove()
-  }
+  train.remove()
 }
 
 function runTrain(){
   train_x = 0;
   train_y = 1;
+  train_switch = 0;
   train.style.left = coords[train_x] + 'vw'
   train.style.top = coords[train_y] + 'vh'
   train_interval = setInterval(function(){
-    train_x+=2
-    train_y+=2
-    train.style.left = coords[train_x] + 'vw'
-    train.style.top = coords[train_y] + 'vh'
-    if(train_y == coords.length){
-      clearInterval(train_interval)
-    }
-  }, 1000)
+    setTimeout(function(){
+      if(train_switch%2==0){
+        train_y+=2
+        train.style.top = coords[train_y] + 'vh'
+        train_switch++
+      }
+      else {
+        train_x+=2
+        train.style.left = coords[train_x] + 'vw'
+        train_switch++
+      }
+      if(train_x==coords.length-2){
+        console.log('done')
+        clearInterval(train_interval)
+      }
+    })
+  }, 500)
 }
 
 function run(){
