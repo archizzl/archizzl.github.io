@@ -22,10 +22,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    opacity: 0.8;
-    z-index: 5;
-    transition: 0.1s;
+    background-color: white;
+    opacity: 1;
+    z-index: 10;
   }
   .bar {
     background-color: red;
@@ -34,26 +33,29 @@
     height: 5px;
     width: 5px;
   }
-  .dots {
-    position: absolute;
-    z-index: 10;
+  #train {
     height: 5px;
     width: 5px;
-    background-color: white;
-    opacity: 1;
-    transition: 1s;
+    position: absolute;
+    z-index: 50;
+    background-color: gray;
+    border: 2px solid white;
+    transition: 0.5s;
   }
 </style>
 </head>
 <body>
-  <div id='container'></div>
+  <div id='container'>
+  <div id="train"></div>
+  </div>
 </body>
 <script>
 container = document.getElementById('container')
-
+train = document.getElementById('train')
+cid = 0;
 function create(){
   coords = [];
-  for(i = 0; i<10; i++){
+  for(i = 0; i<2; i++){
     x = Math.random()*100;
     if(x==99){
       x-=1
@@ -65,24 +67,28 @@ function create(){
     coords.push(x)
     coords.push(y)
   }
-  for(j = 0; j<coords.length; j++){
-    current_coordinate = document.createElement('div')
-    current_coordinate.setAttribute('class', 'coordinates')
-    current_coordinate.style.left = coords[j] + 'vw'
-    j++
-    current_coordinate.style.top = coords[j] + 'vh'
-    container.appendChild(current_coordinate)
-  }
+  console.log(coords)
+  console.log('array length: ' + coords.length)
+  console.log('amount of coordinate pairs: ' + (coords.length)/2)
+
 }
 
-
 function link(x1, y1, x2, y2){
+  end1 = document.createElement('div')
+  end1.setAttribute('class', 'coordinates')
+  end1.style.left = x1 + 'vw'
+  end1.style.top = y1 + 'vh'
+  container.appendChild(end1)
+  end2 = document.createElement('div')
+  end2.setAttribute('class', 'coordinates')
+  end2.style.left = x2 + 'vw'
+  end2.style.top = y2 + 'vh'
+  container.appendChild(end2)
   mid = document.createElement('div')
+  mid.setAttribute('class', 'coordinates')
   mid.style.left = x1 + 'vw'
   mid.style.top = y2 + 'vh'
-  mid.setAttribute('class', 'coordinates')
   container.appendChild(mid)
-
 
   hbar = document.createElement('div')
   hbar.setAttribute('class', 'bar')
@@ -95,7 +101,7 @@ function link(x1, y1, x2, y2){
     hbar.style.width = x2-x1 + 'vw';
   }
   hbar.style.top = y2 + 'vh'
-  hbar.style.opacity = Math.random()*0.5 + 0.5
+  hbar.style.opacity = Math.random()*0.5 + 0.5;
   hbar.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
   container.appendChild(hbar)
 
@@ -110,100 +116,68 @@ function link(x1, y1, x2, y2){
     vbar.style.height = y2 - y1 + 'vh'
   }
   vbar.style.left = x1 + 'vw'
-  vbar.style.opacity = Math.random()*0.5 + 0.5
-
+  vbar.style.opacity = Math.random()*0.5 + 0.5;
   vbar.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
   container.appendChild(vbar)
+
 }
 
-function draw(){
+function drawBars(){
   a = 0;
   b = 1;
   c = 2;
   d = 3;
-  for(i = 0; i<(coords.length)/2-1; i++){
+  for(i = 0; i<(coords.length/2)-1; i++){
     link(coords[a], coords[b], coords[c], coords[d])
-    a+=2
-    b+=2
-    c+=2
-    d+=2
-    console.log(c + '' + d)
-  }
-  link(coords[0], coords[1], coords[18], coords[19])
-}
-
-
-
-function draw2(){
-  a = 0;
-  b = 1;
-  c = 2;
-  d = 3;
-  for(i = 0; i<(coords.length)/2-1; i++){
-    zoom(coords[a], coords[b], coords[c], coords[d])
+    console.log(a + '' + b + '' + c + '' + d)
     a+=2
     b+=2
     c+=2
     d+=2
   }
-
-  x_int_i = 0;
-  y_int_i = 0;
-  dots = document.querySelectorAll('.dots')
-  x_int = setInterval(function(){
-    if(x_int_i==(dots.length-1)){
-      clearInterval(x_int)
-      y_int = setInterval(function(){
-        if(y_int_i==(dots.length-1)){
-          clearInterval(y_int)
-          y_int = setInterval()
-        }
-        dots[y_int_i].style.top = dots[y_int_i].dataset.ymove + 'vh'
-        y_int_i++
-      })
-    }
-    dots[x_int_i].style.left = dots[x_int_i].dataset.xmove + 'vw'
-    x_int_i++
-  })
 }
 
-
-function zoom(x1, y1, x2, y2){
-  dot = document.createElement('div')
-  dot.setAttribute('class', 'dots')
-  dot.style.left = x1 + 'vw';
-  dot.setAttribute('data-xmove', x2)
-  dot.style.top = y1 + 'vh'
-  dot.setAttribute('data-ymove', y2)
-  container.appendChild(dot)
-}
 function clear(){
-
-    bars = document.querySelectorAll('.bar')
-    for(k = 0; k<bars.length; k++){
-      bars[k].remove()
-    }
-    cs = document.querySelectorAll('.coordinates')
-    for(j = 0; j<cs.length; j++){
-      cs[j].remove()
-    }
-    ds = document.querySelectorAll('.dots')
-    for(z = 0; z<(ds.length); z++){
-      ds[z].remove()
-    }
+  bars = document.querySelectorAll('.bar')
+  for(k = 0; k<bars.length; k++){
+    bars[k].remove()
+  }
+  cs = document.querySelectorAll('.coordinates')
+  for(j = 0; j<cs.length; j++){
+    cs[j].remove()
+  }
+  ds = document.querySelectorAll('.dots')
+  for(z = 0; z<(ds.length); z++){
+    ds[z].remove()
+  }
 }
+
+function runTrain(){
+  train_x = 0;
+  train_y = 1;
+  train.style.left = coords[train_x] + 'vw'
+  train.style.top = coords[train_y] + 'vh'
+  train_interval = setInterval(function(){
+    train_x+=2
+    train_y+=2
+    train.style.left = coords[train_x] + 'vw'
+    train.style.top = coords[train_y] + 'vh'
+    if(train_y == coords.length){
+      clearInterval(train_interval)
+    }
+  }, 1000)
+}
+
 function run(){
   create()
-  link()
-  draw()
-  draw2()
+  drawBars()
+  runTrain()
 }
+
 document.onclick = function(){
   clear()
   run()
 }
-
-
 
 run()
 
