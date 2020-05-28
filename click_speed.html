@@ -43,7 +43,7 @@
     <div id="count">count: 0</div>
     <div id="highest">highest count: 0</div>
     <div id='time'>time: 10s</div>
-    <duv id="again">go again?</div>
+    <duv id="again">click the button to go again!</div>
   </div>
 </body>
 <script>
@@ -59,8 +59,9 @@ ugh = 0;
 
 highest = 0;
 function start(){
-  running = true;
   ag.style.color = 'white'
+  ugh++
+  running = true;
   time = 10;
   score = 0;
   t.innerHTML = 'time: ' + time + 's'
@@ -73,13 +74,10 @@ function start(){
     running = false;
     clearInterval(intc)
     ag.style.color = 'black'
-    ag.onclick = function(){
-      start()
-    }
+    ugh++
   }, 10000)
 }
 btn.onclick = function(){
-  ugh++
   if(ugh %2 == 0){
     running = true;
     start()
