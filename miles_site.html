@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column nowrap;
+  }
+  #header {
+    font-size: 60px;
+    position: absolute;
+    z-index: 5;
+    border: 1px solid black;
+    height: 100px;
+    width: 600px;
+  }
+  #options_div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .options {
+    height: 100px;
+    width: 200px;
+    outline: 5px solid blue;
+  }
+  #content {
+    height: 600px;
+    width: 90vw;
+    outline: 5px solid red;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  #picture_of_miles {
+    height: inherit;
+    width: 20vw;
+  }
+  #doodle_area {
+    height: inherit;
+    width: 70vw;
+  }
+  #content > div {
+    outline: 5px solid green;
+  }
+  .border_boxes {
+    height: 50px;
+    width: 50px;
+    outline: 1px solid black;
+    position: absolute;
+  }
+  .top_box {
+    top: 0;
+  }
+  .bottom_box {
+    bottom: 0;
+  }
+  .left_box {
+    left: 0;
+  }
+  .right_box {
+    right: 0;
+  }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="header">MILES SHAPIRO</div>
+    <div id="options_div">
+      <div class="options">portfolio</div>
+      <div class="options">a drawing a day project</div>
+      <div class="options">shop</div>
+      <div class="options">commissions</div>
+      <div class="options">contact</div>
+    </div>
+    <div id="content">
+      <div id="picture_of_miles"></div>
+      <div id="doodle_area"></div>
+    </div>
+  </div>
+</body>
+<script>
+container = document.getElementById('container')
+//top boxes
+for(i = 0; i<50; i++){
+  cb = document.createElement('div')
+  cb.setAttribute('class', 'top_box border_boxes')
+  cb.style.left = i * 50 + 'px'
+  cb.style.backgroundImage = "url('reverse.jpeg')"
+  container.appendChild(cb)
+ }
+//bottom boxes
+for(i = 0; i<50; i++){
+  cb = document.createElement('div')
+  cb.setAttribute('class', 'bottom_box border_boxes')
+  cb.style.left = i * 50 + 'px'
+  cb.style.backgroundImage = "url('reverse.jpeg')"
+
+  container.appendChild(cb)
+}
+//top boxes
+for(i = 0; i<50; i++){
+  cb = document.createElement('div')
+  cb.setAttribute('class', 'left_box border_boxes')
+  cb.style.top = i * 50 + 'px'
+  cb.style.backgroundImage = "url('reverse.jpeg')"
+
+  container.appendChild(cb)
+ }
+//bottom boxes
+for(i = 0; i<50; i++){
+  cb = document.createElement('div')
+  cb.setAttribute('class', 'right_box border_boxes')
+  cb.style.top = i * 50 + 'px'
+  cb.style.backgroundImage = "url('reverse.jpeg')"
+
+  container.appendChild(cb)
+}
+
+
+</script>
+<!--<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-e5c6cab8-1797-4092-a046-04b660bbdf16"></div>-->
+
+<html>
+</html>
