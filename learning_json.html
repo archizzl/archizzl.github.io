@@ -16,7 +16,7 @@
 						var data = JSON.parse(ajaxRequest.responseText)
 						console.log(data)
 
-						document.getElementById('welcome').innerHTML = data[0].streamUrl
+						document.getElementById('welcome').innerHTML = data[0].mainText
 					}
 					else{
 						console.log("Status error: " + ajaxRequest.status);
@@ -36,6 +36,5 @@
 </head>
 <body onload="getWelcome()">
 	<p id="welcome"></p>
-	<p>This is an example website.</p>
 </body>
 </html>

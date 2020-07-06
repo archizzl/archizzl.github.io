@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  color: white;
+
+}
+#cont {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  background-color: pink;
+}
+#header {
+  font-size: 30px;
+}
+#line {
+  height: 1px;
+  width: 400px;
+  background-color: white;
+  margin: 10px;
+}
+#qbox {
+  height: 400px;
+  width: 1000px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+#q {
+  font-size: 50px;
+}
+#ab{
+  width: 400px;
+  height: 400px;
+  display: flex;
+
+  flex-flow: column;
+  justify-content: space-around;
+}
+.a {
+  height: 50px;
+
+  font-size: 20px;
+  padding: 5px;
+  cursor: pointer;
+  outline: 1px solid white;
+
+}
+.a:hover {
+  opacity: 0.5;
+}
+#a {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+  <audio controls id="a">
+    <source src="being_around.mp3" type="audio/mp3">
+  </audio>
+  <div id="cont">
+    <div id="header">quiz for my friends <3</div>
+    <div id="line"></div>
+    <div id="qbox">
+      <div id="oo">Question 1 of 6</div>
+      <div id="q">what's your star sign?</div>
+      <div id="ab">
+        <div class="a" id="q1">fdsfsdf</div>
+        <div class="a" id="q2">fdsfd</div>
+        <div class="a" id="q3">fdsf</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+cq = 0;
+ca = 0;
+a = document.getElementById('a')
+ooa = 1;
+oob = 6;
+cqn = 0;
+contain = document.getElementById('cont')
+qs = ["what's your star sign?", "what elementary school did you go to?", "favorite ice cream flavor?", "favorite mode of transportation?", "what's your favorite subject in school?", "what's your favorite meal?", "how tall are you?", "where was jesus born?", "who did you vote for in 2008?", "what wing is your locker in?"]
+as = ["acquarius", 'taurus', 'scorpio', 'tuscan', 'south mountain', 'seth boyden', 'rocky road',
+'mint chocolate chip', 'chocolate', 'train', 'plane', 'automobile', 'math', 'science', 'history', 'chicken dinner', 'cereal', 'nine egg', "6'4", "tree size", 'i am but a wee little boy', 'nazareth', 'chicago', 'university of pittsburgh campus hospital', 'obama', 'obama', 'john mccain', 'A', 'B', 'C']
+oo = document.getElementById('oo')
+q = document.getElementById('q')
+nq = document.getElementById('nq')
+a_s = document.querySelectorAll('.a')
+things = ['the foot goblin']
+
+qa1 = as[0]
+qa2 = as[1]
+qa3 = as[2]
+
+a_s[0].onmouseover = function(){
+  this.innerHTML = things[Math.floor(Math.random()*things.length)]
+}
+a_s[0].onmouseleave = function(){
+  this.innerHTML = qa1
+}
+a_s[1].onmouseover = function(){
+  this.innerHTML = things[Math.floor(Math.random()*things.length)]
+}
+a_s[1].onmouseleave = function(){
+  this.innerHTML = qa2
+}
+a_s[2].onmouseover = function(){
+  this.innerHTML = things[Math.floor(Math.random()*things.length)]
+}
+a_s[2].onmouseleave = function(){
+  this.innerHTML = qa3
+}
+
+function load_questions(){
+  oo.innerHTML = 'Question ' + ooa + ' of ' + oob
+  ooa++
+  if(ooa == (oob)){
+    oob++
+  }
+  if(cq<qs.length){
+    q.innerHTML = qs[cq]
+    cq++
+    for(i = 0; i<a_s.length; i++){
+      a_s[i].innerHTML = as[cqn]
+      if(i ==0){
+        qa1 = as[cqn]
+      }
+      else if(i==1){
+        qa2 = as[cqn]
+      }
+      else {
+        qa3 = as[cqn]
+      }
+      cqn++
+    }
+  }
+  else if(cq>=qs.length){
+    q.innerHTML = qs[Math.floor(Math.random()*qs.length)]
+    for(i = 0; i<a_s.length; i++){
+      a_s[i].innerHTML = as[Math.floor(Math.random()*as.length)]
+      qa1 = as[Math.floor(Math.random()*as.length)]
+      qa2 = as[Math.floor(Math.random()*as.length)]
+      qa3 = as[Math.floor(Math.random()*as.length)]
+    }
+  }
+
+}
+for(i = 0; i<a_s.length; i++){
+  a_s[i].onclick = function(){
+    contain.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+    load_questions()
+    a.play()
+  }
+}
+load_questions()
+
+
+
+
+
+
+
+
+</script>
+</html>
