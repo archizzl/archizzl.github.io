@@ -156,8 +156,11 @@ function load_questions(){
 }
 for(i = 0; i<a_s.length; i++){
   a_s[i].onclick = function(){
-    contain.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    if(ooa>=20){
+      window.location.href = "https://www.youtube.com/watch?v=J53UK_bul5Y";
 
+    }
+    contain.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
     load_questions()
     a.play()
   }
