@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+@font-face {
+  font-family: Ubuntu; src: url('./Ubuntu/Ubuntu-Light.ttf');
+
+}
+#mission_statement {
+  color: white;
+  font-size: 35px;
+  font-family: 'Ubuntu';
+  width: 57vw;
+  margin: 10px;
+}
+
+#buttons {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu';
+  font-size: 17px;
+}
+.button {
+  color: white;
+  transition: 0.1s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+}
+.button:hover {
+opacity: 0.8;
+}
+.button:active {
+  text-decoration: underline;
+}
+#photos {
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+}
+</style>
+</head>
+<body>
+<div id="container">
+  <div id="mission_statement">We are the MAPSO Youth Coalition (MYC), a horizontal organization that formed after the death of George Floyd and the national resurgence of the Black Lives Matter movement. The group consists of local middle and high school students and recent graduates who all share a passion for racial justice, education, and action. </div>
+  <div id="buttons">
+    <div class='button'>about</div>
+    <div class='button'>events</div>
+    <div class='button'>calendar</div>
+    <div class='button'>petitions/funds</div>
+    <div class='button'>contact us</div>
+  </div>
+</div>
+<div id="photos"></div>
+</body>
+</html>
