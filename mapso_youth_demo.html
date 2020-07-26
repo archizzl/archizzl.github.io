@@ -26,12 +26,14 @@ a {
   justify-content: space-around;
   align-items: center;
   flex-flow: row nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 @font-face {
   font-family: Ubuntu; src: url('./Ubuntu/Ubuntu-Light.ttf');
 
 }
-
 #header {
   color: white;
   font-size: 45px;
@@ -64,13 +66,13 @@ opacity: 0.8;
   text-decoration: underline;
 }
 #mission_container {
-  height: 88vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column nowrap;
-  background-image: url('IMG_0003.jpg');
+  background-image: url('youth_coal_bg.JPG');
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -82,22 +84,30 @@ opacity: 0.8;
   width: 57vw;
   margin: 10px;
 }
+#photos_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: white;
+}
 </style>
 </head>
 <body>
   <div id="header_div">
     <div id="header">MAPSO YOUTH COALITION</div>
     <div id="buttons">
-      <div class="button">about</div>
+      <div class="button"><a href="file:///Users/archie/Documents/GitHub/archizzl.github.io/mapso_youth_about.html" target="_blank">about</a></div>
       <div class="button">events</div>
       <div class="button">calendar</div>
       <div class="button">donate</div>
       <div class="button">petitions/funds</div>
       <div class="button">join</div>
-      <div class="button"><a href="file:///Users/archie/Documents/GitHub/archizzl.github.io/mapso_youth_contact.html" target="_blank">contact</div>
+      <div class="button"><a href="file:///Users/archie/Documents/GitHub/archizzl.github.io/mapso_youth_contact.html" target="_blank">contact</a></div>
     </div>
   </div>
-  <div id="mission_container">  <div id="mission_statement">We are the MAPSO Youth Coalition (MYC), a horizontal organization that formed after the death of George Floyd and the national resurgence of the Black Lives Matter movement. The group consists of local middle and high school students and recent graduates who all share a passion for racial justice, education, and action. </div>
-</div>
+  <div id="mission_container">
+    <div id="mission_statement">We are the MAPSO Youth Coalition (MYC), a horizontal organization that formed after the murder of George Floyd and the national resurgence of the Black Lives Matter movement. The group consists of local middle and high school students and recent graduates who all share a passion for racial justice, education, and action. </div>
+  </div>
+  <div id="photos_container"></div>
 </body>
 </html>

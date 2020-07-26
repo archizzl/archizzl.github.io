@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+#container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+#buttons_container {
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.button_row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.button_box {
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  margin: 5px;
+  cursor: pointer;
+  background-color: black;
+}
+.button_box:hover {
+  opacity: 0.7;
+}
+#events_container {
+  height: 700px;
+  width: 800px;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: scroll;
+}
+.event_box {
+  min-height: 300px;
+  min-width: 700px;
+  padding: 5px;
+  margin: 10px;
+  border: 2px solid black;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.event_image {
+  height: 250px;
+  width: 250px;
+  background-color: lightblue;
+  border: 2px solid black;
+}
+.event_text {
+  height: 250px;
+  width: 400px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.event_header {
+  font-size: 60px;
+}
+.event_blurb {
+  font-size: 20px;
+  overflow: scroll;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+  <div id="buttons_container">
+    <div class="button_row">
+      <div id="rallies_button" class="button_box" data-clicks="0" data-type="0"></div>
+      <div class="button_caption">rallies</div>
+    </div>
+
+    <div class="button_row">
+      <div id="protests_button" class="button_box"data-clicks="0" data-type="1"></div>
+      <div class="button_caption">protests</div>
+    </div>
+
+    <div class="button_row">
+      <div id="teachins_button" class="button_box"data-clicks="0" data-type="2"></div>
+      <div class="button_caption">teach-ins</div>
+    </div>
+
+    <br/>check/uncheck boxes to customize your feed!
+  </div>
+  <div id="events_container">
+
+
+    <div class="event_box rally_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">rally</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+    <div class="event_box protest_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">protest</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box rally_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">rally 2</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box protest_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">protest 2</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box teach_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">teach-in</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+  </div>
+</body>
+<script>
+  event_types = ['rally_event', 'protest_event', 'teach_event']
+
+  rb = document.getElementById('rallies_button')
+  pb = document.getElementById('protests_button')
+  tb = document.getElementById('teachin_button')
+
+  r_eves = document.querySelectorAll('rally_event')
+  p_eves = document.querySelectorAll('protest_event')
+  t_eves = document.querySelectorAll('teach_event')
+
+
+  buttons = document.querySelectorAll('.button_box')
+  for(i = 0; i<buttons.length; i++){
+    buttons[i].onclick = function(){
+
+
+      change_curr = document.querySelectorAll('.' + event_types[this.getAttribute('data-type')])
+      console.log(event_types[this.getAttribute('data-type')])
+
+
+
+      click_inc = this.getAttribute('data-clicks')
+      click_inc = parseInt(click_inc)
+      click_inc++
+      this.setAttribute('data-clicks', click_inc)
+
+      if(click_inc%2==1){
+        this.style.backgroundColor = 'white'
+        for(j = 0; j<change_curr.length; j++){
+          change_curr[j].style.display = 'none'
+        }
+      }
+      else{
+        this.style.backgroundColor = 'black';
+        for(k = 0; k<change_curr.length; k++){
+          change_curr[k].style.display = 'flex'
+        }
+      }
+
+    }
+  }
+
+
+</script>
+</html>
