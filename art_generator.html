@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+  }
+  #container > *{
+    margin: 10px;
+  }
+  #game_container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+  }
+  .box {
+    background-color: black;
+    height:10px;
+    width:10px;
+  }
+  .path_div {
+    background-color: white;
+    height:10px;
+    width:10px;
+  }
+  </style>
+</head>
+<body>
+<div id="container">
+<button id="generate" onclick="generate()">click me to generate a beautiful painting</button>
+<div id="game_container"></div>
+<div id="title" contenteditable="true">title it!</div>
+</div>
+</body>
+<script>
+cont = document.getElementById('container')
+game_cont = document.getElementById('game_container')
+titleit = document.getElementById('title')
+b_num = 0;
+scale = 50;
+for(i = 0; i<scale; i++){
+  current_row = document.createElement('div')
+  current_row.setAttribute('class', 'row')
+  for(j = 0; j<scale; j++){
+    b_num++
+    current_box = document.createElement('div')
+    current_box.setAttribute('class', 'box')
+    current_box.setAttribute('id', 'box_'+b_num)
+    if(j==0){
+      current_box.setAttribute('data-placement', 'first')
+    }
+    else if(j==scale){
+      current_box.setAttribute('data-placement', 'last')
+    }
+    current_row.appendChild(current_box)
+  }
+  game_cont.appendChild(current_row)
+}
+
+function generate(){
+  console.log('hey')
+  titleit.innerHTML = 'title it!'
+
+  clear_path = document.querySelectorAll('.path_div')
+  for(h = 0; h<clear_path.length; h++){
+    clear_path[h].setAttribute('class', 'box')
+  }
+
+
+  current_point = Math.floor(Math.random()*2495)+1;
+  for(k = 0; k<300; k++){
+    chosen = false;
+    new_path = document.getElementById('box_' + current_point)
+    new_path.setAttribute('class', 'path_div');
+
+    while(chosen == false){
+      choice = Math.floor(Math.random()*4)
+
+      //down
+      if(choice==0){
+        if(current_point<((scale*scale)-scale)){
+          current_point+=scale;
+          chosen = true;
+        }
+      }
+      //right
+      else if(choice==1){
+        if(new_path.dataset.placement!='last'){
+          current_point+=1;
+          chosen = true;
+        }
+      }
+      //up
+      else if(choice==2){
+        if(current_point>=scale){
+          current_point-=scale;
+          chosen = true;
+        }
+      }
+      //left
+      else if(choice==3){
+        if(new_path.dataset.placement!='first'){
+          current_point-=1;
+          chosen = true;
+        }
+      }
+
+    }
+  }
+}
+generate()
+</script>
+</html>
