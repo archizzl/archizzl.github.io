@@ -42,11 +42,21 @@
 <body>
 <div id="container">
 <button id="generate" onclick="generate()">click me to generate a beautiful painting</button>
+<input type="range" min="1.00" max="1000.00" value="300.00" id="path_length">
+<div id="path_length_header">amount of squares that the path will go on for: 300</div>
+
 <div id="game_container"></div>
 <div id="title" contenteditable="true">title it!</div>
 </div>
 </body>
 <script>
+
+path_length_header = document.getElementById('path_length_header')
+path_length_slider = document.getElementById('path_length')
+  path_length_slider.oninput = function() {
+    filled = this.value;
+    path_length_header.innerHTML = 'amount of squares that the path will go on for: ' + filled
+  }
 cont = document.getElementById('container')
 game_cont = document.getElementById('game_container')
 titleit = document.getElementById('title')
@@ -71,6 +81,7 @@ for(i = 0; i<scale; i++){
   game_cont.appendChild(current_row)
 }
 
+filled = 300;
 function generate(){
   console.log('hey')
   titleit.innerHTML = 'title it!'
@@ -82,7 +93,7 @@ function generate(){
 
 
   current_point = Math.floor(Math.random()*2495)+1;
-  for(k = 0; k<300; k++){
+  for(k = 0; k<filled; k++){
     chosen = false;
     new_path = document.getElementById('box_' + current_point)
     new_path.setAttribute('class', 'path_div');
