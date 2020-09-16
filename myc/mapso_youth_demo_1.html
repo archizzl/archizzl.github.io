@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    @font-face { font-family: Source; src: url('SourceSansPro-Regular.ttf'); }
+
+    #buttons_row {
+      width: 70vw;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      height: inherit;
+      flex-flow: row nowrap;
+      align-items: center;
+      position: absolute;
+      right: 7vw;
+    }
+    #anchor {
+      height: 14vh;
+      width: 100vw;
+      background-color: black;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      position: fixed;
+      z-index: 5;
+    }
+    .buttons {
+      color: white;
+      font-family: Source;
+      font-size: 30px;
+    }
+    .buttons:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    #main_image {
+      height: 80vh;
+      width: auto;
+    }
+
+
+    .containers {
+      position: absolute;
+      top: 14vh;
+      z-index: 0;
+      overflow-x: hidden;
+      background-color: #262626
+    }
+
+
+
+
+
+
+
+    #events_container {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+      font-family: Source;
+    }
+    #events_container > * {
+      color: white;
+    }
+
+
+    #events_list_container {
+      height: 83vh;
+      width: 72vw;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: scroll;
+    }
+    #events_buttons_box {
+      width: 20vw;
+      height: 40vh;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: #141414;
+    }
+    .events_button_row {
+      display: flex;
+      flex-flow: row nowrap;
+      text-align: left;
+    }
+    .events_button_box {
+      height: 20px;
+      width: 20px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: blue;
+    }
+    .events_button_box:hover {
+      opacity: 0.7;
+    }
+    .event_box {
+      min-height: 300px;
+      width: 70vw;
+      margin-top: 30px;
+      margin-right: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #141414;
+    }
+    .event_box > div {
+      margin: 15px;
+    }
+    .event_image {
+      height: 250px;
+      width: 250px;
+background-image: url('myc_images/mycimage3.PNG');
+    }
+    .event_text {
+      height: 250px;
+      width: 45vw;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .event_header {
+      font-size: 60px;
+    }
+    .event_blurb {
+      font-size: 20px;
+      overflow: scroll;
+    }
+    #events_header {
+      font-size: 80px;
+      color: white;
+      font-family: Source;
+    }
+
+
+
+
+
+
+
+
+    #calendar_container {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-flow: column nowrap;
+    }
+
+    #calendar_calendar {
+      height: 80vh;
+      width: 80vw;
+      color: white;
+    }
+
+    #calendar_center {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+    }
+
+
+    #projects_container {
+      height: 100vh;
+      width: 100vw;
+
+    }
+
+
+    #contact_container {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    #contact_container > * {
+      margin: 15px;
+    }
+
+    #contact_form {
+      height: 50vh;
+      width: 50vw;
+    }
+    #contact_text {
+      font-size: 30px;
+      color: white;
+      font-family: Source;
+      width: 40vw;
+      text-align: center;
+    }
+
+
+
+
+    #donate_container {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+    }
+
+    #donate_text {
+      color: white;
+      font-family: Source;
+      font-size: 30px;
+      width: 55vw;
+      text-align: center;
+    }
+    #donate_inquiries {
+      color: white;
+      font-family: Source;
+      font-size: 30px;
+      width: 55vw;
+      text-align: center;
+    }
+
+    #logos {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .donate_logo {
+      height: 30vh;
+      width: auto;
+      margin: 20px;
+    }
+    .donate_logo:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+
+
+
+
+
+    #myc_logo {
+      height: auto;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 50px;
+      background-color: white;
+      z-index: 10;
+      outline: 8px solid black;
+      padding: 10px;
+    }
+
+
+
+    #about_container {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    #about_section_1 {
+      height: 86vh;
+      width: 100vw;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    #a1left {
+      height: 80vh;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #a1right {
+      height: 80vh;
+      width: 65vw;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+    #abs1i {
+      height: 78vh;
+      width: auto;
+    }
+
+    #about_header_1 {
+      font-size: 60px;
+      color: white;
+      font-family: Source;
+      border-bottom: 4px solid white;
+      text-align: right;
+    }
+    .abp {
+      color: white;
+      font-size: 25px;
+      font-family: Source;
+      margin: 15px;
+    }
+
+
+
+    #photos_container {
+      height: 200vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column nowrap;
+    }
+    .photos_row {
+      width: 97vw;
+      height: 25vh;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .photos_photo {
+      height: 20vh;
+      width: 23vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <img src="myc_images/actual_logo.png" id="myc_logo">
+  <div id="anchor">
+    <!--<div id="header">MAPSO YOUTH COALITION</div>-->
+
+    <div id="buttons_row">
+    <div class="buttons" data-switch="about_container">ABOUT</div>
+    <div class="buttons" data-switch="events_container">EVENTS</div>
+    <div class="buttons" data-switch="projects_container">PROJECTS</div>
+    <div class="buttons" data-switch="calendar_container">CALENDAR</div>
+    <div class="buttons" data-switch="photos_container">PHOTOS</div>
+    <div class="buttons" data-switch="contact_container">CONTACT</div>
+    <div class="buttons" data-switch="donate_container">DONATE</div>
+
+  </div>
+</div>
+<div id="buffer"></div>
+<div id="photos_container" class="containers">
+
+
+  <div class="photos_row">
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+
+
+
+
+  </div>
+  <div class="photos_row">
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+</div>
+  <div class="photos_row">
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+</div>
+<div class="photos_row">
+  <div class="photos_photo"></div>
+  <div class="photos_photo"></div>
+  <div class="photos_photo"></div>
+  <div class="photos_photo"></div>
+
+</div>
+  <div class="photos_row">
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+    <div class="photos_photo"></div>
+</div>
+
+
+
+
+  <img src="myc_images/mycimage1.JPG" id="main_image">
+
+
+</div>
+<div id="about_container" class="containers">
+
+
+  <div id="about_section_1">
+    <div id="a1left">
+      <img src="myc_images/myc_about_pic1.JPG" id="abs1i">
+    </div>
+    <div id="a1right">
+      <div id="about_header_1">the <b>Mapso Youth Coalition</b>(MYC)</div>
+      <div id="about_paragraph_1" class="abp">is a group that formed after the murder of George Floyd and the national resurgence of the Black Lives Matter movement. The coalition consists of local high school students and graduates who share a passion for racial justice, education, and action.</div>
+      <div id="about_paragraph_2" class="abp"> Since its founding in early June, the MYC has worked toward holding the South Orange and Maplewood Townships, the MAPSO Police Forces, and the South Orange Maplewood School District accountable for turning a blind eye to racial inequities within our communities. Members have done so by attending meetings and by brainstorming effective initiatives, such as a “Student Bill of Rights”, and mutual aid programs.
+</div>
+    <div id="about_paragraph_3" class="abp">In collaboration with SOMA Justice, they also co-hosted two events on June 19th, where residents of all ages could celebrate Juneteenth with music, dancing, crafts, and more. These events were an opportunity to discuss the real history of this country and how intrinsically tied it is to so many injustices in discussion today. The coalition continues to work on ways they can embed anti-racism within both towns, Essex County, and New Jersey as a whole.
+</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+  </div>
+</div>
+
+<div id="events_container" class="containers">
+  <div id="events_buttons_box">
+
+
+
+
+    <div class="events_button_row">
+      <div id="rallies_button" class="events_button_box" data-clicks="0" data-type="0"></div>
+      <div class="button_caption">rallies</div>
+    </div>
+
+    <div class="events_button_row">
+      <div id="events_protests_button" class="events_button_box"data-clicks="0" data-type="1"></div>
+      <div class="button_caption">protests</div>
+    </div>
+
+    <div class="events_button_row">
+      <div id="teachins_button" class="events_button_box"data-clicks="0" data-type="2"></div>
+      <div class="button_caption">teach-ins</div>
+    </div>
+
+  </div>
+  <div id="events_list_container">
+
+
+    <div class="event_box rally_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">rally</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+    <div class="event_box protest_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">protest</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box rally_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">rally 2</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box protest_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">protest 2</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+    <div class="event_box teach_event">
+      <div class="event_image"></div>
+      <div class="event_text">
+        <div class="event_header">teach-in</div>
+        <div class="event_blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat dolor nulla, vitae imperdiet sapien pharetra vel. Morbi nec egestas nunc, nec euismod lorem. Donec dignissim tellus lacus, ac aliquet orci semper sit amet. Sed vestibulum tortor at neque finibus mollis. Curabitur viverra augue mi, quis vulputate enim finibus elementum. </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+  </div>
+
+
+
+</div>
+
+
+<div id="calendar_container" class="containers">
+
+
+<span id="calendar_center"><iframe src="https://calendar.google.com/calendar/embed?src=onr8dr1665vj7fkqciqverpd0k%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" frameborder="0" scrolling="no" id="calendar_calendar"></iframe></span>
+
+</div>
+
+<div id="projects_container" class="containers">
+
+
+
+
+
+</div>
+
+<div id="contact_container" class="containers">
+  <div id="contact_text">The Mapso Youth Coalition can be reached in a variety of ways, such as email, instagram, and facebook. If you would like to join us, please fill out this form.</div>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKtZHjBWCwfE7NabylTu6Jl9Sl7e3f9nJ0gBfRDDq6dNNnsg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" id="contact_form">Loading…</iframe>
+
+</div>
+
+<div id="donate_container" class="containers">
+
+<div id="donate_text">We are accepting monetary donations through Venmo! We appreciate your support as these donations help us to provide resources and fund future projects. Thank you!</div>
+
+<div id="logos">
+  <a href="https://www.paypal.com/biz/fund?id=G8VBEVNQQ8DDQ" target="_blank"><img class="donate_logo" src="myc_images/myc_paypal.png"></a>
+</div>
+<div id="donate_inquiries">for further inquiries, feel free to contact MYC treasurer Laila Gold at</div>
+
+</div>
+
+
+
+</body>
+<script>
+
+  photos_photos = document.querySelectorAll('.photos_photo')
+  photos_array = ['myc_about_pic1.JPG', 'myc_header.png', 'mycimage1.JPG', 'mycimage2.JPG', 'mycimage3.png', 'mycimage4.JPG']
+  for(z = 0; z<photos_photos.length; z++){
+    photos_photos[z].style.backgroundImage = 'url(' + " 'myc_images/" + photos_array[z] + "'" + ')'
+    console.log('url(' + " 'myc_images/" + photos_array[z] + "'" + ')')
+  }
+
+
+
+
+
+
+  event_types = ['rally_event', 'protest_event', 'teach_event']
+
+  rb = document.getElementById('rallies_button')
+  pb = document.getElementById('protests_button')
+  tb = document.getElementById('teachin_button')
+
+  r_eves = document.querySelectorAll('rally_event')
+  p_eves = document.querySelectorAll('protest_event')
+  t_eves = document.querySelectorAll('teach_event')
+
+
+  buttons = document.querySelectorAll('.events_button_box')
+  for(i = 0; i<buttons.length; i++){
+    buttons[i].onclick = function(){
+
+
+      change_curr = document.querySelectorAll('.' + event_types[this.getAttribute('data-type')])
+      console.log(event_types[this.getAttribute('data-type')])
+
+
+
+      click_inc = this.getAttribute('data-clicks')
+      click_inc = parseInt(click_inc)
+      click_inc++
+      this.setAttribute('data-clicks', click_inc)
+
+      if(click_inc%2==1){
+        this.style.backgroundColor = 'white'
+        for(j = 0; j<change_curr.length; j++){
+          change_curr[j].style.display = 'none'
+        }
+      }
+      else{
+        this.style.backgroundColor = 'blue';
+        for(k = 0; k<change_curr.length; k++){
+          change_curr[k].style.display = 'flex'
+        }
+      }
+
+    }
+  }
+
+
+  containers = document.querySelectorAll('.containers')
+  switch_buttons = document.querySelectorAll('.buttons')
+  function container_switch(x){
+    container_curr = document.getElementById(x)
+    for(l = 0; l<containers.length; l++){
+      containers[l].style.display = 'none'
+    }
+    for(n = 0; n<switch_buttons.length; n++){
+      switch_buttons[n].style.textShadow = 'none'
+    }
+    container_curr.style.display = 'flex'
+  }
+  container_switch('about_container')
+  switch_buttons[0].style.textShadow = '3px 3px #ffa500'
+
+  for(m=0;m<switch_buttons.length;m++){
+    switch_buttons[m].onclick = function(){
+      container_switch(this.getAttribute('data-switch'))
+      this.style.textShadow = '3px 3px #ffa500'
+    }
+  }
+
+
+
+
+
+
+</script>
+
+</html>
