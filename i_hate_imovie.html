@@ -8,11 +8,43 @@ justify-content: center;
 align-items: center;
 flex-flow: row nowrap;
 }
+video {
+  height: 500px;
+  width: auto;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#v2 {
+  margin-top: 15.49px;
+}
 </style>
 </head>
 <body>
-  <video src="ihim11.mov" autoplay muted ></video>
-  <video src="ihim21.mov" autoplay muted ></video>
-
+  <div id="container">
+  <video src="./hpi/supp-1.mov"    id="v" alt="credit to my love, livvy krakower"></video>
+  <video src="./hpi/supp.mov"    id="v2" alt="credit to my love, livvy krakower"></video>
+</div>
 </body>
+<script>
+cont = document.getElementById('container')
+v = document.getElementById('v')
+v2 = document.getElementById('v2')
+
+cont.addEventListener("click", function(){
+  v.play()
+  v2.play()
+})
+
+
+
+
+
+
+
+
+
+</script>
 </html>

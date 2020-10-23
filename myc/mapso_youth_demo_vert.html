@@ -1,0 +1,531 @@
+<!DOCTYPE html
+<html>
+<head>
+  <style>
+    @font-face { font-family: Source; src: url('SourceSansPro-Regular.ttf'); }
+
+    * {
+      padding: 0;
+      margin: 0;
+      user-select: none;
+    }
+    #myc_logo {
+      height: auto;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 5vw;
+      background-color: white;
+      z-index: 10;
+      outline: 8px solid black;
+      padding: 10px;
+    }
+    #background {
+      height: 100vh;
+      width: 100vw;
+      background-image: url('myc_images/mycbackground.jpg');
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-flow: column;
+      overflow: scroll;
+      position: absolute;
+    }
+    #container {
+      position: absolute;
+      min-height: 100vh;
+      width: 60vw;
+      background-color: #262626;
+    }
+
+    .containers {
+      position: absolute;
+      top: 14vh;
+      z-index: 0;
+      overflow-x: hidden;
+      background-color: #262626;
+      overflow-y: scroll;
+    }
+
+
+
+    #anchor_center {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+    }
+    #anchor {
+      height: 14vh;
+      width: 60vw;
+      background-color: black;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      position: fixed;
+      z-index: 5;
+    }
+    #buttons_row {
+      width: 60vw;
+      display: flex;
+      justify-content: center;
+      color: white;
+      height: inherit;
+      flex-flow: row nowrap;
+      align-items: center;
+      position: absolute;
+    }
+    .buttons {
+      color: white;
+      font-family: Source;
+      font-size: 35px;
+      margin: 10px;
+    }
+    .buttons:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    #contact_container {
+      height: 86vh;
+      width: 60vw;
+      display: flex;
+      flex-flow: column ;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #contact_container > * {
+    }
+
+    #contact_text {
+      margin-top: 10px;
+      font-size: 30px;
+      color: white;
+      font-family: Source;
+      width: 40vw;
+      text-align: center;
+    }
+
+    .contact_logos_row {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .contact_logos {
+      height: 100px;
+      width: 100px;
+      margin: 10px;
+    }
+    #contact_photo {
+      height: 35vh;
+      width: auto;
+    }
+
+
+
+
+    #donate_container {
+      height: 86vh;
+      width: 60vw;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-flow: column;
+    }
+    #donate_container > * {
+      margin: 10px;
+    }
+
+    #donate_text {
+      color: white;
+      font-family: Source;
+      font-size: 30px;
+      width: 55vw;
+      text-align: center;
+    }
+    #donate_inquiries {
+      color: white;
+      font-family: Source;
+      font-size: 30px;
+      width: 55vw;
+      text-align: center;
+    }
+
+    #logos {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .donate_logo {
+      height: 10vh;
+      width: auto;
+    }
+    .donate_logo:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+    #donate_image {
+      height: 375px;
+      width: auto;
+    }
+
+
+    #about_container {
+      height: auto;
+      width: 60vw;
+      display: flex;
+      flex-flow: row nowrap;
+      padding-bottom: 20px;
+    }
+
+    #about_section_1 {
+      height: auto;
+      width: 60vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #about_section_1 > * {
+      margin: 5px;
+    }
+
+    #a1right {
+      height: auto;
+      width: 50vw;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+
+    #about_header_1 {
+      font-size: 80px;
+      color: white;
+      font-family: Source;
+      width: 50vw;
+      text-align: center;
+    }
+    .abp {
+      color: white;
+      font-size: 25px;
+      font-family: Source;
+      margin: 15px;
+    }
+    .about_images {
+      width: 53vw;
+      height: auto;
+    }
+
+
+    #bottom_bar_center {
+      position: absolute;
+      top: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      background-color: black;
+    }
+
+    #bottom_bar {
+
+      height: 10vh;
+      width: 60vw;
+      background-color: black;
+
+    }
+
+
+    #events_container {
+      height: auto;
+      width: 60vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: Source;
+      overflow: scroll;
+    }
+    #events_container > * {
+      color: white;
+      margin: 10px;
+    }
+    .event_headers {
+      font-size: 60px;
+      text-decoration: underline;
+      width: 55vw;
+      text-align: left;
+    }
+
+    #upcoming {
+      height: 60vh;
+      width: 55vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #upcoming_event {
+      height: 50vh;
+      width: 50vw;
+      background-color: black;
+      margin: 10px;
+    }
+    #past {
+      height: auto;
+      width: 55vw;
+      overflow: scroll;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .past_events {
+      height: 50vh;
+      width: 53vw;
+      background-color: blue;
+      margin: 20px;
+    }
+
+    #committees_container {
+
+      height: 150vh;
+      width: 60vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #committees_container > * {
+      font-family: Source;
+      color: white;
+    }
+    .committee_boxes {
+      height: 30vh;
+      width: 50vw;
+      margin: 5px;
+    }
+    .committee_headers {
+      color: white;
+      font-size: 40px;
+
+    }
+
+  </style>
+</head>
+<body>
+
+
+<div id="background">
+  <div id="container">
+
+    <div id="committees_container" class="containers">
+
+      <div class="committee_boxes">
+        <div class="committee_headers">Lorem ipsum</div>
+        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">Lorem ipsum</div>
+        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">Lorem ipsum</div>
+        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">Lorem ipsum</div>
+        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+
+        </div>
+      </div>
+
+    </div>
+
+    <div id="events_container" class="containers">
+      <div id="upcoming">
+        <div id="upcoming_header" class="event_headers">UPCOMING EVENT</div>
+
+        <div id="upcoming_event"></div>
+
+
+
+      </div>
+
+      <div id="past">
+        <div id="past_header" class="event_headers">PAST EVENTS</div>
+
+        <div class="past_events"></div>
+        <div class="past_events"></div>
+        <div class="past_events"></div>
+        <div class="past_events"></div>
+        <div class="past_events"></div>
+
+
+      </div>
+
+    </div>
+
+
+    <div id="about_container" class="containers">
+
+
+      <div id="about_section_1">
+      <div id="a1right">
+        <div id="about_header_1">the <b>Mapso Youth Coalition</b>(MYC)</div>
+
+        <img class="about_images" src="myc_images/mycimage1.JPG">
+
+        <div id="about_paragraph_1" class="abp">is a group that formed after the murder of George Floyd and the national resurgence of the Black Lives Matter movement. The coalition consists of local high school students and graduates who share a passion for racial justice, education, and action.</div>
+
+        <img class="about_images"src="myc_images/mycimage2.JPG">
+
+        <div id="about_paragraph_2" class="abp"> Since its founding in early June, the MYC has worked toward holding the South Orange and Maplewood Townships, the MAPSO Police Forces, and the South Orange Maplewood School District accountable for turning a blind eye to racial inequities within our communities. Members have done so by attending meetings and by brainstorming effective initiatives, such as a “Student Bill of Rights”, and mutual aid programs.</div>
+
+        <img class="about_images" src="myc_images/mycimage3.png">
+
+        <div id="about_paragraph_3" class="abp">In collaboration with SOMA Justice, they also co-hosted two events on June 19th, where residents of all ages could celebrate Juneteenth with music, dancing, crafts, and more. These events were an opportunity to discuss the real history of this country and how intrinsically tied it is to so many injustices in discussion today. The coalition continues to work on ways they can embed anti-racism within both towns, Essex County, and New Jersey as a whole.</div>
+
+        <img class="about_images"src="myc_images/mycimage1.JPG">
+
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+
+    <div id="contact_container" class="containers">
+      <div id="contact_text">If you're under 26 and interested in joining, fill out <a href="" target="_blank">this form</a>!
+        <br/>If you're unable to to join but still want to help the cause, email us at mapsoyouthcoalition@gmail.com, join our remind, or find us on these socials:
+
+      </div>
+      <div id="contact_logos_row">
+        <a href="" target="_blank"><img src="myc_images/myc_fbl.png" class="contact_logos"></a>
+        <a href="https://www.instagram.com/mapsoyouthco/" target="_blank"><img src="myc_images/myc_igl.png" class="contact_logos"></a>
+
+      </div>
+      <img src="myc_images/mycimage2.JPG" id="contact_photo">
+    </div>
+
+    <div id="donate_container" class="containers">
+
+      <div id="donate_text">We are accepting monetary donations through Paypal! We appreciate your support as these donations help us to pay for Zoom, fund our committees/projects, and help start a mutual aid system in mapso. Thank you!</div>
+
+      <div id="logos">
+        <a href="https://www.paypal.com/biz/fund?id=G8VBEVNQQ8DDQ" target="_blank"><img class="donate_logo" src="myc_images/myc_papal_2.png"></a>
+      </div>
+
+      <img src="myc_images/mycimage1.JPG" id="donate_image">
+
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+<img src="myc_images/actual_logo.png" id="myc_logo">
+
+<div id="anchor_center">
+  <div id="anchor">
+    <!--<div id="header">MAPSO YOUTH COALITION</div>-->
+
+    <div id="buttons_row">
+      <div class="buttons" data-switch="about_container">ABOUT</div>
+      <div class="buttons" data-switch="events_container">EVENTS</div>
+      <div class="buttons" data-switch="committees_container">COMMITTEES</div>
+      <div class="buttons" data-switch="contact_container">CONTACT</div>
+      <div class="buttons" data-switch="donate_container">DONATE</div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div id="bottom_bar_center">
+<div id="bottom_bar">
+-->
+
+</div>
+</div>
+
+</body>
+<script>
+
+/*
+event_types = ['rally_event', 'protest_event', 'teach_event']
+
+rb = document.getElementById('rallies_button')
+pb = document.getElementById('protests_button')
+tb = document.getElementById('teachin_button')
+
+r_eves = document.querySelectorAll('rally_event')
+p_eves = document.querySelectorAll('protest_event')
+t_eves = document.querySelectorAll('teach_event')
+
+
+buttons = document.querySelectorAll('.events_button_box')
+for(i = 0; i<buttons.length; i++){
+  buttons[i].onclick = function(){
+
+
+    change_curr = document.querySelectorAll('.' + event_types[this.getAttribute('data-type')])
+    console.log(event_types[this.getAttribute('data-type')])
+
+
+
+    click_inc = this.getAttribute('data-clicks')
+    click_inc = parseInt(click_inc)
+    click_inc++
+    this.setAttribute('data-clicks', click_inc)
+
+    if(click_inc%2==1){
+      this.style.backgroundColor = 'white'
+      for(j = 0; j<change_curr.length; j++){
+        change_curr[j].style.display = 'none'
+      }
+    }
+    else{
+      this.style.backgroundColor = 'blue';
+      for(k = 0; k<change_curr.length; k++){
+        change_curr[k].style.display = 'flex'
+      }
+    }
+
+  }
+}
+
+*/
+
+containers = document.querySelectorAll('.containers')
+switch_buttons = document.querySelectorAll('.buttons')
+function container_switch(x){
+  container_curr = document.getElementById(x)
+  for(l = 0; l<containers.length; l++){
+    containers[l].style.display = 'none'
+  }
+  for(n = 0; n<switch_buttons.length; n++){
+    switch_buttons[n].style.textShadow = 'none'
+  }
+  container_curr.style.display = 'flex'
+}
+container_switch('events_container')
+switch_buttons[1].style.textShadow = '2.5px 2.5px #ffa500'
+
+for(m=0;m<switch_buttons.length;m++){
+  switch_buttons[m].onclick = function(){
+    container_switch(this.getAttribute('data-switch'))
+    this.style.textShadow = '2.5px 2.5px #ffa500'
+  }
+}
+
+</script>
+</html>
