@@ -20,10 +20,17 @@
         .menuChild {
           font-size: 30px;
         }
+        #head {
+          position: absolute;
+          top: 40vh;
+          left: 20vw;
+        }
     </style>
 </head>
 <body translate="no" >
+  <span id="head">what it would look like if i knew how to do the worm, illustrated via a sine wave</span>
   <div id="container">
+
 </div>
 <script >
   window.onload = function(){
@@ -32,13 +39,26 @@
     }
     let container = document.getElementById('container')
     x = 0;
-    ne = 120
+    ne = 30
+    freq = 20;
     for(i=0; i<ne; i++){
       x += 360 / ne // 15;
 
       let curr = document.createElement('span')
       curr.setAttribute('class', 'menuChild')
       curr.innerHTML = '-'
+      if(i==ne-1){
+        curr.innerHTML = ':'
+      }
+      if(i==ne-2){
+        curr.innerHTML = '('
+      }
+      if(i==0){
+        curr.innerHTML = '>'
+      }
+      if(i == ne/2){
+        curr.innerHTML = '|'
+      }
       curr.setAttribute('id', 'sin' + i)
       curr.dataset.phase = x;
       container.appendChild(curr)
@@ -51,7 +71,7 @@
         let p = children[i].getAttribute('data-phase') ;
         let s = Math.sin( toRadians( p ) );
 
-        children[i].style.marginBottom = ( 100 * s ) + 'px';
+        children[i].style.marginBottom = ( freq * s ) + 'px';
 
         p = ( parseInt( p ) + 2 ) % 360
         children[i].setAttribute( 'data-phase', p ) ;
