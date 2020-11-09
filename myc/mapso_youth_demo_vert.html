@@ -121,6 +121,10 @@
       width: auto;
     }
 
+    #signup_form:visited {
+      color: lightblue;
+    }
+
 
 
 
@@ -199,7 +203,7 @@
 
 
     #about_header_1 {
-      font-size: 80px;
+      font-size: 55px;
       color: white;
       font-family: Source;
       width: 50vw;
@@ -291,7 +295,7 @@
       width: 60vw;
       display: flex;
       flex-flow: column;
-      justify-content: space-around;
+      justify-content: flex-start;
       align-items: center;
     }
     #committees_container > * {
@@ -301,12 +305,20 @@
     .committee_boxes {
       height: 30vh;
       width: 50vw;
-      margin: 5px;
+      border: 1px solid white;
     }
     .committee_headers {
       color: white;
       font-size: 40px;
 
+    }
+
+    #bottom_anchor {
+      height: 10vh;
+      width: 100vw;
+      background-color: black;
+      position: absolute;
+      top: 100vh;
     }
 
   </style>
@@ -320,26 +332,29 @@
     <div id="committees_container" class="containers">
 
       <div class="committee_boxes">
-        <div class="committee_headers">Lorem ipsum</div>
-        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+        <div class="committee_headers">Mutual Aid</div>
+        <div class="committee_content">The mutual aid committee is currently working to create a hub for middle schools (prioritizing those whose parents/guardians are not home during the day) to go to virtual school and interact after school. We also hope to create space in our town for skill sharing. This committee is currently facilitated by Jordan, but she would like a partner or two! Meets Tuesdays at 6:30.
+
 
         </div>
       </div>
       <div class="committee_boxes">
-        <div class="committee_headers">Lorem ipsum</div>
-        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+        <div class="committee_headers">Public Safety</div>
+        <div class="committee_content">The public safety committee, currently facilitated by Laila Gold and Jordan but open to other facilitators, is focused on making our town a safer place through methods such as working on defunding the Maplewood/South Orange police forces. So far, we have succeeded in fully disarming the Maplewood Auxiliary police force, and are working towards further police abolition. Meets Mondays at 6:30.
+
 
         </div>
       </div>
       <div class="committee_boxes">
-        <div class="committee_headers">Lorem ipsum</div>
-        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+        <div class="committee_headers">SOMSD Reform</div>
+        <div class="committee_content">The SOMSD reform committee, facilitated by Lily Forman and Olivia Brash but open to other facilitators, is working towards making the South Orange and Maplewood School District more equitable, especially for BIPOC students, by working on projects like a Student Bill of Rights, a curriculum review, a new mentorship program, stronger implementation of restorative practices, and more. Meets Thursdays at 4.
+
 
         </div>
       </div>
       <div class="committee_boxes">
-        <div class="committee_headers">Lorem ipsum</div>
-        <div class="committee_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum, velit at ultrices ornare, lorem est mattis ante, id placerat augue urna sed ipsum. Proin vestibulum bibendum volutpat. Duis non cursus sapien, vestibulum pharetra neque. Maecenas ac malesuada diam, ac hendrerit magna. Proin eu faucibus magna. Aenean ut nunc nulla. Phasellus bibendum justo risus, a volutpat augue posuere et. Vivamus aliquet congue nisl a eleifend.
+        <div class="committee_headers">Juneteenth/July 4th Event Planning</div>
+        <div class="committee_content">This committee will have its first meeting this Sunday at 2 PM and it will be facilitated by Ogenna and Kailyn. They will focus on following through with our plans from the summer to lead the planning of Juneteenth and July 4th celebrations in our town.
 
         </div>
       </div>
@@ -376,7 +391,7 @@
 
       <div id="about_section_1">
       <div id="a1right">
-        <div id="about_header_1">the <b>Mapso Youth Coalition</b>(MYC)</div>
+        <div id="about_header_1">the Mapso Youth Coalition</div>
 
         <img class="about_images" src="myc_images/mycimage1.JPG">
 
@@ -397,12 +412,8 @@
 
     </div>
 
-
-
-
-
     <div id="contact_container" class="containers">
-      <div id="contact_text">If you're under 26 and interested in joining, fill out <a href="" target="_blank">this form</a>!
+      <div id="contact_text">If you're under 26 and interested in joining, fill out <a href="" target="_blank" id="signup_form">this form</a>!
         <br/>If you're unable to to join but still want to help the cause, email us at mapsoyouthcoalition@gmail.com, join our remind, or find us on these socials:
 
       </div>
@@ -448,6 +459,10 @@
     </div>
   </div>
 </div>
+
+<div id="bottom_anchor">
+heyy</div>
+
 
 <!--
 <div id="bottom_bar_center">
