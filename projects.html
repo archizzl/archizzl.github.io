@@ -77,22 +77,21 @@ a:hover {
 <body>
 <div id="nonlink">
 <div id="t">things i've made</div>
-<!--<div id="personal" class="switcher">
+<div id="personal" class="switcher">
   <div class='switchtitle'>sites made for other people</div>
   <div class="switchbox" id="pswitch" data-num='0' data-cat="0"></div>
 </div>
--->
 <div id="games" class="switcher">
   <div class='switchtitle'>games</div>
-  <div class="switchbox" id="gswitch" data-num='0' data-cat="0"></div>
+  <div class="switchbox" id="gswitch" data-num='0' data-cat="1"></div>
 </div>
 <div id="art" class="switcher">
   <div class='switchtitle'>art ?</div>
-  <div class="switchbox" id="aswitch" data-num='0' data-cat="1"></div>
+  <div class="switchbox" id="aswitch" data-num='0' data-cat="2"></div>
 </div>
 <div id="misc" class="switcher">
   <div class='switchtitle'>misc</div>
-  <div class="switchbox" id="mswitch" data-num='0' data-cat="2"></div>
+  <div class="switchbox" id="mswitch" data-num='0' data-cat="3"></div>
 </div>
 </div>
   <div id="container">
@@ -101,11 +100,11 @@ a:hover {
   <script id="rendered-js">
       let container = document.getElementById('container')
 
-      //let ppl = ['sinkodinkobinko', 'openmic']
+      let ppl = ['sinkodinkobinko', 'openmic', 'myc/mapso_youth_demo_vert']
       let games = ['cube_game', 'click_streak', 'other_cube_game', 'timer_game', "precision_game", 'click_speed']
       let arts = ['openmic', 'balloons', 'colors_for_jason', 'bubbles_or_lack_thereof', 'lineheight_experimentation', 'a_bit_of_squares', 'auto_train', 'art_generator']
-      let misc = ['clock', 'optical_illusion', 'sinwave', 'fun_with_equations', 'transitions_demo', 'learning_keyframes', 'bucketlist', 'hailstone_sequence_visualization', 'pierre_shirt', 'lesson_on_inputs', 'puddle', 'myc/mapso_youth_demo_vert']
-      let lists = [games, arts, misc]
+      let misc = ['clock', 'optical_illusion', 'sinwave', 'fun_with_equations', 'transitions_demo', 'learning_keyframes', 'bucketlist', 'hailstone_sequence_visualization', 'pierre_shirt', 'lesson_on_inputs', 'puddle', ]
+      let lists = [ppl, games, arts, misc]
 
       for(j = 0; j<lists.length; j++){
         for(i=0;i<lists[j].length;i++){
@@ -155,8 +154,6 @@ a:hover {
             aha = parseInt(aha)
             aha++
             this.setAttribute('data-num', aha)
-
-
 
 
             cln = parseInt(this.getAttribute('data-cat'))
