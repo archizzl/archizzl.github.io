@@ -2,16 +2,22 @@
 <html>
 <head>
   <style>
-    @font-face { font-family: Source; src: url('SourceSansPro-Regular.ttf'); }
+  body {
+    background-color: black;
+  }
+    @font-face {
+      font-family: Source; src: url('SourceSansPro-Regular.ttf');
+    }
+    @font-face {
+      font-family: Lora; src: url('Lora/static/Lora-Regular.ttf');
+
+    }
 
     * {
       padding: 0;
       margin: 0;
-      user-select: none;
     }
-    #myc_logo {
-      height: auto;
-      width: 200px;
+    #logo_fixed {
       position: fixed;
       top: 0;
       left: 5vw;
@@ -19,6 +25,14 @@
       z-index: 10;
       outline: 8px solid black;
       padding: 10px;
+      display: flex;
+      flex-flow: column;
+    }
+    #myc_logo {
+      width: 15vw;
+      height: auto;
+
+
     }
     #background {
       height: 100vh;
@@ -29,8 +43,8 @@
       align-items: center;
       justify-content: flex-start;
       flex-flow: column;
-      overflow: scroll;
       position: absolute;
+      overflow: scroll;
     }
     #container {
       position: absolute;
@@ -79,7 +93,7 @@
     .buttons {
       color: white;
       font-family: Source;
-      font-size: 35px;
+      font-size: 2.2vw;
       margin: 10px;
     }
     .buttons:hover {
@@ -104,25 +118,12 @@
       color: white;
       font-family: Source;
       width: 40vw;
-      text-align: center;
-    }
 
-    .contact_logos_row {
-      display: flex;
-      flex-flow: row nowrap;
-    }
-    .contact_logos {
-      height: 100px;
-      width: 100px;
-      margin: 10px;
     }
     #contact_photo {
-      height: 35vh;
-      width: auto;
-    }
-
-    #signup_form:visited {
-      color: lightblue;
+      width: 40vw;
+      height: auto;
+      margin: 20px;
     }
 
 
@@ -143,17 +144,10 @@
     #donate_text {
       color: white;
       font-family: Source;
-      font-size: 30px;
-      width: 55vw;
-      text-align: center;
+      font-size: 2vw;
+      width: 50vw;
     }
-    #donate_inquiries {
-      color: white;
-      font-family: Source;
-      font-size: 30px;
-      width: 55vw;
-      text-align: center;
-    }
+
 
     #logos {
       display: flex;
@@ -177,29 +171,28 @@
       height: auto;
       width: 60vw;
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
       padding-bottom: 20px;
+    }
+    #about_section_1 > div{
+      margin: 20px;
     }
 
     #about_section_1 {
+      margin-top: 10px;
       height: auto;
-      width: 60vw;
+      width: 50vw;
       display: flex;
       flex-flow: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
     }
     #about_section_1 > * {
       margin: 5px;
     }
 
-    #a1right {
-      height: auto;
-      width: 50vw;
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-    }
 
 
     #about_header_1 {
@@ -214,10 +207,6 @@
       font-size: 25px;
       font-family: Source;
       margin: 15px;
-    }
-    .about_images {
-      width: 53vw;
-      height: auto;
     }
 
 
@@ -239,6 +228,35 @@
     }
 
 
+
+
+
+    #committees_container {
+      width: 60vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #committees_container > * {
+      font-family: Source;
+      color: white;
+    }
+    .committee_boxes {
+      width: 50vw;
+      padding: 5px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .committee_headers {
+      color: white;
+      font-size: 40px;
+      text-decoration: underline;
+    }
+    .committee_content {
+      font-size: 20px;
+      font-family: Source;
+    }
     #events_container {
       height: auto;
       width: 60vw;
@@ -261,18 +279,11 @@
     }
 
     #upcoming {
-      height: 60vh;
       width: 55vw;
       display: flex;
       flex-flow: column;
       justify-content: flex-start;
       align-items: center;
-    }
-    #upcoming_event {
-      height: 50vh;
-      width: 50vw;
-      background-color: black;
-      margin: 10px;
     }
     #past {
       height: auto;
@@ -282,44 +293,50 @@
       justify-content: flex-start;
       align-items: center;
     }
-    .past_events {
-      height: 50vh;
-      width: 53vw;
-      background-color: blue;
-      margin: 20px;
-    }
-
-    #committees_container {
-
-      height: 150vh;
-      width: 60vw;
-      display: flex;
-      flex-flow: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    #committees_container > * {
-      font-family: Source;
-      color: white;
-    }
-    .committee_boxes {
-      height: 30vh;
+    .events {
       width: 50vw;
-      border: 1px solid white;
+      margin: 20px;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.1)
     }
-    .committee_headers {
+    .event_title {
+      font-size: 50px;
+      margin: 5px;
+    }
+    .event_photo {
+      width: 40vw;
+      height: auto;
+    }
+    .event_desc {
+      font-size: 30px;
+    }
+    .event_link {
+      font-size: 25px;
+    }
+
+    a {
       color: white;
-      font-size: 40px;
-
+    }
+    a:visited {
+      color: white;
     }
 
-    #bottom_anchor {
-      height: 10vh;
-      width: 100vw;
-      background-color: black;
-      position: absolute;
-      top: 100vh;
+    #logo_link {
+      color: #262626;
     }
+
+    #ig_logo_final {
+      height: 20px;
+      width: 20px;
+    }
+
+    .about_image {
+      width: 40vw;
+      height: auto;
+    }
+
+
+
 
   </style>
 </head>
@@ -329,43 +346,18 @@
 <div id="background">
   <div id="container">
 
-    <div id="committees_container" class="containers">
-
-      <div class="committee_boxes">
-        <div class="committee_headers">Mutual Aid</div>
-        <div class="committee_content">The mutual aid committee is currently working to create a hub for middle schools (prioritizing those whose parents/guardians are not home during the day) to go to virtual school and interact after school. We also hope to create space in our town for skill sharing. This committee is currently facilitated by Jordan, but she would like a partner or two! Meets Tuesdays at 6:30.
-
-
-        </div>
-      </div>
-      <div class="committee_boxes">
-        <div class="committee_headers">Public Safety</div>
-        <div class="committee_content">The public safety committee, currently facilitated by Laila Gold and Jordan but open to other facilitators, is focused on making our town a safer place through methods such as working on defunding the Maplewood/South Orange police forces. So far, we have succeeded in fully disarming the Maplewood Auxiliary police force, and are working towards further police abolition. Meets Mondays at 6:30.
-
-
-        </div>
-      </div>
-      <div class="committee_boxes">
-        <div class="committee_headers">SOMSD Reform</div>
-        <div class="committee_content">The SOMSD reform committee, facilitated by Lily Forman and Olivia Brash but open to other facilitators, is working towards making the South Orange and Maplewood School District more equitable, especially for BIPOC students, by working on projects like a Student Bill of Rights, a curriculum review, a new mentorship program, stronger implementation of restorative practices, and more. Meets Thursdays at 4.
-
-
-        </div>
-      </div>
-      <div class="committee_boxes">
-        <div class="committee_headers">Juneteenth/July 4th Event Planning</div>
-        <div class="committee_content">This committee will have its first meeting this Sunday at 2 PM and it will be facilitated by Ogenna and Kailyn. They will focus on following through with our plans from the summer to lead the planning of Juneteenth and July 4th celebrations in our town.
-
-        </div>
-      </div>
-
-    </div>
-
     <div id="events_container" class="containers">
       <div id="upcoming">
-        <div id="upcoming_header" class="event_headers">UPCOMING EVENT</div>
+        <div id="upcoming_header" class="event_headers">
+          UPCOMING EVENT
+        </div>
 
-        <div id="upcoming_event"></div>
+        <div class="events">
+          <div class="event_title">juneteenth?</div>
+          <img src="myc_images/mycbackground.jpg" class="event_photo">
+          <div class="event_desc">the description of what our upcoming event is would go here if I knew what it was, but alas, I do not.</div>
+          <a class="event_link">See more on our instagram.</a>
+        </div>
 
 
 
@@ -374,55 +366,121 @@
       <div id="past">
         <div id="past_header" class="event_headers">PAST EVENTS</div>
 
-        <div class="past_events"></div>
-        <div class="past_events"></div>
-        <div class="past_events"></div>
-        <div class="past_events"></div>
-        <div class="past_events"></div>
+        <div class="events">
+          <div class="event_title">Rally/People's Assembly on Public Safety</div>
+          <img src="myc_images/maplecrest_rally_photo.png" class="event_photo">
+          <div class="event_desc">A rally held at Maplecrest park to educate and brainstorm on the best course of action for Maplewood's public safety issues.</div>
+          <a href="https://www.instagram.com/p/CGDLZxwFEE2/" target="_blank" class="event_link">See more on our instagram.</a>
+        </div>
+        <div class="events">
+          <div class="event_title">Family Fun at Maplecrest park</div>
+          <img src="myc_images/mycbackground.jpg" class="event_photo">
+          <div class="event_desc">"Family Fun Day" hosted in public park, for kids to come spend time outside with activities like animals to play with and percussion drum circles.</div>
+          <a href="https://www.instagram.com/p/CDM_29-p81B/" target="_blank" class="event_link">See more on our instagram.</a>
+        </div>
+        <div class="events">
+          <div class="event_title">Invasive Species Cleanup</div>
+          <img src="https://i.imgur.com/vyks1MP.png" class="event_photo">
+          <div class="event_desc">Members of the coalition worked alongside Civic Story, the South Orange Environmental Conservancy, and a member of the board of trustees to clear out invasive plant species on the Waterlands river bank!</div>
+          <a href="https://www.instagram.com/p/CCjHnwDpHBb/" target="_blank" class="event_link">See more on our instagram.</a>
+        </div>
+        <div class="events">
+          <div class="event_title">Fourth of July Protest March</div>
+          <img src="https://i.imgur.com/H5D321b.png" class="event_photo">
+          <div class="event_desc">March accross Maplewood and South Orange in protest of the racist and white supremacist celebrations of the Fourth of July holiday, featuring local politican speakers.</div>
+          <a href="https://www.instagram.com/p/CCT1gCYJOmb/" target="_blank" class="event_link">See more on our instagram.</a>
+        </div>
+      </div>
+    </div>
+    <div id="committees_container" class="containers">
+
+      <div class="committee_boxes">
+        <div class="committee_headers">Mutual Aid</div>
+        <div class="committee_content">
+          <ul>
+          <li>The mutual aid committee is currently working to create a hub for middle schools (prioritizing those whose parents/guardians are not home during the day) to go to virtual school and interact after school. We also hope to create space in our town for skill sharing.
+          This committee is currently facilitated by Jordan, but she would like a partner or two!</li>
+          <li>Meets Tuesdays at 6:30.</li>
+        </ul>
+
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">Public Safety</div>
+        <div class="committee_content">
+          <ul>
+            <li>
+
+          The public safety committee, currently facilitated by Laila Gold and Jordan but open to other facilitators, is focused on making our town a safer place through methods such as working on defunding the Maplewood/South Orange police forces. So far, we have succeeded in fully disarming the Maplewood Auxiliary police force, and are working towards further police abolition.
+</li><li>
+          Meets Mondays at 6:30.</li></ul>
 
 
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">SOMSD Reform</div>
+        <div class="committee_content">
+          <ul>
+          <li>The SOMSD reform committee, facilitated by Lily Forman and Olivia Brash but open to other facilitators, is working towards making the South Orange and Maplewood School District more equitable, especially for BIPOC students, by working on projects like a Student Bill of Rights, a curriculum review, a new mentorship program, stronger implementation of restorative practices, and more.
+</li><li>
+          Meets Thursdays at 4.
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="committee_boxes">
+        <div class="committee_headers">Juneteenth/July 4th Event Planning</div>
+        <div class="committee_content">
+<ul>
+          <li>Facilitated by Ogenna and Kailyn, focusing on following through with our plans from the summer to lead the planning of Juneteenth and July 4th celebrations in our town.
+</li>
+
+          <li>Meets Sundays at 2.</li>
+
+</ul>
+        </div>
       </div>
 
     </div>
+
 
 
     <div id="about_container" class="containers">
 
 
       <div id="about_section_1">
-      <div id="a1right">
-        <div id="about_header_1">the Mapso Youth Coalition</div>
+        <!--<div id="about_header_1">the Mapso Youth Coalition</div>-->
 
-        <img class="about_images" src="myc_images/mycimage1.JPG">
 
-        <div id="about_paragraph_1" class="abp">is a group that formed after the murder of George Floyd and the national resurgence of the Black Lives Matter movement. The coalition consists of local high school students and graduates who share a passion for racial justice, education, and action.</div>
-
-        <img class="about_images"src="myc_images/mycimage2.JPG">
+        <div id="about_paragraph_1" class="abp">The Mapso Youth Coalition is a group that formed after the murder of George Floyd and the national resurgence of the Black Lives Matter movement. The coalition consists of local high school students and graduates who share a passion for racial justice, education, and action.</div>
+        <img src="https://i.imgur.com/gWtlfaE.jpg" class="about_image">
 
         <div id="about_paragraph_2" class="abp"> Since its founding in early June, the MYC has worked toward holding the South Orange and Maplewood Townships, the MAPSO Police Forces, and the South Orange Maplewood School District accountable for turning a blind eye to racial inequities within our communities. Members have done so by attending meetings and by brainstorming effective initiatives, such as a “Student Bill of Rights”, and mutual aid programs.</div>
 
-        <img class="about_images" src="myc_images/mycimage3.png">
+<img src="https://i.imgur.com/Jg7ifL0.jpg" class="about_image">
 
-        <div id="about_paragraph_3" class="abp">In collaboration with SOMA Justice, they also co-hosted two events on June 19th, where residents of all ages could celebrate Juneteenth with music, dancing, crafts, and more. These events were an opportunity to discuss the real history of this country and how intrinsically tied it is to so many injustices in discussion today. The coalition continues to work on ways they can embed anti-racism within both towns, Essex County, and New Jersey as a whole.</div>
+        <div id="about_paragraph_3" class="abp">In collaboration with SOMA Justice, we also co-hosted two events on June 19th, where residents of all ages could celebrate Juneteenth with music, dancing, crafts, and more. These events were an opportunity to discuss the real history of this country and how intrinsically tied it is to so many injustices in discussion today. The coalition continues to work on ways they can embed anti-racism within both towns, Essex County, and New Jersey as a whole.</div>
+        <img src="https://i.imgur.com/KeB0nJV.jpg" class="about_image">
 
-        <img class="about_images"src="myc_images/mycimage1.JPG">
 
-      </div>
     </div>
 
     </div>
 
     <div id="contact_container" class="containers">
-      <div id="contact_text">If you're under 26 and interested in joining, fill out <a href="" target="_blank" id="signup_form">this form</a>!
-        <br/>If you're unable to to join but still want to help the cause, email us at mapsoyouthcoalition@gmail.com, join our remind, or find us on these socials:
+      <div id="contact_text">
 
-      </div>
-      <div id="contact_logos_row">
-        <a href="" target="_blank"><img src="myc_images/myc_fbl.png" class="contact_logos"></a>
-        <a href="https://www.instagram.com/mapsoyouthco/" target="_blank"><img src="myc_images/myc_igl.png" class="contact_logos"></a>
 
+        <ul>
+        <li>If you're under 26 and interested in joining, fill out <a href="https://forms.gle/9abaB92tXhbQrvpDA" target="_blank" id="signup_form">this form</a>!</li>
+        <li>If you're unable to to join but still want to help the cause, email us at mapsoyouthcoalition@gmail.com, join our <a href="https://forms.gle/XTMm7aeCvis4gokT6" target="_blank">newsletter</a> or <a href="">Remind</a>, or find us on <a href="https://www.instagram.com/mapsoyouthco/" target="_blank">Instagram</a> and  <a href="" target="_blank">Facebook</a>.</li>
+      </ul>
       </div>
+
       <img src="myc_images/mycimage2.JPG" id="contact_photo">
+
     </div>
 
     <div id="donate_container" class="containers">
@@ -434,7 +492,7 @@
       </div>
 
       <img src="myc_images/mycimage1.JPG" id="donate_image">
-
+      <div id="bottom_anchor"></div>
     </div>
 
 
@@ -444,7 +502,11 @@
   </div>
 </div>
 
-<img src="myc_images/actual_logo.png" id="myc_logo">
+<div id="logo_fixed">
+  <img src="myc_images/actual_logo.png" id="myc_logo">
+    <span><a id="logo_link" href="https://forms.gle/XTMm7aeCvis4gokT6" target="_blank">Join our newsletter!</a><a href="https://www.instagram.com/mapsoyouthco/" target="_blank">&nbsp&nbsp<img id="ig_logo_final" src="myc_images/ig_logo_final.png"></a></span>
+
+</div>
 
 <div id="anchor_center">
   <div id="anchor">
@@ -460,17 +522,6 @@
   </div>
 </div>
 
-<div id="bottom_anchor">
-heyy</div>
-
-
-<!--
-<div id="bottom_bar_center">
-<div id="bottom_bar">
--->
-
-</div>
-</div>
 
 </body>
 <script>
@@ -532,8 +583,8 @@ function container_switch(x){
   }
   container_curr.style.display = 'flex'
 }
-container_switch('events_container')
-switch_buttons[1].style.textShadow = '2.5px 2.5px #ffa500'
+container_switch('about_container')
+switch_buttons[0].style.textShadow = '2.5px 2.5px #ffa500'
 
 for(m=0;m<switch_buttons.length;m++){
   switch_buttons[m].onclick = function(){
