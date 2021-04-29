@@ -61,98 +61,112 @@
 <body>
 <div id="container">
   <div id="status">click the button to generate a maze!</div>
-<button id="generate" onclick="generate()">hello</button>
+  <div id="current_time">Current time:</div>
+  <div id="best_time">Best time:</div>
+<button id="generate" onclick="generate()">hello! click me</button>
 
 <div id="game_container"></div>
 keep your cursor on the white and see how fast you can make it to the red square!
+<br/> i know that you can probably just move your cursor around the box to the end but that's no fun for you :P
 </div>
 </body>
 <script>
 
-gen = document.getElementById('generate')
 
-cont = document.getElementById('container')
-game_cont = document.getElementById('game_container')
+
+
+gen = document.getElementById('generate');
+
+cont = document.getElementById('container');
+game_cont = document.getElementById('game_container');
 b_num = 0;
-scale = 50;
+scale = 20;
 for(i = 0; i<scale; i++){
-  current_row = document.createElement('div')
-  current_row.setAttribute('class', 'row')
+  current_row = document.createElement('div');
+  current_row.setAttribute('class', 'row');
   for(j = 0; j<scale; j++){
-    b_num++
-    current_box = document.createElement('div')
-    current_box.setAttribute('class', 'box')
-    current_box.setAttribute('id', 'box_'+b_num)
+    b_num++;
+    current_box = document.createElement('div');
+    current_box.setAttribute('class', 'box');
+    current_box.setAttribute('id', 'box_'+b_num);
     if(j==0){
-      current_box.setAttribute('data-placement', 'first')
+      current_box.setAttribute('data-placement', 'first');
     }
     else if(j==scale-1){
-      current_box.setAttribute('data-placement', 'last')
+      current_box.setAttribute('data-placement', 'last');
     }
-    current_row.appendChild(current_box)
+    current_row.appendChild(current_box);
   }
-  game_cont.appendChild(current_row)
+  game_cont.appendChild(current_row);
 }
 
-filled = 20;
+filled = 100;
 ran = false;
-sta = document.getElementById('status')
+sta = document.getElementById('status');
 
 function lose(){
-  console.log('you lost')
-  gen.innerHTML = 'play again?'
+  console.log('you lost');
+  gen.innerHTML = 'play again?';
   running = false;
-  boxes = document.querySelectorAll('.box')
+  boxes = document.querySelectorAll('.box');
   for(g = 0; g<boxes.length; g++){
-    boxes[g].setAttribute('class', 'loss_boxes')
-    boxes[g].removeEventListener('mouseover', loselisten)
+    boxes[g].setAttribute('class', 'loss_boxes');
+    boxes[g].removeEventListener('mouseover', loselisten);
   }
-  sta.innerHTML = 'you lost!'
+  sta.innerHTML = 'you lost!';
 }
 function win(){
   console.log('you won')
-  gen.innerHTML = 'play again?'
+  gen.innerHTML = 'play again?';
   running = false;
-  boxes = document.querySelectorAll('.box')
+  boxes = document.querySelectorAll('.box');
   for(g = 0; g<boxes.length; g++){
-    boxes[g].setAttribute('class', 'win_boxes')
+    boxes[g].setAttribute('class', 'win_boxes');
   }
   sta.innerHTML = 'you win!'
+  if(current_time_var<best_time_var){
+    best_time_var = current_time_var;
+    best_time_div.innerHTML = 'Best time: ' + best_time_var.toFixed(2) + 's';
+  }
+
 }
 
 function loselisten(){
   if(running == true){
-    lose()
+    lose();
   }
 }
 
 function winlisten(){
   if(running == true){
-    win()
-    winbox.removeEventListener('mouseover', winlisten)
-    console.log(winbox)
+    win();
+    winbox.removeEventListener('mouseover', winlisten);
+    console.log(winbox);
   }
 }
 
 
+
+
 function generate(){
-  gen.innerHTML = 'generate new'
-  sta.innerHTML = 'game in progress. . . '
+  current_time_var = 0;
+  gen.innerHTML = 'generate new';
+  sta.innerHTML = 'game in progress. . . ';
   running = true;
     if(ran==true){
-      lboxes = document.querySelectorAll('.loss_boxes')
+      lboxes = document.querySelectorAll('.loss_boxes');
       for(b = 0; b<lboxes.length; b++){
-        lboxes[b].setAttribute('class', 'box')
+        lboxes[b].setAttribute('class', 'box');
       }
-      wboxes = document.querySelectorAll('.win_boxes')
+      wboxes = document.querySelectorAll('.win_boxes');
       for(c = 0; c<wboxes.length; c++){
-        wboxes[c].setAttribute('class', 'box')
+        wboxes[c].setAttribute('class', 'box');
       }
-      clear_path = document.querySelectorAll('.path_div')
-      clear_finish = document.getElementById('end_of_maze')
-      clear_finish.setAttribute('id', curr_finish)
+      clear_path = document.querySelectorAll('.path_div');
+      clear_finish = document.getElementById('end_of_maze');
+      clear_finish.setAttribute('id', curr_finish);
       for(h = 0; h<clear_path.length; h++){
-        clear_path[h].setAttribute('class', 'box')
+        clear_path[h].setAttribute('class', 'box');
 
       }
     }
@@ -164,11 +178,11 @@ function generate(){
       new_path = document.getElementById('box_' + current_point)
       new_path.setAttribute('class', 'path_div');
       if(k==filled-1){
-        curr_finish = new_path.getAttribute('id')
+        curr_finish = new_path.getAttribute('id');
 
         new_path.setAttribute('id', 'end_of_maze');
       }
-        choice = Math.floor(Math.random()*4)
+        choice = Math.floor(Math.random()*4);
         //down
         if(choice==0){
           if(current_point<((scale*scale)-scale)){
@@ -184,11 +198,26 @@ function generate(){
     }
     boxes = document.querySelectorAll('.box')
     for(z = 0; z<boxes.length; z++){
-      boxes[z].addEventListener('mouseover', loselisten)
+      boxes[z].addEventListener('mouseover', loselisten);
 
     }
     winbox = document.getElementById('end_of_maze')
-    winbox.addEventListener('mouseover', winlisten)
+    winbox.addEventListener('mouseover', winlisten);
 }
+
+current_time_var = 0;
+best_time_var = Number.MAX_VALUE;
+current_time_div = document.getElementById('current_time');
+best_time_div = document.getElementById('best_time');
+setInterval(function(){
+  if(running == true){
+    current_time_var +=0.01
+
+
+    current_time_div.innerHTML = 'Current time: ' + current_time_var.toFixed(2) + 's'
+  }
+}, 10)
+
+
 </script>
 </html>

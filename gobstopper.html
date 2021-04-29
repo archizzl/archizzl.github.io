@@ -28,11 +28,18 @@
   bottom: 100px;
   left: 100px;
 }
+#exp {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
   </style>
 </head>
 <body translate="no">
 <div id="container">
 <div id="amount"></div>
+<span id="exp"> wrote this while i was first figuring out how to use vanilla js as opposed to jquery - you can press the space bar to pause it if you think it looks nice</span>
+
 </div>
 <script id="rendered-js">
       window.onload = function(){
@@ -42,28 +49,49 @@
   let remove = 0;
   let second = false;
   let margin = 1000;
+  let running = true;
+  let r = 0;
   setInterval(function(){
-    dimens = Math.floor(Math.random()*500)
-    boxCurr = document.createElement('div')
-    boxCurr.setAttribute('class', 'box')
-    boxCurr.setAttribute('id', 'box' + i)
-    boxCurr.style.backgroundColor = 'rgba(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)  + ',0.1)'
-    boxCurr.style.height = dimens + 'px';
-    boxCurr.style.width = dimens + 'px';
-    boxCurr.style.zIndex = 1/dimens;
-    boxCurr.style.borderRadius = dimens / 2 + 'px';
-    container.appendChild(boxCurr)
-    boxCount = document.querySelectorAll('.box')
-    amount.innerHTML = boxCount.length;
-    i++
-    if(second == true){
-      removeCurr = document.getElementById('box' + remove)
-      container.removeChild(removeCurr)
-      remove++
+    if(running == true){
+      dimens = Math.floor(Math.random()*500)
+      boxCurr = document.createElement('div')
+      boxCurr.setAttribute('class', 'box')
+      boxCurr.setAttribute('id', 'box' + i)
+      boxCurr.style.backgroundColor = 'rgba(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255)  + ',0.1)'
+      boxCurr.style.height = dimens + 'px';
+      boxCurr.style.width = dimens + 'px';
+      boxCurr.style.zIndex = 1/dimens;
+      boxCurr.style.borderRadius = dimens / 2 + 'px';
+      container.appendChild(boxCurr)
+      boxCount = document.querySelectorAll('.box')
+      amount.innerHTML = boxCount.length;
+      i++
+      if(second == true){
+        removeCurr = document.getElementById('box' + remove)
+        container.removeChild(removeCurr)
+        remove++
+      }
     }
-  }, 10)
-  setTimeout(function(){second = true}, 800)
+
+  }, 100)
+
+
+  setTimeout(function(){
+    second = true
+  }, 800)
+
+  document.onkeydown = function(e){
+    console.log(e.keyCode)
+    if(e.keyCode==32){
+      if(r%2==0){running = false;}else{running=true;}
+      r++;
+    }
+  }
+
 }
+
+
+
     </script>
 </body>
 </html>

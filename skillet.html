@@ -63,43 +63,56 @@
 <script>
 
 window.onload = function(){
-  container = document.getElementById('container')
-  labels = ['photos', 'instagram', 'acting', 'dance', 'writing', '1', '2', '3', '4', '5']
-  bg = ['sky.png', 'sky2.png', 'luke.png', 'skilletpic1.jpg', 'perhaps.jpeg']
+  container = document.getElementById('container');
+  labels = ['1', '2', '3', '4', '5'];
+  bg = [];
   for(i = 0; i<labels.length; i++){
-    pc = document.createElement('div')
-    ppc = document.createElement('div')
-    ptc = document.createElement('div')
-    pc.setAttribute('class', 'polaroid')
-    pc.setAttribute('draggable', true)
-    ppc.setAttribute('class', 'polaroidPhoto')
-    ptc.setAttribute('class', 'polaroidTag')
-    pc.appendChild(ppc)
-    pc.appendChild(ptc)
-    xc = Math.floor(Math.random()*80) + 5
-    yc = Math.floor(Math.random()*40) + 3
+    pc = document.createElement('div');
+    ppc = document.createElement('div');
+    ptc = document.createElement('div');
+    pc.setAttribute('class', 'polaroid');
+    pc.setAttribute('draggable', true);
+    ppc.setAttribute('class', 'polaroidPhoto');
+    ptc.setAttribute('class', 'polaroidTag');
+    pc.appendChild(ppc);
+    pc.appendChild(ptc);
+    xc = Math.floor(Math.random()*80) + 5;
+    yc = Math.floor(Math.random()*40) + 3;
 
-    pc.style.left = xc + 'vw'
-    pc.style.top = yc + 'vh'
-    pc.style.zIndex = i
-    ac = Math.floor(Math.random()*(8*(Math.random() < 0.5 ? -1 : 1)))
-    pc.style.transform = 'rotate(' + ac + 'deg)'
-    ppc.style.backgroundImage = 'url(' + bg[i] + ')'
-    ptc.innerHTML = labels[i]
+    pc.style.left = xc + 'vw';
+    pc.style.top = yc + 'vh';
+    pc.style.zIndex = i;
+    ac = Math.floor(Math.random()*(8*(Math.random() < 0.5 ? -1 : 1)));
+    pc.style.transform = 'rotate(' + ac + 'deg)';
+    //ppc.style.backgroundImage = 'url(' + bg[i] + ')'
+    ppc.style.backgroundColor = 'black';
+    ptc.innerHTML = labels[i];
+    pc.setAttribute('draggable', 'true');
 
-    container.appendChild(pc)
+    container.appendChild(pc);
   }
 
-  z = labels.length
-  ps = document.querySelectorAll('.polaroid')
+  z = labels.length;
+  ps = document.querySelectorAll('.polaroid');
   for(p = 0; p<ps.length; p++){
     ps[p].onclick = function(e){
-      z++
-      e = event.srcElement
-      t = e.parentElement
-      t.style.zIndex = z
+      z++;
+      e = event.srcElement;
+      t = e.parentElement;
+      t.style.zIndex = z;
     }
   }
+
+  function hey(){
+    console.log('hey')
+  }
+  polaroids = document.querySelectorAll('.polaroid');
+  for(a = 0; a<polaroids.length; a++){
+    hey()
+    polaroids[a].addEventListener("mouseover", hey)
+  }
+
+
 }
 
 

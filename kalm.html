@@ -53,40 +53,40 @@
     //if sunday
     if(day == 7){
       //if open
-      if(10 < hour && hour < 16){
+      if(11 < hour && hour < 16){
         answer.innerHTML = 'yes!'
         answer.style.color = 'green'
-        also.innerHTML = 'and we will be open until 5pm!'
+        also.innerHTML = 'and we will be open until 6pm!'
       }
       //if not open
       else {
         answer.innerHTML = 'no!'
         answer.style.color = 'red'
-        if(hour < 10){
-          also.innerHTML = 'but we open at 10am!'
+        if(hour < 11){
+          also.innerHTML = 'but we open at 11am!'
         }
         if(hour > 5){
-          also.innerHTML = 'but we open tomorrow morning at 10am ;)'
+          also.innerHTML = 'but we open tomorrow morning at 11am ;)'
         }
       }
     }
     //if not sunday
     else {
       //if open
-      if(10 < hour && hour < 18){
+      if(11 < hour && hour < 18){
         answer.innerHTML = 'yes!'
         answer.style.color = 'green'
-        also.innerHTML = 'and we will be open until 7pm!'
+        also.innerHTML = 'and we will be open until 6pm!'
       }
       //if not open
       else {
         answer.innerHTML = 'no!'
         answer.style.color = 'red'
-        if(hour < 10){
-          also.innerHTML = 'but we open at 10am!'
+        if(hour < 11){
+          also.innerHTML = 'but we open at 11am!'
         }
-        if(hour > 7){
-          also.innerHTML = 'but we open tomorrow morning at 10am ;)'
+        if(hour > 18){
+          also.innerHTML = 'but we open tomorrow morning at 11am ;)'
         }
       }
     }
