@@ -24,6 +24,7 @@
   background-size: cover;
   height: 13.25vh;
   width: 8vw;
+  user-select: none;
 }
 .polaroidTag {
   height: 3.5vh;
@@ -33,16 +34,19 @@
   justify-content: center;
   align-items: center;
   font-size: 15px;
+  user-select: none;
 }
 #header {
   color: black;
   font-size: 120px;
   text-shadow: 2px 2px orange;
+  user-select: none;
 }
 .testbox {
   position: absolute;
   background-color: black;
   color: white;
+  user-select: none;
 }
 #container {
   height: 100vh;
@@ -83,7 +87,7 @@ window.onload = function(){
     pc.style.top = yc + 'vh';
     pc.style.zIndex = i;
     ac = Math.floor(Math.random()*(8*(Math.random() < 0.5 ? -1 : 1)));
-    pc.style.transform = 'rotate(' + ac + 'deg)';
+    //pc.style.transform = 'rotate(' + ac + 'deg)';
     //ppc.style.backgroundImage = 'url(' + bg[i] + ')'
     ppc.style.backgroundColor = 'black';
     ptc.innerHTML = labels[i];
@@ -102,14 +106,67 @@ window.onload = function(){
       t.style.zIndex = z;
     }
   }
-
-  function hey(){
-    console.log('hey')
+  function getWidth() {
+    return Math.max(
+      document.body.scrollWidth,
+      document.documentElement.scrollWidth,
+      document.body.offsetWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    );
   }
+
+  function getHeight() {
+    return Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.documentElement.clientHeight
+    );
+  }
+
+  //runs on mousedown
+
+  clicked = false;
+  function hey(e){
+
+    document.onclick = function(f){
+      x1 = f.clientX;
+      y1 = f.clientY;
+      var clicked_element = document.elementFromPoint(x1, y1)
+
+      current_polaroid = clicked_element.closest(".polaroid")
+
+
+
+      current_polaroid.style.boxShadow = '1px 2px 4px blue';
+
+      clicked = true;
+
+    }
+
+    if(clicked == true){
+      let pos = current_polaroid.getBoundingClientRect();
+      start_pos_x = ((pos.left/getWidth())* 100);
+      start_pos_y = ((pos.top/getWidth())* 100);
+      amount_to_move_x = (((e.clientX-x1)/getWidth()) * 100)
+      amount_to_move_y = (((e.clientY-y1)/getWidth()) * 100)
+
+      current_polaroid.style.left = start_pos_x + amount_to_move_x + 'vw'
+      current_polaroid.style.top = start_pos_y + amount_to_move_y + 'vw'
+
+      console.log('starting position: ' + start_pos_x)
+      console.log('amount it should be moving: ' + amount_to_move_x)
+
+    }
+
+  }
+
+
   polaroids = document.querySelectorAll('.polaroid');
   for(a = 0; a<polaroids.length; a++){
-    hey()
-    polaroids[a].addEventListener("mouseover", hey)
+    polaroids[a].addEventListener("mousemove", hey)
   }
 
 
