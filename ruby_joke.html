@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+  }
+
+  #anchor {
+    height: 5vh;
+    width: 100vw;
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    z-index: 5;
+    background-color: black;
+  }
+  #container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    overflow: hidden;
+    background-color: #4c4c4c;
+  }
+  #videobg {
+    background-color: black;
+    height: 110vh;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    user-select: none;
+  }
+  .window {
+    height: 250px;
+    width: 400px;
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 4;
+    background-color: white;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5)
+  }
+  .window_drag_bar {
+    height: 30px;
+    width: inherit;
+    background-color: gray;
+    /*border-top-left-radius: 7px;
+    border-top-right-radius: 7px;*/
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .window_button {
+    height: 13px;
+    width: 13px;
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .window_button:hover {
+    color: black;
+  }
+
+  .close_button {
+    background-color: red;
+    color: red;
+  }
+  .minimize_button {
+    background-color: orange;
+    font-size: 24px;
+    color: orange;
+  }
+  .maximize_button {
+    background-color: green;
+    color: green;
+  }
+
+  .window {
+    font-size: 50px;
+  }
+  #MEDIA {
+    top: 50px;
+    left: 50px;
+    height: auto;
+  }
+  .mei_pic {
+    width: 400px;
+    height: auto;
+  }
+  #ABOUT {
+    top: 500px;
+    left: 70px;
+  }
+  #MUSIC {
+    height: 110px;
+    top: 50px;
+    left: 745px;
+  }
+  #hfoas {
+    height: 80px;
+    width: 400px;
+  }
+  #INFO {
+    top: 100px;
+    left: 435px;
+  }
+  #SHOWS {
+    top: 467px;
+    left: 500px;
+  }
+
+  @font-face {
+  font-family: 'zen';
+  src: url('./fonts/Zen_Old_Mincho/ZenOldMincho-Regular.ttf');
+  }
+  @font-face {
+    font-family: 'sawarabi';
+    src: url('./fonts/Sawarabi_Mincho/SawarabiMincho-Regular.ttf');
+  }
+  .window_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <!--<div id="anchor"></div>-->
+
+  <div id="container">
+    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="videobg" ></video>-->
+
+    <div class="window" id="MEDIA" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+
+
+        <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png">
+
+
+
+
+      </div>
+    </div>
+    <div class="window" id="ABOUT" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button">+</div>
+        </div>
+      </div>
+      <div class="window_content">mei semones<br/>makes fire music on the daily</div>
+    </div>
+    <div class="window" id="MUSIC" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button">+</div>
+        </div>
+      </div>
+      <div class="window_content">
+        <iframe id="hfoas" src="https://open.spotify.com/embed/album/2dvZll7aA9jE2B2peisTqj" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+    </div>
+    <div class="window" id="INFO" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button">+</div>
+        </div>
+      </div>
+      <div class="window_content">follow mei semones on <br/> instagram and other <br/> websites</div>
+    </div>
+    <div class="window" id="SHOWS" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button">+</div>
+        </div>
+      </div>
+      <div class="window_content">mei semones has been <br/> known to play shows</div>
+    </div>
+</body>
+<script>
+
+//video stuff
+
+//videobg = document.getElementById('videobg')
+//videobg.setAttribute('src', 'https://player.vimeo.com/video/638866255?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
+
+
+z = 4;
+let window_drag_bars = document.querySelectorAll(".window_drag_bar")
+for(k = 0; k<window_drag_bars.length; k++){
+  let b = window_drag_bars[k]
+  b.onmousedown = function(e){
+    console.log(b.style.top)
+    z++;
+    b.parentElement.style.zIndex = z;
+    b.parentElement.setAttribute("data-drag", 1)
+    coords = b.parentElement.getBoundingClientRect();
+    b.parentElement.setAttribute("data-x", e.clientX - coords.left);
+    b.parentElement.setAttribute("data-y", e.clientY - coords.top);
+    b.parentElement.style.opacity = 0.5;
+  }
+  b.onmouseup = function(e){
+    b.parentElement.setAttribute("data-drag", 0);
+    b.parentElement.style.opacity = 1;
+  }
+}
+document.onmousemove = function(e){
+  for(i=0; i<window_drag_bars.length; i++){
+    let b = window_drag_bars[i]
+    if(b.parentElement.dataset.drag == 1){
+      b.parentElement.style.left = e.clientX - b.parentElement.dataset.x + 'px';
+      b.parentElement.style.top = e.clientY - b.parentElement.dataset.y + 'px';
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
