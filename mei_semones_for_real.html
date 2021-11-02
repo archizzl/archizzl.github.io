@@ -25,7 +25,7 @@
     width: 100vw;
     z-index: 0;
     overflow: hidden;
-    background-color: #4c4c4c;
+    background-color: #c6e2e9;
   }
   #videobg {
     background-color: black;
@@ -47,7 +47,9 @@
     align-items: center;
     z-index: 4;
     background-color: white;
-    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5)
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   .window_drag_bar {
     height: 30px;
@@ -59,6 +61,8 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   .window_button {
     height: 13px;
@@ -93,37 +97,20 @@
   .window {
     font-size: 50px;
   }
-  #MEDIA {
-    top: 50px;
-    left: 50px;
+  .MEDIA {
     height: auto;
   }
   .mei_pic {
     width: 400px;
     height: auto;
   }
-  #ABOUT {
-    top: 500px;
-    left: 70px;
-  }
   #MUSIC {
     height: 110px;
-    top: 50px;
-    left: 745px;
   }
   #hfoas {
     height: 80px;
     width: 400px;
   }
-  #INFO {
-    top: 100px;
-    left: 435px;
-  }
-  #SHOWS {
-    top: 467px;
-    left: 500px;
-  }
-
   @font-face {
   font-family: 'zen';
   src: url('./fonts/Zen_Old_Mincho/ZenOldMincho-Regular.ttf');
@@ -152,7 +139,7 @@
   <div id="container">
     <!--<video src="./hpi/salmon.mov" autoplay muted loop id="videobg" ></video>-->
 
-    <div class="window" id="MEDIA" data-drag=0>
+    <div class="window MEDIA" id="MEDIA-1" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_button close_button">X</div>
         <div class="window_button minimize_button">-</div>
@@ -161,13 +148,63 @@
       <div class="window_content">
 
 
-        <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png">
+        <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png" draggable="false">
 
 
 
 
       </div>
     </div>
+    <div class="window MEDIA" id="MEDIA-1" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+
+
+        <img class="mei_pic" src="https://i.imgur.com/8AWUEPS.png" draggable="false">
+
+
+
+
+      </div>
+    </div>
+
+    <div class="window MEDIA" id="MEDIA-2" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+
+
+        <img class="mei_pic" src="https://i.imgur.com/4pc78yA.png" draggable="false">
+
+
+
+
+      </div>
+    </div>
+    <div class="window MEDIA" id="MEDIA-2" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+
+
+        <img class="mei_pic" src="https://i.imgur.com/OsSOvJj.png" draggable="false">
+
+
+
+
+      </div>
+    </div>
+
     <div class="window" id="ABOUT" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_drag_bar">
@@ -219,7 +256,16 @@
 //videobg.setAttribute('src', 'https://player.vimeo.com/video/638866255?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
 
 
+
+
 z = 4;
+
+let windows = document.querySelectorAll(".window")
+for(i = 0; i<windows.length; i++){
+  windows[i].style.top = Math.random()*500 + 'px';
+  windows[i].style.left = Math.random()*80 + 'vw';
+}
+
 let window_drag_bars = document.querySelectorAll(".window_drag_bar")
 for(k = 0; k<window_drag_bars.length; k++){
   let b = window_drag_bars[k]
@@ -231,7 +277,7 @@ for(k = 0; k<window_drag_bars.length; k++){
     coords = b.parentElement.getBoundingClientRect();
     b.parentElement.setAttribute("data-x", e.clientX - coords.left);
     b.parentElement.setAttribute("data-y", e.clientY - coords.top);
-    b.parentElement.style.opacity = 0.5;
+    b.parentElement.style.opacity = 0.8;
   }
   b.onmouseup = function(e){
     b.parentElement.setAttribute("data-drag", 0);
