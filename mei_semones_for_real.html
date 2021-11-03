@@ -47,14 +47,14 @@
     align-items: center;
     z-index: 4;
     background-color: white;
-    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    box-shadow: 30px 30px 10px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    outline: 3px solid black;
   }
   .window_drag_bar {
     height: 30px;
     width: inherit;
-    background-color: gray;
+    background-color: black;
     /*border-top-left-radius: 7px;
     border-top-right-radius: 7px;*/
     display: flex;
@@ -104,12 +104,9 @@
     width: 400px;
     height: auto;
   }
-  #MUSIC {
-    height: 110px;
-  }
-  #hfoas {
-    height: 80px;
-    width: 400px;
+
+  .NONMAINWINDOW {
+    display: none;
   }
   @font-face {
   font-family: 'zen';
@@ -120,9 +117,38 @@
     src: url('./fonts/Sawarabi_Mincho/SawarabiMincho-Regular.ttf');
   }
   .window_content {
+    height: inherit;
     display: flex;
-    justify-content: center;
+    flex-flow: column nowrap;
     align-items: center;
+    justify-content: center;
+
+  }
+
+  #ABOUT {
+    top: 6vh;
+    left: 10vw;
+    height: 500px;
+  }
+  #NAME {
+
+  }
+  #main_text {
+    width: 300px;
+    font-size: 20px;
+    text-align: center;
+  }
+  #bunny {
+    font-size: 13px;
+  }
+  #MUSIC {
+    height: 110px;
+    left: 20vw;
+    top: 75vh;
+}
+  #hfoas {
+    height: 80px;
+    width: 400px;
   }
 
 
@@ -137,85 +163,106 @@
   <!--<div id="anchor"></div>-->
 
   <div id="container">
-    <!--<video src="./hpi/salmon.mov" autoplay muted loop id="videobg" ></video>-->
 
-    <div class="window MEDIA" id="MEDIA-1" data-drag=0>
+
+
+<!--
+sections:
+news
+photos
+videos
+contact
+merch
+
+
+socials-->
+
+    <video src="./hpi/salmon.mov" autoplay muted loop id="videobg" ></video>
+
+    <div class="window MAINWINDOW" id="ABOUT" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_button close_button">X</div>
         <div class="window_button minimize_button">-</div>
         <div class="window_button maximize_button">+</div>
       </div>
       <div class="window_content">
+        <div id="NAME">mei semones</div>
+        <div id="main_text">
+          🌷🌻🐥🌿🧸🍄🦋🧃🍒💫🦕<br/>
+          is a jazz influenced DIY artist based out of Boston, MA<br/>
+          🌿🦋🧚🏻‍♀️🍄🌱🍓🌷🌻🐥🌿🍀🍒🍄
 
-
-        <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png" draggable="false">
-
-
-
-
-      </div>
-    </div>
-    <div class="window MEDIA" id="MEDIA-1" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-
-
-        <img class="mei_pic" src="https://i.imgur.com/8AWUEPS.png" draggable="false">
-
-
-
-
-      </div>
-    </div>
-
-    <div class="window MEDIA" id="MEDIA-2" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-
-
-        <img class="mei_pic" src="https://i.imgur.com/4pc78yA.png" draggable="false">
-
-
-
-
-      </div>
-    </div>
-    <div class="window MEDIA" id="MEDIA-2" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-
-
-        <img class="mei_pic" src="https://i.imgur.com/OsSOvJj.png" draggable="false">
-
-
-
-
-      </div>
-    </div>
-
-    <div class="window" id="ABOUT" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_drag_bar">
-          <div class="window_button close_button">X</div>
-          <div class="window_button minimize_button">-</div>
-          <div class="window_button maximize_button">+</div>
         </div>
+        <pre id='bunny'>
+
+          ....▓▓▓▓
+  ▓▓......▓
+  ▓▓......▓▓..................▓▓▓▓
+  ▓▓......▓▓..............▓▓......▓▓▓▓
+  ▓▓....▓▓..............▓......▓▓......▓▓
+  ▓▓....▓............▓....▓▓....▓▓▓....▓▓
+      ▓▓....▓........▓....▓▓..........▓▓....▓
+        ▓▓..▓▓....▓▓..▓▓................▓▓
+        ▓▓......▓▓....▓▓
+       ▓......................▓
+     ▓.........................▓
+    ▓......^..........^......▓
+    ▓............❤............▓
+    ▓..........................▓
+      ▓..........ٮ..........▓
+          ▓▓..........▓▓
+</pre>
+
+
+
+
       </div>
-      <div class="window_content">mei semones<br/>makes fire music on the daily</div>
     </div>
-    <div class="window" id="MUSIC" data-drag=0>
+
+
+    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-1" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+        <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png" draggable="false">
+      </div>
+    </div>
+    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-1" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+        <img class="mei_pic" src="https://i.imgur.com/8AWUEPS.png" draggable="false">
+      </div>
+    </div>
+
+    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-2" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+        <img class="mei_pic" src="https://i.imgur.com/4pc78yA.png" draggable="false">
+      </div>
+    </div>
+    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-2" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button close_button">X</div>
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button">+</div>
+      </div>
+      <div class="window_content">
+        <img class="mei_pic" src="https://i.imgur.com/OsSOvJj.png" draggable="false">
+      </div>
+    </div>
+
+    <div class="window MAINWINDOW" id="MUSIC" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_drag_bar">
           <div class="window_button close_button">X</div>
@@ -227,7 +274,9 @@
         <iframe id="hfoas" src="https://open.spotify.com/embed/album/2dvZll7aA9jE2B2peisTqj" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       </div>
     </div>
-    <div class="window" id="INFO" data-drag=0>
+
+
+    <div class="window NONMAINWINDOW" id="INFO" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_drag_bar">
           <div class="window_button close_button">X</div>
@@ -237,7 +286,7 @@
       </div>
       <div class="window_content">follow mei semones on <br/> instagram and other <br/> websites</div>
     </div>
-    <div class="window" id="SHOWS" data-drag=0>
+    <div class="window NONMAINWINDOW" id="SHOWS" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_drag_bar">
           <div class="window_button close_button">X</div>
@@ -260,11 +309,6 @@
 
 z = 4;
 
-let windows = document.querySelectorAll(".window")
-for(i = 0; i<windows.length; i++){
-  windows[i].style.top = Math.random()*500 + 'px';
-  windows[i].style.left = Math.random()*80 + 'vw';
-}
 
 let window_drag_bars = document.querySelectorAll(".window_drag_bar")
 for(k = 0; k<window_drag_bars.length; k++){
