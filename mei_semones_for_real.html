@@ -104,9 +104,8 @@
     width: 400px;
     height: auto;
   }
-
   .NONMAINWINDOW {
-    display: none;
+    top: 105vh;
   }
   @font-face {
   font-family: 'zen';
@@ -130,16 +129,13 @@
     left: 10vw;
     height: 500px;
   }
-  #NAME {
-
-  }
   #main_text {
     width: 300px;
     font-size: 20px;
     text-align: center;
   }
   #bunny {
-    font-size: 13px;
+    font-size: 11px;
   }
   #MUSIC {
     height: 110px;
@@ -150,7 +146,15 @@
     height: 80px;
     width: 400px;
   }
+  #buttons  {
 
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .info_button {
+    font-size: 23px;
+    margin: 5px;
+  }
 
 
 
@@ -177,15 +181,14 @@ merch
 
 socials-->
 
-    <video src="./hpi/salmon.mov" autoplay muted loop id="videobg" ></video>
+    <video src="./mei/meibg2.mp4" autoplay muted loop id="videobg" ></video>
 
     <div class="window MAINWINDOW" id="ABOUT" data-drag=0>
       <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
         <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
+        <div class="window_button maximize_button" data-big=0>+</div>
       </div>
-      <div class="window_content">
+      <div class="window_content" id="about_content">
         <div id="NAME">mei semones</div>
         <div id="main_text">
           🌷🌻🐥🌿🧸🍄🦋🧃🍒💫🦕<br/>
@@ -193,6 +196,15 @@ socials-->
           🌿🦋🧚🏻‍♀️🍄🌱🍓🌷🌻🐥🌿🍀🍒🍄
 
         </div>
+
+        <div id="buttons">
+          <div class="info_button" id="music_b" data-w2o=0>music</div>
+          <div class="info_button" id="news_b" data-w2o=1>news</div>
+          <div class="info_button" id="contact_b" data-w2o=2>contact</div>
+          <div class="info_button" id="merch_b" data-w2o=3>merch! ?</div>
+          <div class="info_button" id="shows_b" data-w2o=4>shows</div>
+        </div>
+
         <pre id='bunny'>
 
           ....▓▓▓▓
@@ -220,60 +232,16 @@ socials-->
     </div>
 
 
-    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-1" data-drag=0>
+    <!--<div class="window MEDIA NONMAINWINDOW" id="MEDIA-1" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_button close_button">X</div>
         <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
+        <div class="window_button maximize_button" data-big=0>+</div>
       </div>
       <div class="window_content">
         <img class="mei_pic" src="https://i.imgur.com/4QqWl1T.png" draggable="false">
       </div>
-    </div>
-    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-1" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-        <img class="mei_pic" src="https://i.imgur.com/8AWUEPS.png" draggable="false">
-      </div>
-    </div>
-
-    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-2" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-        <img class="mei_pic" src="https://i.imgur.com/4pc78yA.png" draggable="false">
-      </div>
-    </div>
-    <div class="window MEDIA NONMAINWINDOW" id="MEDIA-2" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button close_button">X</div>
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button">+</div>
-      </div>
-      <div class="window_content">
-        <img class="mei_pic" src="https://i.imgur.com/OsSOvJj.png" draggable="false">
-      </div>
-    </div>
-
-    <div class="window MAINWINDOW" id="MUSIC" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_drag_bar">
-          <div class="window_button close_button">X</div>
-          <div class="window_button minimize_button">-</div>
-          <div class="window_button maximize_button">+</div>
-        </div>
-      </div>
-      <div class="window_content">
-        <iframe id="hfoas" src="https://open.spotify.com/embed/album/2dvZll7aA9jE2B2peisTqj" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
+    </div>-->
 
 
     <div class="window NONMAINWINDOW" id="INFO" data-drag=0>
@@ -281,21 +249,70 @@ socials-->
         <div class="window_drag_bar">
           <div class="window_button close_button">X</div>
           <div class="window_button minimize_button">-</div>
-          <div class="window_button maximize_button">+</div>
+          <div class="window_button maximize_button" data-big=0>+</div>
         </div>
       </div>
       <div class="window_content">follow mei semones on <br/> instagram and other <br/> websites</div>
     </div>
+
+    <div class="window MAINWINDOW" id="MUSIC" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+        </div>
+      </div>
+      <div class="window_content">
+        <iframe id="hfoas" src="https://open.spotify.com/embed/album/2dvZll7aA9jE2B2peisTqj" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+    </div>
+
+    <div class="window NONMAINWINDOW" id="NEWS" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button" data-big=0>+</div>
+        </div>
+      </div>
+      <div class="window_content"></div>
+    </div>
+
+
+    <div class="window NONMAINWINDOW" id="CONTACT" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button" data-big=0>+</div>
+        </div>
+      </div>
+      <div class="window_content"></div>
+    </div>
+
+    <div class="window NONMAINWINDOW" id="MERCH" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_drag_bar">
+          <div class="window_button close_button">X</div>
+          <div class="window_button minimize_button">-</div>
+          <div class="window_button maximize_button" data-big=0>+</div>
+        </div>
+      </div>
+      <div class="window_content"></div>
+    </div>
+
     <div class="window NONMAINWINDOW" id="SHOWS" data-drag=0>
       <div class="window_drag_bar">
         <div class="window_drag_bar">
           <div class="window_button close_button">X</div>
           <div class="window_button minimize_button">-</div>
-          <div class="window_button maximize_button">+</div>
+          <div class="window_button maximize_button" data-big=0>+</div>
         </div>
       </div>
-      <div class="window_content">mei semones has been <br/> known to play shows</div>
+      <div class="window_content"></div>
     </div>
+
+
 </body>
 <script>
 
@@ -309,23 +326,55 @@ socials-->
 
 z = 4;
 
+let to_open = ["MUSIC", "NEWS", "CONTACT", "MERCH", "SHOWS"];
+let info_buttons = document.querySelectorAll(".info_button")
+for (m = 0; m<info_buttons.length; m++){
+  info_buttons[m].onmousedown = function(e){
+    o_curr = (document.getElementById(to_open[this.dataset.w2o]))
+
+    if(window.getComputedStyle(o_curr).top != "835.8px"){
+      o_curr.style.transition = "0.1s";
+      o_curr.style.opacity = "0.5";
+    }
+    else{
+      o_curr.style.left = e.clientX + 'px';
+      o_curr.style.top = e.clientY + 'px';
+      o_curr.style.zIndex = z;
+
+    }
+  }
+  info_buttons[m].onmouseup = function(){
+    o_curr.style.opacity = "1";
+    setTimeout(function(){
+      o_curr.style.transition = "0s";
+    },101)
+  }
+}
+
+
+let windows = document.querySelectorAll(".window")
+for(l = 0; l<windows.length; l++){
+  windows[l].dataset.oh = window.getComputedStyle(windows[l]).height
+  windows[l].dataset.ow = window.getComputedStyle(windows[l]).width
+}
+
+
 
 let window_drag_bars = document.querySelectorAll(".window_drag_bar")
 for(k = 0; k<window_drag_bars.length; k++){
   let b = window_drag_bars[k]
   b.onmousedown = function(e){
-    console.log(b.style.top)
-    z++;
-    b.parentElement.style.zIndex = z;
-    b.parentElement.setAttribute("data-drag", 1)
-    coords = b.parentElement.getBoundingClientRect();
-    b.parentElement.setAttribute("data-x", e.clientX - coords.left);
-    b.parentElement.setAttribute("data-y", e.clientY - coords.top);
-    b.parentElement.style.opacity = 0.8;
+      z++;
+      b.parentElement.style.zIndex = z;
+      b.parentElement.setAttribute("data-drag", 1)
+      coords = b.parentElement.getBoundingClientRect();
+      b.parentElement.setAttribute("data-x", e.clientX - coords.left);
+      b.parentElement.setAttribute("data-y", e.clientY - coords.top);
+      b.parentElement.style.opacity = 0.8;
   }
   b.onmouseup = function(e){
-    b.parentElement.setAttribute("data-drag", 0);
-    b.parentElement.style.opacity = 1;
+      b.parentElement.setAttribute("data-drag", 0);
+      b.parentElement.style.opacity = 1;
   }
 }
 document.onmousemove = function(e){
@@ -338,7 +387,55 @@ document.onmousemove = function(e){
   }
 }
 
-
+let exes = document.querySelectorAll(".window_button");
+for(j = 0; j<exes.length; j++){
+  exes[j].onclick = function(){
+    x = this.parentElement;
+    y = x.parentElement;
+    if(y.getAttribute("id") != "ABOUT"){
+      y = y.parentElement;
+    }
+    y.style.opacity = 1;
+    //close
+    if(this.getAttribute("class") == "window_button close_button"){
+      y.style.top = "105vh";
+      y.style.height = y.dataset.oh;
+      y.style.width = y.dataset.ow;
+    }
+    //minimize
+    else if(this.getAttribute("class") == "window_button minimize_button"){
+      y.style.transition = "0.5s";
+      y.style.top = "97vh";
+      y.style.height = y.dataset.oh;
+      y.style.width = y.dataset.ow;
+      this.dataset.big++
+    }
+    //maximize
+    else if(this.getAttribute("class") == "window_button maximize_button"){
+      console.log(this.dataset.big)
+      if(this.dataset.big%2==0){
+        y.dataset.ot = window.getComputedStyle(y).top
+        y.dataset.ol = window.getComputedStyle(y).left
+        this.dataset.big++
+        y.style.transition = "0.5s";
+        y.style.top = "50px";
+        y.style.left = "50px";
+        y.style.height = "80vh";
+        y.style.width = "80vw";
+      }
+      else {
+        this.dataset.big++
+        y.style.transition = "0.5s";
+        y.style.height = y.dataset.oh;
+        y.style.width = y.dataset.ow;
+        y.style.top = y.dataset.ot;
+        y.style.left = y.dataset.ol;
+      }
+    }
+    setTimeout(function(){
+      y.style.transition = "0s";}, 501);
+  }
+}
 
 
 
