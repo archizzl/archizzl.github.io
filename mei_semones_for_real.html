@@ -154,6 +154,11 @@
   .info_button {
     font-size: 23px;
     margin: 5px;
+    transition: 0.1s;
+  }
+  .info_button:hover {
+    opacity: 0.5;
+    cursor: pointer;
   }
 
 
@@ -317,23 +322,16 @@ socials-->
 </body>
 <script>
 
-//video stuff
-
-//videobg = document.getElementById('videobg')
-//videobg.setAttribute('src', 'https://player.vimeo.com/video/638866255?autoplay=1&loop=1&title=0&byline=0&portrait=0&allowfullscreen=1&muted=1&controls=0')
-
-
-
-
 z = 4;
 
+
+//"opening" windows
 let to_open = ["MUSIC", "NEWS", "CONTACT", "MERCH", "SHOWS"];
 let info_buttons = document.querySelectorAll(".info_button")
 for (m = 0; m<info_buttons.length; m++){
   info_buttons[m].onmousedown = function(e){
     o_curr = (document.getElementById(to_open[this.dataset.w2o]))
-
-    if(window.getComputedStyle(o_curr).top != "835.8px"){
+    if(o_curr.dataset.open == true){
       o_curr.style.transition = "0.1s";
       o_curr.style.opacity = "0.5";
     }
@@ -341,7 +339,7 @@ for (m = 0; m<info_buttons.length; m++){
       o_curr.style.left = e.clientX + 'px';
       o_curr.style.top = e.clientY + 'px';
       o_curr.style.zIndex = z;
-
+      o_curr.style.open = true;
     }
   }
   info_buttons[m].onmouseup = function(){
@@ -353,14 +351,22 @@ for (m = 0; m<info_buttons.length; m++){
 }
 
 
+
+// sets all windows original heigths and original widths
 let windows = document.querySelectorAll(".window")
 for(l = 0; l<windows.length; l++){
   windows[l].dataset.oh = window.getComputedStyle(windows[l]).height
   windows[l].dataset.ow = window.getComputedStyle(windows[l]).width
+  if (windows[l].getAttribute("class") == "window NONMAINWINDOW"){
+    windows[l].dataset.open = false;
+  }
+  else if (windows[l].getAttribute("class") == "window MAINWINDOW"){
+    windows[l].dataset.open = true;
+  }
 }
 
 
-
+//drag
 let window_drag_bars = document.querySelectorAll(".window_drag_bar")
 for(k = 0; k<window_drag_bars.length; k++){
   let b = window_drag_bars[k]
@@ -388,6 +394,7 @@ document.onmousemove = function(e){
   }
 }
 
+//window button functions
 let exes = document.querySelectorAll(".window_button");
 for(j = 0; j<exes.length; j++){
   exes[j].onclick = function(){
@@ -402,6 +409,7 @@ for(j = 0; j<exes.length; j++){
       y.style.top = "105vh";
       y.style.height = y.dataset.oh;
       y.style.width = y.dataset.ow;
+      y.dataset.open = false;
     }
     //minimize
     else if(this.getAttribute("class") == "window_button minimize_button"){
