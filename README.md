@@ -1,2 +1,4 @@
 # archizzl.github.io
-personal website 
+archie o'connell's personal website !
+i am currently a student at Northeastern University, majoring
+in computer science. love to learn

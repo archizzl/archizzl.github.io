@@ -1,11 +1,20 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+
 <head>
-  <style>
-  * {
+
+  <meta charset="UTF-8">
+
+
+
+<style>
+* {
     padding: 0;
     margin: 0;
     user-select: none;
+    font-family: "Fredoka One"
   }
 
   #anchor {
@@ -26,9 +35,10 @@
     z-index: 0;
     overflow: hidden;
     background-color: #c6e2e9;
+    transition: 4s;
   }
   #videobg {
-    background-color: black;
+    background-color: white;
     height: 110vh;
     width: auto;
     position: absolute;
@@ -50,6 +60,7 @@
     box-shadow: 30px 30px 10px 1px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     outline: 3px solid black;
+    outline-radius: 5px;
   }
   .window_drag_bar {
     height: 30px;
@@ -129,6 +140,10 @@
     left: 10vw;
     height: 500px;
   }
+  #mei_logo {
+    height: 400px;
+    width: auto;
+  }
   #main_text {
     width: 300px;
     font-size: 20px;
@@ -160,16 +175,24 @@
     opacity: 0.5;
     cursor: pointer;
   }
+</style>
 
 
 
 
-  </style>
+
+
 </head>
-<body>
 
-
+<body translate="no" >
   <!--<div id="anchor"></div>-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=  ;lang=en" />
+
 
   <div id="container">
 
@@ -186,14 +209,8 @@ merch
 
 socials-->
 
-    <video src="./mei/meibg2.mp4" autoplay muted loop id="videobg" ></video>
+    <!--
 
-    <div class="window MAINWINDOW" id="ABOUT" data-drag=0>
-      <div class="window_drag_bar">
-        <div class="window_button minimize_button">-</div>
-        <div class="window_button maximize_button" data-big=0>+</div>
-      </div>
-      <div class="window_content" id="about_content">
         <div id="NAME">mei semones</div>
         <div id="main_text">
           🌷🌻🐥🌿🧸🍄🦋🧃🍒💫🦕<br/>
@@ -211,7 +228,6 @@ socials-->
         </div>
 
         <pre id='bunny'>
-
           ....▓▓▓▓
   ▓▓......▓
   ▓▓......▓▓..................▓▓▓▓
@@ -230,6 +246,26 @@ socials-->
           ▓▓..........▓▓
 </pre>
 
+-->
+
+    <!--<video src="./mei/meibg2.mp4" autoplay muted loop id="videobg" ></video>-->
+
+    <div class="window MAINWINDOW" id="ABOUT" data-drag=0>
+      <div class="window_drag_bar">
+        <div class="window_button minimize_button">-</div>
+        <div class="window_button maximize_button" data-big=0>+</div>
+      </div>
+      <div class="window_content" id="about_content">
+
+        <img src="https://i.imgur.com/IaqkY6F.jpg" id="mei_logo">
+
+        <div id="buttons">
+          <div class="info_button" id="music_b" data-w2o=0>music</div>
+          <div class="info_button" id="news_b" data-w2o=1>news</div>
+          <div class="info_button" id="contact_b" data-w2o=2>contact</div>
+          <div class="info_button" id="merch_b" data-w2o=3>merch! ?</div>
+          <div class="info_button" id="shows_b" data-w2o=4>shows</div>
+        </div>
 
 
 
@@ -319,9 +355,7 @@ socials-->
     </div>
 
 
-</body>
-<script>
-
+      <script id="rendered-js" >
 z = 4;
 
 
@@ -331,15 +365,18 @@ let info_buttons = document.querySelectorAll(".info_button")
 for (m = 0; m<info_buttons.length; m++){
   info_buttons[m].onmousedown = function(e){
     o_curr = (document.getElementById(to_open[this.dataset.w2o]))
-    if(o_curr.dataset.open == true){
-      o_curr.style.transition = "0.1s";
-      o_curr.style.opacity = "0.5";
-    }
-    else{
+    console.log(o_curr.dataset.open)
+
+    if((o_curr.dataset.open)%2 == 0){
+      console.log("OPENING NOW")
       o_curr.style.left = e.clientX + 'px';
       o_curr.style.top = e.clientY + 'px';
       o_curr.style.zIndex = z;
-      o_curr.style.open = true;
+      o_curr.dataset.open = o_curr.dataset.open + 1;
+    }
+    else if((o_curr.dataset.open)%2 == 1){
+      o_curr.style.transition = "0.1s";
+      o_curr.style.opacity = "0.5";
     }
   }
   info_buttons[m].onmouseup = function(){
@@ -358,10 +395,10 @@ for(l = 0; l<windows.length; l++){
   windows[l].dataset.oh = window.getComputedStyle(windows[l]).height
   windows[l].dataset.ow = window.getComputedStyle(windows[l]).width
   if (windows[l].getAttribute("class") == "window NONMAINWINDOW"){
-    windows[l].dataset.open = false;
+    windows[l].dataset.open = 0;
   }
   else if (windows[l].getAttribute("class") == "window MAINWINDOW"){
-    windows[l].dataset.open = true;
+    windows[l].dataset.open = 1;
   }
 }
 
@@ -409,7 +446,7 @@ for(j = 0; j<exes.length; j++){
       y.style.top = "105vh";
       y.style.height = y.dataset.oh;
       y.style.width = y.dataset.ow;
-      y.dataset.open = false;
+      y.dataset.open = 0;
     }
     //minimize
     else if(this.getAttribute("class") == "window_button minimize_button"){
@@ -446,14 +483,18 @@ for(j = 0; j<exes.length; j++){
   }
 }
 
+// change background color
+
+container = document.getElementById("container")
+
+setInterval(function(){
+  console.log("color change")
+  container.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+}, 4000)
+    </script>
 
 
 
+</body>
 
-
-
-
-
-
-</script>
 </html>
