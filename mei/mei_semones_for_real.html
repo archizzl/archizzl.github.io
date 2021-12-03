@@ -38,8 +38,7 @@
     transition: 4s;
   }
   #videobg {
-    background-color: white;
-    height: 110vh;
+    height: 100vh;
     width: auto;
     position: absolute;
     top: 0;
@@ -104,7 +103,6 @@
     background-color: green;
     color: green;
   }
-
   .window {
     font-size: 50px;
   }
@@ -139,9 +137,10 @@
     top: 6vh;
     left: 10vw;
     height: 500px;
+    width: 500px;
   }
   #mei_logo {
-    height: 400px;
+    height: 350px;
     width: auto;
   }
   #main_text {
@@ -162,10 +161,16 @@
     width: 400px;
   }
   #buttons  {
-
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+  }
+  .buttonrow {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
   }
+
   .info_button {
     font-size: 23px;
     margin: 5px;
@@ -174,6 +179,9 @@
   .info_button:hover {
     opacity: 0.5;
     cursor: pointer;
+  }
+  .emoji {
+    font-size: 25px;
   }
 </style>
 
@@ -196,59 +204,7 @@
 
   <div id="container">
 
-
-
-<!--
-sections:
-news
-photos
-videos
-contact
-merch
-
-
-socials-->
-
-    <!--
-
-        <div id="NAME">mei semones</div>
-        <div id="main_text">
-          🌷🌻🐥🌿🧸🍄🦋🧃🍒💫🦕<br/>
-          is a jazz influenced DIY artist based out of Boston, MA<br/>
-          🌿🦋🧚🏻‍♀️🍄🌱🍓🌷🌻🐥🌿🍀🍒🍄
-
-        </div>
-
-        <div id="buttons">
-          <div class="info_button" id="music_b" data-w2o=0>music</div>
-          <div class="info_button" id="news_b" data-w2o=1>news</div>
-          <div class="info_button" id="contact_b" data-w2o=2>contact</div>
-          <div class="info_button" id="merch_b" data-w2o=3>merch! ?</div>
-          <div class="info_button" id="shows_b" data-w2o=4>shows</div>
-        </div>
-
-        <pre id='bunny'>
-          ....▓▓▓▓
-  ▓▓......▓
-  ▓▓......▓▓..................▓▓▓▓
-  ▓▓......▓▓..............▓▓......▓▓▓▓
-  ▓▓....▓▓..............▓......▓▓......▓▓
-  ▓▓....▓............▓....▓▓....▓▓▓....▓▓
-      ▓▓....▓........▓....▓▓..........▓▓....▓
-        ▓▓..▓▓....▓▓..▓▓................▓▓
-        ▓▓......▓▓....▓▓
-       ▓......................▓
-     ▓.........................▓
-    ▓......^..........^......▓
-    ▓............❤............▓
-    ▓..........................▓
-      ▓..........ٮ..........▓
-          ▓▓..........▓▓
-</pre>
-
--->
-
-    <!--<video src="./mei/meibg2.mp4" autoplay muted loop id="videobg" ></video>-->
+    <video src="meibg2.mp4" autoplay muted loop id="videobg"></video>
 
     <div class="window MAINWINDOW" id="ABOUT" data-drag=0>
       <div class="window_drag_bar">
@@ -260,11 +216,22 @@ socials-->
         <img src="https://i.imgur.com/IaqkY6F.jpg" id="mei_logo">
 
         <div id="buttons">
-          <div class="info_button" id="music_b" data-w2o=0>music</div>
-          <div class="info_button" id="news_b" data-w2o=1>news</div>
-          <div class="info_button" id="contact_b" data-w2o=2>contact</div>
-          <div class="info_button" id="merch_b" data-w2o=3>merch! ?</div>
-          <div class="info_button" id="shows_b" data-w2o=4>shows</div>
+          <div class="buttonrow">
+            <div class="info_button" id="about_b" data-w2o=0>about</div>
+            <div class="emoji">🌷</div>
+            <div class="info_button" id="music_b" data-w2o=1>music</div>
+            <div class="emoji">🌱</div>
+            <div class="info_button" id="merch_b" data-w2o=2>merch</div>
+            <div class="emoji">🧸</div>
+            <div class="info_button" id="shows_b" data-w2o=3>shows</div>
+          </div>
+          <div class="buttonrow">
+            <div class="info_button" id="news_b" data-w2o=4>news</div>
+            <div class="emoji">🦋</div>
+            <div class="info_button" id="photos_b" data-w2o=5>photos</div>
+            <div class="emoji">💫</div>
+            <div class="info_button" id="contact_b" data-w2o=6>contact</div>
+          </div>
         </div>
 
 
@@ -340,7 +307,7 @@ socials-->
           <div class="window_button maximize_button" data-big=0>+</div>
         </div>
       </div>
-      <div class="window_content">merch etc if merch</div>
+      <div class="window_content">merch etc if merch </div>
     </div>
 
     <div class="window NONMAINWINDOW" id="SHOWS" data-drag=0>
@@ -487,10 +454,11 @@ for(j = 0; j<exes.length; j++){
 
 container = document.getElementById("container")
 
+/*
 setInterval(function(){
   console.log("color change")
   container.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-}, 4000)
+}, 4000)*/
     </script>
 
 
