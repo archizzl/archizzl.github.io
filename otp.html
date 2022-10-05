@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OTP</title>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+}
+#otp_content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+#otp_content > div {
+  margin: 15px;
+}
+
+#otp_bottom_anchor {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  position: absolute;
+  top: 100vh;
+}
+#otp_current_person {
+  height: 620px;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#otp_current_person > div {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#otp_current_person_photos {
+  height: 600px;
+  width: 400px;
+  border-radius: 30px;
+  outline: 5px solid black;
+}
+
+#otp_current_person_info {
+  height: 500px;
+  width: 400px;
+  border: 1px solid black;
+}
+
+#otp_nav {
+  height: 50px;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+</style>
+</head>
+<body>
+    <div id="otp_content">
+      <div id="otp_current_person">
+        <div id="otp_current_person_photos">current person photos</div>
+        <div id="otp_current_person_info">current person info</div>
+      </div>
+      <div id="otp_nav">nav bar (profile, dms, friends)</div>
+
+    </div>
+  <div id="otp_bottom_anchor">
+    <div id="otp_ig_logo"></div>
+    <div id="otp_credit">idea by emma tartini. website made by archie o'connell</div>
+
+  </div>
+</body>
+<script>
+</script>
+</html>
