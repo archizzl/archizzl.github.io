@@ -6,6 +6,7 @@
     padding: 0;
     margin: 0;
     user-select: none;
+    font-family: 'Helvetica'
   }
   #container {
     height: auto;
@@ -27,16 +28,20 @@
     align-items: center;
   }
   #top_anchor {
-    height: 200px;
     width: 720px;
     padding: 10px;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
-}
+  }
+  #anchor_row_1 {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
 
   #radio_clock {
-    background-image: url('wrbbradio.png');
+    background-image: url('wrbb2radio.png');
     background-size: contain;
     height: 200px;
     width: 200px;
@@ -47,18 +52,22 @@
   }
 
   #header_block {
-    height: 200px;
     width: 500px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-flow: column nowrap;
     align-items: left;
   }
-  #header_block > div {
-    margin: 10px;
+
+  #header_block > *  {
   }
+
   #header {
     font-size: 70px;
+    font-family: 'Helvetica';
+  }
+  #now_playing {
+    font-family: 'Helvetica';
   }
 
 
@@ -79,6 +88,83 @@
     width: 2px;
   }
 
+  #john {
+    font-family: helvetica;
+  }
+
+  #listeners_graph {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 60px;
+    background-color: #C30D29;
+  }
+
+  .clg_column {
+    border-top: 3px solid white;
+  }
+
+  #avgmarker {
+    position: absolute;
+    font-family: 'Helvetica';
+    color: white;
+    font-size: 15px;
+  }
+
+  #cst {
+    color: #243C74;
+  }
+
+  #clt {
+    color: #006E51;
+  }
+
+  #anchor_row_2 {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+  }
+
+  .anchor_button {
+    margin: 10px;
+    height: 45px;
+    width: 120px;
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica';
+    border-radius: 5px;
+    color: #e9eff1;
+    box-shadow: 5px 5px 2px 1px #919db9;
+}
+
+  .anchor_button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  #report_form {
+    background-color: #243C74;
+  }
+
+  #spinitron {
+    background-color: #74243c;
+  }
+
+  #media_team {
+    background-color: #246474;
+  }
+
+  #sports_team {
+    background-color: #3c7424;
+  }
+
+  #join {
+    background-color: #742464;
+  }
 
   /* HEX CODES
 
@@ -96,6 +182,16 @@
 
 
   */
+
+  #dot {
+
+  }
+
+  @keyframes dot {
+    100% {
+      color: #A9BF04;
+    }
+  }
 </style>
 </head>
 <body>
@@ -103,30 +199,34 @@
     <div id="content">
       <div id="top_anchor">
 
-
-
-
+      <div id="anchor_row_1">
         <div id="radio_clock">
-
         </div>
 
         <div id="header_block">
-          <div id="header">wrbb | 104.9fm</div>
-
+          <div id="header">wrbb 104<span id="dot">.</span>9fm</div>
           <div id="now_playing">
-            now playing:
-
-
-
-
-
-
+            is now playing the best of the best
+          </div>
+          <marquee behavior="alternate" id="john">john</marquee>
+          <div id="listeners_graph">
+            <div id="avgmarker">loading. . .</div>
           </div>
         </div>
+      </div>
 
+      <div id="anchor_row_2">
+        <div class="anchor_button" id="report_form">dj report form</div>
+        <div class="anchor_button" id="spinitron">spinitron</div>
+        <div class="anchor_button" id="media_team">media</div>
+        <div class="anchor_button" id="sports_team">sports</div>
+        <div class="anchor_button" id="join">join!</div>
+      </div>
 
+      </div>
 
-
+      <div id="calendar">
+        calendar here
       </div>
 
     </div>
@@ -137,64 +237,152 @@
 
 
 
-
 window.onload = function(){
-  curr = new Date();
-  h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
-  m = 6 * curr.getMinutes();
-  s = 6 * curr.getSeconds();
-  hand_cats = [h,m,s];
-  console.log(h, m, s)
-  let clock_container = document.getElementById('radio_clock');
-  let num = 3;
-  let dimens = 40;
-  for(i = 0; i<num ; i++){
-    let currCircle = 'circle' + i;
-    let currHalf = 'half' + i;
-    let currHand = 'hand' + i;
-    let circle = document.createElement('div');
-    circle.setAttribute('id', currCircle);
-    circle.setAttribute('class', 'circle')
-    clock_container.appendChild(circle);
-    let circleCurr = document.getElementById(currCircle)
-    circleCurr.style.height = dimens + 'px';
-    circleCurr.style.width = dimens + 'px';
-    circleCurr.style.transform = 'rotate(' + hand_cats[i] + 'deg)';
-    let half = document.createElement('div');
-    half.setAttribute('id', currHalf);
-    half.setAttribute('class', 'half')
-    circleCurr.appendChild(half)
 
-    let halfCurr = document.getElementById(currHalf);
-    halfCurr.style.width = dimens + 'px';
-    halfCurr.style.height = (dimens/2) + 'px';
+  const now_playing = document.getElementById('now_playing');
 
-    let hand = document.createElement('div');
-    hand.setAttribute('id', currHand);
-    hand.setAttribute('class', 'hand')
-    half.appendChild(hand)
+  const mark = document.getElementById('john');
 
-    let handCurr = document.getElementById(currHand)
-    hand.style.height = dimens/2 + 'px';
-    hand.style.backgroundColor = 'black';
+  const g = document.getElementById("listeners_graph");
 
-    dimens+=40;
+  listeners_range = [];
+
+  random_messages = ["god save the animals!",
+"we dare you to listen!", "where is jonah lefkoff when you need him?", "are you on classes or co-op?",
+"hey, can i borrow that chair?", "don't forget your show report form!", "whose line is it, anyway?",
+"rosebud!", "want average to be equal to 27px", "i am playing guitar and he is playing bass and i cannot keep up with him", "anti-glass eating PSA", "standing in my very long driveway", "gebnec rise!", "you like calamari? get the calamari.",
+"what’s this, some kind of eternal sunshine?", "18884368828", "casey, confronted with a deck of cards",
+"embedded audio programming", "FAYE: it was very chill.",
+"milkshake, two straws, room for one more", "it’s hard to see past all the feathers!"];
+
+  const shuffled = random_messages.sort(() => 0.5 - Math.random());
+
+  let selected = shuffled.slice(0, 7);
+
+  let message = selected.join(' • ');
+
+  mark.innerHTML = message;
+
+  function clockIt() {
+    curr = new Date();
+    h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
+    m = 6 * curr.getMinutes();
+    s = 6 * curr.getSeconds();
+    hand_cats = [h,m,s];
+    //console.log(h, m, s)
+    let clock_container = document.getElementById('radio_clock');
+    let num = 3;
+    let dimens = 40;
+    for(i = 0; i<num ; i++){
+      let currCircle = 'circle' + i;
+      let currHalf = 'half' + i;
+      let currHand = 'hand' + i;
+      let circle = document.createElement('div');
+      circle.setAttribute('id', currCircle);
+      circle.setAttribute('class', 'circle')
+      clock_container.appendChild(circle);
+      let circleCurr = document.getElementById(currCircle)
+      circleCurr.style.height = dimens + 'px';
+      circleCurr.style.width = dimens + 'px';
+      circleCurr.style.transform = 'rotate(' + hand_cats[i] + 'deg)';
+      let half = document.createElement('div');
+      half.setAttribute('id', currHalf);
+      half.setAttribute('class', 'half')
+      circleCurr.appendChild(half)
+
+      let halfCurr = document.getElementById(currHalf);
+      halfCurr.style.width = dimens + 'px';
+      halfCurr.style.height = (dimens/2) + 'px';
+
+      let hand = document.createElement('div');
+      hand.setAttribute('id', currHand);
+      hand.setAttribute('class', 'hand')
+      half.appendChild(hand)
+
+      let handCurr = document.getElementById(currHand)
+      hand.style.height = dimens/2 - 6 + 'px';
+      hand.style.backgroundColor = 'black';
+
+      dimens+=40;
+    }
+    setInterval(function(){
+      function r(el, deg) {
+        let r = document.getElementById(el)
+        r.style.transform = 'rotate(' + deg + 'deg)';
+      }
+      let curr = new Date();
+      s = curr.getSeconds()
+      if(s == 360){
+        s = 0;
+      }
+      r('circle2', 6 * s);
+      r('circle1', 6 * curr.getMinutes());
+      r('circle0', 30 * (curr.getHours() % 12) + curr.getMinutes() / 2);
+    }, 1000);
   }
-  setInterval(function(){
-    function r(el, deg) {
-      let r = document.getElementById(el)
-      r.style.transform = 'rotate(' + deg + 'deg)';
+
+
+  function getInfo(){
+    console.log("getting info")
+    var ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.onreadystatechange = function(){
+      if(ajaxRequest.readyState == 4){
+        //the request is completed, now check its status
+        if(ajaxRequest.status == 200){
+          //document.getElementById("welcome").innerHTML = ajaxRequest.responseText;
+          var data = JSON.parse(ajaxRequest.responseText)
+          console.log(data);
+          current_song = data["icestats"]["source"][0]["title"];
+          current_listeners = data["icestats"]["source"][0]["listeners"];
+          listeners_range.push(current_listeners);
+          if(listeners_range.length > 60) {
+            listeners_range.shift();
+          }
+
+          now_playing.innerHTML = "is now playing <b id='cst'>" + current_song + "</b> for <b id='clt'>" + current_listeners + ' </b> listeners.'
+           //document.getElementById('welcome').innerHTML = data[0].mainText
+        }
+        else{
+          console.log("Status error: " + ajaxRequest.status);
+        }
+      }
+      //else{
+      //  console.log("Ignored readyState: " + ajaxRequest.readyState);
+      //}
     }
-    let curr = new Date();
-    s = curr.getSeconds()
-    if(s == 360){
-      s = 0;
+    ajaxRequest.open('GET', 'http://dafd1179-5404-4939-9c1c-a014c6964254.icecast.radiomast.io/status-json.xsl');
+    ajaxRequest.send();
+  }
+
+  const average = array => array.reduce((a, b) => a + b) / array.length;
+
+  msg = "you're killing it!"
+
+  function renderGraph(){
+    avg = average(listeners_range);
+    console.log(avg);
+    g.innerHTML = '<div id="avgmarker">' + avg.toFixed(2) + '</div>'
+    cw = g.style.width / listeners_range.length;
+    for(i = 0; i < listeners_range.length; i++) {
+      c = document.createElement('div');
+      c.setAttribute('class', 'clg_column');
+      c.style.width = '30px'
+      c.style.height = 28 + ((listeners_range[i] - avg) * 3) + 'px';
+      g.appendChild(c);
     }
-    r('circle2', 6 * s);
-    r('circle1', 6 * curr.getMinutes());
-    r('circle0', 30 * (curr.getHours() % 12) + curr.getMinutes() / 2);
+  }
+
+  clockIt();
+  getInfo();
+  setTimeout(function(){
+    setInterval(function(){
+      getInfo();
+      renderGraph();
+    }, 1000);
   }, 1000)
 }
+
+
 
 
 
