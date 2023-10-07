@@ -1,13 +1,24 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>shwrbb</title>
 <style>
   * {
     padding: 0;
     margin: 0;
     user-select: none;
-    font-family: 'Helvetica'
+    font-family: 'Helvetica';
+    outline: 1px solid black;
   }
   #container {
     height: auto;
@@ -30,7 +41,6 @@
   }
   #top_anchor {
     width: 720px;
-    padding: 10px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -42,7 +52,7 @@
 
 
   #radio_clock {
-    background-image: url('wrbb2radio.png');
+    background-image: url('https://i.imgur.com/7xJud6g.png');
     background-size: contain;
     height: 200px;
     width: 200px;
@@ -104,6 +114,12 @@
 
   .clg_column {
     border-top: 3px solid white;
+    color: white;
+    display: flex;
+    font-size: 5px;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   #avgmarker {
@@ -125,6 +141,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    margin: 5px;
   }
 
   .anchor_button {
@@ -193,6 +210,35 @@
       color: #A9BF04;
     }
   }
+
+  #calendar {
+    width: 720px;
+    height: 450px;
+    overflow: scroll;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .calendar_column {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .show {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    outline: 3px solid black;
+    margin: 10px;
+  }
+
+  a {
+	  color: inherit;
+	  text-decoration: none;
+  }
+
 </style>
 </head>
 <body>
@@ -200,39 +246,62 @@
     <div id="content">
       <div id="top_anchor">
 
-      <div id="anchor_row_1">
-        <div id="radio_clock">
+        <div id="anchor_row_1">
+          <div id="radio_clock">
+          </div>
+
+          <div id="header_block">
+            <div id="header">wrbb 104<span id="dot">.</span>9fm</div>
+            <div id="now_playing">
+              is now playing the best of the best
+            </div>
+            <marquee behavior="alternate" id="john">john</marquee>
+            <div id="listeners_graph">
+              <div id="avgmarker">loading. . .</div>
+            </div>
+          </div>
         </div>
 
-        <div id="header_block">
-          <div id="header">wrbb 104<span id="dot">.</span>9fm</div>
-          <div id="now_playing">
-            is now playing the best of the best
-          </div>
-          <marquee behavior="alternate" id="john">john</marquee>
-          <div id="listeners_graph">
-            <div id="avgmarker">loading. . .</div>
-          </div>
+        <div id="anchor_row_2">
+  	      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhxNYZ1okoQcZuHOGLaJb6sSnkyyy5c1dzJs3wsUpXjOZGTg/viewform?usp=send_form" target="_blank">
+  		      <div class="anchor_button" id="report_form">dj report form</div>
+  	      </a>
+  	      <a href="https://spinitron.com/m/user" target="_blank">
+  		      <div class="anchor_button" id="spinitron">spinitron</div>
+  	      </a>
+  	      <a href="https://wrbbradio.org/mediateam/" target="_blank">
+  	      <div class="anchor_button" id="media_team">media</div>
+  	      </a>
+  	      <a href="https://wrbbsports.com/" target="_blank">
+  		      <div class="anchor_button" id="sports_team">sports</div>
+  	      </a>
+  	      <a href="https://wrbbradio.org/membership/" target="_blank">
+  		      <div class="anchor_button" id="join">join!</div>
+  	      </a>
         </div>
-      </div>
-
-      <div id="anchor_row_2">
-        <div class="anchor_button" id="report_form">dj report form</div>
-        <div class="anchor_button" id="spinitron">spinitron</div>
-        <div class="anchor_button" id="media_team">media</div>
-        <div class="anchor_button" id="sports_team">sports</div>
-        <div class="anchor_button" id="join">join!</div>
-      </div>
 
       </div>
+
+      
+
+      <audio controls>
+        <source src="https://streams.radiomast.io/dafd1179-5404-4939-9c1c-a014c6964254" type="audio/mp3" />
+      </audio>
 
       <div id="calendar">
-        calendar here
+
+        a workbench where i playtest porpoise.dashboard.wrbbradio.org
+
       </div>
 
     </div>
   </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
 <script>
 
 
@@ -240,30 +309,25 @@
 
 window.onload = function(){
 
-  const now_playing = document.getElementById('now_playing');
+  const random_messages = ["god save the animals!", "we dare you to listen!", "where is jonah lefkoff when you need him?", "are you on classes or co-op?",
+    "hey, can i borrow that chair?", "don't forget your show report form!", "whose line is it, anyway?",
+    "rosebud!", "want average to be equal to 27px", "i am playing guitar and he is playing bass and i cannot keep up with him", "anti-glass eating PSA", "standing in my very long driveway", "gebnec rise!", "you like calamari? get the calamari.",
+    "whatâ€™s this, some kind of eternal sunshine?", "18884368828", "casey, confronted with a deck of cards",
+    "embedded audio programming", "FAYE: it was very chill.",
+    "milkshake, two straws, room for one more", "itâ€™s hard to see past all the feathers!", "balls",
+    "Thinking Thinking"];
 
-  const mark = document.getElementById('john');
+  function renderMarquee(x) {
+    mark = document.getElementById('john');
+    shuffled = random_messages.sort(() => 0.5 - Math.random());
+    selected = shuffled.slice(0, x);
+		  message = selected.join(' - ');
+    mark.innerHTML = message;
+  }
 
-  const g = document.getElementById("listeners_graph");
+  const average = array => array.reduce((a, b) => a + b) / array.length;
 
-  listeners_range = [];
-
-  random_messages = ["god save the animals!",
-"we dare you to listen!", "where is jonah lefkoff when you need him?", "are you on classes or co-op?",
-"hey, can i borrow that chair?", "don't forget your show report form!", "whose line is it, anyway?",
-"rosebud!", "want average to be equal to 27px", "i am playing guitar and he is playing bass and i cannot keep up with him", "anti-glass eating PSA", "standing in my very long driveway", "gebnec rise!", "you like calamari? get the calamari.",
-"what’s this, some kind of eternal sunshine?", "18884368828", "casey, confronted with a deck of cards",
-"embedded audio programming", "FAYE: it was very chill.",
-"milkshake, two straws, room for one more", "it’s hard to see past all the feathers!"];
-
-  const shuffled = random_messages.sort(() => 0.5 - Math.random());
-
-  let selected = shuffled.slice(0, 7);
-
-  let message = selected.join(' • ');
-
-  mark.innerHTML = message;
-
+  //CLONKS
   function clockIt() {
     curr = new Date();
     h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
@@ -322,8 +386,10 @@ window.onload = function(){
     }, 1000);
   }
 
-
+  //GET PLAYING INFO FROM WRBB JSON XML
+  const now_playing = document.getElementById('now_playing');
   function getInfo(){
+    /*
     console.log("getting info")
     var ajaxRequest = new XMLHttpRequest();
     ajaxRequest.onreadystatechange = function(){
@@ -332,11 +398,10 @@ window.onload = function(){
         if(ajaxRequest.status == 200){
           //document.getElementById("welcome").innerHTML = ajaxRequest.responseText;
           var data = JSON.parse(ajaxRequest.responseText)
-          console.log(data);
           current_song = data["icestats"]["source"][0]["title"];
           current_listeners = data["icestats"]["source"][0]["listeners"];
           listeners_range.push(current_listeners);
-          if(listeners_range.length > 60) {
+          if(listeners_range.length > 30) {
             listeners_range.shift();
           }
 
@@ -353,38 +418,90 @@ window.onload = function(){
     }
     ajaxRequest.open('GET', 'http://dafd1179-5404-4939-9c1c-a014c6964254.icecast.radiomast.io/status-json.xsl');
     ajaxRequest.send();
+    */
+
+
+    $.getJSON('http://www.whateverorigin.org/get?url=' +
+    encodeURIComponent('http://dafd1179-5404-4939-9c1c-a014c6964254.icecast.radiomast.io/status-json.xsl') +
+    '&callback=?', function(data) {
+        data = data.contents;
+        try {
+          current_song = data["icestats"]["source"][0]["title"]
+          current_listeners = data["icestats"]["source"][0]["listeners"];
+        }
+        catch {
+          data = JSON.parse(data);
+          current_song = data["icestats"]["source"][0]["title"]
+          current_listeners = data["icestats"]["source"][0]["listeners"];
+
+        }
+        listeners_range.push(current_listeners);
+        if(listeners_range.length > 30) {
+          listeners_range.shift();
+        }
+        now_playing.innerHTML = "is now playing <b id='cst'>" +
+        current_song + "</b> for <b id='clt'>" +
+        current_listeners + ' </b> listeners.'
+      });
   }
 
-  const average = array => array.reduce((a, b) => a + b) / array.length;
-
-  msg = "you're killing it!"
-
+  //RENDER LIVE LISTENER GRAPH
+  const g = document.getElementById("listeners_graph");
+  listeners_range = [];
   function renderGraph(){
     avg = average(listeners_range);
-    console.log(avg);
-    g.innerHTML = '<div id="avgmarker">' + avg.toFixed(2) + '</div>'
-    cw = g.style.width / listeners_range.length;
+    g.innerHTML = '<div id="avgmarker"> avg/min : ' + avg.toFixed(2) + '</div>'
+    cw = g.offsetWidth / 30;
     for(i = 0; i < listeners_range.length; i++) {
       c = document.createElement('div');
       c.setAttribute('class', 'clg_column');
-      c.style.width = '30px'
+      c.style.width = cw + 'px';
       c.style.height = 28 + ((listeners_range[i] - avg) * 3) + 'px';
       g.appendChild(c);
     }
   }
 
+  //RENDER calendar
+  const cal = document.getElementById("calendar");
+  let mon_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let tues_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let wed_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let thurs_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let fri_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let sat_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+  let sun_shows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+
+  let all_shows = [mon_shows, tues_shows, wed_shows, thurs_shows, fri_shows, sat_shows, sun_shows];
+
+  function renderCalendar() {
+    for(i = 0; i < 7; i++) {
+      cc = document.createElement("div");
+      cc.setAttribute('class', "calendar_column");
+      for(j = 0; j < all_shows[i].length; j++) {
+        sc = document.createElement("div");
+        sc.setAttribute("class", "show");
+        cc.appendChild(sc)
+      }
+      cal.appendChild(cc);
+    }
+  }
+
+
+
+
+  //SETUP
+  renderMarquee(7);
+  //renderCalendar();
   clockIt();
   getInfo();
-  setTimeout(function(){
+  setTimeout(function() {
     setInterval(function(){
       getInfo();
       renderGraph();
     }, 1000);
-  }, 1000)
+  }, 1000);
+
 }
-
-
-
 
 
 </script>
