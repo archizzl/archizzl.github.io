@@ -58,6 +58,9 @@
     text-decoration: underline;
     cursor: pointer;
   }
+  #alex:hover {
+    color: skyblue;
+  }
 
 </style>
 
@@ -70,10 +73,10 @@
   <source src="./hpi/indexbackground.mp4" type="audio/mp4">
 </audio>
 
-<div id="t"><span id="header">archie o'connell</span><hr/><a href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank" class="imps">resume</a> & <a href="https://archizzl.com/projects" target="_blank" class="imps">some things i've made</a>
+<div id="t"><span id="header">archie o'connell</span><hr/><a href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank" class="imps">resume</a> & <a href="https://archizzl.com/projects" target="_blank" class="imps">eclectic e-emporium</a>
 <div id="links"><a href="https://github.com/archizzl" target="_blank">github</a> <a href="https://codepen.io/archizzl" target="_blank">codepen</a> <a href="https://www.linkedin.com/in/archizzl/" target="_blank">linkedin</a></div>
-<a href="porpoise.dashboard.wrbbradio.org" target="blank">wrbb porpoise dashboard</a>
-<div id="b">click me to play beautiful music</div>video credits to <a href="https://www.instagram.com/littlepenguinswrite/" target="_blank">livvy krakower</a><br/>song credits to <a href="https://open.spotify.com/artist/0AQigMl7uEL0xwokVfniXh?si=ba3e29c1892343f3" target="_blank">alex klint</a></div>
+<a href="https://porpoise.dashboard.wrbbradio.org" target="blank">wrbb porpoise dashboard</a>
+<div id="b">click me to play beautiful music</div>thank you <a href="https://www.instagram.com/littlepenguinswrite/" target="_blank">livvy krakower</a> for this beautiful video!</div>
 </div>
 
 
@@ -89,13 +92,13 @@
   b.onclick = function(){
     if(p%2==0){
       a.play()
-      b.innerHTML = 'click me to pause beautiful music'
+      b.innerHTML = 'now playing a beautiful song by <a id="alex" href="https://open.spotify.com/artist/0AQigMl7uEL0xwokVfniXh?si=ba3e29c1892343f3" target="_blank">alex klint</a>'
       h = 2;
     }
     if(p%2==1){
       a.pause()
       h = 3;
-      b.innerHTML = 'click me to play beautiful music'
+      b.innerHTML = "you have now paused a beautiful song by <a id='alex' href='https://open.spotify.com/artist/0AQigMl7uEL0xwokVfniXh?si=ba3e29c1892343f3' target='_blank'>alex klint</a>. he's quite offended."
     }
     p++
   }
