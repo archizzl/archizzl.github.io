@@ -29,14 +29,6 @@ body {
   overflow: hidden;
 }
 
-#time {
-  position: absolute;
-  font-family: 'Lato';
-  font-size: 200px;
-  opacity: 0.0420;
-  z-index: -15;
-  font-color: gray;
-}
 
 .circle {
   position: absolute;
@@ -55,13 +47,16 @@ body {
   width: 2px;
 }
 
+pre {
+  letter-spacing: -4px;
+}
 
   </style>
 </head>
 <body>
   <div id="container">
   <pre>
-               12
+                               |
 
 
 
@@ -69,15 +64,16 @@ body {
 
 
 
-09                            03
+_|                                                            |_
 
 
 
 
 
 
-
-               06</pre>
+  
+                               |
+                               |</pre>
   </div>
 </body>
 <script>
@@ -86,9 +82,10 @@ window.onload = function(){
   h = 30 * ((curr.getHours() % 12) + curr.getMinutes() / 60);
   m = 6 * curr.getMinutes();
   s = 6 * curr.getSeconds();
+  hand_cats = [h,m,s];
   console.log(h, m, s)
   let container = document.getElementById('container');
-  let num = 3;
+  let num = 2;
   let dimens = 50;
   for(i = 0; i<num ; i++){
     let currCircle = 'circle' + i;
@@ -101,17 +98,7 @@ window.onload = function(){
     let circleCurr = document.getElementById(currCircle)
     circleCurr.style.height = dimens + 'px';
     circleCurr.style.width = dimens + 'px';
-    switch(i){
-      case 0:
-        circleCurr.style.transform = 'rotate(' + h + 'deg)';
-        break;
-      case 1:
-        circleCurr.style.transform = 'rotate(' + m + 'deg)';
-        break;
-      case 2:
-        circleCurr.style.transform = 'rotate(' + s + 'deg)';
-        break;
-    }
+    circleCurr.style.transform = 'rotate(' + hand_cats[i] + 'deg)';
     let half = document.createElement('div');
     half.setAttribute('id', currHalf);
     half.setAttribute('class', 'half')
