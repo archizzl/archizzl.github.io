@@ -1,7 +1,3 @@
-
-<pre>
-i’ll be referring to the website wikipedia as “W”, and speaking of it in a
-familiar way, because i think it could be interesting to read.
 The phrase “When life gives you lemons, make lemonade” is, at this time, 
 credited to a 19th century traveling soap salesman by the name of Elbert Hubbard. 
 He achieved limited notoriety for works such as Jesus Was An Anarchist (1910) 
@@ -16,4 +12,3 @@ make a full living as a traveling soap salesman back then, maybe
 his essay of notes on personal health wasn’t too superfluous.
 In 1908, Hubbard was invited to deliver a keynote speech at a 
 meeting of The Society in Dedham for Apprehending Horse Thieves.
-</pre>
