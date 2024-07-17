@@ -9,9 +9,188 @@
                 padding: 0;
                 margin: 0;
             }
+            #links {
+                position: fixed;
+                display: flex;
+                flex-flow: column;
+            }
+            body {
+                background-color: lightgray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #container {
+                min-height: 1000px;
+                width: 800px;
+                display: flex;
+                flex-flow: row nowrap;
+                background-color: white;
+            }
+            #directory {
+                box-shadow: 5px 0 5px -2px #888;
+                padding: 5px;
+                padding-left: 20px;
+                padding-right: 10px;
+                user-select: none;
+                min-width: 130px;
+                position: relative;
+            }
+            #directory > li:hover {
+                cursor: pointer;
+                opacity: 0.5;
+                text-decoration: underline;
+            }
+            #content {
+                padding-left: 10px;
+                overflow: scroll
+            }
+            .entry {
+                padding-bottom: 50px;
+                padding-right: 5px;
+                white-space: pre-wrap;       /* Since CSS 2.1 */
+                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                white-space: -pre-wrap;      /* Opera 4-6 */
+                white-space: -o-pre-wrap;    /* Opera 7 */
+                word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            }
+
+            hr {
+                margin: 5px;
+            }
+
+            /* blog markdown */
+            .blog_headers {
+                font-size: 30px;
+                color: red;
+            }
+            .blog_subheaders {
+
+            }
+            .blog_mini {
+                opacity: 0.7;
+                font-size: 10px;
+            }
+
+            img {
+                max-width: 600px;
+                margin: 5px;
+                height: auto;
+                border: 3px dotted rgb(2, 255, 2);
+            }
+            img:hover {
+                position: absolute;
+                transform: scale(3);
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
+        <div id="container">
+            <div id="directory">
+                <div id="links"></div>
+            </div>
+            <div id="content">
+<pre class="entry porp_dash" id="2024-06-17-1629">
+<div class="blog_headers">porpoise dashboard basics!</div>
+</pre>
+<hr/>
+<pre class="entry sweetum" id="2024-06-18-1629">
+<div class="blog_headers">sweetums website basics!</div>
+</pre>
+<hr/>
+<pre class="entry archizzl" id="2024-06-19-1629">
+<div class="blog_headers">fixing my projects page</div>
+</pre>
+<hr/>
+<pre class="entry blag" id="2024-06-17-1507">
+<div class="blog_headers">MAKING THIS BLOG</div>
+hello world! 
 
+as a fun little experiment, for this first blog post, rafhsjkdafhsdljkafhklajdshfjkldsahjf i'm going to write out the steps i take to build this blog, while i'm making this blog! there's a lot of troubleshooting to be done, and a lot of design decisions to be made. right now, i'm trying to make it so the pre div we're working in for each blog entry automatically wraps its lines so they can all fit on the page.
+
+<img src="https://i.imgur.com/k2AwYyZ.png">
+
+i'm going to try using the following commands i got from <a href="https://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag" target="_blank">this thread</a>:
+
+<img src="https://i.imgur.com/IllsByF.png">
+
+this gets us. .
+
+<img src="https://i.imgur.com/CZu9UOM.png">
+
+this kind of fixes it, but now everything's a little weird. let's try <a href="https://stackoverflow.com/questions/31025502/how-can-i-switch-word-wrap-on-and-off-in-visual-studio-code" target="_blank">wrapping our lines in vscode</a> and see what happens.
+
+<img src="https://i.imgur.com/rIq4kQg.png">
+
+now it looks okay, but because of the by-eye freehand indenting i was trying before, our lines still look wonky. let's try cleaning this up.
+
+<img src="https://i.imgur.com/qAv8RFU.png">
+
+notice that although the lines wrap, the numbers on the left side only change when you purposefully indent! this gets us. . .
+
+<img src="https://i.imgur.com/WVwHG4Y.png">
+
+there we go! our fixes were enabling pre-word break wrap white space for our pre entries, and then turning on text wrap in vscode and not trying to do our line breaks by eye.
+also, since i'm writing this blog entry as i'm operating on the text within this blog entry. everything looks different all the time, and we're playing a little bit of an inception game. what's different here?
+
+well, while i was writing up those previous entries, i noticed that it became hard to discern what was an image of the blog text and what was the actual blog text.
+
+<img src="https://i.imgur.com/sAAh4hY.png">
+
+like in this example. what am i looking at?? what's an image, what's text? you can kind of tell, because of my poor cropping skills, but not really. here's the fix:
+
+<img src="https://i.imgur.com/dUxeapS.png">
+<img src="https://i.imgur.com/MY7dASv.png">
+
+hmm. . . this looks good, but i kind of can't tell which images are which, now. they're a bit squished together, like in this example:
+
+<img src="https://i.imgur.com/GWIUIx1.png">
+
+let's just add a 5 pixel margin and 2px padding on each image.
+
+<img src="https://i.imgur.com/Nx5WXzT.png">
+
+which should get us something that looks like this:
+
+<img src="https://i.imgur.com/cX6n5Uj.png">
+
+which has a lot more comfortable spacing. by the way, did you know that you can select hex codes for colors through VSCode? like this!
+
+<img src="https://i.imgur.com/cTtOTUt.png">
+i found that incredibly convenient.
+
+ok. this is too weird and stressful to continue updating, so I hope you enjoyed what you got so far. bye!
+
+    <div class="blog_mini">p.s i realized that it's hard to see the images beacuse some of them are quite small! so i added in JUST TWO LINES! to make the images get big and visible when you hover over them. most solutions use javascript and have triggers and onclicks and are maybe just a little bit more fancy but no no no!! just two sweet lines! one more for vanity!</div>
+
+<img src="https://i.imgur.com/4ZNIxgF.png">
+<img src="https://i.imgur.com/SENy0yh.png">
+
+</pre>
+<hr/>
+            </div>
+        </div>
     </body>
+    <script>
+        window.onload = function() {
+
+            entries = document.querySelectorAll(".entry")
+            
+            for (let entry of entries) {
+                classes = entry.getAttribute("class").split(" ")
+                id = entry.getAttribute("id")
+                new_link = document.createElement("a")
+                new_link.setAttribute("href", "#" + id)
+                new_link.innerHTML = id
+                new_link.onmouseover = function () {
+                    preview_entry(this)
+                }
+                new_link.onclick = function () {
+                    choose_entry(this)
+                }
+                links.appendChild(new_link)
+            }
+        }
+    </script>
 </html>
