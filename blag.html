@@ -98,63 +98,63 @@ hello world!
 
 as a fun little experiment, for this first blog post, rafhsjkdafhsdljkafhklajdshfjkldsahjf i'm going to write out the steps i take to build this blog, while i'm making this blog! there's a lot of troubleshooting to be done, and a lot of design decisions to be made. right now, i'm trying to make it so the pre div we're working in for each blog entry automatically wraps its lines so they can all fit on the page.
 
-<img src="https://i.imgur.com/k2AwYyZ.png">
+<img loading="lazy" src="https://i.imgur.com/k2AwYyZ.png">
 
 i'm going to try using the following commands i got from <a href="https://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag" target="_blank">this thread</a>:
 
-<img src="https://i.imgur.com/IllsByF.png">
+<img loading="lazy" src="https://i.imgur.com/IllsByF.png">
 
 this gets us. .
 
-<img src="https://i.imgur.com/CZu9UOM.png">
+<img loading="lazy" src="https://i.imgur.com/CZu9UOM.png">
 
 this kind of fixes it, but now everything's a little weird. let's try <a href="https://stackoverflow.com/questions/31025502/how-can-i-switch-word-wrap-on-and-off-in-visual-studio-code" target="_blank">wrapping our lines in vscode</a> and see what happens.
 
-<img src="https://i.imgur.com/rIq4kQg.png">
+<img loading="lazy" src="https://i.imgur.com/rIq4kQg.png">
 
 now it looks okay, but because of the by-eye freehand indenting i was trying before, our lines still look wonky. let's try cleaning this up.
 
-<img src="https://i.imgur.com/qAv8RFU.png">
+<img loading="lazy" src="https://i.imgur.com/qAv8RFU.png">
 
 notice that although the lines wrap, the numbers on the left side only change when you purposefully indent! this gets us. . .
 
-<img src="https://i.imgur.com/WVwHG4Y.png">
+<img loading="lazy" src="https://i.imgur.com/WVwHG4Y.png">
 
 there we go! our fixes were enabling pre-word break wrap white space for our pre entries, and then turning on text wrap in vscode and not trying to do our line breaks by eye.
 also, since i'm writing this blog entry as i'm operating on the text within this blog entry. everything looks different all the time, and we're playing a little bit of an inception game. what's different here?
 
 well, while i was writing up those previous entries, i noticed that it became hard to discern what was an image of the blog text and what was the actual blog text.
 
-<img src="https://i.imgur.com/sAAh4hY.png">
+<img loading="lazy" src="https://i.imgur.com/sAAh4hY.png">
 
 like in this example. what am i looking at?? what's an image, what's text? you can kind of tell, because of my poor cropping skills, but not really. here's the fix:
 
-<img src="https://i.imgur.com/dUxeapS.png">
-<img src="https://i.imgur.com/MY7dASv.png">
+<img loading="lazy" src="https://i.imgur.com/dUxeapS.png">
+<img loading="lazy" src="https://i.imgur.com/MY7dASv.png">
 
 hmm. . . this looks good, but i kind of can't tell which images are which, now. they're a bit squished together, like in this example:
 
-<img src="https://i.imgur.com/GWIUIx1.png">
+<img loading="lazy" src="https://i.imgur.com/GWIUIx1.png">
 
 let's just add a 5 pixel margin and 2px padding on each image.
 
-<img src="https://i.imgur.com/Nx5WXzT.png">
+<img loading="lazy" src="https://i.imgur.com/Nx5WXzT.png">
 
 which should get us something that looks like this:
 
-<img src="https://i.imgur.com/cX6n5Uj.png">
+<img loading="lazy" src="https://i.imgur.com/cX6n5Uj.png">
 
 which has a lot more comfortable spacing. by the way, did you know that you can select hex codes for colors through VSCode? like this!
 
-<img src="https://i.imgur.com/cTtOTUt.png">
+<img loading="lazy" src="https://i.imgur.com/cTtOTUt.png">
 i found that incredibly convenient.
 
 ok. this is too weird and stressful to continue updating, so I hope you enjoyed what you got so far. bye!
 
     <div class="blog_mini">p.s i realized that it's hard to see the images beacuse some of them are quite small! so i added in JUST TWO LINES! to make the images get big and visible when you hover over them. most solutions use javascript and have triggers and onclicks and are maybe just a little bit more fancy but no no no!! just two sweet lines! one more for vanity!</div>
 
-<img src="https://i.imgur.com/4ZNIxgF.png">
-<img src="https://i.imgur.com/SENy0yh.png">
+<img loading="lazy" src="https://i.imgur.com/4ZNIxgF.png">
+<img loading="lazy" src="https://i.imgur.com/SENy0yh.png">
 
 </pre>
 <hr/>
