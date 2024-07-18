@@ -45,7 +45,7 @@
                 padding-left: 10px;
                 overflow: scroll
             }
-            .entry {
+            .entry_content {
                 padding-bottom: 50px;
                 padding-right: 5px;
                 white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -59,13 +59,37 @@
                 margin: 5px;
             }
 
+            #image_modal {
+                height: 100vh;
+                width: 100vw;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-flow: column;
+                background-color: rgba(0,0,0,0.5);
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 5;
+            }
+            #modal_image {
+                height: 80vh;
+                width: 80vw;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: 130px;
+            }
+            #image_modal:hover {
+                cursor:pointer;
+            }
             /* blog markdown */
             .blog_headers {
                 font-size: 30px;
                 color: red;
             }
             .blog_subheaders {
-
+                height: 40px;
+                width: 500px;
             }
             .blog_mini {
                 opacity: 0.7;
@@ -77,26 +101,44 @@
                 margin: 5px;
                 height: auto;
                 border: 3px dotted rgb(2, 255, 2);
+                transition: 0.1s;
             }
             img:hover {
-                position: absolute;
-                transform: scale(2);
+                transform: scale(1.01);
+                opacity: 0.95;
                 cursor: pointer;
                 z-index: 5;
+            }
+            .code {
+                background-color: black;
+                color: rgb(0, 255, 0);
+                width: auto;
+                display: inline-block;
+                padding: 5px;
+                padding-right: 30px;
+                padding-left: 10px;
+                margin: 5px;
+                border-radius: 15px;
             }
         </style>
     </head>
     <body>
+        <div id="image_modal" onclick="modal()"><div id="modal_image"></div></div>
         <div id="container">
             <div id="directory">
                 <div id="links"></div>
             </div>
             <div id="content">
-<pre class="entry blag" id="2024-06-17-1507">
+<div class="entry blag" id="2024-06-17-1507"></div>
 <div class="blog_headers">MAKING THIS BLOG</div>
+<marquee class="blog_subheaders" direction="down" behavior="alternate">
+    <marquee behavior="alternate">it was a blast!</marquee>
+</marquee>
+<hr/>
+<pre class="entry_content">
 hello world! 
 
-as a fun little experiment, for this first blog post, rafhsjkdafhsdljkafhklajdshfjkldsahjf i'm going to write out the steps i take to build this blog, while i'm making this blog! there's a lot of troubleshooting to be done, and a lot of design decisions to be made. right now, i'm trying to make it so the pre div we're working in for each blog entry automatically wraps its lines so they can all fit on the page.
+as a fun little experiment, for this first blog post, rafhsjkdafhsdljkafhklajdshfjkldsahjftestlongstringforoverflow i'm going to write out the steps i take to build this blog and keep a lot of the minutiae that i use to test it, while i'm making this blog! there's a lot of troubleshooting to be done, and a lot of design decisions to be made. right now, i'm trying to make it so the pre div we're working in for each blog entry automatically wraps its lines so they can all fit on the page.
 
 <img loading="lazy" src="https://i.imgur.com/k2AwYyZ.png">
 
@@ -149,17 +191,148 @@ which has a lot more comfortable spacing. by the way, did you know that you can 
 <img loading="lazy" src="https://i.imgur.com/cTtOTUt.png">
 i found that incredibly convenient.
 
-ok. this is too weird and stressful to continue updating, so I hope you enjoyed what you got so far. bye!
-
-    <div class="blog_mini">p.s i realized that it's hard to see the images beacuse some of them are quite small! so i added in JUST TWO LINES! to make the images get big and visible when you hover over them. most solutions use javascript and have triggers and onclicks and are maybe just a little bit more fancy but no no no!! just two sweet lines! one more for vanity!</div>
+while typing that, i realized that it's hard to see the images because some of them are quite small! so i added in JUST TWO LINES! to make the images get big and visible when you hover over them. most solutions use javascript and have triggers and onclicks and are maybe just a little bit more fancy but no no no!! just two sweet lines! one more for vanity!
 
 <img loading="lazy" src="https://i.imgur.com/4ZNIxgF.png">
 <img loading="lazy" src="https://i.imgur.com/SENy0yh.png">
 
+ok. although that was a fun setup, in reality, it glitches out pretty hard and doesn't work at all on mobile, so we're just going to have to bite the bullet and make a <b>modal</b> with some simple javascript. it won't be too bad. <div class="blog_mini">in another life, i could be more like <a href="https://aem1k.com/" target="_blank">aem1k</a> and figure out some brilliant css code golf solution, but i'm not there yet. YET!</div>
+
+there isn't really an official defined definition of what a modal box is in terms of web design, but loosely, it's a popup! like when you open a website and it asks you to check or uncheck cookie permissions before proceeding. that's a modal. in our case, our modal is something that the end user of the blog actually cares about and wants to see, but that's besides the point. usually, modals are dismissed by clicking on some X button in their corner, or clicking somewhere on the screen that is not on the modal. let's implement both, just because we might as well. 
+
+    <div class="code">        
+window.onload = function() {
+
+    entries = document.querySelectorAll(".entry")
+    
+    for (let entry of entries) {
+        classes = entry.getAttribute("class").split(" ")
+        id = entry.getAttribute("id")
+        new_link = document.createElement("a")
+        new_link.setAttribute("href", "#" + id)
+        new_link.innerHTML = id
+        links.appendChild(new_link)
+    }
+}
+
+</div>
+
+this is all the javascript we currently have on the page. it grabs every article title and generates a list of links to each blog article, using their id, which is the datetime (ish) that the article was started. i put the datetimes in manually, but i'm sure there's some code whiz way of not having to, using the time of the first git commit of an article or something. i'll add that to the to-do list!
+
+<div class="blog_mini">btw: new development: code blocks. i realized it was probably innefficient in pretty much every way to be including individual screenshots of the code i'm writing. more and more trial and error!
+
+by the way, you might have noticed that this text is small! and a lighter color! in pursuit of a consistent styling to this blog, i've created a series of tags to format my entries with. right now, there's
+    <div class="code">
+.blog_headers {
+    font-size: 30px;
+    color: red;
+}
+.blog_subheaders {
+
+}
+.blog_mini {
+    opacity: 0.7;
+    font-size: 10px;
+}
+    </div>
+this text (yes, this! what you're reading with your eyes right now!) is a blog_mini. i haven't written any rules for blog_subheaders yet, which vscode is <i>not</i> thrilled about, but i will at the end when i write a witty subheading for this entry.
+</div>
+
+the trained eye might have noticed that these posts are all written in <b>pre</b> tags. i like them a lot. <b>pre</b> tags define formatted text, meaning anything written inside them preserves line spaces and tabs and spaces. so i can do          
+                                    
+                                this            !
+                                
+        or
+
+               _,.---.---.---.--.._ 
+           _.-' `--.`---.`---'-. _,`--.._
+          /`--._ .'.     `.     `,`-.`-._\
+         ||   \  `.`---.__`__..-`. ,'`-._/
+    _  ,`\ `-._\   \    `.    `_.-`-._,``-.
+ ,`   `-_ \/ `-.`--.\    _\_.-'\__.-`-.`-._`.
+(_.o> ,--. `._/'--.-`,--`  \_.-'       \`-._ \
+ `---'    `._ `---._/__,----`           `-. `-\
+           /_, ,  _..-'                    `-._\
+           \_, \/ ._(
+            \_, \/ ._\
+             `._,\/ ._\
+               `._// ./`-._
+        <b>THIS!</b>    `-._-_-_.-'
+
+every character in a <b>pre</b> has the same length, so <a href="https://www.asciiart.eu/animals/other-water" target="_blank">ascii art</a> will always format correctly.
+
+what's interesting, though, is that you can put html tags inside them. e,g, your <b>div</b>s and <b>a</b>s <span class="blog_mini">(links)</span> and <b>b</b>s <span class="blog_mini">(bold)</span> and <b>i</b>s <span class="blog_mini">(italics)</span> and they'll all work. yet, the characters that you use to write out the tags aren't actually factored into the formatted text. for example, in our wonderful turtle illustration above, the code looks like this:
+
+<img loading="lazy" src="https://i.imgur.com/DHDXM1U.png">
+
+but the turtle looks a-okay!
+
+anyway, back to the javascript. we're going to create a function called <b>modal</b> that triggers the on and off of a modal popup and sets the popup to display whatever image we just clicked on. if you click outside of it, it'll pop back out. the code looks like this:
+
+html:
+<div class="code">
+at some point i will go through these and write a markup script to let me display html tags as plain text. today is not that day. it's a div id=image_modal with a child div id=modal_image. image_modal has an attribute of onclick=modal() 
+
+</div>
+
+css:
+<div class="code">
+#image_modal {
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+#modal_image {
+    height: 80vh;
+    width: 80vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#image_modal:hover:not(:has(*:hover)) {
+    cursor:pointer;
+}
+
+</div>
+
+javascript:
+<div class="code">
+
+images = document.querySelectorAll("img")
+for (let image of images) {
+    image.onclick = function() {
+        modal(image)
+    }
+}
+
+popup = false;
+
+const modal = (image) => {
+    if(image) {
+        image_modal.style.display = "flex";
+        modal_image.style.backgroundImage = "url('" + image.getAttribute("src") + "')"
+    }
+    else {
+        image_modal.style.display = "none";
+    }
+}
+
+</div>
+
+go for it! check it out! let me know if it works okay! one more thing that i noticed that is a little weird is that it flashes white at the bottom while i scroll, but that's probably an image loading thing. i'll figure it out. until next time.
+
+<div class="blog_mini">check out the bouncy subheader :)</div>
 </pre>
 <hr/>
-            </div>
-        </div>
+</div>
+</div>
     </body>
     <script>
         window.onload = function() {
@@ -172,13 +345,26 @@ ok. this is too weird and stressful to continue updating, so I hope you enjoyed 
                 new_link = document.createElement("a")
                 new_link.setAttribute("href", "#" + id)
                 new_link.innerHTML = id
-                new_link.onmouseover = function () {
-                    preview_entry(this)
-                }
-                new_link.onclick = function () {
-                    choose_entry(this)
-                }
                 links.appendChild(new_link)
+            }
+
+            images = document.querySelectorAll("img")
+            for (let image of images) {
+                image.onclick = function() {
+                    modal(image)
+                }
+            }
+        }
+
+        popup = false;
+
+        const modal = (image) => {
+            if(image) {
+                image_modal.style.display = "flex";
+                modal_image.style.backgroundImage = "url('" + image.getAttribute("src") + "')"
+            }
+            else {
+                image_modal.style.display = "none";
             }
         }
     </script>
