@@ -84,7 +84,7 @@
             }
             /* blog markdown */
             .blog_headers {
-                font-size: 30px;
+                font-size: 40px;
                 color: red;
             }
             .blog_subheaders {
@@ -130,9 +130,129 @@
         <div id="image_modal" onclick="modal()"><div id="modal_image"></div></div>
         <div id="container">
             <div id="directory">
-                <div id="links"></div>
+                <div id="links">
+                </div>
             </div>
 <div id="content">
+
+    <div class="entry" id="2024-07-21-1846">
+        <div class="blog_headers">GAME LEADERBOARDS PT. 1 KIND OF MAKING A WEBHOOK</div>
+        <marquee class="blog_subheaders" direction="down" behavior="alternate">
+            <marquee behavior="alternate">it's like co-op, but i don't get paid!</marquee>
+        </marquee>
+        <hr/>
+        <pre class="entry_content">
+    hellooooooooooo
+my first co-op was at a startup called <a href="https://swaptqr.com/" target="_blank">Swapt</a>, which helps companies improve offline customer retention through engaging and securely routed QR codes. my main thing was building out client-customizable games, which eventually became a huge part of the company's product. pretty cool! one funny thing about it was that i ended up building an entire SQL-based leaderboard system that was scaled to the entire Boston Calling music festival before i even took database design and learned what the difference between a left and right join are. northeastern is one crazy school! 
+
+regardless, i've been making games on my personal website (this one! archizzl dot com baby!) since my freshman year of high school, and i've always wanted to add automated leaderboards to them. kids in my classes would play the games, get a high score, and clamor at my gates for some glorious totem to their accomplishment, an eternal monument to their superior sportsmanship etched in obelisk to last til the next epoch or maybe until Juan beats the score four minutes later, to be dethroned by Ruby soon after. And on and on. 
+
+i initially acquiesed to their demands, or rather, said "okay", and then thought to myself, how the fuck do i go about this? i didn't know anything about database management or backend development, i was busy with APUSH DBQ prep. so, my grand solution. . . .
+
+<div class="blog_hidden">hard-code each new high score into the page whenever a kid would approach me in person and ask me to
+</div>
+
+that's right! maybe the single least efficient thing i could have possibly done. i do not think there is a less technical way of implementing a leaderboard for the online game. maybe putting my phone number up on the page and instructing constitutents to ring my line for the most recent list of big-shot scorers. ridiculous.
+
+today, i'd like to right those wrongs, or at least one of them. starting small, as always. let's try adding a leaderboard to <a href="/projects/games/click_speed.html" target="_blank">this game</a> using <a href="https://csvbase.com" target="_blank">csvbase</a>, a free platform for hosting csvs online!
+
+let's start by making our table. while a long term plan for the site is to let people log into the site (which i'll be using my one free <i>private</i> csv provided by csvbase for), for now, we'll forego consistent clients for efficiency and just have people enter their name if they beat the high score of the game. since i made this game in high school, some of the code makes absolutely no sense. that's alright though, it's modular. maybe.
+
+<a href="https://csvbase.com/archizzl/archizzl-games-v1?n=2&op=lt&highlight=1" target="_blank">here's the csv.</a> 
+
+<img src="https://i.imgur.com/XTzSUSz.png" loading="lazy">
+
+<div class="blog_mini">i added in a sample row. i couldn't help myself!</div>
+
+there's a link to an <b>api</b> page that gives us instructions for reading and writing to our page. let's try grabbing our api key (not telling!) and putting this leaderboard together!
+
+<div class="code">
+    async function getLeaderboard() {
+        try {
+            console.log("fetching!")
+            const response = await fetch('https://csvbase.com/archizzl/archizzl-games-v1');
+            const text = await response.text();
+            console.log(text)
+        } catch (error) {
+            console.log("fetch failed")
+            console.log(error)
+        }
+    }
+
+    getLeaderboard();
+    <hr/>
+    fetching!
+    click_speed.html:107 csvbase_row_id,name,game,score
+    1,archie,click_speed,5    
+
+</div>
+great! we can read to our table! how about writing to it? 
+
+csvbase uses <b>Basic auth</b> for authenticating requests to its API. well, <a href="https://csvbase.com/blog/7" target="_blank">it doesn't <i>really</i> have an api.</a> it's a whole thing. ignoring the minutiae of everyday life, what this means is that csvbase requires you to authenticate if you want to write or delete from a table, and using basic auth means that the api auth for one of my tables is the api auth for all of my tables. 
+
+no problem, i thought to myself, i'll just use an environment variable to hide my token. 
+
+    well, no.
+
+        <a href="https://stackoverflow.com/questions/38237673/how-to-hide-an-api-key-in-client-side-javascript" target="_blank">you can't.</a>
+
+if there was an individual api key just for this table, i would say screw it, i don't care much about people screwing around with this leaderboard, i just want to try implementing it. but i can't risk someone having the key for my whole account! i only have one account! we'll have to hide it. 
+
+but how? i'm trying to get this done for cheap. i don't want to go to the effort of hosting a server or pay for lambda or whatever. how about. . . 
+            my favorite hacky solution for everything. . .
+
+                GOOGLE APPS SCRIPT!
+
+update: wow! that was painful! but i got it to work! here's our code in a new (free) Google Apps Script:
+
+    <div class="code">
+
+    function doPost(e) {
+        var data = JSON.parse(e.postData.contents);
+        payload = JSON.stringify(data)
+        var options = {
+            "method" : "POST",
+            "contentType" : "application/json",
+            "payload": payload,
+            "headers": {
+            "Authorization": "Basic XXXXXXXX=",
+            "Content-Type": "application/json"
+            },
+            "muteHttpExceptions": true
+        };
+        var url = "https://csvbase.com/archizzl/archizzl-games-v1/rows/"
+        var response = UrlFetchApp.fetch(url, options);
+        return ContentService.createTextOutput(response);
+        }
+
+    </div>
+
+    i've obfuscated my API token. it would be funny if i didn't, and this whole thing was moot. Regardless, this is a webhook! I can now make post requests to my deployed web app Apps Script with my player name and score, and then it will be updated to the csv! awesome!
+
+    <img src="https://i.imgur.com/t3uYaHx.png" loading="lazy">
+    <div class="blog_mini">note: anyone can make post requests to this web app. uh oh! that means it isn't secure at all, it's quite vulnerable to trolling and etc. however, the vulnerability is localized to <b>just this leaderboard</b>. <i>the endpoint is open and exposed, but my account is not.</i></div>
+    
+    now, we just add in the front-end section.
+
+    <div class="blog_mini">or so i thought. . .</div>
+    
+    about a half an hour later, strangely enough, i cannot for the life of me seem to get my new web app to accept POST requests sent in from my local server. it's still working perfectly in postman, but not in the app. what on earth is going on? 
+    <div class="code">
+    fetching!
+    
+    click_speed.html:116 {
+        "error": "unable to convert the data you provided to the required type"
+    }
+    </div>
+    that's an error code from csvbase, meaning that our request is getting to csvbase, but isn't going through. what's changed between the fetch and postman?
+
+    to be completely honest, i'm stumped right now. i tried troubleshooting through countless stackoverflow threads, using code snippet generation from both Postman and ChatGPT, and stared at it for a long time. now i'm hungry, and tired, and i've accomplished something (setting up a webhook!). i think i'm going to quit while i'm ahead. 
+
+    see you next time!
+</pre>
+
+    </div>
+
 
     <div class="entry blag sweetum" id="2024-07-21-1116">
         <div class="blog_headers">SEPARATING BLOG ENTRIES INTO TEXT FILES, SOME MARKDOWN STUFF</div>
@@ -621,7 +741,7 @@ now that we've got this working, it would be pretty straightforward to set up th
 </html>
 
 <!--
-<div class="entry" id="2024-XX-XX-XXXX">
+<div class="entry" id="20XX-XX-XX-XXXX">
     <div class="blog_headers">MAKING THIS BLOG</div>
     <marquee class="blog_subheaders" direction="down" behavior="alternate">
         <marquee behavior="alternate">it was a blast!</marquee>

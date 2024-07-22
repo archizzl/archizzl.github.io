@@ -43,8 +43,11 @@
     <div id="count">count: 0</div>
     <div id="highest">highest count: 0</div>
     <div id='time'>time: 10s</div>
-    <duv id="again">click the button to go again!</div>
+    <div id="again">click the button to go again!</div>
+
+    leaderboard:
   </div>
+  
 </body>
 <script>
 btn = document.getElementById('btn')
@@ -56,7 +59,6 @@ running = false;
 score = 0;
 time = 10;
 ugh = 0;
-
 highest = 0;
 function start(){
   ag.style.color = 'white'
@@ -70,6 +72,7 @@ function start(){
     time--
     t.innerHTML = 'time: ' + time + 's'
   }, 1000)
+
   setTimeout(function(){
     running = false;
     clearInterval(intc)
@@ -93,11 +96,31 @@ btn.onclick = function(){
   }
 }
 
+//leaderboard
 
 
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
+const raw = JSON.stringify({
+  "row": {
+    "name": "archie",
+    "game": "click_speed",
+    "score": "5"
+  }
+});
 
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
 
+fetch("https://script.google.com/macros/s/AKfycbw85fygZf7aivXT2Pb-Lt9Lfdp5VAVWII6rAjfJK-xN5jeNw2GkbrXMTZvvJ9mM0zEQkQ/exec", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
 
 </script>
 </html>
