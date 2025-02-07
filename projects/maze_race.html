@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  #container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+  }
+  #container > *{
+    margin: 10px;
+  }
+  #game_container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+  }
+  .box {
+    background-color: black;
+    height:15px;
+    width:15px;
+  }
+  .path_div {
+    background-color: white;
+    height:15px;
+    width:15px;
+  }
+  #end_of_maze {
+    background-color: red;
+  }
+  .loss_boxes {
+    background-color: yellow;
+    height:15px;
+    width:15px;
+  }
+  .win_boxes {
+    background-color: red;
+    animation: rotation 2s linear infinite;
+    height:15px;
+    width:15px;
+  }
+  @keyframes rotation {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="status">click the button to generate a maze!</div>
+  <div id="current_time">Current time:</div>
+  <div id="best_time">Best time:</div>
+<button id="generate" onclick="generate()">hello! click me</button>
+
+<div id="game_container"></div>
+keep your cursor on the white and see how fast you can make it to the red square!
+<br/> i know that you can probably just move your cursor around the box to the end but that's no fun for you :P
+</div>
+</body>
+<script>
+
+
+
+
+gen = document.getElementById('generate');
+
+cont = document.getElementById('container');
+game_cont = document.getElementById('game_container');
+b_num = 0;
+scale = 20;
+for(i = 0; i<scale; i++){
+  current_row = document.createElement('div');
+  current_row.setAttribute('class', 'row');
+  for(j = 0; j<scale; j++){
+    b_num++;
+    current_box = document.createElement('div');
+    current_box.setAttribute('class', 'box');
+    current_box.setAttribute('id', 'box_'+b_num);
+    if(j==0){
+      current_box.setAttribute('data-placement', 'first');
+    }
+    else if(j==scale-1){
+      current_box.setAttribute('data-placement', 'last');
+    }
+    current_row.appendChild(current_box);
+  }
+  game_cont.appendChild(current_row);
+}
+
+filled = 100;
+ran = false;
+sta = document.getElementById('status');
+
+function lose(){
+  console.log('you lost');
+  gen.innerHTML = 'play again?';
+  running = false;
+  boxes = document.querySelectorAll('.box');
+  for(g = 0; g<boxes.length; g++){
+    boxes[g].setAttribute('class', 'loss_boxes');
+    boxes[g].removeEventListener('mouseover', loselisten);
+  }
+  sta.innerHTML = 'you lost!';
+}
+function win(){
+  console.log('you won')
+  gen.innerHTML = 'play again?';
+  running = false;
+  boxes = document.querySelectorAll('.box');
+  for(g = 0; g<boxes.length; g++){
+    boxes[g].setAttribute('class', 'win_boxes');
+  }
+  sta.innerHTML = 'you win!'
+  if(current_time_var<best_time_var){
+    best_time_var = current_time_var;
+    best_time_div.innerHTML = 'Best time: ' + best_time_var.toFixed(2) + 's';
+  }
+
+}
+
+function loselisten(){
+  if(running == true){
+    lose();
+  }
+}
+
+function winlisten(){
+  if(running == true){
+    win();
+    winbox.removeEventListener('mouseover', winlisten);
+    console.log(winbox);
+  }
+}
+
+
+
+
+function generate(){
+  current_time_var = 0;
+  gen.innerHTML = 'generate new';
+  sta.innerHTML = 'game in progress. . . ';
+  running = true;
+    if(ran==true){
+      lboxes = document.querySelectorAll('.loss_boxes');
+      for(b = 0; b<lboxes.length; b++){
+        lboxes[b].setAttribute('class', 'box');
+      }
+      wboxes = document.querySelectorAll('.win_boxes');
+      for(c = 0; c<wboxes.length; c++){
+        wboxes[c].setAttribute('class', 'box');
+      }
+      clear_path = document.querySelectorAll('.path_div');
+      clear_finish = document.getElementById('end_of_maze');
+      clear_finish.setAttribute('id', curr_finish);
+      for(h = 0; h<clear_path.length; h++){
+        clear_path[h].setAttribute('class', 'box');
+
+      }
+    }
+    ran = true;
+
+    current_point = 1
+    for(k = 0; k<filled; k++){
+      chosen = false;
+      new_path = document.getElementById('box_' + current_point)
+      new_path.setAttribute('class', 'path_div');
+      if(k==filled-1){
+        curr_finish = new_path.getAttribute('id');
+
+        new_path.setAttribute('id', 'end_of_maze');
+      }
+        choice = Math.floor(Math.random()*4);
+        //down
+        if(choice==0){
+          if(current_point<((scale*scale)-scale)){
+            current_point+=scale;
+          }
+        }
+        //right
+        else if(choice==1){
+          if(new_path.dataset.placement!='last'){
+            current_point+=1;
+          }
+        }
+    }
+    boxes = document.querySelectorAll('.box')
+    for(z = 0; z<boxes.length; z++){
+      boxes[z].addEventListener('mouseover', loselisten);
+
+    }
+    winbox = document.getElementById('end_of_maze')
+    winbox.addEventListener('mouseover', winlisten);
+}
+
+current_time_var = 0;
+best_time_var = Number.MAX_VALUE;
+current_time_div = document.getElementById('current_time');
+best_time_div = document.getElementById('best_time');
+setInterval(function(){
+  if(running == true){
+    current_time_var +=0.01
+
+
+    current_time_div.innerHTML = 'Current time: ' + current_time_var.toFixed(2) + 's'
+  }
+}, 10)
+
+
+</script>
+</html>

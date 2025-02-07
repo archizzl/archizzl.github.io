@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>h</title>
+  <style>
+      * {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#box {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  animation: clockwise 5s linear infinite;
+}
+
+.spin {
+  height: 100px;
+  width: 10px;
+  background-color: black;
+  animation: counterclockwise 5s linear infinite;
+}
+
+#longer {
+  height: 180px;
+}
+
+#shown {
+  height: 10px;
+  width: 50px;
+  position: absolute;
+  background-color: black;
+  border-radius: 10px;
+}
+
+#hidden {
+  height: 15px;
+  width: 40px;
+  background-color: white;
+}
+
+@keyframes clockwise{
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes counterclockwise {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+  </style>
+</head>
+<body translate="no" >
+  <div id="container">
+  <div id="box">
+    <div class="spin" id="longer"></div>
+    <div id="shown"></div>
+    <div id="hidden"></div>
+    <div class="spin"></div>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+
+</html>

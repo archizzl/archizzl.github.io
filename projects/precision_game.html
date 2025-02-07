@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.box {
+  height: 20px;
+  width: 20px;
+  margin: 1px;
+  background-color: white;
+  border-radius: 10000px;
+  border: 1px solid lightgray;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div id="start">start</div>
+    <div id="score">score: 0</div>
+    <div id="timeleft">time left: 10s</div>
+    <div id="topscore">top score: 0</div>
+  </div>
+</body>
+<script>
+  window.onload = function(){
+    let num = 20;
+    let d = 1;
+    let chosen = 0;
+    let score = 0;
+    let timeleft = 10;
+    let running = false;
+    let topscore = 0;
+    sd = document.getElementById('score')
+    tl = document.getElementById('timeleft')
+    c = document.getElementById('container');
+    s = document.getElementById('start');
+    ts = document.getElementById('topscore')
+    for(i = 0; i<num; i++){
+      rc = document.createElement('div');
+      rc.setAttribute('class', 'row');
+      for(j = 0; j<num; j++){
+        bc = document.createElement('div');
+        bc.setAttribute('class', 'box');
+        bc.setAttribute('id', 'b'+d);
+        rc.appendChild(bc);
+        d++
+      }
+      container.appendChild(rc);
+    }
+    boxes = document.querySelectorAll(".box")
+    for(i = 0; i<boxes.length; i++){
+      boxes[i].onclick = function(){
+        if(this.id == "b"+chosen){
+          score++;
+          sd.innerHTML = "score: " + score
+          this.style.backgroundColor = "white";
+          square_active = false;
+        }
+      }
+    }
+    s.onclick = function(){
+      if(running == false){
+        tl.innerHTML = "time left: " + timeleft + "s"
+        for(i = 0;i<boxes.length; i++){
+          boxes[i].style.backgroundColor = "white"
+        }
+        s.style.color = "white";
+        running = true;
+        square_active = false;
+        sd.innerHTML = "score: " + score
+        game_interval = setInterval(function(){
+          if(running == true){
+            if(square_active == false) {
+              ccid = Math.floor(Math.random()*(num*num));
+              cc = document.getElementById('b'+ccid)
+              cc.style.backgroundColor = 'red';
+              chosen = ccid;
+              square_active = true;
+            }
+          }
+        }, 1);
+        timer = setInterval(function(){
+          timeleft--
+          tl.innerHTML = "time left: " + timeleft + "s"
+
+        }, 1000)
+        setTimeout(function(){
+          window.clearInterval(game_interval);
+          window.clearInterval(timer)
+          running = false;
+          s.style.color = "black"
+          timeleft = 10;
+          if(score>=topscore){
+            topscore = score;
+            ts.innerHTML = "top score: " + topscore;
+          }
+          chosen = 0;
+          score = 0;
+          for(i = 0;i<boxes.length; i++){
+            boxes[i].style.backgroundColor = "white"
+          }
+        }, 10000)
+      }
+
+    }
+
+
+  }
+</script>
+</html>
