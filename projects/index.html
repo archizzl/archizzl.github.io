@@ -1,1 +1,61 @@
-<html><body><h3>projects</h3><ol><li><a target="_blank" href="a_bit_of_squares.html">a bit of squares</a></li><li><a target="_blank" href="art_generator.html">art generator</a></li><li><a target="_blank" href="backgroundboxes.html">backgroundboxes</a></li><li><a target="_blank" href="balloons.html">balloons</a></li><li><a target="_blank" href="click_speed.html">click speed</a></li><li><a target="_blank" href="click_streak.html">click streak</a></li><li><a target="_blank" href="clock.html">clock</a></li><li><a target="_blank" href="fun_with_equations.html">fun with equations</a></li><li><a target="_blank" href="hailstone_sequence_visualization.html">hailstone sequence visualization</a></li><li><a target="_blank" href="helix.html">helix</a></li><li><a target="_blank" href="lineheight_experimentation.html">lineheight experimentation</a></li><li><a target="_blank" href="maze_race.html">maze race</a></li><li><a target="_blank" href="optical_illusion.html">optical illusion</a></li><li><a target="_blank" href="other_cube_game.html">other cube game</a></li><li><a target="_blank" href="precision_game.html">precision game</a></li><li><a target="_blank" href="puddle.html">puddle</a></li><li><a target="_blank" href="sinwave.html">sinwave</a></li><li><a target="_blank" href="timer_game.html">timer game</a></li></ol></body></html>
+<html>
+  <head>
+    <style>
+      * {
+        margin: 5px;
+        padding: 0;
+        color: green;
+      }
+      h3 {
+        text-decoration: underline;
+      }
+      #ventana {
+        height: 70vh;
+        width: 70vw;
+      }
+      fieldset {
+        border: none;
+        outline: none;
+        display: flex;
+        flex-flow: row wrap;
+        width: 60vw;
+      }
+      a {
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #efefef;
+        transition: 0.05s;
+      }
+      a:hover {
+        transform: scale(1.05)
+      }
+    </style>
+  </head>
+  <body>
+    <h3>tiny, noncommital tricks & treats i built in high school and college
+    </h3>
+    <fieldset><a href="a_bit_of_squares.html" id="a_bit_of_squares" target="ventana">a bit of squares</a><a href="art_generator.html" id="art_generator" target="ventana">art generator</a><a href="backgroundboxes.html" id="backgroundboxes" target="ventana">backgroundboxes</a><a href="balloons.html" id="balloons" target="ventana">balloons</a><a href="click_speed.html" id="click_speed" target="ventana">click speed</a><a href="click_streak.html" id="click_streak" target="ventana">click streak</a><a href="clock.html" id="clock" target="ventana">clock</a><a href="fun_with_equations.html" id="fun_with_equations" target="ventana">fun with equations</a><a href="hailstone_sequence_visualization.html" id="hailstone_sequence_visualization" target="ventana">hailstone sequence visualization</a><a href="helix.html" id="helix" target="ventana">helix</a><a href="lineheight_experimentation.html" id="lineheight_experimentation" target="ventana">lineheight experimentation</a><a href="maze_race.html" id="maze_race" target="ventana">maze race</a><a href="optical_illusion.html" id="optical_illusion" target="ventana">optical illusion</a><a href="other_cube_game.html" id="other_cube_game" target="ventana">other cube game</a><a href="precision_game.html" id="precision_game" target="ventana">precision game</a><a href="puddle.html" id="puddle" target="ventana">puddle</a><a href="sinwave.html" id="sinwave" target="ventana">sinwave</a><a href="timer_game.html" id="timer_game" target="ventana">timer game</a></fieldset>
+    <iframe name='ventana' id="ventana" src='../words/horses.txt'></iframe>
+  
+  </body>
+  <script>
+    current_source = 0;
+    links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+      link.onmousedown = () => {
+        loc = link.getAttribute('id');
+        console.log('current loc:')
+        console.log(current_source)
+        console.log('loc selected')
+        console.log(loc)
+        if(current_source) {
+            document.getElementById(current_source).style.outline = "0px";
+        }
+        current_source = loc;
+        document.getElementById(loc).style.outline = "2px solid black";
+      }
+    })
+    
+  </script>
+</html>

@@ -99,28 +99,28 @@ btn.onclick = function(){
 //leaderboard
 
 
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+// const myHeaders = new Headers();
+// myHeaders.append("Content-Type", "application/json");
 
-const raw = JSON.stringify({
-  "row": {
-    "name": "archie",
-    "game": "click_speed",
-    "score": "5"
-  }
-});
+// const raw = JSON.stringify({
+//   "row": {
+//     "name": "archie",
+//     "game": "click_speed",
+//     "score": "5"
+//   }
+// });
 
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
+// const requestOptions = {
+//   method: "POST",
+//   headers: myHeaders,
+//   body: raw,
+//   redirect: "follow"
+// };
 
-fetch("https://script.google.com/macros/s/AKfycbw85fygZf7aivXT2Pb-Lt9Lfdp5VAVWII6rAjfJK-xN5jeNw2GkbrXMTZvvJ9mM0zEQkQ/exec", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
+// fetch("https://script.google.com/macros/s/AKfycbw85fygZf7aivXT2Pb-Lt9Lfdp5VAVWII6rAjfJK-xN5jeNw2GkbrXMTZvvJ9mM0zEQkQ/exec", requestOptions)
+//   .then((response) => response.text())
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error(error));
 
 </script>
 </html>

@@ -1,178 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169351187-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-169351187-2');
-</script>
-
-  <title>archie oconnell website</title>
+<title>archie oconnell website</title>
 <style>
   * {
     margin: 0;
     padding: 0;
-    user-select: none;
+  }
+  #landing_page {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #container {
     position: absolute;
+    z-index: 5;
     top: 0;
     left: 0;
-    height: 100vh;
     width: 100vw;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding-top: 20px;
   }
-  a {
-    color: black;
-    text-decoration: none;
+  #container > * {
+    margin: 2px;
+  }
+  a:visited {
+    color: inherit;
   }
   a:hover {
     text-decoration: underline;
   }
-  #t {
-    text-align: center;
-  }
-  #a {
-    display: none;
-  }
   #header {
     font-size: 20px;
   }
-  #b:hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  #alex:hover {
-    color: skyblue;
-  }
-  #resume:hover {
-    color: #ffb65a;
-  }
-  .socials:hover {
+  a:hover {
     opacity: 0.5
   }
-  #video_links_wrapper {
-    height: 400px;
-    width: auto;
-    margin: 15px;
+  #video_wrapper {
+    height: 90vh;
+    width: 100vw;
     background-color: green;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
   }
-  #links {
-    position: absolute;
-    margin-right: 5px;
-    z-index: 5;
-  }
-  #v {
-    position: relative;
-    z-index: 3;
-    height: inherit;
-    width: inherit;
-  }
-  
-  @keyframes shimmer {
-    20% {
-      fill: #6FE0C3
-    }
-    40% {
-      fill: #6EDFC2;
-    }
-    60% {
-      fill: #7CF2D6;
-    }
-    80% {
-      fill: #64DCC5
-    }
-    100% {
-      fill: #62DBBA;
-    }
+  #lady {
+    height: 200px;
   }
 
-  .svg {
-    fill: #6FE0C3;
-    animation: shimmer 5s linear alternate infinite
-  }
 </style>
 
 </head>
 <body>
-<div id="container">
 
-
-<div id="video_links_wrapper">
-  <video src="./hpi/salmon.mov" autoplay muted loop id="v" alt="credit to my love, livvy krakower" title="thank you livvy krakower for this beautiful video!"></video>
-  <div id="links">
-    <a href="https://github.com/archizzl" target="_blank" class="socials"><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-    <a href="https://www.linkedin.com/in/archizzl/" target="_blank" class="socials"><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-    <a href="https://www.soundcloud.com/archieusername" target="_blank" class="socials"><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.709 15h-.541v-4.4c.167-.126.347-.234.541-.309v4.709zm1.625 0h.543v-5.031c-.125.145-.24.299-.337.468l-.206-.101v4.664zm-1.082 0h.541v-4.826c-.274-.043-.337-.027-.541-.005v4.831zm-2.168 0h.543v-3.829c-.17.25-.302.529-.375.836l-.168-.099v3.092zm-1.625-2.863c-.329.298-.541.738-.541 1.236 0 .499.212.938.541 1.238v-2.474zm10.227-.366c-.11-1.548-1.302-2.771-2.772-2.771-.554 0-1.064.179-1.496.479v5.521h4.924c.87 0 1.576-.76 1.576-1.695 0-1.218-1.174-2.056-2.232-1.534zm-9.143-.016c-.163-.014-.285-.017-.541.066v3.103c.241.078.345.076.541.076v-3.245z"/></svg></a>
-    <a href="https://www.youtube.com/@archieoconnell2398/featured" target="_blank" class="socials"><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
-    <a href="https://www.instagram.com/archieusername" target="_blank" class="socials"><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+<div id="landing_page">
+  <div id="container">
+      <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
+      <span id="header">archie o'connell</span>
+      <audio controls id="a">
+        <source src="./hpi/indexbackground.mp4" type="audio/mp4">
+      </audio>
+      <a id="play" href="./projects/index.html" target="_blank">
+        play
+      </a>
+      <a id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
+        resume
+      </a>
+  </div>
+  <div id="video_wrapper">
+    <video src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
   </div>
 </div>
-
-<audio controls id="a">
-  <source src="./hpi/indexbackground.mp4" type="audio/mp4">
-</audio>
-
-<div id="t">
-  <span id="header">archie o'connell</span>
-  <hr/>
-  <div>
-    <span id="b">
-      click me to play beautiful music
-    </span>
-  </div>
-  <div>
-    <a id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
-      click me to resume
-    </a>
-  </div>
-  <div>
-    <a href="./b.txt" target="_blank">b</a><a href="./log.txt" target="_blank">log</a> <a href="./blag.html" target="_blank">blag</a>
-  </div>
-</div>
-
 
 </body>
 <script>
-  let images = ['fishy.png']
-  let i = document.getElementById('i')
-  let a = document.getElementById('a')
-  let b = document.getElementById('b')
-  let v = document.getElementById('v')
-  p = 0;
-  h = 0;
-  b.onclick = function(){
-    if(p%2==0){
-      a.play()
-      b.innerHTML = 'now playing: for_archie.mp4 by <a id="alex" href="https://open.spotify.com/artist/0AQigMl7uEL0xwokVfniXh?si=ba3e29c1892343f3" target="_blank">alex klint</a>'
-      h = 2;
-    }
-    if(p%2==1){
-      a.pause()
-      h = 3;
-      b.innerHTML = "paused: for_archie.mp4 by <a id='alex' href='https://open.spotify.com/artist/0AQigMl7uEL0xwokVfniXh?si=ba3e29c1892343f3' target='_blank'>alex klint</a>"
-    }
-    p++
-  }
-  v.onclick = function(){
-    if(h%2==0){
-      v.pause()
-    }
-    else {
-      v.play();
-    }
-    h++
-  }
+
 </script>
 </html>
