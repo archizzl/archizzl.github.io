@@ -10,6 +10,10 @@ def create_directory(directory, caption):
         padding: 0;
         color: green;
       }
+      body {
+        display: flex;
+        flex-flow: column;
+      }
       h3 {
         text-decoration: underline;
       }
@@ -35,6 +39,9 @@ def create_directory(directory, caption):
         transform: scale(1.1);
         opacity: 0.5;
       }
+      #link {
+        width: 130px;
+      }
     </style>
   </head>
   <body>
@@ -44,26 +51,32 @@ def create_directory(directory, caption):
     <fieldset>''')
         for filename in sorted(os.listdir(directory)):
             if filename.endswith('.html') and filename != "index.html":
-                f.write(f'<a href="{filename}" id="{filename[:-5]}" target="ventana">{filename[:-5].replace("_", " ")}</a>')
+                f.write(f'<a href="{filename}" class="project_link" id="{filename[:-5]}" target="ventana">{filename[:-5].replace("_", " ")}</a>')
         f.write('''</fieldset>
     <iframe name='ventana' id="ventana" src='../words/horses.txt'></iframe>
-  
+    <a href="../words/horses.txt" target="_blank" id="link">let's get out of here</a>
   </body>
   <script>
     current_source = 0;
-    console.log("wghat the fuck")
-    function changeSrc(loc) {
-        console.log("banana")
+    links = document.querySelectorAll('.project_link');
+
+    links.forEach(link => {
+      link.onmousedown = () => {
+        loc = link.getAttribute('id');
+        console.log('current loc:')
+        console.log(current_source)
+        console.log('loc selected')
         console.log(loc)
         if(current_source) {
-                console.log("there is a current source")
-            document.getElementById(current_source).style.border = "1px solid black";
+            document.getElementById(current_source).style.outline = "0px";
         }
-        document.getElementById('ventana').src = loc;
         current_source = loc;
-        console.log(document.getElementById(loc))
-        document.getElementById(loc).style.border = "3px solid black";
-    }
+        document.getElementById(loc).style.outline = "2px solid black";
+        console.log('./' + loc + '.html')
+        document.getElementById('link').setAttribute('href', './' + loc + '.html')
+        console.log(document.getElementById("link").getAttribute('href'))
+      }
+    })
   </script>
 </html>
 ''')
