@@ -27,7 +27,7 @@
     margin: 2px;
   }
   a:visited {
-    color: inherit;
+    color: blue;
   }
   a:hover {
     text-decoration: underline;
@@ -53,9 +53,29 @@
   #lady {
     height: 200px;
   }
+  #art_generator_button {
+    padding: 1px;
+  }
 
-  /* art generator */
-  #art_generator {
+  #play, #resume, #pause {
+    font-size: 20px;
+    margin: 3px;
+  }
+
+  #intro_paragraph {
+    margin: 5px;
+    width: 400px;
+    text-align: center;
+  }
+
+  #a {
+    width: 300px;
+    height: 30px;
+  }
+
+</style>
+<style id="art_generator_style">
+    #art_generator {
     margin-top: 40px;
     display: flex;
     flex-flow: column;
@@ -84,20 +104,42 @@
     height:10px;
     width:10px;
   }
-
-  #play, #resume {
-    font-size: 20px;
-    margin: 3px;
+  #happy {
+    position: fixed;
+    top: 4px;
+    right: 4px;
   }
-
-  #art_generator_button {
-    padding: 1px;
+  #accessibility {
+    position: fixed;
+    bottom: 4px;
+    right: 4px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
   }
-
+  #accessibility:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 </style>
 
 </head>
 <body>
+
+  <pre id="happy">
+    i'm 
+      happy
+         to 
+          have 
+            you!
+  </pre>
+
+    <button id="accessibility" onclick="toggleBackgrounds()">visibility trouble? click me!</button>
 
 <div id="landing_page">
   <div id="video_wrapper">
@@ -105,13 +147,27 @@
   </div>
   <div id="container">
       <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
-      <span id="header">archie o'connell</span>
       <audio controls id="a">
         <source src="./hpi/indexbackground.mp4" type="audio/mp4">
       </audio>
+
+      <p id="intro_paragraph">hi, my name is <span id="header">archie o'connell!</span> i like music and comedy and smart code and looking at water. <br/><br/> 
+        
+        above this blurb is a player for a file called indexbackground.mp4. <br/> many years ago, (6! factual, not factorial) i asked my friend alex to write me a song to use as the background for my personal website. i'm perpetually thrilled by the result. <br/><br/> above the song is a photo of me looking earnest (and, if i recall, feeling it too) with a funny caption written by a dear friend, posted on a website i'm not familiar with.
+
+      <br/>
+      <br/>
+      
+      please feel free to click and scroll around on this site! i'll be updating it semi-frequently with photos, observations, links, and old tchotchke html tags.
+      
+      
+      </p>
+
+
       <a id="play" href="./projects/index.html" target="_blank">
         play
       </a>
+      <a id="pause" href="./breathe.html" target="_blank">pause</a>
       <a id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
         resume
       </a>
@@ -211,5 +267,26 @@
     }
   }
   generate()
+</script>
+
+<script id="accessibility_script">
+  backgrounds = false
+
+  function toggleBackgrounds(){
+    backgrounds = !backgrounds
+    handleBackgrounds()
+  }
+  function handleBackgrounds() {
+    if(backgrounds) {
+      document.getElementById('lady').style.height = '500px'
+      document.body.style.fontSize = '40px'
+      document.getElementById('video_wrapper').style.display = 'none'
+    }
+    else {
+      document.body.style.fontSize = 'inherit'
+      document.getElementById('lady').style.height = '200px'
+      document.getElementById('video_wrapper').style.display = 'flex'
+    }
+  }
 </script>
 </html>
