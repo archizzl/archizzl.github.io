@@ -9,7 +9,7 @@
     padding: 0;
   }
   #landing_page {
-    height: 90vh;
+    height: 80vh;
     width: 100vw;
     display: flex;
     justify-content: flex-start;
@@ -41,7 +41,6 @@
   }
   #video_wrapper {
     width: 100vw;
-    height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -50,6 +49,11 @@
     top: 0;
     left: 0;
   }
+
+  #salmon {
+    width: 100%;
+  }
+  
   #lady {
     height: 200px;
   }
@@ -144,7 +148,7 @@
 
 <div id="landing_page">
   <div id="video_wrapper">
-    <video src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
+    <video id="salmon" src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
   </div>
   <div id="container">
       <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
@@ -279,12 +283,12 @@
   }
   function handleBackgrounds() {
     if(backgrounds) {
-      document.getElementById('lady').style.height = '500px'
-      document.body.style.fontSize = '40px'
+      document.getElementById('lady').style.height = '300px'
+      // document.body.style.fontSize = '40px'
       document.getElementById('video_wrapper').style.display = 'none'
     }
     else {
-      document.body.style.fontSize = 'inherit'
+      // document.body.style.fontSize = 'inherit'
       document.getElementById('lady').style.height = '200px'
       document.getElementById('video_wrapper').style.display = 'flex'
     }
