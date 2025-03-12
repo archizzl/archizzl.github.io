@@ -9,12 +9,12 @@
     padding: 0;
   }
   #landing_page {
-    height: 80vh;
     width: 100vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-flow: column;
+    padding-bottom: 50px;
   }
   #container {
     width: 100vw;
@@ -40,14 +40,13 @@
     opacity: 0.5
   }
   #video_wrapper {
-    width: 100vw;
+    width: 30vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: absolute;
-    z-index: -1;
     top: 0;
     left: 0;
+    margin: 10px;
   }
 
   #salmon {
@@ -56,9 +55,11 @@
   
   #lady {
     height: 260px;
+    width: auto;
   }
   #art_generator_button {
     padding: 1px;
+    font-size: 20px;
   }
 
   #play, #resume, #pause {
@@ -131,6 +132,28 @@
     opacity: 0.8;
     cursor: pointer;
   }
+  .sec {
+    display: flex;
+    flex-flow: column;
+    margin: 15px;
+    width: 700px;
+    /* outline: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+  }
+  .sec > img {
+    width: 90%;
+    height: auto;
+    margin: 10px;
+  }
+  h1 {
+    font-style: italic;
+  }
+  p {
+    font-size: 20px;
+  }
 </style>
 
 </head>
@@ -144,52 +167,70 @@
             you!
   </pre>
 
-    <button id="accessibility" onclick="toggleBackgrounds()">visibility trouble? click me!</button>
+    <!-- <button id="accessibility" onclick="toggleBackgrounds()">visibility trouble? click me!</button> -->
 
 <div id="landing_page">
-  <div id="video_wrapper">
-    <video id="salmon" src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
-  </div>
   <div id="container">
-      <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
-      <audio controls id="a">
-        <source src="./hpi/indexbackground.mp4" type="audio/mp4">
-      </audio>
 
-      <p id="intro_paragraph">hi, my name is <span id="header">archie o'connell!</span> i like music and comedy and smart code and looking at water. <br/><br/> 
-        
-        here's a photo of me looking earnest (and, if i recall correctly, feeling it too) with a funny caption written by a dear friend.
+    <div id="video_wrapper" >
+      <video id="salmon" src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
+    </div>
+    <!-- <img id="lady" src="https://i.imgur.com/zAsCmEw.png"> -->
+    <audio controls id="a">
+      <source src="./hpi/indexbackground.mp4" type="audio/mp4">
+    </audio>
 
-      <br/>
-      <br/>
+    <p id="intro_paragraph">hi, my name is <span id="header">archie o'connell!</span> i like music and comedy and smart code and looking at water. <br/><br/> 
       
-      please feel free to click and scroll around on this site! i'll be updating it semi-sometimes-ly with photos, writing snippets, cool links, and tchotchke scripts.
+      <!-- here's a photo of me looking earnest (and, if i recall correctly, feeling it too) with a funny caption written by a dear friend. -->
+<!-- 
+    <br/>
+    <br/> -->
+    
+    please feel free to click and scroll around on this site! i'll be updating it semi-sometimes-ly with photos, writing snippets, cool links, and tchotchke scripts.
 
-      <!-- <br/><br/> -->
+    <!-- <br/><br/> -->
 
-      <!-- right now (as of 2025-03-09), it may be a bit inactive (it is), as i'm working on finishing my CS degree at Northeastern University, applying for jobs, and recording albums with two bands. soon, though, soon. . . -->
-      
-      
-      </p>
+    <!-- right now (as of 2025-03-09), it may be a bit inactive (it is), as i'm working on finishing my CS degree at Northeastern University, applying for jobs, and recording albums with two bands. soon, though, soon. . . -->
+    
+    
+    </p>
 
 
-      <a id="play" href="./projects/index.html" target="_blank">
-        play
-      </a>
-      <a id="pause" href="./pause.html" target="_blank">pause</a>
-      <a id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
-        resume
-      </a>
+    <a id="play" href="./projects/index.html" target="_blank">
+      play
+    </a>
+    <a id="pause" href="./pause.html" target="_blank">pause</a>
+    <a id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
+      resume
+    </a>
   </div>
-  <div id="art_generator">
+
+  <div id="me" class="sec">
+    <h1>here's a photo of me</h1>
+    <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
+  </div>
+
+  <div id="art_generator" class="sec">
+    <h1>art generator? i barely doodle</h1>
     <button id="art_generator_button" onclick="generate()">click me to generate a beautiful painting, or something</button>
     <div id="art_generator_canvas"></div>
-    <h3 id="art_generator_title" contenteditable="true">title it!</h3>
+    <h2 id="art_generator_title" contenteditable="true">title it!</h2>
 
     <div id="path_length_header">amount of pixels (brushstrokes?) that the path will go on for: 300</div>
     <input type="range" min="1.00" max="1000.00" value="300.00" id="path_length">
   </div>
+
+  <div id="porps" class="sec">
+    <h1>porpoises live?</h1>
+    <img src="https://i.imgur.com/LEj79pZ.png" id="postcard" loading="lazy">
+    <p>for my first three years of college, i hosted a weekly radio show called "Porpoises LIVE!" and missed maybe two episodes, tops. the title originated from myself and my cohosts' desires to theme each episode's music around a certain action, or purpose. One coughing pronunciation and a few seconds of giggling later, we agreed: it would be really funny if we pronounced purpose as porpoise. A star was born.<br/><br/>
+
+    i had a lot more time on my hands back then (two wristwatches? are you kidding me?), so i placed a lot of importance upon the graphics i would make to avertise each episode across smatterings of social media posts. i won't put them all in this site to avoid clutter, but i'm quite proud of some of them. you can check our porpoises live's legacy <a href="https://instagram.com/porpoiseslive" target="_blank">here</a>.
+    </p>
+  </div>
 </div>
+
 
 </body>
 <!-- this was written in high school. sorry! -->
@@ -288,14 +329,14 @@
   }
   function handleBackgrounds() {
     if(backgrounds) {
-      document.getElementById('lady').style.height = '300px'
+      // document.getElementById('lady').style.height = '300px'
       // document.body.style.fontSize = '40px'
-      document.getElementById('video_wrapper').style.display = 'none'
+      // document.getElementById('video_wrapper').style.display = 'none'
     }
     else {
       // document.body.style.fontSize = 'inherit'
-      document.getElementById('lady').style.height = '200px'
-      document.getElementById('video_wrapper').style.display = 'flex'
+      // document.getElementById('lady').style.height = '200px'
+      // document.getElementById('video_wrapper').style.display = 'flex'
     }
   }
 </script>
