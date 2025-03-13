@@ -115,7 +115,7 @@
     top: 4px;
     right: 4px;
   }
-  #accessibility {
+  .black_button {
     position: fixed;
     bottom: 4px;
     right: 4px;
@@ -128,7 +128,7 @@
     align-items: center;
     user-select: none;
   }
-  #accessibility:hover {
+  .black_button:hover {
     opacity: 0.8;
     cursor: pointer;
   }
@@ -154,6 +154,12 @@
   p {
     font-size: 20px;
   }
+  /* #links_box {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  } */
 </style>
 
 </head>
@@ -197,16 +203,21 @@
     
     </p>
 
+          <!-- <div id="links_box"> -->
 
-    <a  class="main_link" id="play" href="./projects/index.html" target="_blank">
-      play
-    </a>
-    <a  class="main_link" id="pause" href="./pause.html" target="_blank">pause</a>
-    <a  class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing" target="_blank">
-      resume
-    </a>
-    <a id="look" href="./look.html" target="_blank" class="main_link">look</a>
-    <a id="listen" class="main_link" target="_blank" href="https://sweetum.github.io/hello_world">listen</a>
+      <i>internal links</i>
+      <a id="look" href="./look.html" class="main_link">look</a>
+      <a  class="main_link" id="play" href="./projects/index.html">
+        play
+      </a>
+      <a  class="main_link" id="pause" href="./pause.html">pause</a>
+      <i>external links</i>
+      <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
+        resume
+      </a>
+      <a id="listen" class="main_link"  href="https://sweetum.github.io/hello_world" target="_blank">listen</a>
+
+    <!-- </div> -->
   </div>
 
   <div id="me" class="sec">

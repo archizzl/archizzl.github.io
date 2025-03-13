@@ -24,23 +24,45 @@
         flex-flow: row wrap;
         width: 60vw;
       }
-      a {
+      .project_link {
         border-radius: 5px;
         padding: 5px;
         background-color: #efefef;
         border: 1px solid black;
         transition: 0.05s;
       }
-      a:hover {
+      .project_link:hover {
         transform: scale(1.1);
         opacity: 0.5;
       }
-      #link {
+      .link {
         width: 130px;
       }
+      .black_button {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 5px;
+            margin: 5px;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+      }
+  #home_link {
+    color: white;
+    text-decoration: none;
+  }
+  .black_button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
     </style>
   </head>
   <body>
+    <a id="home_link" href="../index.html"><button class="black_button">home. . .</button></a>
+
     <h3>tiny, noncommital tricks & treats i built in high school and college
     </h3>
     <fieldset><a href="a_bit_of_squares.html" class="project_link" id="a_bit_of_squares" target="ventana">a bit of squares</a><a href="art_generator.html" class="project_link" id="art_generator" target="ventana">art generator</a><a href="backgroundboxes.html" class="project_link" id="backgroundboxes" target="ventana">backgroundboxes</a><a href="balloons.html" class="project_link" id="balloons" target="ventana">balloons</a><a href="click_speed.html" class="project_link" id="click_speed" target="ventana">click speed</a><a href="click_streak.html" class="project_link" id="click_streak" target="ventana">click streak</a><a href="clock.html" class="project_link" id="clock" target="ventana">clock</a><a href="fun_with_equations.html" class="project_link" id="fun_with_equations" target="ventana">fun with equations</a><a href="hailstone_sequence_visualization.html" class="project_link" id="hailstone_sequence_visualization" target="ventana">hailstone sequence visualization</a><a href="helix.html" class="project_link" id="helix" target="ventana">helix</a><a href="lineheight_experimentation.html" class="project_link" id="lineheight_experimentation" target="ventana">lineheight experimentation</a><a href="maze_race.html" class="project_link" id="maze_race" target="ventana">maze race</a><a href="optical_illusion.html" class="project_link" id="optical_illusion" target="ventana">optical illusion</a><a href="other_cube_game.html" class="project_link" id="other_cube_game" target="ventana">other cube game</a><a href="precision_game.html" class="project_link" id="precision_game" target="ventana">precision game</a><a href="puddle.html" class="project_link" id="puddle" target="ventana">puddle</a><a href="sinwave.html" class="project_link" id="sinwave" target="ventana">sinwave</a><a href="timer_game.html" class="project_link" id="timer_game" target="ventana">timer game</a></fieldset>

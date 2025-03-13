@@ -28,23 +28,45 @@ def create_directory(directory, caption):
         flex-flow: row wrap;
         width: 60vw;
       }
-      a {
+      .project_link {
         border-radius: 5px;
         padding: 5px;
         background-color: #efefef;
         border: 1px solid black;
         transition: 0.05s;
       }
-      a:hover {
+      .project_link:hover {
         transform: scale(1.1);
         opacity: 0.5;
       }
-      #link {
+      .link {
         width: 130px;
       }
+      .black_button {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 5px;
+            margin: 5px;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+      }
+  #home_link {
+    color: white;
+    text-decoration: none;
+  }
+  .black_button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
     </style>
   </head>
   <body>
+    <a id="home_link" href="../index.html"><button class="black_button">home. . .</button></a>
+
     <h3>''' + 
       caption + '''
     </h3>
