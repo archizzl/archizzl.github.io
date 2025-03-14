@@ -436,11 +436,9 @@
 
     shareLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            // event.preventDefault(); // Prevent default link behavior if needed
-
             const newTitle = this.getAttribute('href');
             if (newTitle) {
-                ogTitle.setAttribute('content', 'aow - ' + newTitle);
+                ogTitle.setAttribute('content', 'aow - ' + newTitle.slice(1));
 
                 // Force a re-scrape (if needed)
                 updateMetaTags();
