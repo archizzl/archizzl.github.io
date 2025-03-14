@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>archie oconnell website</title>
-<meta name="viewport" content="width=device-width, initial-scale=0.9">
-<meta property="og:title" content="archie's blogsitepagefolio" />
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<meta property="og:title" content="archie o'connell website" />
 <style>
   * {
     margin: 0;
@@ -82,15 +82,23 @@
 
 </style>
 <style id="art_generator_style">
+  #art_date {
+    margin-bottom: 5px;
+  }
+  #art_margin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
+  #art_margin > * {
+    margin: 5px;
+  }
     #art_generator {
-    margin-top: 10px;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-  }
-  #art_generator > * {
-    margin: 5px;
   }
   #art_generator_canvas {
     display: flex;
@@ -288,14 +296,16 @@
   </div>
 
   <div id="art_generator" class="sec">
-    <h1>art generator? i barely doodle</h1>
+    <h1><a class="sec_title_link" href="#art_generator">art generator? i barely doodle</a></h1>
+    <h5 id="art_date">Some point in high school, probably in my bedroom</h5>
+    <div id="art_margin">
     <button id="art_generator_button" onclick="generate()">click me to generate a beautiful painting, or something</button>
     <div id="art_generator_canvas"></div>
     <h2 id="art_generator_title" contenteditable="true">title it!</h2>
 
     <div id="path_length_header">amount of pixels (brushstrokes?) that the path will go on for: 300</div>
     <input type="range" min="1.00" max="1000.00" value="300.00" id="path_length">
-  
+  </div>
   
   
   </div>
@@ -338,7 +348,6 @@
 
   filled = 300;
   function generate(){
-    console.log('hey')
     titleit.innerHTML = 'title it!'
 
     clear_path = document.querySelectorAll('.path_div')
@@ -410,5 +419,14 @@
       // document.getElementById('video_wrapper').style.display = 'flex'
     }
   }
+</script>
+
+<script id="imessage_title_script">
+    document.querySelectorAll('.sec_title_link').forEach(function(link) {
+      link.onclick = function(e) {
+        console.log("hey");
+        document.querySelector('meta[property="og:title"]').setAttribute("content", "aow - " + link.innerHTML);
+      };
+    });
 </script>
 </html>
