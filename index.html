@@ -3,7 +3,7 @@
 <head>
 <title>archie oconnell website</title>
 <meta name="viewport" content="width=device-width, initial-scale=0.7">
-<meta property="og:title" content="archie o'connell website" />
+<meta property="og:title" content="archie o'connell website" id="og_title" />
 <style>
   * {
     margin: 0;
@@ -422,11 +422,44 @@
 </script>
 
 <script id="imessage_title_script">
-    document.querySelectorAll('.sec_title_link').forEach(function(link) {
-      link.onclick = function(e) {
-        console.log("hey");
-        document.querySelector('meta[property="og:title"]').setAttribute("content", "aow - " + link.innerHTML);
-      };
+    // document.querySelectorAll('.sec_title_link').forEach(function(link) {
+    //   link.onclick = function(e) {
+    //     console.log("hey");
+    //     document.querySelector('meta[property="og:title"]').setAttribute("content", "aow - " + link.innerHTML);
+    //   };
+    // });
+
+    // ok gemini let's see what you've got
+    document.addEventListener('DOMContentLoaded', function() {
+    const shareLinks = document.querySelectorAll('.sec_title_link');
+    const ogTitle = document.getElementById('og_title');
+
+    shareLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior if needed
+
+            const newTitle = this.getAttribute('href');
+            if (newTitle) {
+                ogTitle.setAttribute('content', 'aow - ' + newTitle);
+
+                // Force a re-scrape (if needed)
+                updateMetaTags();
+            }
+        });
     });
+
+    function updateMetaTags() {
+      // Create a temporary meta tag to force re-scrape
+      const tempMeta = document.createElement('meta');
+      tempMeta.setAttribute('name', 'timestamp');
+      tempMeta.setAttribute('content', Date.now());
+      document.head.appendChild(tempMeta);
+
+      // Remove the temporary meta tag after a short delay
+      setTimeout(() => {
+        document.head.removeChild(tempMeta);
+      }, 500); // Adjust the delay as needed
+    }
+});
 </script>
 </html>
