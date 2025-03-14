@@ -438,7 +438,7 @@
         link.addEventListener('click', function(event) {
             const newTitle = this.innerHTML;
             if (newTitle) {
-                ogTitle.setAttribute('content', 'aow - ' + newTitle.slice(1));
+                ogTitle.setAttribute('content', 'aow - ' + newTitle);
 
                 // Force a re-scrape (if needed)
                 updateMetaTags();
