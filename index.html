@@ -197,6 +197,21 @@
   .sec_title_link:hover {
     cursor: pointer;
   }
+
+  #home_links {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 20%;
+    margin: 15px;
+  }
+  .home_links_column {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
 </style>
 
 </head>
@@ -215,7 +230,7 @@
 <div id="landing_page">
   <div id="container">
     <h1>here's my website!</h1>
-
+    archie dot oconnell at gmail dot com
     <div id="video_wrapper" >
       <video id="salmon" src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video>
     </div>
@@ -232,7 +247,6 @@
     <br/> -->
     
     please feel free to click and scroll around. i'll be updating this site semi-sometimes-ly with photos, writing snippets, cool links, and tchotchke scripts. 
-    
 
     <!-- <br/><br/> -->
 
@@ -243,19 +257,24 @@
 
           <!-- <div id="links_box"> -->
 
-      <i>internal links</i>
-      <a id="look" href="./look.html" class="main_link">look</a>
-      <a  class="main_link" id="play" href="./projects/index.html">
-        play
-      </a>
-      <a  class="main_link" id="pause" href="./pause.html">pause</a>
-      <i>external links</i>
-      <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
-        resume
-      </a>
-      <a id="listen" class="main_link"  href="https://sweetum.github.io/hello_world" target="_blank">listen</a>
-
-    <!-- </div> -->
+  <div id="home_links">
+        <div class="home_links_column">
+          <i>internal links</i>
+          <a  class="main_link" id="play" href="./projects/index.html">
+            play
+          </a>
+          <a  class="main_link" id="pause" href="./pause.html">pause</a>
+          <a id="look" href="./look.html" class="main_link">look</a>
+        </div>
+        <div class="home_links_column">
+          <i>external links</i>
+          <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
+            resume
+          </a>
+          <a id="listen" class="main_link"  href="https://sweetum.github.io/hello_world" target="_blank">listen</a>
+          <a id="code" class="main_link" href="https://github.com/archizzl" target="_blank">code</a>
+        </div>
+    </div>
   </div>
 
   <div id="me" class="sec">
@@ -288,7 +307,7 @@
     Not wanting to test fate/a Cambridge PD citation, my group scattered to the wind/front door. There were no flashing bursts of blue and red greeting us outside, so I assumed the fuzz had busted through the backyard. My group and I started hauling ass home, the horde trickling out behind us en masse. Most of us, including Kel, were gleefully inebriated, so after a garbling socratic dialogue we opted to stuff everyone in an Uber clown car and I would ride Kel's bike home. Thrilled at the prospect of cruising home at <i>my</i> kind of speed, I flashed my friends a faux-frown, quickly followed up by a chuckle, easygoing smile, wave goodbye; my classic silent-film-star act. "I'm so bummed you folks are all leaving me to bike home on my lonesome. . . . Sike! This is going to be great! I'm going to blast George McCrae with my earbuds in!" Was kind of what I was going for. I don't think anyone particularly noticed what I was broadcasting, or cared if they did. I wouldn't.
     <br/><br/>
     
-    ~~~ i have to do homework now. i'll finish this part later. maybe i'll even talk about the bebop. ~~~
+    
 
     <br/><br/>
     I later learned there were no cops at the party, no noise complaint, no  mishegoss mischevious enough to warrant the banishing of all guests. In fact, there wasn't much meshugaas at all, however you like to spell it. No, the two-dozen-or-so hosts of the co-op house were bored and wanted to sleep, ascend to their polyculic chambers arm in arm with however many of whichever of their roommates had caught their fancy throughout the night, maroon blackout curtains drawn against the star-free city night. At 12:58am, after a brief shotnot ceremony to mirror what would soon go down on my end of the ever-tenuous guest/host demilitarized zone, Mascara Gal was thrust into the Hero role, tasked with kicking these third-year losers <i>who don't even go here?</i> out, no matter what it takes. <i class="fin">And make it snappy!</i>
@@ -314,8 +333,8 @@
 
 
 </body>
-<!-- this was written in high school. sorry! -->
 <script id="art_generator_script">
+  // this was written in high school
   path_length_header = document.getElementById('path_length_header')
   path_length_slider = document.getElementById('path_length')
     path_length_slider.oninput = function() {
@@ -400,25 +419,11 @@
   generate()
 </script>
 
-<script id="accessibility_script">
-  backgrounds = false
-
-  function toggleBackgrounds(){
-    backgrounds = !backgrounds
-    handleBackgrounds()
-  }
-  function handleBackgrounds() {
-    if(backgrounds) {
-      // document.getElementById('lady').style.height = '300px'
-      // document.body.style.fontSize = '40px'
-      // document.getElementById('video_wrapper').style.display = 'none'
-    }
-    else {
-      // document.body.style.fontSize = 'inherit'
-      // document.getElementById('lady').style.height = '200px'
-      // document.getElementById('video_wrapper').style.display = 'flex'
-    }
-  }
+<script id="setup">
+  document.querySelectorAll('.main_link').forEach((e) => {
+    console.log(e)
+    e.style.transform = 'skew(' + (-2 + Math.random()*4) + 'deg, '+ (-2 + Math.random()*4) + 'deg)'
+  })
 </script>
 
 <script id="imessage_title_script">
