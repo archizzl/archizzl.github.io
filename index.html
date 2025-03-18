@@ -15,7 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-flow: column;
-    padding-bottom: 500px;
+    padding-bottom: 240px;
   }
   #container {
     width: 100vw;
@@ -200,10 +200,9 @@
 
   #home_links {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column;
     justify-content: space-around;
     width: 20%;
-    margin: 15px;
   }
   .home_links_column {
     display: flex;
@@ -259,21 +258,17 @@
 
   <div id="home_links">
         <div class="home_links_column">
-          <i>internal links</i>
           <a  class="main_link" id="play" href="./projects/index.html">
             play
           </a>
           <a  class="main_link" id="pause" href="./pause.html">pause</a>
-          <a id="look" href="./look.html" class="main_link">look</a>
         </div>
         <div class="home_links_column">
-          <i>external links</i>
+          
           <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
             resume
           </a>
-          <a id="listen" class="main_link"  href="https://sweetum.github.io/hello_world" target="_blank">listen</a>
-          <a id="porps" class="main_link"  href="https://porpoise.dashboard.wrbbradio.org" target="_blank">dash</a>
-
+          <a id="look" href="./look.html" class="main_link">look</a>
         </div>
     </div>
   </div>
@@ -420,12 +415,12 @@
   generate()
 </script>
 
-<script id="setup">
+<!-- <script id="wobble">
   document.querySelectorAll('.main_link').forEach((e) => {
     console.log(e)
     e.style.transform = 'skew(' + (-2 + Math.random()*4) + 'deg, '+ (-2 + Math.random()*4) + 'deg)'
   })
-</script>
+</script> -->
 
 <script id="imessage_title_script">
     // document.querySelectorAll('.sec_title_link').forEach(function(link) {
