@@ -1,218 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>archie oconnell website</title>
-<meta name="viewport" content="width=device-width, initial-scale=0.7">
-<meta property="og:title" content="archie o'connell website" id="og_title" />
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  #landing_page {
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-flow: column;
-    padding-bottom: 240px;
-  }
-  #container {
-    width: 100vw;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-  }
-  #container > * {
-    margin: 2px;
-  }
-  a:visited {
-    color: blue;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  #header {
-    font-size: 23px;
-  }
-  a:hover {
-    opacity: 0.5
-  }
-  #video_wrapper {
-    width: 30vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    top: 0;
-    left: 0;
-    margin: 10px;
-  }
+  <title>archie oconnell website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <meta property="og:title" content="archie o'connell website" id="og_title" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  #salmon {
-
-  }
-  
-  #lady {
-    height: 260px;
-    width: auto;
-  }
-  #art_generator_button {
-    padding: 1px;
-    font-size: 20px;
-  }
-
-  .main_link {
-    font-size: 20px;
-    margin: 3px;
-  }
-
-  #intro_paragraph {
-    margin: 5px;
-    width: 400px;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  #a {
-    width: 300px;
-    height: 30px;
-  }
-
-</style>
-<style id="art_generator_style">
-  #art_date {
-    margin-bottom: 5px;
-  }
-  #art_margin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-  }
-  #art_margin > * {
-    margin: 5px;
-  }
-    #art_generator {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-  }
-  #art_generator_canvas {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .row {
-    display: flex;
-  }
-  .box {
-    background-color: black;
-    height:10px;
-    width:10px;
-  }
-  .path_div {
-    background-color: white;
-    height:10px;
-    width:10px;
-  }
-  #happy {
-    position: fixed;
-    top: 4px;
-    right: 4px;
-  }
-  .black_button {
-    position: fixed;
-    bottom: 4px;
-    right: 4px;
-    text-align: center;
-    background-color: black;
-    color: white;
-    padding: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-  }
-  .black_button:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
-  .sec {
-    display: flex;
-    flex-flow: column;
-    margin: 7px;
-    width: 700px;
-    /* outline: 1px solid black; */
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-  }
-  .sec > img {
-    width: 90%;
-    height: auto;
-    margin: 10px;
-  }
-  h1 {
-    font-style: italic;
-  }
-  .blag {
-    width: 80%;
-    margin: 3px;
-    font-size: 20px;
-  }
-  .image_caption {
-    width: 70%;
-    margin-bottom: 15px;
-  }
-  .blag_subheader {
-    width: 50%;
-    margin: 3px;
-    text-align: center;
-  }
-  .runaway {
-    outline: 1px dashed black;
-    padding: 1px;
-    font-size: 17px;
-    margin: 3px;
-  }
-  /* #links_box {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-  } */
-  .fin {
-    font-size: 30px;
-    text-decoration: bold;
-  }
-  .sec_title_link, .sec_title_link:visited {
-    color: black;
-    text-decoration: inherit;
-  }
-  .sec_title_link:hover {
-    cursor: pointer;
-  }
-
-  #home_links {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    width: 20%;
-  }
-  .home_links_column {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-</style>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="hpi/art_generator/art_generator.css">
+  <link rel="stylesheet" href="hpi/workout/workout.css">
 
 </head>
 <body>
@@ -225,250 +21,121 @@
             you!
   </pre>
 
-    <!-- <button id="accessibility" onclick="toggleBackgrounds()">visibility trouble? click me!</button> -->
+  <div id="landing_page">
+    <div id="container">
+      <h1>here's my website!</h1>
+      <span>archie dot oconnell at gmail dot com or <a id="code" href="https://github.com/archizzl" target="_blank">github</a></span>
+      <div id="video_wrapper" >
+        <iframe
+        src="https://player.cloudinary.com/embed/?cloud_name=do45g1bvk&public_id=salmon_2_m7xu32&profile=cld-default&autoplay=true&muted=true&controls=false"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+        id="salmon"
+        style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
+      ></iframe>
+      </div>
+      <!-- <img id="lady" src="https://i.imgur.com/zAsCmEw.png"> -->
+      <audio controls id="a">
+        <source src="./hpi/indexbackground.mp4" type="audio/mp4">
+      </audio>
 
-<div id="landing_page">
-  <div id="container">
-    <h1>here's my website!</h1>
-    <span>archie dot oconnell at gmail dot com or <a id="code" href="https://github.com/archizzl" target="_blank">github</a></span>
-    <div id="video_wrapper" >
-      <!-- <video id="salmon" src="./hpi/salmon.mov" autoplay muted loop alt="vivid video of salmon swimming in an acquarium tank" title="glub glub!"></video> -->
-      <iframe
-      src="https://player.cloudinary.com/embed/?cloud_name=do45g1bvk&public_id=salmon_2_m7xu32&profile=cld-default&autoplay=true&muted=true&controls=false"
-      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-      allowfullscreen
-      frameborder="0"
-      id="salmon"
-      style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
-    ></iframe>
-    </div>
-    <!-- <img id="lady" src="https://i.imgur.com/zAsCmEw.png"> -->
-    <audio controls id="a">
-      <source src="./hpi/indexbackground.mp4" type="audio/mp4">
-    </audio>
-
-    <p id="intro_paragraph">hi, my name is <span id="header">archie o'connell!</span> i like music and comedy and smart code and looking at water. <br/><br/> 
+      <p id="intro_paragraph">hi, my name is <span id="header">archie o'connell!</span> i like music and comedy and smart code and looking at water. <br/><br/> 
+        
+        <!-- here's a photo of me looking earnest (and, if i recall correctly, feeling it too) with a funny caption written by a dear friend. -->
+  <!-- 
+      <br/>
+      <br/> -->
       
-      <!-- here's a photo of me looking earnest (and, if i recall correctly, feeling it too) with a funny caption written by a dear friend. -->
-<!-- 
-    <br/>
-    <br/> -->
-    
-    please feel free to click and scroll around. i'll be updating this site semi-sometimes-ly with photos, projects, cool links, and tchotchke scripts. 
+      please feel free to click and scroll around. i'll be updating this site semi-sometimes-ly with photos, projects, cool links, and tchotchke scripts. 
 
-    <!-- <br/><br/> -->
+      <!-- <br/><br/> -->
 
-    <!-- right now (as of 2025-03-09), it may be a bit inactive (it is), as i'm working on finishing my CS degree at Northeastern University, applying for jobs, and recording albums with two bands. soon, though, soon. . . -->
-    
-    
-    </p>
-
-          <!-- <div id="links_box"> -->
-
-  <div id="home_links">
-        <div class="home_links_column">
-          <a  class="main_link" id="play" href="./projects/index.html">
-            play
-          </a>
-          <a  class="main_link" id="pause" href="./pause.html">pause</a>
-        </div>
-        <div class="home_links_column">
-          
-          <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
-            resume
-          </a>
-          <a id="look" href="./look.html" class="main_link">look</a>
-          <a id="read" href="https://substack.com/@myalm" target="_blank" class="main_link">read</a>
-        </div>
-    </div>
-  </div>
-
-  <div id="me" class="sec">
-    <h1>here's a photo of me</h1>
-    <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
-  </div>
-
-
-  <!-- <div id="bebop" class="sec">
-    <h1><a class="sec_title_link" href="#bebop">eat my dust</a></h1>
-    <h5>2025-03-13 Snell Library w/ El</h5>
-    <i class="blag_subheader">this is a writing snippet. runaway trains of thoughts will be indicated by dashed lines. feel free to skip em.</i>
-    <p class="blag">
+      <!-- right now (as of 2025-03-09), it may be a bit inactive (it is), as i'm working on finishing my CS degree at Northeastern University, applying for jobs, and recording albums with two bands. soon, though, soon. . . -->
       
-      <a href="" target="_blank">The Bebop</a> on Boylston street is, bar none, <small>(bar #one)</small> my favorite place in Boston. For as long as I live in this city (or perhaps one of its branching burbclaves), you are <b>guaranteed</b> to find me there if you show up on a Wednesday between 9:15 and 11:30pm. This is mostly because it provides me a northing-short-of-miraculous opportunity to jam on bluegrass & fiddle tunes for hours and hours with scores of musicians who are all, at minimum, one hundred times better than I.
-    </p>
-    <img src="https://lh5.googleusercontent.com/p/AF1QipMP9qZacJx5X5QpjKTBwLKQWsW2W-DD1eB5eF2Z=w1220-h920-k-no">
-    <i class="image_caption">try as i may, i can't figure out which themed jam is pictured here. i haven't seen too many electric bass/mandolin onstage combos. maybe i need to get out more.</i>
-    <p class="blag">
-    I started attending The Bebop's bluegrass jam with my dear friend <a href="https://keleats.rocks" target="_blank">Kel Weaver</a>, a freak of nature currently attending Deep Springs College in Death Valley, who i'm very proud to call one of my best friends and personal heroes. Kel and I once biked together from Mission Hill to a party at Harvard, Kel on their mountain bike and myself on a BlueBike. As we soared in the brisk night across the Mass. Ave bridge, I couldn't help but notice Kel start to lag behind. Ever so surely, the sound of their panting began to overtake the dulcet tones of <a href="https://open.spotify.com/playlist/0HUwTkwr5zhTtUZTEu1sef?si=9160dd1ecb754149" target="_blank">my biking playlist</a>. I can't say it didn't frustrate me a little. We were both in shape, and they hadn't forewarned of any maintenence issues with their bike, so I assumed they had gotten slightly tipsy at the Northeastern party we had been at pre-embarkment <i>(going to a party at the college you go to? how lame). </i><small>How's my ). grammar here? I'm never sure.</small>
-    <br/>
-    <br/>
-    Although the journey took us about fifteen minutes longer than it would have should I have been on my lonesome, I certainly shouldn't have been on my lonesome. That's not true, I just think the wordplay is fun. I like biking alone a lot, fewer terrified screams in my ears when I try steering no-hands through intersections. 
-    <span class="runaway">
-      Every time I bike home alone at night, I blast music in my earbuds and feel more alive than ever, then chide myself that city biking at night is dangerous enough, let alone <i>alone</i>, let alone <b>without the use of my ears</b>. <br/>"But wait", I rebut, "If I'm not going to let myself live freely, what am I even living for?" <br/> An impasse ensues, a few minutes pass, I almost get hit by a car, I feel very rattled, I coast in silence the rest of the way home. Rinse and repeat. <br/><small>I should build a script that runs through each runaway <code>span</code> tag and adds extra white space to fill in the lines so the box outlines are less jagged. I shall remove this note once I've done it. Ladies and germs, set your watches!</small>
-    </span>
-    <br/><br/>
-    Regardless, I was, and always am, very grateful to have Kel's company. We arrived at the co-op house that was throwing the party (designated on Google Maps as <a href="https://www.google.com/maps/dir//3+Sacramento+St,+Cambridge,+MA+02138/@42.3740062,-71.1726513,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x89e3773f96fa435f:0x74f330df026b7cd9!2m2!1d-71.1190813!2d42.3827298?entry=ttu&g_ep=EgoyMDI1MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">The Center for High Energy Metaphysics</a>). The party was fun while it lasted, but it didn't last. In a city with rising rent and shrinking living rooms, it's hard to find a good place to dance, or even just a place at all. <s>At around 1am, a girl around my age</s> <span class="runaway">(Woman? Girl? Lady? I wouldn't exactly refer to myself as a man, but I'm not sure I would refer to myself as a boy, either. Not even particularly in a gender way. I guess if I saw myself on the street and wanted to tell a friend about it, I would refer to myself as a guy. So. . .)</span> At around 1am, a gal around my age came rushing around a bannister, mascara streaking in jaggled angles across her cheekbones, perhaps purposefully. Out of breath, she raised a trembling finger and pointed at the group I was mingling with, shouted <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"OUT. Everyone has to leave, now. NOW."
-    <br/><br/>
-    Not wanting to test fate/a Cambridge PD citation, my group scattered to the wind/front door. There were no flashing bursts of blue and red greeting us outside, so I assumed the fuzz had busted through the backyard. My group and I started hauling ass home, the horde trickling out behind us en masse. Most of us, including Kel, were gleefully inebriated, so after a garbling socratic dialogue we opted to stuff everyone in an Uber clown car and I would ride Kel's bike home. Thrilled at the prospect of cruising home at <i>my</i> kind of speed, I flashed my friends a faux-frown, quickly followed up by a chuckle, easygoing smile, wave goodbye; my classic silent-film-star act. "I'm so bummed you folks are all leaving me to bike home on my lonesome. . . . Sike! This is going to be great! I'm going to blast George McCrae with my earbuds in!" Was kind of what I was going for. I don't think anyone particularly noticed what I was broadcasting, or cared if they did. I wouldn't.
-    <br/><br/>
+      
+      </p>
+
+            <!-- <div id="links_box"> -->
+
+    <div id="home_links">
+          <div class="home_links_column">
+            <a  class="main_link" id="play" href="./projects/index.html">
+              play
+            </a>
+            <a  class="main_link" id="pause" href="./pause.html">pause</a>
+          </div>
+          <div class="home_links_column">
+            
+            <a target="_blank" class="main_link" id="resume" href="https://docs.google.com/document/d/1lw_gyxuQaCehJRul3BhYbHmKQiX63QhtoNM5dVMrc68/edit?usp=sharing">
+              resume
+            </a>
+            <a id="look" href="./look.html" class="main_link">look</a>
+            <a id="read" href="https://substack.com/@myalm" target="_blank" class="main_link">read</a>
+          </div>
+      </div>
+    </div>
+
+    <div id="me" class="sec">
+      <h1>here's a photo of me</h1>
+      <img id="lady" src="https://i.imgur.com/zAsCmEw.png">
+    </div>
+
+
+    <!-- <div id="bebop" class="sec">
+      <h1><a class="sec_title_link" href="#bebop">eat my dust</a></h1>
+      <h5>2025-03-13 Snell Library w/ El</h5>
+      <i class="blag_subheader">this is a writing snippet. runaway trains of thoughts will be indicated by dashed lines. feel free to skip em.</i>
+      <p class="blag">
+        
+        <a href="" target="_blank">The Bebop</a> on Boylston street is, bar none, <small>(bar #one)</small> my favorite place in Boston. For as long as I live in this city (or perhaps one of its branching burbclaves), you are <b>guaranteed</b> to find me there if you show up on a Wednesday between 9:15 and 11:30pm. This is mostly because it provides me a northing-short-of-miraculous opportunity to jam on bluegrass & fiddle tunes for hours and hours with scores of musicians who are all, at minimum, one hundred times better than I.
+      </p>
+      <img src="https://lh5.googleusercontent.com/p/AF1QipMP9qZacJx5X5QpjKTBwLKQWsW2W-DD1eB5eF2Z=w1220-h920-k-no">
+      <i class="image_caption">try as i may, i can't figure out which themed jam is pictured here. i haven't seen too many electric bass/mandolin onstage combos. maybe i need to get out more.</i>
+      <p class="blag">
+      I started attending The Bebop's bluegrass jam with my dear friend <a href="https://keleats.rocks" target="_blank">Kel Weaver</a>, a freak of nature currently attending Deep Springs College in Death Valley, who i'm very proud to call one of my best friends and personal heroes. Kel and I once biked together from Mission Hill to a party at Harvard, Kel on their mountain bike and myself on a BlueBike. As we soared in the brisk night across the Mass. Ave bridge, I couldn't help but notice Kel start to lag behind. Ever so surely, the sound of their panting began to overtake the dulcet tones of <a href="https://open.spotify.com/playlist/0HUwTkwr5zhTtUZTEu1sef?si=9160dd1ecb754149" target="_blank">my biking playlist</a>. I can't say it didn't frustrate me a little. We were both in shape, and they hadn't forewarned of any maintenence issues with their bike, so I assumed they had gotten slightly tipsy at the Northeastern party we had been at pre-embarkment <i>(going to a party at the college you go to? how lame). </i><small>How's my ). grammar here? I'm never sure.</small>
+      <br/>
+      <br/>
+      Although the journey took us about fifteen minutes longer than it would have should I have been on my lonesome, I certainly shouldn't have been on my lonesome. That's not true, I just think the wordplay is fun. I like biking alone a lot, fewer terrified screams in my ears when I try steering no-hands through intersections. 
+      <span class="runaway">
+        Every time I bike home alone at night, I blast music in my earbuds and feel more alive than ever, then chide myself that city biking at night is dangerous enough, let alone <i>alone</i>, let alone <b>without the use of my ears</b>. <br/>"But wait", I rebut, "If I'm not going to let myself live freely, what am I even living for?" <br/> An impasse ensues, a few minutes pass, I almost get hit by a car, I feel very rattled, I coast in silence the rest of the way home. Rinse and repeat. <br/><small>I should build a script that runs through each runaway <code>span</code> tag and adds extra white space to fill in the lines so the box outlines are less jagged. I shall remove this note once I've done it. Ladies and germs, set your watches!</small>
+      </span>
+      <br/><br/>
+      Regardless, I was, and always am, very grateful to have Kel's company. We arrived at the co-op house that was throwing the party (designated on Google Maps as <a href="https://www.google.com/maps/dir//3+Sacramento+St,+Cambridge,+MA+02138/@42.3740062,-71.1726513,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x89e3773f96fa435f:0x74f330df026b7cd9!2m2!1d-71.1190813!2d42.3827298?entry=ttu&g_ep=EgoyMDI1MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">The Center for High Energy Metaphysics</a>). The party was fun while it lasted, but it didn't last. In a city with rising rent and shrinking living rooms, it's hard to find a good place to dance, or even just a place at all. <s>At around 1am, a girl around my age</s> <span class="runaway">(Woman? Girl? Lady? I wouldn't exactly refer to myself as a man, but I'm not sure I would refer to myself as a boy, either. Not even particularly in a gender way. I guess if I saw myself on the street and wanted to tell a friend about it, I would refer to myself as a guy. So. . .)</span> At around 1am, a gal around my age came rushing around a bannister, mascara streaking in jaggled angles across her cheekbones, perhaps purposefully. Out of breath, she raised a trembling finger and pointed at the group I was mingling with, shouted <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"OUT. Everyone has to leave, now. NOW."
+      <br/><br/>
+      Not wanting to test fate/a Cambridge PD citation, my group scattered to the wind/front door. There were no flashing bursts of blue and red greeting us outside, so I assumed the fuzz had busted through the backyard. My group and I started hauling ass home, the horde trickling out behind us en masse. Most of us, including Kel, were gleefully inebriated, so after a garbling socratic dialogue we opted to stuff everyone in an Uber clown car and I would ride Kel's bike home. Thrilled at the prospect of cruising home at <i>my</i> kind of speed, I flashed my friends a faux-frown, quickly followed up by a chuckle, easygoing smile, wave goodbye; my classic silent-film-star act. "I'm so bummed you folks are all leaving me to bike home on my lonesome. . . . Sike! This is going to be great! I'm going to blast George McCrae with my earbuds in!" Was kind of what I was going for. I don't think anyone particularly noticed what I was broadcasting, or cared if they did. I wouldn't.
+      <br/><br/>
+      
+      
+
+      <br/><br/>
+      I later learned there were no cops at the party, no noise complaint, no  mishegoss mischevious enough to warrant the banishing of all guests. In fact, there wasn't much meshugaas at all, however you like to spell it. No, the two-dozen-or-so hosts of the co-op house were bored and wanted to sleep, ascend to their polyculic chambers arm in arm with however many of whichever of their roommates had caught their fancy throughout the night, maroon blackout curtains drawn against the star-free city night. At 12:58am, after a brief shotnot ceremony to mirror what would soon go down on my end of the ever-tenuous guest/host demilitarized zone, Mascara Gal was thrust into the Hero role, tasked with kicking these third-year losers <i>who don't even go here?</i> out, no matter what it takes. <i class="fin">And make it snappy!</i>
+      </p>
+    </div> -->
+
+    <div id="workout" class="sec">
+      
+    </div>
+
+    <div id="art_generator" class="sec">
+      <h1><a class="sec_title_link" href="#art_generator">art generator? i barely doodle</a></h1>
+      <h5 id="art_date">Some point in high school, probably in my bedroom</h5>
+      <div id="art_margin">
+      <button id="art_generator_button" onclick="generate()">click me to generate a beautiful painting, or something</button>
+      <div id="art_generator_canvas"></div>
+      <h2 id="art_generator_title" contenteditable="true">title it!</h2>
+
+      <div id="path_length_header">amount of pixels (brushstrokes?) that the path will go on for: 300</div>
+      <input type="range" min="1.00" max="1000.00" value="300.00" id="path_length">
+    </div>
     
     
+    </div>
 
-    <br/><br/>
-    I later learned there were no cops at the party, no noise complaint, no  mishegoss mischevious enough to warrant the banishing of all guests. In fact, there wasn't much meshugaas at all, however you like to spell it. No, the two-dozen-or-so hosts of the co-op house were bored and wanted to sleep, ascend to their polyculic chambers arm in arm with however many of whichever of their roommates had caught their fancy throughout the night, maroon blackout curtains drawn against the star-free city night. At 12:58am, after a brief shotnot ceremony to mirror what would soon go down on my end of the ever-tenuous guest/host demilitarized zone, Mascara Gal was thrust into the Hero role, tasked with kicking these third-year losers <i>who don't even go here?</i> out, no matter what it takes. <i class="fin">And make it snappy!</i>
-    </p>
-  </div> -->
-
-  <div id="art_generator" class="sec">
-    <h1><a class="sec_title_link" href="#art_generator">art generator? i barely doodle</a></h1>
-    <h5 id="art_date">Some point in high school, probably in my bedroom</h5>
-    <div id="art_margin">
-    <button id="art_generator_button" onclick="generate()">click me to generate a beautiful painting, or something</button>
-    <div id="art_generator_canvas"></div>
-    <h2 id="art_generator_title" contenteditable="true">title it!</h2>
-
-    <div id="path_length_header">amount of pixels (brushstrokes?) that the path will go on for: 300</div>
-    <input type="range" min="1.00" max="1000.00" value="300.00" id="path_length">
-  </div>
-  
-  
   </div>
 
-</div>
-
-
+  <script src="hpi/art_generator/art_generator.js"></script>
+  <script src="hpi/workout/workout.js"></script>
 </body>
-<script id="art_generator_script">
-  // this was written in high school
-  path_length_header = document.getElementById('path_length_header')
-  path_length_slider = document.getElementById('path_length')
-    path_length_slider.oninput = function() {
-      filled = this.value;
-      path_length_header.innerHTML = 'amount of squares that the path will go on for: ' + filled
-    }
-  cont = document.getElementById('container')
-  game_cont = document.getElementById('art_generator_canvas')
-  titleit = document.getElementById('art_generator_title')
-  b_num = 0;
-  scale = 50;
-  for(i = 0; i<scale; i++){
-    current_row = document.createElement('div')
-    current_row.setAttribute('class', 'row')
-    for(j = 0; j<scale; j++){
-      b_num++
-      current_box = document.createElement('div')
-      current_box.setAttribute('class', 'box')
-      current_box.setAttribute('id', 'box_'+b_num)
-      if(j==0){
-        current_box.setAttribute('data-placement', 'first')
-      }
-      else if(j==scale){
-        current_box.setAttribute('data-placement', 'last')
-      }
-      current_row.appendChild(current_box)
-    }
-    game_cont.appendChild(current_row)
-  }
 
-  filled = 300;
-  function generate(){
-    titleit.innerHTML = 'title it!'
-
-    clear_path = document.querySelectorAll('.path_div')
-    for(h = 0; h<clear_path.length; h++){
-      clear_path[h].setAttribute('class', 'box')
-    }
-
-
-    current_point = Math.floor(Math.random()*2495)+1;
-    for(k = 0; k<filled; k++){
-      chosen = false;
-      new_path = document.getElementById('box_' + current_point)
-      new_path.setAttribute('class', 'path_div');
-
-      while(chosen == false){
-        choice = Math.floor(Math.random()*4)
-
-        //down
-        if(choice==0){
-          if(current_point<((scale*scale)-scale)){
-            current_point+=scale;
-            chosen = true;
-          }
-        }
-        //right
-        else if(choice==1){
-          if(new_path.dataset.placement!='last'){
-            current_point+=1;
-            chosen = true;
-          }
-        }
-        //up
-        else if(choice==2){
-          if(current_point>=scale){
-            current_point-=scale;
-            chosen = true;
-          }
-        }
-        //left
-        else if(choice==3){
-          if(new_path.dataset.placement!='first'){
-            current_point-=1;
-            chosen = true;
-          }
-        }
-
-      }
-    }
-  }
-  generate()
-</script>
-
-<!-- <script id="wobble">
-  document.querySelectorAll('.main_link').forEach((e) => {
-    console.log(e)
-    e.style.transform = 'skew(' + (-2 + Math.random()*4) + 'deg, '+ (-2 + Math.random()*4) + 'deg)'
-  })
-</script> -->
-
-<script id="imessage_title_script">
-    // document.querySelectorAll('.sec_title_link').forEach(function(link) {
-    //   link.onclick = function(e) {
-    //     console.log("hey");
-    //     document.querySelector('meta[property="og:title"]').setAttribute("content", "aow - " + link.innerHTML);
-    //   };
-    // });
-
-    // ok gemini let's see what you've got
-    document.addEventListener('DOMContentLoaded', function() {
-    const shareLinks = document.querySelectorAll('.sec_title_link');
-    const ogTitle = document.getElementById('og_title');
-
-    shareLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            const newTitle = this.innerHTML;
-            if (newTitle) {
-                ogTitle.setAttribute('content', 'AOw: ' + newTitle);
-
-                // Force a re-scrape (if needed)
-                updateMetaTags();
-            }
-        });
-    });
-
-    function updateMetaTags() {
-      // Create a temporary meta tag to force re-scrape
-      const tempMeta = document.createElement('meta');
-      tempMeta.setAttribute('name', 'timestamp');
-      tempMeta.setAttribute('content', Date.now());
-      document.head.appendChild(tempMeta);
-
-      // Remove the temporary meta tag after a short delay
-      setTimeout(() => {
-        document.head.removeChild(tempMeta);
-      }, 500); // Adjust the delay as needed
-    }
-});
-</script>
 </html>

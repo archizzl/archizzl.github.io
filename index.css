@@ -1,0 +1,75 @@
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  #landing_page {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    padding-bottom: 240px;
+  }
+  #container {
+    width: 100vw;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+  #container > * {
+    margin: 2px;
+  }
+  a:visited {
+    color: blue;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  #header {
+    font-size: 23px;
+  }
+  a:hover {
+    opacity: 0.5
+  }
+  #video_wrapper {
+    width: 30vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    top: 0;
+    left: 0;
+    margin: 10px;
+  }
+
+  #salmon {
+
+  }
+  
+  #lady {
+    height: 260px;
+    width: auto;
+  }
+  #art_generator_button {
+    padding: 1px;
+    font-size: 20px;
+  }
+
+  .main_link {
+    font-size: 20px;
+    margin: 3px;
+  }
+
+  #intro_paragraph {
+    margin: 5px;
+    width: 400px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #a {
+    width: 300px;
+    height: 30px;
+  }
+
