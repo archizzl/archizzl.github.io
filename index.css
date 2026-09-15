@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-size: 20px;
+    font-family: 'Calibri', 'Atkinson Hyperlegible'
   }
   #landing_page {
     width: 100vw;
@@ -34,9 +35,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    top: 0;
-    left: 0;
     margin: 10px;
+    position: absolute;
+    bottom: 30px;
+    right: 100px;
   }
 
   #lady {
