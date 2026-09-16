@@ -41,6 +41,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
+TEMPLATE = SRC / "template.txt"
 POSTS_DIR = ROOT / "posts"
 MANIFEST = ROOT / "posts.json"
 FEED = ROOT / "feed.xml"
@@ -162,17 +163,31 @@ def pretty_date(iso: str) -> str:
     return date(y, m, d).strftime("%B %-d, %Y")
 
 
+def refresh_template_date() -> None:
+    if not TEMPLATE.exists():
+        return
+    today = date.today().isoformat()
+    text = TEMPLATE.read_text(encoding="utf-8")
+    new_text, count = re.subn(r"(?m)^date:\s*.*$", f"date: {today}", text, count=1)
+    if count and new_text != text:
+        TEMPLATE.write_text(new_text, encoding="utf-8")
+
+
 def build(include_drafts: bool = False) -> None:
     if not SRC.exists():
         print(f"no src directory at {SRC}", file=sys.stderr)
         sys.exit(1)
     POSTS_DIR.mkdir(exist_ok=True)
 
+    refresh_template_date()
+
     entries: list[dict] = []
     seen_slugs: set[str] = set()
     draft_count = 0
 
     for txt in sorted(SRC.glob("*.txt")):
+        if txt.resolve() == TEMPLATE.resolve():
+            continue  # template.txt is a scaffold, not a post
         slug = txt.stem
         if slug in seen_slugs:
             print(f"duplicate slug: {slug}", file=sys.stderr)

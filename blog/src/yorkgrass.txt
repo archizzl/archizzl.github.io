@@ -1,5 +1,5 @@
 title: the old vs. the newgrass
-date: 2026-09-17
+date: 2026-09-16
 description: 
 tags: bluegrass, nyc
 status: draft

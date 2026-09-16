@@ -1,5 +1,5 @@
 title: a q(uick) q (line) q(uestion)
-date: 2026-09-16
+date: 2026-09-15
 description: 
 tags: observation, spanish, nyc
 ---

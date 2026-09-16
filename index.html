@@ -48,6 +48,7 @@
         (function () {
           const ul = document.getElementById('blog_posts');
           const esc = s => String(s).replace(/</g, '&lt;');
+          const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname);
           let allPosts = [];
 
           function currentFilters() {
@@ -65,12 +66,13 @@
 
           function render() {
             const filters = currentFilters();
+            const visible = isLocal ? allPosts : allPosts.filter(p => p.status !== 'draft');
             const shown = filters.length
-              ? allPosts.filter(p => {
+              ? visible.filter(p => {
                   const pt = (p.tags || []).map(t => t.toLowerCase());
                   return filters.every(f => pt.includes(f));
                 })
-              : allPosts;
+              : visible;
 
             let banner = '';
             if (filters.length) {
