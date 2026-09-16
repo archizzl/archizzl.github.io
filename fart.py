@@ -104,4 +104,4 @@ def create_directory(directory, caption):
 ''')
     print('index.html generated.')
 
-create_directory('./projects', 'tiny, noncommital tricks & treats i built in high school and college')
+create_directory('./projects', '')
