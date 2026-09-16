@@ -1,7 +1,7 @@
 title: a q(uick) q (line) q(uestion)
 date: 2026-09-16
 description: 
-tags: observation, spanish, mta
+tags: observation, spanish, nyc
 ---
 This evening, while waiting for the ***M*** train to take me back to Brooklyn from dinner with my dad in Manhattan's so-called "Koreatown", I observed two identically formatted notifications of a temporary ***Q*** train restriction, written in English and Spanish respectively, posted upon a load-bearing pillar on the platform. 
 
