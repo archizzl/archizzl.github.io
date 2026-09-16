@@ -1,0 +1,18 @@
+title: a q(uick) q (line) q(uestion)
+date: 2026-09-16
+description: 
+tags: observation, spanish, mta
+---
+This evening, while waiting for the ***M*** train to take me back to Brooklyn from dinner with my dad in Manhattan's so-called "Koreatown", I observed two identically formatted notifications of a temporary ***Q*** train restriction, written in English and Spanish respectively, posted upon a load-bearing pillar on the platform. 
+
+The English poster opened with the caption:
+
+[["No ***Q*** train between Brighton Beach and Stillwell Av. . ."]]
+
+while the Spanish poster opened with:
+
+[["No __habia servicio de la linea__ ***Q*** entre Brighton Beach y Stillwell Av. . ."]]
+
+Why so many extra words for the Spanish version? El theorized it's because "Q" is a very common shorthand for "qué", which basically means "what" in Spanish. It's funny to imagine a rushed Hispanic commuter glance over at a sign to read:
+
+[["No ***WHAT*** between Brighton Beach and Stillwell Av. . ."]]

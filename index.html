@@ -40,6 +40,81 @@
         <source src="./hpi/indexbackground.mp4" type="audio/mp4">
       </audio>
 
+      <!-- <span id="blog-header">x is my blog. i'm going to try to post every day.</span> -->
+      <ul id="blog_posts"></ul>
+      <script>
+        (function () {
+          const ul = document.getElementById('blog_posts');
+          const esc = s => String(s).replace(/</g, '&lt;');
+          let allPosts = [];
+
+          function currentFilters() {
+            const h = location.hash.slice(1);
+            if (!h) return [];
+            return h.split(',')
+              .map(t => decodeURIComponent(t).toLowerCase())
+              .filter(Boolean);
+          }
+          function setFilters(tags) {
+            const uniq = [...new Set(tags)];
+            location.hash = uniq.length ? uniq.map(encodeURIComponent).join(',') : '';
+            if (!uniq.length && location.hash === '') render();
+          }
+
+          function render() {
+            const filters = currentFilters();
+            const shown = filters.length
+              ? allPosts.filter(p => {
+                  const pt = (p.tags || []).map(t => t.toLowerCase());
+                  return filters.every(f => pt.includes(f));
+                })
+              : allPosts;
+
+            let banner = '';
+            if (filters.length) {
+              const tagLinks = filters.map(t =>
+                '<a class="tag" href="#" data-remove="' + encodeURIComponent(t) +
+                '" title="remove #' + esc(t) + '">#' + esc(t) + '</a>'
+              ).join(' ');
+              banner = '<li class="filter-active">showing ' + tagLinks +
+                ' <a class="tag" href="#" data-clear="1">(clear)</a></li>';
+            }
+
+            ul.innerHTML = banner + shown.map(p => {
+              const tagHtml = (p.tags || []).map(t =>
+                '<a class="tag" href="#" data-add="' + encodeURIComponent(t) +
+                '">#' + esc(t) + '</a>'
+              ).join(' ');
+              return '<li><time datetime="' + p.date + '">' + p.date + '</time> ' +
+                '<a href="./blog/posts/' + p.slug + '/">' + esc(p.title) + '</a>' +
+                (tagHtml ? ' ' + tagHtml : '') + '</li>';
+            }).join('');
+          }
+
+          ul.addEventListener('click', e => {
+            const el = e.target.closest('[data-add], [data-remove], [data-clear]');
+            if (!el) return;
+            e.preventDefault();
+            const filters = currentFilters();
+            if (el.dataset.clear) {
+              setFilters([]);
+            } else if (el.dataset.add) {
+              const t = decodeURIComponent(el.dataset.add).toLowerCase();
+              setFilters([...filters, t]);
+            } else if (el.dataset.remove) {
+              const t = decodeURIComponent(el.dataset.remove).toLowerCase();
+              setFilters(filters.filter(x => x !== t));
+            }
+          });
+
+          fetch('./blog/posts.json', { cache: 'no-cache' })
+            .then(r => r.json())
+            .then(posts => { allPosts = posts; render(); })
+            .catch(() => {});
+          addEventListener('hashchange', render);
+        })();
+      </script>
+
       <div id="video_wrapper" >
           <iframe
           src="https://player.cloudinary.com/embed/?cloud_name=do45g1bvk&public_id=salmon_2_m7xu32&profile=cld-default&autoplay=true&muted=true&controls=false"
