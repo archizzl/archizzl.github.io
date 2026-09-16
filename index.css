@@ -105,14 +105,34 @@
     font-size: 14px;
     margin-bottom: 5px;
   }
+  #blog_posts .draft-badge {
+    color: #b53a1a;
+    font-size: 14px;
+    margin-left: 4px;
+  }
+  #rss-link {
+    font-size: 14px;
+  }
+  #rss-link a {
+    color: #888;
+    text-decoration: none;
+  }
+  #rss-link a:hover {
+    text-decoration: underline;
+  }
 
   #blog-container {
     width: 30vw;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center; 
+    justify-content: center;
     margin: 5px;
     /* align-items: center;  */
+  }
+  @media (max-width: 768px) {
+    #blog-container {
+      width: 80vw;
+    }
   }
 
   #blog-container > p {

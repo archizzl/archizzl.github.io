@@ -7,6 +7,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <link rel="stylesheet" href="index.css">
+  <link rel="alternate" type="application/rss+xml" title="archie's blog" href="/blog/feed.xml">
   <link rel="stylesheet" href="hpi/art_generator/art_generator.css">
   <link rel="stylesheet" href="hpi/workout/workout.css">
 
@@ -42,6 +43,7 @@
 
       <!-- <span id="blog-header">x is my blog. i'm going to try to post every day.</span> -->
       <ul id="blog_posts"></ul>
+      <span id="rss-link"><a href="/blog/feed.xml">rss</a></span>
       <script>
         (function () {
           const ul = document.getElementById('blog_posts');
@@ -85,8 +87,9 @@
                 '<a class="tag" href="#" data-add="' + encodeURIComponent(t) +
                 '">#' + esc(t) + '</a>'
               ).join(' ');
+              const draftBadge = p.status === 'draft' ? ' <span class="draft-badge">(draft)</span>' : '';
               return '<li><time datetime="' + p.date + '">' + p.date + '</time> ' +
-                '<a href="./blog/posts/' + p.slug + '/">' + esc(p.title) + '</a>' +
+                '<a href="./blog/posts/' + p.slug + '/">' + esc(p.title) + '</a>' + draftBadge +
                 (tagHtml ? ' ' + tagHtml : '') + '</li>';
             }).join('');
           }

@@ -11,6 +11,7 @@ Source format (blog/src/my-slug.txt):
     title: My First Post
     date: 2026-09-16
     tags: personal, tech
+    status: draft            # optional; default published. draft = only visible via --watch
     ---
     Body text. Paragraphs are separated by blank lines.
 
@@ -31,7 +32,8 @@ import re
 import sys
 import threading
 import time
-from datetime import date
+from datetime import date, datetime, timezone
+from email.utils import format_datetime, formatdate
 from html import escape
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -41,6 +43,11 @@ ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 POSTS_DIR = ROOT / "posts"
 MANIFEST = ROOT / "posts.json"
+FEED = ROOT / "feed.xml"
+
+SITE_URL = "https://archizzl.com"
+SITE_TITLE = "archie"
+SITE_DESCRIPTION = "archie's blog"
 
 POST_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -48,8 +55,9 @@ POST_TEMPLATE = """<!DOCTYPE html>
 <title>{title} — archie</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=0.7">
-<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+{robots_meta}<link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="stylesheet" href="../../../index.css">
+<link rel="alternate" type="application/rss+xml" title="archie's blog" href="../../feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -154,7 +162,7 @@ def pretty_date(iso: str) -> str:
     return date(y, m, d).strftime("%B %-d, %Y")
 
 
-def build() -> None:
+def build(include_drafts: bool = False) -> None:
     if not SRC.exists():
         print(f"no src directory at {SRC}", file=sys.stderr)
         sys.exit(1)
@@ -162,6 +170,7 @@ def build() -> None:
 
     entries: list[dict] = []
     seen_slugs: set[str] = set()
+    draft_count = 0
 
     for txt in sorted(SRC.glob("*.txt")):
         slug = txt.stem
@@ -176,6 +185,15 @@ def build() -> None:
         except ValueError as e:
             print(f"{txt.name}: {e}", file=sys.stderr)
             sys.exit(1)
+
+        status = meta.get("status", "published").strip().lower()
+        is_draft = status == "draft"
+        if is_draft and not include_drafts:
+            # Skip drafts entirely in production builds.
+            seen_slugs.discard(slug)  # allow cleanup to remove any stale dir
+            continue
+        if is_draft:
+            draft_count += 1
 
         title = meta.get("title") or slug.replace("-", " ")
         d = meta.get("date")
@@ -193,27 +211,40 @@ def build() -> None:
         else:
             tags_html = ""
 
+        body_html = render_body(body)
         post_dir = POSTS_DIR / slug
         post_dir.mkdir(exist_ok=True)
+        robots_meta = '<meta name="robots" content="noindex">\n' if is_draft else ""
         html = POST_TEMPLATE.format(
             title=escape(title),
             date=escape(d),
             date_pretty=escape(pretty_date(d)),
             tags_html=tags_html,
-            body=render_body(body),
+            body=body_html,
+            robots_meta=robots_meta,
         )
         (post_dir / "index.html").write_text(html, encoding="utf-8")
 
-        entries.append({
+        entry = {
             "slug": slug,
             "title": title,
             "date": d,
             "description": meta.get("description", ""),
             "tags": tags,
-        })
+            "_body_html": body_html,
+        }
+        if is_draft:
+            entry["status"] = "draft"
+        entries.append(entry)
 
     entries.sort(key=lambda e: e["date"], reverse=True)
-    MANIFEST.write_text(json.dumps(entries, indent=2) + "\n", encoding="utf-8")
+
+    # Feed never contains drafts, even in preview mode.
+    write_feed([e for e in entries if e.get("status") != "draft"])
+
+    # Strip internal-only fields before writing the public manifest.
+    manifest = [{k: v for k, v in e.items() if not k.startswith("_")} for e in entries]
+    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
     # Clean up stale generated post directories.
     for existing in POSTS_DIR.iterdir():
@@ -222,11 +253,52 @@ def build() -> None:
                 f.unlink()
             existing.rmdir()
 
-    print(f"built {len(entries)} post(s)")
+    published = len(entries) - draft_count
+    if include_drafts and draft_count:
+        print(f"built {published} published + {draft_count} draft(s)")
+    else:
+        print(f"built {published} post(s)")
+
+
+def write_feed(entries: list[dict]) -> None:
+    items = []
+    for e in entries:
+        link = f"{SITE_URL}/blog/posts/{e['slug']}/"
+        y, m, d = (int(x) for x in e["date"].split("-"))
+        dt = datetime(y, m, d, tzinfo=timezone.utc)
+        pub_date = format_datetime(dt, usegmt=True)
+        desc = e.get("description") or ""
+        items.append(
+            "<item>\n"
+            f"<title>{escape(e['title'])}</title>\n"
+            f"<link>{link}</link>\n"
+            f'<guid isPermaLink="true">{link}</guid>\n'
+            f"<pubDate>{pub_date}</pubDate>\n"
+            + (f"<description>{escape(desc)}</description>\n" if desc else "")
+            + f"<content:encoded><![CDATA[{e['_body_html']}]]></content:encoded>\n"
+            "</item>"
+        )
+    now = formatdate(usegmt=True)
+    feed = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '
+        'xmlns:content="http://purl.org/rss/1.0/modules/content/">\n'
+        "<channel>\n"
+        f"<title>{escape(SITE_TITLE)}</title>\n"
+        f"<link>{SITE_URL}/</link>\n"
+        f"<description>{escape(SITE_DESCRIPTION)}</description>\n"
+        f'<atom:link href="{SITE_URL}/blog/feed.xml" rel="self" type="application/rss+xml" />\n'
+        "<language>en</language>\n"
+        f"<lastBuildDate>{now}</lastBuildDate>\n"
+        + "\n".join(items) + "\n"
+        "</channel>\n"
+        "</rss>\n"
+    )
+    FEED.write_text(feed, encoding="utf-8")
 
 
 def watch_and_serve(port: int = 8000) -> None:
-    build()
+    build(include_drafts=True)
     site_root = ROOT.parent
     handler = functools.partial(SimpleHTTPRequestHandler, directory=str(site_root))
     handler.log_message = lambda *a, **k: None  # type: ignore[attr-defined]
@@ -234,25 +306,30 @@ def watch_and_serve(port: int = 8000) -> None:
     threading.Thread(target=server.serve_forever, daemon=True).start()
     print(f"serving http://localhost:{port}/ — watching {SRC.relative_to(site_root)}/*.txt", flush=True)
     print(f"open http://localhost:{port}/ or http://localhost:{port}/blog/posts/<slug>/", flush=True)
+    print("drafts included in preview; a clean build runs on Ctrl+C so it's safe to commit", flush=True)
 
     mtimes: dict[Path, float] = {}
-    while True:
-        current = {p: p.stat().st_mtime for p in SRC.glob("*.txt")}
-        if current != mtimes:
-            if mtimes:  # skip the initial diff (already built above)
-                print("change detected — rebuilding", flush=True)
-                try:
-                    build()
-                except SystemExit:
-                    print("build failed — fix the error and save again", flush=True)
-                except Exception as e:  # noqa: BLE001
-                    print(f"build failed: {e}", flush=True)
-            mtimes = current
-        try:
+    try:
+        while True:
+            current = {p: p.stat().st_mtime for p in SRC.glob("*.txt")}
+            if current != mtimes:
+                if mtimes:  # skip the initial diff (already built above)
+                    print("change detected — rebuilding", flush=True)
+                    try:
+                        build(include_drafts=True)
+                    except SystemExit:
+                        print("build failed — fix the error and save again", flush=True)
+                    except Exception as e:  # noqa: BLE001
+                        print(f"build failed: {e}", flush=True)
+                mtimes = current
             time.sleep(0.4)
-        except KeyboardInterrupt:
-            print("\nbye")
-            return
+    except KeyboardInterrupt:
+        print("\nrunning clean build (drafts excluded) before exit…", flush=True)
+        try:
+            build(include_drafts=False)
+        except SystemExit:
+            print("clean build failed — run 'python3 blog/build.py' manually before committing", flush=True)
+        print("bye", flush=True)
 
 
 if __name__ == "__main__":
