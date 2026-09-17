@@ -156,6 +156,30 @@
     height: auto;
     display: block;
     margin: 8px 0;
+    cursor: zoom-in;
+  }
+
+  #img_modal {
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin: auto;
+    background: transparent;
+    box-shadow: none;
+    width: fit-content;
+    height: fit-content;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: visible;
+  }
+  #img_modal::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+  }
+  #img_modal img {
+    display: block;
+    max-width: 95vw;
+    max-height: 95vh;
+    cursor: zoom-out;
   }
   #blog-container .box {
     display: inline-block;
@@ -263,5 +287,18 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      background: rgb(0, 0, 0);
+      color: white;
+    }
+    a, a:visited {
+      color: #3f82ee;
+    }
+    .sec_title_link, .sec_title_link:visited {
+      color: white;
+    }
   }
 

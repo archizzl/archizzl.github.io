@@ -1,5 +1,35 @@
 [
   {
+    "slug": "creatine-and-fabricating",
+    "title": "creatine and fabricating",
+    "date": "2026-09-17",
+    "description": "",
+    "tags": [],
+    "status": "draft"
+  },
+  {
+    "slug": "money-spread-sheet",
+    "title": "bank of roommates",
+    "date": "2026-09-16",
+    "description": "",
+    "tags": [
+      "spreadsheets",
+      "money"
+    ],
+    "status": "draft"
+  },
+  {
+    "slug": "yorkgrass",
+    "title": "the old vs. the newgrass",
+    "date": "2026-09-16",
+    "description": "",
+    "tags": [
+      "bluegrass",
+      "nyc"
+    ],
+    "status": "draft"
+  },
+  {
     "slug": "a3q",
     "title": "a q(uick) q (line) q(uestion)",
     "date": "2026-09-15",

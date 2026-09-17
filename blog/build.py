@@ -90,6 +90,23 @@ style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
 }})();
 </script>
 </div>
+<dialog id="img_modal"><img id="img_modal_content" alt=""></dialog>
+<script>
+(function () {{
+  var modal = document.getElementById('img_modal');
+  var mimg = document.getElementById('img_modal_content');
+  document.querySelectorAll('#blog-container img').forEach(function (img) {{
+    img.addEventListener('click', function () {{
+      mimg.src = img.currentSrc || img.src;
+      mimg.alt = img.alt || '';
+      modal.showModal();
+    }});
+  }});
+  modal.addEventListener('click', function () {{
+    modal.close();
+  }});
+}})();
+</script>
 </div>
 </body>
 </html>
