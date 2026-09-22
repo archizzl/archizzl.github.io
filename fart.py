@@ -75,7 +75,7 @@ def create_directory(directory, caption):
             if filename.endswith('.html') and filename != "index.html":
                 f.write(f'<a href="{filename}" class="project_link" id="{filename[:-5]}" target="ventana">{filename[:-5].replace("_", " ")}</a>')
         f.write('''</fieldset>
-    <iframe name='ventana' id="ventana" src='../words/horses.txt'></iframe>
+    <iframe name='ventana' id="ventana" src='./projects/clock.html'></iframe>
     <a href="../words/horses.txt" target="_blank" id="link">let's get out of here</a>
   </body>
   <script>
