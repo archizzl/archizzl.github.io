@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Splitter</title>
+    <script type="module" crossorigin src="./assets/index-BAd2DbCN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BO0bAGzf.css">
+  </head>
+  <body>
+    <main id="app">
+      <header>
+        <h1>Set Splitter</h1>
+        <p class="tag">
+          Drop a concert or band-practice recording. It splits the file into
+          songs by finding gaps — silence, applause, or talking with no music —
+          then hands you each song as MP3 or WAV.
+        </p>
+      </header>
+
+      <section id="drop" class="drop">
+        <input type="file" id="file" accept="audio/*" hidden />
+        <div class="drop-inner">
+          <p><strong>Drop an audio file here</strong></p>
+          <p class="sub">or <button type="button" id="pick">choose a file</button></p>
+          <p class="sub muted">mp3, wav, m4a, flac, ogg — anything the browser can decode</p>
+        </div>
+      </section>
+
+      <section id="status" class="status hidden"></section>
+
+      <section id="controls" class="controls hidden">
+        <div class="control">
+          <label>
+            Artist / band
+            <input type="text" id="artist" placeholder="Optional" autocomplete="off" />
+          </label>
+        </div>
+        <div class="control">
+          <label>
+            Date
+            <input type="text" id="date" placeholder="MM/DD/YYYY" autocomplete="off" />
+          </label>
+        </div>
+        <div class="control">
+          <label>
+            Minimum song length
+            <input type="range" id="minSong" min="10" max="600" step="5" value="30" />
+            <span class="val" id="minSongVal">30s</span>
+          </label>
+        </div>
+        <div class="control">
+          <label>
+            Minimum gap between songs
+            <input type="range" id="minGap" min="1" max="30" step="1" value="4" />
+            <span class="val" id="minGapVal">4s</span>
+          </label>
+        </div>
+        <div class="control">
+          <label>
+            Music sensitivity
+            <input type="range" id="sens" min="0" max="100" step="1" value="50" />
+            <span class="val" id="sensVal">50</span>
+          </label>
+        </div>
+        <div class="control">
+          <label>
+            Download format
+            <select id="format">
+              <option value="wav">WAV — lossless, larger</option>
+              <option value="mp3-192" selected>MP3 192 kbps</option>
+              <option value="mp3-256">MP3 256 kbps</option>
+              <option value="mp3-320">MP3 320 kbps</option>
+            </select>
+          </label>
+        </div>
+        <div class="control actions">
+          <button type="button" id="reanalyze">Re-analyze</button>
+          <button type="button" id="downloadAll" class="primary">Download all</button>
+        </div>
+      </section>
+
+      <section id="viz" class="viz hidden">
+        <canvas id="canvas" height="180"></canvas>
+        <div id="axis" class="axis"></div>
+      </section>
+
+      <section id="songs" class="songs"></section>
+
+      <footer>
+        <p class="muted">
+          Runs entirely in your browser — no uploads. Large files take a moment
+          to decode; long sets are analyzed at ~10× realtime.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
