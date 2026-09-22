@@ -63,20 +63,34 @@ const state: State = {
   songs: [],
 };
 
+// Every keystroke here shouldn't trigger a full renderSongs() — that would
+// re-encode a WAV slice per song for the preview <audio> elements. Just walk
+// the existing rows and refresh the name input in place.
 artistInput.addEventListener("input", () => {
   refreshAutoNames();
-  renderSongs();
+  refreshVisibleNames();
 });
 dateInput.addEventListener("input", () => {
   refreshAutoNames();
-  renderSongs();
+  refreshVisibleNames();
 });
+
+function refreshVisibleNames() {
+  const rows = songsEl.querySelectorAll<HTMLDivElement>(".song");
+  state.songs.forEach((song, i) => {
+    const row = rows[i];
+    if (!row) return;
+    const input = row.querySelector<HTMLInputElement>(".name-input");
+    // Don't stomp on a name field the user is actively editing.
+    if (input && document.activeElement !== input) input.value = song.name;
+  });
+}
 
 function autoName(index: number): string {
   const n = pad2(index + 1);
   const artist = artistInput.value.trim();
   const date = dateInput.value.trim();
-  const parts = [`Audio ${n}`];
+  const parts = [`audio ${n}`];
   if (artist) parts.push(artist);
   if (date) parts.push(date);
   return parts.join(" - ");
@@ -123,8 +137,8 @@ pickBtn.addEventListener("click", (e) => {
 dropEl.addEventListener("click", () => fileInput.click());
 
 fileInput.addEventListener("change", () => {
-  const f = fileInput.files?.[0];
-  if (f) void handleFile(f);
+  const fs = fileInput.files;
+  if (fs && fs.length) void handleFiles(Array.from(fs));
 });
 
 ["dragenter", "dragover"].forEach((ev) =>
@@ -140,8 +154,8 @@ fileInput.addEventListener("change", () => {
   }),
 );
 dropEl.addEventListener("drop", (e) => {
-  const f = e.dataTransfer?.files?.[0];
-  if (f) void handleFile(f);
+  const fs = e.dataTransfer?.files;
+  if (fs && fs.length) void handleFiles(Array.from(fs));
 });
 
 // --- Controls ---
@@ -185,44 +199,78 @@ window.addEventListener("keydown", (e) => {
 
 // --- Pipeline ---
 
-async function handleFile(file: File) {
-  state.fileName = file.name.replace(/\.[^.]+$/, "");
-  setStatus(`Decoding ${file.name}…`);
+async function handleFiles(files: File[]) {
+  // Sort by filename so numeric prefixes (01-*.wav, 02-*.wav) land in the
+  // order the user probably wants. Uses localeCompare with the numeric flag
+  // so "10.wav" comes after "2.wav", not before.
+  const sorted = files.slice().sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }),
+  );
+  const first = sorted[0];
+  state.fileName = first.name.replace(/\.[^.]+$/, "");
   controlsEl.classList.add("hidden");
   vizEl.classList.add("hidden");
   songsEl.innerHTML = "";
   player.stop();
 
-  // Pull the recording date from file metadata (ID3 / BWF / M4A). Falls back
-  // to file.lastModified — that's what a phone or field recorder writes as
-  // the modified timestamp when saving the recording. Overwrites whatever
-  // was in the field: a new file is a new session, and the user can retype
-  // if they need to override.
+  // Date comes from the FIRST file's metadata (or its lastModified). All
+  // subsequent files are treated as continuations of that recording.
   let date: Date | null = null;
-  try { date = await extractRecordingDate(file); } catch { /* ignore */ }
-  if (!date && file.lastModified) date = new Date(file.lastModified);
+  try { date = await extractRecordingDate(first); } catch { /* ignore */ }
+  if (!date && first.lastModified) date = new Date(first.lastModified);
   if (date) dateInput.value = formatMMDDYYYY(date);
 
   try {
-    const arrayBuf = await file.arrayBuffer();
     const ac = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const audioBuf = await ac.decodeAudioData(arrayBuf.slice(0));
+    // decodeAudioData resamples every file to the context's sample rate, so
+    // stitching just needs to reconcile channel counts.
+    const decoded: AudioBuffer[] = [];
+    for (let i = 0; i < sorted.length; i++) {
+      const f = sorted[i];
+      setStatus(`decoding ${f.name} (${i + 1}/${sorted.length})…`);
+      const arrayBuf = await f.arrayBuffer();
+      decoded.push(await ac.decodeAudioData(arrayBuf.slice(0)));
+    }
+    const combined = decoded.length === 1 ? decoded[0] : concatBuffers(ac, decoded);
     void ac.close();
-    state.audioBuffer = audioBuf;
-    state.duration = audioBuf.duration;
-    player.setBuffer(audioBuf);
+    state.audioBuffer = combined;
+    state.duration = combined.duration;
+    player.setBuffer(combined);
 
+    const fileWord = sorted.length === 1 ? "file" : `files (${sorted.length})`;
     setStatus(
-      `Analyzing ${formatDuration(audioBuf.duration)} of audio (${audioBuf.numberOfChannels}ch @ ${audioBuf.sampleRate} Hz)…`,
+      `analyzing ${formatDuration(combined.duration)} of audio from ${fileWord}, ${combined.numberOfChannels}ch @ ${combined.sampleRate} Hz…`,
     );
     await runAnalysis();
   } catch (err) {
     console.error(err);
     setStatus(
-      `Couldn't process file: ${err instanceof Error ? err.message : String(err)}`,
+      `couldn't process file${files.length === 1 ? "" : "s"}: ${err instanceof Error ? err.message : String(err)}`,
       "error",
     );
   }
+}
+
+// Stitch several decoded buffers into one. All inputs already share a sample
+// rate (decodeAudioData resamples to the context's rate). Channel counts can
+// differ — we widen everything to the max, duplicating a mono source across
+// stereo channels rather than leaving one channel silent.
+function concatBuffers(ac: AudioContext, buffers: AudioBuffer[]): AudioBuffer {
+  const sampleRate = buffers[0].sampleRate;
+  const channels = Math.max(...buffers.map((b) => b.numberOfChannels));
+  const totalLength = buffers.reduce((n, b) => n + b.length, 0);
+  const out = ac.createBuffer(channels, totalLength, sampleRate);
+  let offset = 0;
+  for (const b of buffers) {
+    for (let c = 0; c < channels; c++) {
+      // Reuse the source's channel 0 for any channel it doesn't have (mono
+      // sits in both speakers instead of just the left).
+      const src = b.getChannelData(Math.min(c, b.numberOfChannels - 1));
+      out.copyToChannel(src, c, offset);
+    }
+    offset += b.length;
+  }
+  return out;
 }
 
 function runAnalysis(): Promise<void> {
@@ -243,7 +291,7 @@ function runAnalysis(): Promise<void> {
     worker.onmessage = (ev: MessageEvent<any>) => {
       const msg = ev.data;
       if (msg.type === "progress") {
-        setStatus(`Analyzing… ${Math.round(msg.progress * 100)}%`);
+        setStatus(`analyzing… ${Math.round(msg.progress * 100)}%`);
       } else if (msg.type === "done") {
         worker.terminate();
         state.features = msg.features;
@@ -258,13 +306,13 @@ function runAnalysis(): Promise<void> {
         });
       } else if (msg.type === "error") {
         worker.terminate();
-        setStatus(`Analysis error: ${msg.error}`, "error");
+        setStatus(`analysis error: ${msg.error}`, "error");
         reject(new Error(msg.error));
       }
     };
     worker.onerror = (err) => {
       worker.terminate();
-      setStatus(`Worker error: ${err.message}`, "error");
+      setStatus(`worker error: ${err.message}`, "error");
       reject(err);
     };
     worker.postMessage(
@@ -360,13 +408,11 @@ function drawViz() {
     if (f.t > viewEnd) break;
     const x = timeToX(f.t);
     ctx.fillStyle = labelColor(f.label);
-    ctx.globalAlpha = 0.7;
     ctx.fillRect(x, 0, viewBinW, cssHeight);
   }
-  ctx.globalAlpha = 1;
 
   // Music-score line, clipped to the view.
-  ctx.strokeStyle = "#e8ecf1";
+  ctx.strokeStyle = "#333";
   ctx.lineWidth = 1;
   ctx.beginPath();
   let started = false;
@@ -387,7 +433,7 @@ function drawViz() {
     if (s.end < viewStart || s.start > viewEnd) return;
     const x1 = timeToX(s.start);
     const x2 = timeToX(s.end);
-    ctx.fillStyle = "rgba(124,196,255,0.28)";
+    ctx.fillStyle = "rgba(0, 0, 255, 0.15)";
     ctx.fillRect(x1, 2, x2 - x1, cssHeight - 4);
   });
 
@@ -396,15 +442,14 @@ function drawViz() {
     if (s.end < viewStart || s.start > viewEnd) return;
     const x1 = timeToX(s.start);
     const x2 = timeToX(s.end);
-    ctx.strokeStyle = s.selected ? "#7cc4ff" : "#ffffff";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(x1 + 1, 2, x2 - x1 - 2, cssHeight - 4);
-    // Edge handles only if they fall within the visible range.
+    ctx.strokeStyle = s.selected ? "blue" : "#000";
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(x1 + 0.5, 2, x2 - x1 - 1, cssHeight - 4);
     ctx.fillStyle = ctx.strokeStyle;
     if (x1 >= 0 && x1 <= cssWidth) ctx.fillRect(x1, 2, 3, cssHeight - 4);
     if (x2 >= 0 && x2 <= cssWidth) ctx.fillRect(x2 - 3, 2, 3, cssHeight - 4);
-    ctx.font = "bold 12px system-ui";
-    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 12px 'Calibri', 'Atkinson Hyperlegible', sans-serif";
+    ctx.fillStyle = "#000";
     ctx.fillText(String(i + 1), Math.max(x1 + 6, 4), 15);
   });
 
@@ -414,27 +459,28 @@ function drawViz() {
     const b = Math.max(interaction.startT, interaction.currentT);
     const xa = timeToX(a);
     const xb = timeToX(b);
-    ctx.fillStyle = "rgba(124,196,255,0.25)";
+    ctx.fillStyle = "rgba(0, 0, 255, 0.15)";
     ctx.fillRect(xa, 2, xb - xa, cssHeight - 4);
-    ctx.strokeStyle = "#7cc4ff";
+    ctx.strokeStyle = "blue";
     ctx.lineWidth = 1.5;
     ctx.setLineDash([4, 3]);
     ctx.strokeRect(xa + 0.5, 2.5, xb - xa - 1, cssHeight - 5);
     ctx.setLineDash([]);
   }
 
-  // Playhead — only if it's in the visible range.
+  // Playhead — the rust-red accent from the style guide so it stands out on
+  // the mostly cool-toned strip.
   if (state.audioBuffer) {
     const t = player.currentTime;
     if (t >= viewStart && t <= viewEnd) {
       const x = timeToX(t);
-      ctx.strokeStyle = "#ffb454";
+      ctx.strokeStyle = "#b53a1a";
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(x + 0.5, 0);
       ctx.lineTo(x + 0.5, cssHeight);
       ctx.stroke();
-      ctx.fillStyle = "#ffb454";
+      ctx.fillStyle = "#b53a1a";
       ctx.beginPath();
       ctx.moveTo(x - 5, 0);
       ctx.lineTo(x + 5, 0);
@@ -513,11 +559,12 @@ function startScrollDrag(ev: MouseEvent, bar: HTMLDivElement) {
 }
 
 function labelColor(label: WindowFeature["label"]): string {
+  // Pale tints so black outlines and text stay readable on top.
   switch (label) {
-    case "music": return "#2f6bb8";
-    case "applause": return "#8a5b26";
-    case "talk": return "#5f4a86";
-    case "silence": return "#20242e";
+    case "music": return "#cfe3ff";
+    case "applause": return "#ffd9a8";
+    case "talk": return "#e0d0ff";
+    case "silence": return "#f0f0f0";
   }
 }
 
@@ -706,7 +753,7 @@ function renderSongs() {
     const empty = document.createElement("div");
     empty.className = "status";
     empty.textContent =
-      "No songs yet. Drag on empty space in the strip above to create one, or lower the minimum song length and re-analyze.";
+      "no songs yet. drag empty space in the strip above to create one, or lower the minimum song length and re-analyze.";
     songsEl.appendChild(empty);
     downloadAllBtn.disabled = true;
     return;
@@ -720,8 +767,8 @@ function renderSongs() {
     bar.className = "merge-bar";
     bar.innerHTML = `
       <span>${selectedCount} songs selected</span>
-      <button data-act="merge" class="primary">Merge into one</button>
-      <button data-act="clear-sel">Clear selection</button>
+      <button data-act="merge">merge into one</button>
+      <button data-act="clear-sel">clear selection</button>
     `;
     bar.querySelector<HTMLButtonElement>("[data-act=merge]")!.addEventListener(
       "click",
@@ -743,7 +790,7 @@ function renderSongs() {
     row.className = "song" + (song.selected ? " selected" : "");
     row.dataset.id = song.id;
     row.innerHTML = `
-      <label class="select"><input type="checkbox" ${song.selected ? "checked" : ""} title="Select for merge" /></label>
+      <label class="select"><input type="checkbox" ${song.selected ? "checked" : ""} title="select for merge" /></label>
       <div class="num">${pad2(i + 1)}</div>
       <div class="meta">
         <div class="name-row">
@@ -752,8 +799,8 @@ function renderSongs() {
         <div class="times"><span class="t-start">${formatDuration(song.start)}</span> – <span class="t-end">${formatDuration(song.end)}</span> (${formatDuration(song.end - song.start)})</div>
       </div>
       <div class="actions">
-        <button data-act="delete" title="Delete this song">✕</button>
-        <button data-act="download" class="primary">Download</button>
+        <button data-act="delete" title="delete this song">✕</button>
+        <button data-act="download">download</button>
       </div>
     `;
     const nameInput = row.querySelector<HTMLInputElement>(".name-input")!;
@@ -828,7 +875,7 @@ function deleteSong(id: string) {
 async function downloadSong(song: Song, btn?: HTMLButtonElement) {
   if (!state.audioBuffer) return;
   const fmt = formatSelect.value;
-  if (btn) { btn.disabled = true; btn.textContent = "Encoding…"; }
+  if (btn) { btn.disabled = true; btn.textContent = "encoding…"; }
   await new Promise((r) => setTimeout(r, 0));
   try {
     let blob: Blob;
@@ -843,7 +890,7 @@ async function downloadSong(song: Song, btn?: HTMLButtonElement) {
     }
     triggerDownload(blob, `${sanitize(song.name)}.${ext}`);
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = "Download"; }
+    if (btn) { btn.disabled = false; btn.textContent = "download"; }
   }
 }
 
@@ -852,7 +899,7 @@ async function downloadAll() {
   downloadAllBtn.disabled = true;
   const original = downloadAllBtn.textContent;
   for (let i = 0; i < state.songs.length; i++) {
-    downloadAllBtn.textContent = `Encoding ${i + 1}/${state.songs.length}…`;
+    downloadAllBtn.textContent = `encoding ${i + 1}/${state.songs.length}…`;
     await new Promise((r) => setTimeout(r, 0));
     await downloadSong(state.songs[i]);
     await new Promise((r) => setTimeout(r, 250));

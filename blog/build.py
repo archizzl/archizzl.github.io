@@ -3,8 +3,14 @@
 Build the blog: reads text files in blog/src/, writes HTML posts to blog/
 and regenerates blog/posts.json.
 
+With --watch, also builds the set-splitter vite project (if present) into
+projects/set-splitter/ and rebuilds it on source changes. Serves the whole
+site so blog and set-splitter both live at the same URL as in production.
+
 Usage:
-    python blog/build.py
+    python blog/build.py                       # one-shot blog build
+    python blog/build.py --watch               # blog + set-splitter, live
+    python blog/build.py --watch --no-projects # blog only
 
 Source format (blog/src/my-slug.txt):
 
@@ -29,6 +35,8 @@ The filename (without .txt) becomes the URL slug.
 import functools
 import json
 import re
+import shutil
+import subprocess
 import sys
 import threading
 import time
@@ -40,6 +48,15 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
+SITE_ROOT = ROOT.parent
+
+# set-splitter is a vite project living at repo-root/_set-splitter. --watch
+# builds it into projects/set-splitter/ (same path the deploy Action uses).
+SET_SPLITTER_SRC = SITE_ROOT / "_set-splitter"
+SET_SPLITTER_DIST = SITE_ROOT / "projects" / "set-splitter"
+# Files that should trigger a rebuild when they change. node_modules and dist
+# are excluded — one is huge, the other is the build output.
+SET_SPLITTER_WATCH_GLOBS = ("src/**/*", "index.html", "package.json", "vite.config.ts", "tsconfig.json")
 SRC = ROOT / "src"
 TEMPLATE = SRC / "template.txt"
 POSTS_DIR = ROOT / "posts"
@@ -329,31 +346,100 @@ def write_feed(entries: list[dict]) -> None:
     FEED.write_text(feed, encoding="utf-8")
 
 
-def watch_and_serve(port: int = 8000) -> None:
+def set_splitter_sources() -> dict[Path, float]:
+    """mtimes of every file the set-splitter build depends on."""
+    if not SET_SPLITTER_SRC.exists():
+        return {}
+    out: dict[Path, float] = {}
+    for glob in SET_SPLITTER_WATCH_GLOBS:
+        for p in SET_SPLITTER_SRC.glob(glob):
+            if p.is_file():
+                out[p] = p.stat().st_mtime
+    return out
+
+
+def build_set_splitter(quiet: bool = False) -> bool:
+    """Run `npm run build` in _set-splitter/ and mirror the output into
+    projects/set-splitter/. Returns True on success, False on failure or if
+    the directory / npm aren't available."""
+    if not SET_SPLITTER_SRC.exists():
+        return False
+    if shutil.which("npm") is None:
+        print("npm not on PATH — skipping set-splitter build", flush=True)
+        return False
+    if not (SET_SPLITTER_SRC / "node_modules").exists():
+        print("installing set-splitter deps (first run, ~30s)…", flush=True)
+        r = subprocess.run(["npm", "ci"], cwd=SET_SPLITTER_SRC)
+        if r.returncode != 0:
+            print("npm ci failed", flush=True)
+            return False
+    if not quiet:
+        print("building set-splitter…", flush=True)
+    r = subprocess.run(
+        ["npm", "run", "build"], cwd=SET_SPLITTER_SRC,
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        print("set-splitter build failed:", flush=True)
+        # tsc / vite errors are on stdout usually; stderr for npm noise.
+        print(r.stdout or r.stderr, flush=True)
+        return False
+    if SET_SPLITTER_DIST.exists():
+        shutil.rmtree(SET_SPLITTER_DIST)
+    shutil.copytree(SET_SPLITTER_SRC / "dist", SET_SPLITTER_DIST)
+    if not quiet:
+        print(f"  -> {SET_SPLITTER_DIST.relative_to(SITE_ROOT)}", flush=True)
+    return True
+
+
+def set_splitter_needs_build() -> bool:
+    """True if any source file is newer than the deployed index.html."""
+    index = SET_SPLITTER_DIST / "index.html"
+    if not index.exists():
+        return True
+    dist_mtime = index.stat().st_mtime
+    return any(mt > dist_mtime for mt in set_splitter_sources().values())
+
+
+def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
     build(include_drafts=True)
-    site_root = ROOT.parent
-    handler = functools.partial(SimpleHTTPRequestHandler, directory=str(site_root))
+    if build_projects and set_splitter_needs_build():
+        build_set_splitter()
+    handler = functools.partial(SimpleHTTPRequestHandler, directory=str(SITE_ROOT))
     handler.log_message = lambda *a, **k: None  # type: ignore[attr-defined]
     server = ThreadingHTTPServer(("localhost", port), handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
-    print(f"serving http://localhost:{port}/ — watching {SRC.relative_to(site_root)}/*.txt", flush=True)
-    print(f"open http://localhost:{port}/ or http://localhost:{port}/blog/posts/<slug>/", flush=True)
+    watched = f"{SRC.relative_to(SITE_ROOT)}/*.txt"
+    if build_projects and SET_SPLITTER_SRC.exists():
+        watched += f" + {SET_SPLITTER_SRC.relative_to(SITE_ROOT)}/**"
+    print(f"serving http://localhost:{port}/ — watching {watched}", flush=True)
+    print(f"open http://localhost:{port}/ (blog: /blog/posts/<slug>/, set-splitter: /projects/set-splitter/)", flush=True)
     print("drafts included in preview; a clean build runs on Ctrl+C so it's safe to commit", flush=True)
 
-    mtimes: dict[Path, float] = {}
+    blog_mtimes: dict[Path, float] = {}
+    proj_mtimes: dict[Path, float] = set_splitter_sources() if build_projects else {}
     try:
         while True:
-            current = {p: p.stat().st_mtime for p in SRC.glob("*.txt")}
-            if current != mtimes:
-                if mtimes:  # skip the initial diff (already built above)
-                    print("change detected — rebuilding", flush=True)
+            current_blog = {p: p.stat().st_mtime for p in SRC.glob("*.txt")}
+            if current_blog != blog_mtimes:
+                if blog_mtimes:
+                    print("blog change — rebuilding", flush=True)
                     try:
                         build(include_drafts=True)
                     except SystemExit:
-                        print("build failed — fix the error and save again", flush=True)
+                        print("blog build failed — fix the error and save again", flush=True)
                     except Exception as e:  # noqa: BLE001
-                        print(f"build failed: {e}", flush=True)
-                mtimes = current
+                        print(f"blog build failed: {e}", flush=True)
+                blog_mtimes = current_blog
+
+            if build_projects:
+                current_proj = set_splitter_sources()
+                if current_proj != proj_mtimes:
+                    if proj_mtimes:
+                        print("set-splitter change — rebuilding", flush=True)
+                        build_set_splitter()
+                    proj_mtimes = current_proj
+
             time.sleep(0.4)
     except KeyboardInterrupt:
         print("\nrunning clean build (drafts excluded) before exit…", flush=True)
@@ -368,9 +454,12 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if args and args[0] in ("-w", "--watch", "-s", "--serve"):
         port = 8000
+        build_projects = True
         for a in args[1:]:
             if a.startswith("--port="):
                 port = int(a.split("=", 1)[1])
-        watch_and_serve(port)
+            elif a == "--no-projects":
+                build_projects = False
+        watch_and_serve(port, build_projects=build_projects)
     else:
         build()

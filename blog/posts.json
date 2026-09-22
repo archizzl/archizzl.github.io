@@ -1,5 +1,51 @@
 [
   {
+    "slug": "american-nightmare",
+    "title": "american nightmare",
+    "date": "2026-09-18",
+    "description": "",
+    "tags": [],
+    "status": "draft"
+  },
+  {
+    "slug": "happy-birthday-to-the-font",
+    "title": "happy birthday to the font",
+    "date": "2026-09-18",
+    "description": "",
+    "tags": [],
+    "status": "draft"
+  },
+  {
+    "slug": "creatine-and-fabricating",
+    "title": "creatine and fabricating",
+    "date": "2026-09-17",
+    "description": "",
+    "tags": [],
+    "status": "draft"
+  },
+  {
+    "slug": "money-spread-sheet",
+    "title": "bank of roommates",
+    "date": "2026-09-16",
+    "description": "",
+    "tags": [
+      "spreadsheets",
+      "money"
+    ],
+    "status": "draft"
+  },
+  {
+    "slug": "yorkgrass",
+    "title": "the old vs. the newgrass",
+    "date": "2026-09-16",
+    "description": "",
+    "tags": [
+      "bluegrass",
+      "nyc"
+    ],
+    "status": "draft"
+  },
+  {
     "slug": "yorkgrass1",
     "title": "the old vs. the newgrass pt.1",
     "date": "2026-09-16",
