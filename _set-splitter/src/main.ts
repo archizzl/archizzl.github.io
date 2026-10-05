@@ -32,6 +32,7 @@ const sensInput = $<HTMLInputElement>("#sens");
 const sensVal = $<HTMLElement>("#sensVal");
 const reanalyzeBtn = $<HTMLButtonElement>("#reanalyze");
 const downloadAllBtn = $<HTMLButtonElement>("#downloadAll");
+const downloadMarkedBtn = $<HTMLButtonElement>("#downloadMarked");
 const formatSelect = $<HTMLSelectElement>("#format");
 const artistInput = $<HTMLInputElement>("#artist");
 const dateInput = $<HTMLInputElement>("#date");
@@ -185,6 +186,7 @@ reanalyzeBtn.addEventListener("click", () => {
 });
 
 downloadAllBtn.addEventListener("click", () => void downloadAll());
+downloadMarkedBtn.addEventListener("click", () => void downloadMarkedFile());
 
 // Spacebar toggles play/pause when the strip is in view — but not while
 // typing in a song name field.
@@ -906,6 +908,123 @@ async function downloadAll() {
   }
   downloadAllBtn.textContent = original;
   downloadAllBtn.disabled = false;
+}
+
+// Build an unduplicated, sorted list of boundary times — both edges of every
+// song. Edges that are within COLLAPSE_SEC of each other (e.g. end of song N
+// touching start of song N+1 with no detected gap) get merged into one so we
+// don't double up beeps at the same spot.
+function markerTimes(): number[] {
+  const COLLAPSE_SEC = 0.3;
+  const raw: number[] = [];
+  for (const s of state.songs) {
+    raw.push(s.start);
+    raw.push(s.end);
+  }
+  raw.sort((a, b) => a - b);
+  const out: number[] = [];
+  for (const t of raw) {
+    if (out.length === 0 || t - out[out.length - 1] > COLLAPSE_SEC) out.push(t);
+  }
+  return out;
+}
+
+// Copy the recording and mix a short tone at each boundary. The tone is a
+// 1 kHz sine, 80 ms long, with ~3 ms fades so the attack doesn't click. It's
+// summed into the existing audio (then soft-clipped to [-1, 1]) so you keep
+// hearing the music under the beeps — the point is a visual spike plus an
+// audible cue, not a replacement of the signal.
+function buildMarkedChannels(
+  buffer: AudioBuffer,
+  times: number[],
+): Float32Array[] {
+  const sr = buffer.sampleRate;
+  const channels: Float32Array[] = [];
+  for (let c = 0; c < buffer.numberOfChannels; c++) {
+    channels.push(new Float32Array(buffer.getChannelData(c)));
+  }
+
+  const freq = 1000;
+  const beepLen = Math.floor(0.08 * sr);
+  const fadeInSamples = Math.floor(0.003 * sr);
+  const fadeOutSamples = Math.floor(0.01 * sr);
+  const amp = 0.6;
+
+  for (const t of times) {
+    const startFrame = Math.max(0, Math.floor(t * sr));
+    for (let i = 0; i < beepLen; i++) {
+      const frame = startFrame + i;
+      if (frame >= buffer.length) break;
+      const env =
+        i < fadeInSamples ? i / fadeInSamples
+        : i > beepLen - fadeOutSamples ? (beepLen - i) / fadeOutSamples
+        : 1;
+      const sample = amp * env * Math.sin(2 * Math.PI * freq * (i / sr));
+      for (let c = 0; c < channels.length; c++) {
+        let v = channels[c][frame] + sample;
+        if (v > 1) v = 1;
+        else if (v < -1) v = -1;
+        channels[c][frame] = v;
+      }
+    }
+  }
+  return channels;
+}
+
+function markedFileName(): string {
+  const artist = artistInput.value.trim();
+  const date = dateInput.value.trim();
+  const parts = ["audio - marked"];
+  if (artist) parts.push(artist);
+  if (date) parts.push(date);
+  return parts.join(" - ");
+}
+
+async function downloadMarkedFile() {
+  if (!state.audioBuffer) return;
+  if (state.songs.length === 0) {
+    setStatus("no songs detected — nothing to mark. drop a file first.", "error");
+    return;
+  }
+  const times = markerTimes();
+  const original = downloadMarkedBtn.textContent;
+  downloadMarkedBtn.disabled = true;
+  downloadMarkedBtn.textContent = "mixing markers…";
+  await new Promise((r) => setTimeout(r, 0));
+  try {
+    const buffer = state.audioBuffer;
+    const marked = buildMarkedChannels(buffer, times);
+    // Wrap the mixed channel arrays in an object matching the subset of
+    // AudioBuffer our encoders actually touch. Avoids the cost of spinning
+    // up another AudioContext just to allocate a buffer we already have.
+    const bufferLike = {
+      sampleRate: buffer.sampleRate,
+      length: buffer.length,
+      duration: buffer.duration,
+      numberOfChannels: marked.length,
+      getChannelData: (c: number) => marked[c],
+      copyFromChannel: () => {},
+      copyToChannel: () => {},
+    } as unknown as AudioBuffer;
+
+    const fmt = formatSelect.value;
+    downloadMarkedBtn.textContent = "encoding…";
+    await new Promise((r) => setTimeout(r, 0));
+    let blob: Blob;
+    let ext: string;
+    if (fmt === "wav") {
+      blob = audioBufferSliceToWav(bufferLike, 0, buffer.duration);
+      ext = "wav";
+    } else {
+      const kbps = parseInt(fmt.split("-")[1], 10) || 192;
+      blob = audioBufferSliceToMp3(bufferLike, 0, buffer.duration, kbps);
+      ext = "mp3";
+    }
+    triggerDownload(blob, `${sanitize(markedFileName())}.${ext}`);
+  } finally {
+    downloadMarkedBtn.textContent = original;
+    downloadMarkedBtn.disabled = false;
+  }
 }
 
 function triggerDownload(blob: Blob, filename: string) {
