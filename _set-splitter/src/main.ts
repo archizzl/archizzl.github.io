@@ -6,6 +6,7 @@ import {
 } from "./analyze";
 import { audioBufferSliceToWav } from "./wav";
 import { audioBufferSliceToMp3 } from "./mp3";
+import { buildMarkerWav } from "./markerWav";
 import { Player } from "./player";
 import { extractRecordingDate, formatMMDDYYYY } from "./metadata";
 
@@ -30,8 +31,10 @@ const minGapInput = $<HTMLInputElement>("#minGap");
 const minGapVal = $<HTMLElement>("#minGapVal");
 const sensInput = $<HTMLInputElement>("#sens");
 const sensVal = $<HTMLElement>("#sensVal");
+const silenceOnlyInput = $<HTMLInputElement>("#silenceOnly");
 const reanalyzeBtn = $<HTMLButtonElement>("#reanalyze");
 const downloadAllBtn = $<HTMLButtonElement>("#downloadAll");
+const cancelDownloadBtn = $<HTMLButtonElement>("#cancelDownload");
 const downloadMarkedBtn = $<HTMLButtonElement>("#downloadMarked");
 const formatSelect = $<HTMLSelectElement>("#format");
 const artistInput = $<HTMLInputElement>("#artist");
@@ -166,6 +169,7 @@ function getOptions(): AnalyzeOptions {
     minSongSec: parseInt(minSongInput.value, 10),
     minGapSec: parseInt(minGapInput.value, 10),
     sensitivity: parseInt(sensInput.value, 10),
+    silenceOnly: silenceOnlyInput.checked,
   };
 }
 
@@ -186,6 +190,11 @@ reanalyzeBtn.addEventListener("click", () => {
 });
 
 downloadAllBtn.addEventListener("click", () => void downloadAll());
+cancelDownloadBtn.addEventListener("click", () => {
+  downloadAllCancelled = true;
+  cancelDownloadBtn.textContent = "cancelling…";
+  cancelDownloadBtn.disabled = true;
+});
 downloadMarkedBtn.addEventListener("click", () => void downloadMarkedFile());
 
 // Spacebar toggles play/pause when the strip is in view — but not while
@@ -896,18 +905,50 @@ async function downloadSong(song: Song, btn?: HTMLButtonElement) {
   }
 }
 
+// Set when the user clicks the cancel button mid-batch. The loop below
+// checks it between each song-level encode. We can't abort a single song's
+// MP3/WAV encode mid-way — that runs synchronously inside lamejs — but
+// stopping at the next boundary catches it fast enough in practice.
+let downloadAllCancelled = false;
+
 async function downloadAll() {
   if (!state.audioBuffer) return;
+  if (state.songs.length === 0) return;
+  downloadAllCancelled = false;
   downloadAllBtn.disabled = true;
+  cancelDownloadBtn.classList.remove("hidden");
+  cancelDownloadBtn.disabled = false;
+  cancelDownloadBtn.textContent = "cancel";
   const original = downloadAllBtn.textContent;
-  for (let i = 0; i < state.songs.length; i++) {
-    downloadAllBtn.textContent = `encoding ${i + 1}/${state.songs.length}…`;
-    await new Promise((r) => setTimeout(r, 0));
-    await downloadSong(state.songs[i]);
-    await new Promise((r) => setTimeout(r, 250));
+  let completed = 0;
+  try {
+    for (let i = 0; i < state.songs.length; i++) {
+      if (downloadAllCancelled) break;
+      downloadAllBtn.textContent = `encoding ${i + 1}/${state.songs.length}…`;
+      await new Promise((r) => setTimeout(r, 0));
+      await downloadSong(state.songs[i]);
+      completed = i + 1;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  } finally {
+    downloadAllBtn.textContent = downloadAllCancelled
+      ? `cancelled (${completed}/${state.songs.length} downloaded)`
+      : original;
+    downloadAllBtn.disabled = false;
+    cancelDownloadBtn.classList.add("hidden");
+    cancelDownloadBtn.textContent = "cancel";
+    cancelDownloadBtn.disabled = false;
+    downloadAllCancelled = false;
+    // Restore the original label on the next interaction so the "cancelled"
+    // notice doesn't stick around forever.
+    if (downloadAllBtn.textContent !== original) {
+      setTimeout(() => {
+        if (downloadAllBtn.textContent?.startsWith("cancelled")) {
+          downloadAllBtn.textContent = original;
+        }
+      }, 4000);
+    }
   }
-  downloadAllBtn.textContent = original;
-  downloadAllBtn.disabled = false;
 }
 
 // Build an unduplicated, sorted list of boundary times — both edges of every
@@ -929,48 +970,6 @@ function markerTimes(): number[] {
   return out;
 }
 
-// Copy the recording and mix a short tone at each boundary. The tone is a
-// 1 kHz sine, 80 ms long, with ~3 ms fades so the attack doesn't click. It's
-// summed into the existing audio (then soft-clipped to [-1, 1]) so you keep
-// hearing the music under the beeps — the point is a visual spike plus an
-// audible cue, not a replacement of the signal.
-function buildMarkedChannels(
-  buffer: AudioBuffer,
-  times: number[],
-): Float32Array[] {
-  const sr = buffer.sampleRate;
-  const channels: Float32Array[] = [];
-  for (let c = 0; c < buffer.numberOfChannels; c++) {
-    channels.push(new Float32Array(buffer.getChannelData(c)));
-  }
-
-  const freq = 1000;
-  const beepLen = Math.floor(0.08 * sr);
-  const fadeInSamples = Math.floor(0.003 * sr);
-  const fadeOutSamples = Math.floor(0.01 * sr);
-  const amp = 0.6;
-
-  for (const t of times) {
-    const startFrame = Math.max(0, Math.floor(t * sr));
-    for (let i = 0; i < beepLen; i++) {
-      const frame = startFrame + i;
-      if (frame >= buffer.length) break;
-      const env =
-        i < fadeInSamples ? i / fadeInSamples
-        : i > beepLen - fadeOutSamples ? (beepLen - i) / fadeOutSamples
-        : 1;
-      const sample = amp * env * Math.sin(2 * Math.PI * freq * (i / sr));
-      for (let c = 0; c < channels.length; c++) {
-        let v = channels[c][frame] + sample;
-        if (v > 1) v = 1;
-        else if (v < -1) v = -1;
-        channels[c][frame] = v;
-      }
-    }
-  }
-  return channels;
-}
-
 function markedFileName(): string {
   const artist = artistInput.value.trim();
   const date = dateInput.value.trim();
@@ -986,41 +985,22 @@ async function downloadMarkedFile() {
     setStatus("no songs detected — nothing to mark. drop a file first.", "error");
     return;
   }
-  const times = markerTimes();
   const original = downloadMarkedBtn.textContent;
   downloadMarkedBtn.disabled = true;
-  downloadMarkedBtn.textContent = "mixing markers…";
+  downloadMarkedBtn.textContent = "writing…";
+  // Yield once so the button repaints before the (short) sync write.
   await new Promise((r) => setTimeout(r, 0));
   try {
     const buffer = state.audioBuffer;
-    const marked = buildMarkedChannels(buffer, times);
-    // Wrap the mixed channel arrays in an object matching the subset of
-    // AudioBuffer our encoders actually touch. Avoids the cost of spinning
-    // up another AudioContext just to allocate a buffer we already have.
-    const bufferLike = {
+    // Always WAV. MP3-encoding hours of mostly-silent audio takes seconds on
+    // the main thread (that's the "page unresponsive" dialog), and a lossy
+    // marker file is pointless for DAW alignment anyway.
+    const blob = buildMarkerWav({
+      durationSec: buffer.duration,
       sampleRate: buffer.sampleRate,
-      length: buffer.length,
-      duration: buffer.duration,
-      numberOfChannels: marked.length,
-      getChannelData: (c: number) => marked[c],
-      copyFromChannel: () => {},
-      copyToChannel: () => {},
-    } as unknown as AudioBuffer;
-
-    const fmt = formatSelect.value;
-    downloadMarkedBtn.textContent = "encoding…";
-    await new Promise((r) => setTimeout(r, 0));
-    let blob: Blob;
-    let ext: string;
-    if (fmt === "wav") {
-      blob = audioBufferSliceToWav(bufferLike, 0, buffer.duration);
-      ext = "wav";
-    } else {
-      const kbps = parseInt(fmt.split("-")[1], 10) || 192;
-      blob = audioBufferSliceToMp3(bufferLike, 0, buffer.duration, kbps);
-      ext = "mp3";
-    }
-    triggerDownload(blob, `${sanitize(markedFileName())}.${ext}`);
+      markerTimes: markerTimes(),
+    });
+    triggerDownload(blob, `${sanitize(markedFileName())}.wav`);
   } finally {
     downloadMarkedBtn.textContent = original;
     downloadMarkedBtn.disabled = false;

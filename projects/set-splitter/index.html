@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/index-Ck3CJmH-.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BsF6Lypr.css">
+    <script type="module" crossorigin src="./assets/index-CxLPVXEb.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-cXOIkb4W.css">
   </head>
   <body>
     <main id="app">
@@ -71,6 +71,12 @@
           </label>
         </div>
         <div class="control">
+          <label class="checkbox-row" title="only break songs on real silence — applause and talk count as part of the surrounding song. use this for recordings that were cut up in a daw and exported with silent gaps between clips.">
+            <input type="checkbox" id="silenceOnly" />
+            only split on silence
+          </label>
+        </div>
+        <div class="control">
           <label>
             download format
             <select id="format">
@@ -83,7 +89,9 @@
         </div>
         <div class="control actions">
           <button type="button" id="reanalyze">re-analyze</button>
-          <button type="button" id="downloadAll">download all</button>
+          <button type="button" id="downloadAll">download all songs</button>
+          <button type="button" id="cancelDownload" class="hidden">cancel</button>
+          <button type="button" id="downloadMarked" title="download a silent track with a short beep at each song boundary — drop it next to the original in a daw as a visual reference">download with markers</button>
         </div>
       </section>
 

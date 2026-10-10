@@ -23,6 +23,11 @@ export interface AnalyzeOptions {
   minSongSec: number;
   minGapSec: number;
   sensitivity: number; // 0..100 — higher = more permissive about calling something "music"
+  // When true, only genuinely silent windows break songs. Applause, talk,
+  // and other non-musical audio are treated as part of the surrounding
+  // song. For DAW-exported recordings where real silence sits between
+  // clips, this is what you want.
+  silenceOnly?: boolean;
 }
 
 export interface AnalyzeResult {
@@ -286,8 +291,13 @@ export function segmentSongs(
   classify(features, opts.sensitivity);
   if (features.length === 0) return [];
 
+  // In silence-only mode anything with real signal — music, applause, talk —
+  // keeps the current song alive. Only labelled-silence windows count as a
+  // potential break. In normal mode the classifier's music score decides.
   const threshold = 0.5;
-  const isMusic = features.map((f) => f.musicScore > threshold);
+  const isMusic = opts.silenceOnly
+    ? features.map((f) => f.label !== "silence")
+    : features.map((f) => f.musicScore > threshold);
 
   // Fill short gaps (< minGap) between music runs so a brief cheer inside a
   // song doesn't split it.

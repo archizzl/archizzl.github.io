@@ -70,6 +70,12 @@
           </label>
         </div>
         <div class="control">
+          <label class="checkbox-row" title="only break songs on real silence — applause and talk count as part of the surrounding song. use this for recordings that were cut up in a daw and exported with silent gaps between clips.">
+            <input type="checkbox" id="silenceOnly" />
+            only split on silence
+          </label>
+        </div>
+        <div class="control">
           <label>
             download format
             <select id="format">
@@ -83,7 +89,8 @@
         <div class="control actions">
           <button type="button" id="reanalyze">re-analyze</button>
           <button type="button" id="downloadAll">download all songs</button>
-          <button type="button" id="downloadMarked" title="download the whole recording with a short beep mixed in at every song boundary — drop it next to the original in a daw as a visual reference">download with markers</button>
+          <button type="button" id="cancelDownload" class="hidden">cancel</button>
+          <button type="button" id="downloadMarked" title="download a silent track with a short beep at each song boundary — drop it next to the original in a daw as a visual reference">download with markers</button>
         </div>
       </section>
 

@@ -96,6 +96,15 @@ a:hover { text-decoration: underline; opacity: 0.5; }
 }
 .control input[type="text"]:focus,
 .control select:focus { outline: 1px solid blue; border-color: blue; }
+.control .checkbox-row {
+  flex-flow: row;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 18px;
+  cursor: help;
+}
+.control .checkbox-row input[type="checkbox"] { accent-color: blue; cursor: pointer; }
 .control.actions {
   display: flex;
   flex-flow: row wrap;
