@@ -1,0 +1,153 @@
+/* Homepage thumbnail: gallery.js positions it between the balloons and
+   the salmon. Shown at the photo's own proportions. */
+#gallery_thumb {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
+}
+#gallery_thumb[hidden] {
+  display: none;
+}
+#gallery_thumb img {
+  display: block;
+  max-width: 160px;
+  max-height: 160px;
+  width: auto;
+  height: auto;
+}
+#gallery_thumb span {
+  color: #888;
+  font-size: 16px;
+}
+#gallery_thumb:hover {
+  opacity: 0.5;
+}
+#gallery_thumb:hover span {
+  text-decoration: underline;
+}
+
+/* Viewer */
+#gallery {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+  background: white;
+}
+#gallery[open] {
+  display: flex;
+  flex-flow: column;
+}
+#gallery::backdrop {
+  background: white;
+}
+.gallery-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  color: #888;
+  font-size: 16px;
+  user-select: none;
+}
+.gallery-counter {
+  flex: 1;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+#gallery button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: black;
+  font-size: 16px;
+}
+#gallery button:hover {
+  opacity: 0.5;
+}
+
+.gallery-single {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 10px;
+}
+.gallery-single[hidden],
+.gallery-grid[hidden] {
+  display: none;
+}
+.gallery-photo {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  object-fit: contain;
+}
+.gallery-photo.preview {
+  filter: blur(4px);
+}
+.gallery-single {
+  position: relative;
+}
+.gallery-single.loading::after {
+  content: 'loading\2026';
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  padding: 0 6px;
+  background: white;
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+}
+#gallery .gallery-prev,
+#gallery .gallery-next {
+  align-self: center;
+}
+
+.gallery-grid {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
+  padding: 0 10px 10px;
+  align-content: start;
+}
+#gallery .gallery-grid button {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: 1;
+}
+.gallery-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  #gallery_thumb img {
+    max-width: 110px;
+    max-height: 110px;
+  }
+  .gallery-single {
+    padding: 0 4px 10px;
+    gap: 4px;
+  }
+  #gallery .gallery-prev,
+  #gallery .gallery-next {
+    padding: 0 6px;
+  }
+}

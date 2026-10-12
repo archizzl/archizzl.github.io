@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>archie oconnell website</title>
   <meta name="viewport" content="width=device-width, initial-scale=0.7">
   <meta property="og:title" content="archie o'connell website" id="og_title" />
@@ -10,6 +11,7 @@
   <link rel="alternate" type="application/rss+xml" title="archie's blog" href="/blog/feed.xml">
   <link rel="stylesheet" href="hpi/art_generator/art_generator.css">
   <link rel="stylesheet" href="hpi/workout/workout.css">
+  <link rel="stylesheet" href="hpi/gallery/gallery.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,6 +122,22 @@
           addEventListener('hashchange', render);
         })();
       </script>
+
+      <a id="gallery_thumb" href="#" aria-label="open photo portfolio" hidden><img alt=""><span>photo portfolio</span></a>
+      <dialog id="gallery" aria-label="photos">
+        <div class="gallery-bar">
+          <span class="gallery-counter"></span>
+          <button class="gallery-toggle" aria-label="minimize to photo grid">grid</button>
+          <button class="gallery-close" aria-label="close gallery">×</button>
+        </div>
+        <div class="gallery-single">
+          <button class="gallery-prev" aria-label="previous photo">←</button>
+          <img class="gallery-photo" alt="">
+          <button class="gallery-next" aria-label="next photo">→</button>
+        </div>
+        <div class="gallery-grid" hidden></div>
+      </dialog>
+      <script src="hpi/gallery/gallery.js"></script>
 
       <div id="video_wrapper" >
           <iframe
