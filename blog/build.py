@@ -86,7 +86,16 @@ POST_TEMPLATE = """<!DOCTYPE html>
 <span><a href="../../../">← home</a></span>
 <span class="post-meta"><time datetime="{date}">{date}</time></span>
 <h1 class="post-title">{title}</h1>
-{tags_html}{body}
+{tags_html}<div id="post-viewport">
+<div id="post-pages">
+{body}
+</div>
+</div>
+<div id="post-nav" hidden>
+<button id="page-prev" aria-label="previous page">←</button>
+<span id="page-indicator"></span>
+<button id="page-next" aria-label="next page">→</button>
+</div>
 <div id="video_wrapper">
 <video
 id="salmon"
@@ -124,6 +133,7 @@ style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
   }});
 }})();
 </script>
+<script src="../../reader.js"></script>
 </div>
 </body>
 </html>
