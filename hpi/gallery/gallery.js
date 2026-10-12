@@ -1,7 +1,8 @@
 // Photo gallery. A random photo sits on the homepage as a thumbnail;
 // clicking it opens a full-screen viewer that can be minimized to a grid.
-// Photo list lives in photos.json as Cloudinary public IDs — add a new ID
-// there to add a photo.
+// The photo list comes live from Cloudinary: every image tagged 'portfolio'
+// (needs 'Resource list' unrestricted in Cloudinary Settings > Security).
+// If that fails, photos.json is the fallback list of public IDs.
 (function () {
   var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/upload/';
   var thumb = document.getElementById('gallery_thumb');
@@ -87,8 +88,23 @@
     if (!dialog.open) dialog.showModal();
   }
 
-  fetch('hpi/gallery/photos.json', { cache: 'no-cache' })
-    .then(function (r) { return r.json(); })
+  function getJSON(u) {
+    return fetch(u, { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    });
+  }
+
+  // Newest upload first, matching the order of the collection.
+  getJSON('https://res.cloudinary.com/do45g1bvk/image/list/portfolio.json')
+    .then(function (data) {
+      var list = data.resources.slice().sort(function (a, b) {
+        return a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0;
+      }).map(function (r) { return r.public_id; });
+      if (!list.length) throw new Error('empty');
+      return list;
+    })
+    .catch(function () { return getJSON('hpi/gallery/photos.json'); })
     .then(function (list) {
       ids = list;
       if (!ids.length) return;
