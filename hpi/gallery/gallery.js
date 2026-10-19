@@ -86,7 +86,7 @@
     dialog.innerHTML =
       '<div class="gallery-bar">' +
         '<span class="gallery-counter"></span>' +
-        '<button class="gallery-toggle" aria-label="minimize to grid">grid</button>' +
+        '<button class="gallery-toggle" aria-label="minimize to grid">show grid</button>' +
         '<button class="gallery-close" aria-label="close ' + esc(cfg.label) + '">×</button>' +
       '</div>' +
       '<div class="gallery-single">' +
