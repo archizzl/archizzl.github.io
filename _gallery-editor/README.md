@@ -44,8 +44,9 @@ another in a single step.
 ## removing images
 
 Remove the tag from the image (same places as above). It disappears from
-the site even if a section still lists it. The editor marks it in red as
-"untagged" so you can tidy it out of the section.
+the site straight away, even if a section still lists it. The next time you
+open the editor, it takes the image out of its section and saves. Commit
+`sections.json` if you want the file itself tidied up too.
 
 To move an image from one portfolio to the other, swap its tag.
 
@@ -75,6 +76,10 @@ click **+ embed** on a section and paste a link:
   becomes a **player** that plays inside the gallery. The editor finds the
   title and cover art itself. For Bandcamp, use the album's own page
   (`…bandcamp.com/album/…`), not the artist's front page.
+- **Instagram post or reel:** this becomes the post's own Instagram embed.
+  Use the post's link (… → *Copy link*), not your profile. Instagram won't
+  share post details with the editor, so type a title and set the
+  thumbnail yourself. The Cloudinary copy of the photo works well.
 - **Anything else, e.g. an article:** this becomes a **link card**: a
   picture, the title, and a "read on nytimes.com ↗" link. Most news sites
   won't let themselves be embedded, so a card is the reliable option.

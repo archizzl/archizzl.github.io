@@ -95,8 +95,8 @@ def validate(data) -> dict:
 
 # ---- link previews ------------------------------------------------------
 # The editor pastes a URL; we fetch the page and work out how to show it:
-# a player (YouTube, Spotify, Bandcamp, or any page with an og:video
-# player) or a link card (everything else, e.g. articles).
+# a player (YouTube, Spotify, Bandcamp, Instagram, or any page with an
+# og:video player) or a link card (everything else, e.g. articles).
 
 class _Meta(HTMLParser):
     def __init__(self):
@@ -157,6 +157,18 @@ def preview(page_url: str) -> dict:
             yt = q["v"][0]
         elif u.path.startswith(("/shorts/", "/embed/", "/live/")):
             yt = u.path.split("/")[2]
+
+    # Instagram: the post's official embed frame. Instagram won't serve post
+    # details to a script, so the title and thumbnail are left to the user.
+    if host == "instagram.com":
+        parts = [p for p in u.path.split("/") if p]
+        if len(parts) >= 2 and parts[0] in ("p", "reel", "tv"):
+            permalink = f"https://www.instagram.com/{parts[0]}/{parts[1]}/"
+            return {"type": "embed", "src": permalink + "embed/", "url": permalink,
+                    # header + 4:5 photo + likes bar at 400px wide
+                    "width": 400, "height": 690,
+                    "warning": "instagram doesn't share post details, so add a title and thumbnail yourself "
+                               "(the thumbnail can be the cloudinary copy of the photo)"}
 
     try:
         meta, final_url = fetch_meta(page_url)

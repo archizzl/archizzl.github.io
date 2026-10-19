@@ -84,11 +84,6 @@
   .tile.dragging { opacity: 0.3; }
   .tile.before { box-shadow: -5px 0 0 0 black; }
   .tile.after { box-shadow: 5px 0 0 0 black; }
-  .tile.missing { border: 2px dashed #b53a1a; }
-  .tile .badge {
-    position: absolute; left: 0; bottom: 0; right: 0;
-    background: #b53a1a; color: white; font-size: 11px; text-align: center;
-  }
   .tile .x {
     position: absolute; top: 2px; right: 2px;
     padding: 0 5px; font-size: 13px; line-height: 1.3;
@@ -167,7 +162,7 @@
     <input id="e-url" placeholder="https://…">
     <button id="e-fetch" type="button">look up</button>
   </div>
-  <p class="note" id="e-note">bandcamp, spotify and youtube links become players. anything else becomes a link card.</p>
+  <p class="note" id="e-note">bandcamp, spotify, youtube and instagram links become players. anything else becomes a link card.</p>
   <div class="kinds">
     <label><input type="radio" name="e-kind" value="embed"> player (embedded)</label>
     <label><input type="radio" name="e-kind" value="link"> link card</label>
@@ -299,12 +294,9 @@
         '<button class="edit" title="edit">\u270e</button>' +
         '<button class="x" title="delete">\u00d7</button></div>';
     }
-    var missing = !taggedSet[id];
-    return '<div class="tile' + (selected[id] ? ' selected' : '') + (missing ? ' missing' : '') +
-      '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) +
-      (missing ? ' — no longer tagged ' + gallery.tag + ', hidden on the site' : '') + '">' +
+    return '<div class="tile' + (selected[id] ? ' selected' : '') +
+      '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) + '">' +
       '<img loading="lazy" alt="" src="' + CLOUD + esc(id) + '">' +
-      (missing ? '<span class="badge">untagged</span>' : '') +
       (removable ? '<button class="x" title="back to unsorted">×</button>' : '') + '</div>';
   }
 
@@ -449,7 +441,7 @@
     f.note.textContent = msg;
     f.note.classList.toggle('warn', !!warn);
   }
-  var DEFAULT_NOTE = 'bandcamp, spotify and youtube links become players. anything else becomes a link card.';
+  var DEFAULT_NOTE = 'bandcamp, spotify, youtube and instagram links become players. anything else becomes a link card.';
 
   function openEmbed(key, sectionIndex) {
     editingKey = key;
@@ -493,7 +485,11 @@
   function lookUp() {
     var v = f.url.value.trim();
     if (!v) return;
-    if (/<iframe/i.test(v)) { readEmbedCode(v); return; }
+    // Instagram's embed code is a <blockquote> pointing at the post, not an
+    // iframe; look the post up by its link instead.
+    var ig = v.match(/data-instgrm-permalink="([^"]+)"/);
+    if (ig) { v = ig[1].replace(/&amp;/g, '&').split('?')[0]; f.url.value = v; }
+    else if (/<iframe/i.test(v)) { readEmbedCode(v); return; }
     if (!/^https?:\/\//.test(v)) { note('that doesn\'t look like a url', true); return; }
     note('looking up\u2026');
     getJSON('/api/preview?url=' + encodeURIComponent(v)).then(function (r) {
@@ -677,8 +673,10 @@
     document.getElementById('tagname').textContent = gallery.tag;
 
     var dir = '/hpi/gallery/' + encodeURIComponent(gallery.id) + '/';
+    var live = false; // true once the real Cloudinary list loads
     var photos = getJSON('https://res.cloudinary.com/do45g1bvk/image/list/' + encodeURIComponent(gallery.tag) + '.json')
       .then(function (data) {
+        live = true;
         return data.resources.slice().sort(function (a, b) {
           return a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0;
         }).map(function (r) { return r.public_id; });
@@ -688,20 +686,31 @@
         return getJSON(dir + 'photos.json').catch(function () { return []; });
       });
     var saved = getJSON(dir + 'sections.json').catch(function () { return { sections: [] }; });
-    return Promise.all([photos, saved]);
+    return Promise.all([photos, saved]).then(function (res) { return res.concat([live]); });
   }).then(function (res) {
     tagged = res[0];
     tagged.forEach(function (id) { taggedSet[id] = true; });
+    // Images that lost their tag drop out of their sections. Only trusted
+    // against the live list: the backup photos.json may be out of date.
+    var live = res[2], removed = 0;
     sections = (res[1].sections || []).map(function (s) {
       return {
         title: s.title || '', description: s.description || '',
-        items: (s.items || s.photos || []).map(function (it) {
+        items: (s.items || s.photos || []).filter(function (it) {
+          var gone = live && typeof it === 'string' && !taggedSet[it];
+          if (gone) removed++;
+          return !gone;
+        }).map(function (it) {
           return typeof it === 'string' ? it : newEmbedKey(it);
         })
       };
     });
     render();
     showStatus();
+    if (removed) {
+      changed(); // autosave the cleaned-up file
+      statusEl.textContent = 'removed ' + removed + ' untagged image' + (removed > 1 ? 's' : '') + ' \u2014 saving\u2026';
+    }
   }).catch(function (err) {
     showError('failed to load: ' + err.message);
   });
