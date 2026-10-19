@@ -17,15 +17,21 @@
 //
 // ?gallery=<id> in the URL opens that gallery straight to its grid (bare
 // ?gallery opens the first). Not a #hash: that's the blog tag filter.
+//
+// Gallery pages (/photo/, /design/): an element with data-gallery-page="<id>"
+// shows just that gallery, open on its grid. Closing it goes to the homepage.
 (function () {
   var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/';
-  var BASE = 'hpi/gallery/';
+  // Data files sit next to this script, wherever the page is.
+  var BASE = new URL('.', document.currentScript.src).href;
+  var HOME = new URL('../../', BASE).href;
   var THUMB = 'c_fill,g_auto,w_300,h_300,f_auto,q_auto';
   var PREVIEW = 'c_limit,w_400,h_400,f_auto,q_auto';
   var FULL = 'c_limit,w_2000,h_2000,f_auto,q_auto';
 
-  var anchor; // thumbnails and dialogs go just before the salmon
+  var anchor; // thumbnails and dialogs go just before this (the salmon)
   var galleries = [];
+  var pageMode = false; // on a gallery page: no homepage thumbnail
 
   function url(id, t) { return CLOUD + 'upload/' + t + '/' + id; }
   // Embed/link thumbnails can be a Cloudinary public ID or any image URL.
@@ -325,7 +331,7 @@
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showPhoto(index + (dx < 0 ? 1 : -1));
     });
 
-    var g = { cfg: cfg, thumb: thumb };
+    var g = { cfg: cfg, thumb: thumb, pageMode: pageMode };
     g.ready = Promise.all([
       taggedImages(cfg),
       getJSON(BASE + cfg.id + '/sections.json').catch(function () { return null; })
@@ -339,7 +345,7 @@
       var img = thumb.querySelector('img');
       img.addEventListener('load', place);
       img.src = url(ids[start], PREVIEW);
-      thumb.hidden = false;
+      if (!g.pageMode) thumb.hidden = false;
       thumb.addEventListener('click', function (e) { e.preventDefault(); open(start); });
       renderGrid();
       place();
@@ -351,6 +357,7 @@
         dialog.showModal();
       });
     };
+    g.dialog = dialog;
     return g;
   }
 
@@ -396,6 +403,19 @@
 
   // The script tag sits above the salmon in index.html, so wait for the page.
   function init() {
+    var page = document.querySelector('[data-gallery-page]');
+    if (page) {
+      anchor = page;
+      getJSON(BASE + 'galleries.json').then(function (list) {
+        var cfg = list.filter(function (c) { return c.id === page.dataset.galleryPage; })[0];
+        if (!cfg) { location.replace(HOME); return; }
+        pageMode = true;
+        var g = createGallery(cfg);
+        g.openGrid();
+        g.dialog.addEventListener('close', function () { location.href = HOME; });
+      }).catch(function () {});
+      return;
+    }
     anchor = document.getElementById('video_wrapper');
     if (anchor) getJSON(BASE + 'galleries.json').then(start).catch(function () {});
   }

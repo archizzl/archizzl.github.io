@@ -63,9 +63,17 @@ section a title and description. Changes save a few seconds after you stop
 editing. **Commit and push the `sections.json` file** to publish them.
 Sections are the only part that needs a commit.
 
-"preview grid" opens the homepage straight to that gallery's grid. The same
-links work on the live site: `archizzl.com/?gallery=photo` and
-`archizzl.com/?gallery=design`.
+"preview grid" opens the homepage straight to that gallery's grid.
+
+## links to the galleries
+
+Each portfolio has its own page, which opens straight onto its grid:
+**`archizzl.com/photo`** and **`archizzl.com/design`**. Closing the
+gallery there (× or Esc) goes to the homepage. These are the links to share.
+The pages are `photo/index.html` and `design/index.html`.
+
+`archizzl.com/?gallery=photo` (or `=design`) also works. It opens the
+gallery on top of the homepage instead.
 
 ## embeds (album players, articles)
 
@@ -114,6 +122,9 @@ up new images.
 2. Add an entry to `hpi/gallery/galleries.json`:
    `{ "id": "video", "label": "video portfolio", "tag": "video-portfolio" }`
 3. Create `hpi/gallery/video/sections.json` containing `{ "sections": [] }`.
+4. For an `archizzl.com/video` link, copy `photo/index.html` to
+   `video/index.html` and change `photo` to `video` in it (the title and
+   `data-gallery-page="photo"`).
 
 The homepage thumbnail, gallery and editor tab all come from that list.
 Only image files work, not Cloudinary videos.
