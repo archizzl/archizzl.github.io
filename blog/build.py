@@ -6,6 +6,7 @@ and regenerates blog/posts.json.
 With --watch, also builds the set-splitter vite project (if present) into
 projects/set-splitter/ and rebuilds it on source changes. Serves the whole
 site so blog and set-splitter both live at the same URL as in production.
+The preview server also hosts the photo gallery editor at /gallery-editor/.
 
 Usage:
     python blog/build.py                       # one-shot blog build
@@ -411,19 +412,40 @@ def set_splitter_needs_build() -> bool:
     return any(mt > dist_mtime for mt in set_splitter_sources().values())
 
 
+def site_handler() -> type:
+    """Static file handler for the preview server. Borrows the gallery
+    editor's handler (if present) so /gallery-editor/ works and can save."""
+    editor_py = SITE_ROOT / "_gallery-editor" / "editor.py"
+    if editor_py.exists():
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("gallery_editor", editor_py)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)  # type: ignore[union-attr]
+
+        class Handler(mod.Handler):
+            EDITOR_PATHS = ("/gallery-editor", "/gallery-editor/")
+
+        return Handler
+
+    class Quiet(SimpleHTTPRequestHandler):
+        def log_message(self, *a, **k):
+            pass
+
+    return Quiet
+
+
 def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
     build(include_drafts=True)
     if build_projects and set_splitter_needs_build():
         build_set_splitter()
-    handler = functools.partial(SimpleHTTPRequestHandler, directory=str(SITE_ROOT))
-    handler.log_message = lambda *a, **k: None  # type: ignore[attr-defined]
+    handler = functools.partial(site_handler(), directory=str(SITE_ROOT))
     server = ThreadingHTTPServer(("localhost", port), handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     watched = f"{SRC.relative_to(SITE_ROOT)}/*.txt"
     if build_projects and SET_SPLITTER_SRC.exists():
         watched += f" + {SET_SPLITTER_SRC.relative_to(SITE_ROOT)}/**"
     print(f"serving http://localhost:{port}/ — watching {watched}", flush=True)
-    print(f"open http://localhost:{port}/ (blog: /blog/posts/<slug>/, set-splitter: /projects/set-splitter/)", flush=True)
+    print(f"open http://localhost:{port}/ (blog: /blog/posts/<slug>/, set-splitter: /projects/set-splitter/, gallery editor: /gallery-editor/)", flush=True)
     print("drafts included in preview; a clean build runs on Ctrl+C so it's safe to commit", flush=True)
 
     blog_mtimes: dict[Path, float] = {}

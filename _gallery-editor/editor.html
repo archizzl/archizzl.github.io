@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>portfolio editor</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Calibri', 'Atkinson Hyperlegible', 'Helvetica';
+    font-size: 18px;
+    background: white;
+    color: black;
+    padding: 10px 10px 90px;
+    max-width: 1100px;
+  }
+  a { color: blue; }
+  a:hover { opacity: 0.5; }
+  button, select {
+    font: inherit;
+    font-size: 16px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: black;
+  }
+  button:hover { opacity: 0.5; }
+  button:disabled { opacity: 0.25; cursor: default; }
+  input, textarea {
+    font: inherit;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 2px 6px;
+    width: 100%;
+  }
+  textarea { font-size: 16px; resize: vertical; min-height: 56px; }
+
+  header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  h1 { font-style: italic; font-weight: normal; font-size: 22px; }
+  #tabs { display: flex; gap: 12px; margin-right: auto; font-size: 18px; }
+  #tabs a { color: #888; text-decoration: none; }
+  #tabs a.current { color: black; text-decoration: underline; }
+  #status { color: #888; font-size: 16px; }
+  #status.dirty { color: #b53a1a; }
+  .hint { color: #888; font-size: 16px; margin: 6px 0 14px; }
+
+  .section, #pool {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+  .section-head { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+  .section-head .num { color: #888; font-size: 16px; min-width: 22px; }
+  .section-head input { font-size: 18px; }
+  .section textarea { margin-bottom: 8px; }
+  #pool { border-style: dashed; }
+  #pool h2 { font-size: 18px; font-weight: normal; }
+  #pool .sub { color: #888; font-size: 14px; margin-bottom: 6px; }
+
+  .tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 96px;
+    padding: 4px;
+    border-radius: 3px;
+  }
+  .tiles.over { background: #efefef; }
+  .tiles .empty { color: #888; font-size: 14px; align-self: center; padding-left: 4px; }
+  .tile {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    cursor: grab;
+    border: 2px solid transparent;
+  }
+  .tile img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .tile.selected { border-color: blue; }
+  .tile.dragging { opacity: 0.3; }
+  .tile.before { box-shadow: -5px 0 0 0 black; }
+  .tile.after { box-shadow: 5px 0 0 0 black; }
+  .tile.missing { border: 2px dashed #b53a1a; }
+  .tile .badge {
+    position: absolute; left: 0; bottom: 0; right: 0;
+    background: #b53a1a; color: white; font-size: 11px; text-align: center;
+  }
+  .tile .x {
+    position: absolute; top: 2px; right: 2px;
+    padding: 0 5px; font-size: 13px; line-height: 1.3;
+    background: white; display: none;
+  }
+  .tile:hover .x { display: block; }
+
+  #selbar {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: white; border-top: 1px solid black;
+    padding: 8px 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    font-size: 16px;
+  }
+  #selbar[hidden] { display: none; }
+  #error { color: #b53a1a; font-size: 16px; margin: 6px 0; }
+
+  /* embed / link tiles */
+  .tile.extra { background: #efefef; }
+  .tile .label {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    width: 100%; height: 100%; padding: 4px; font-size: 12px; overflow: hidden; pointer-events: none;
+  }
+  .tile .kind {
+    position: absolute; left: 2px; bottom: 2px; padding: 0 4px;
+    background: white; border: 1px solid black; border-radius: 3px; font-size: 11px; pointer-events: none;
+  }
+  .tile .edit {
+    position: absolute; top: 2px; left: 2px;
+    padding: 0 5px; font-size: 13px; line-height: 1.3; background: white; display: none;
+  }
+  .tile:hover .edit { display: block; }
+  .section-head .add-embed { white-space: nowrap; }
+
+  #embed-dlg { border: 1px solid black; border-radius: 3px; padding: 14px; width: min(560px, 92vw); margin: auto; }
+  #embed-dlg::backdrop { background: rgba(255, 255, 255, 0.8); }
+  #embed-dlg h2 { font-size: 20px; font-weight: normal; font-style: italic; margin-bottom: 8px; }
+  #embed-dlg label { display: block; font-size: 15px; color: #666; margin-top: 8px; }
+  #embed-dlg .row { display: flex; gap: 8px; align-items: center; }
+  #embed-dlg .row input { flex: 1; }
+  #embed-dlg .kinds { display: flex; gap: 16px; font-size: 16px; margin-top: 8px; color: black; }
+  #embed-dlg .kinds input { width: auto; }
+  #embed-dlg .note { font-size: 14px; color: #888; margin-top: 4px; }
+  #embed-dlg .warn { color: #b53a1a; }
+  #embed-dlg .thumb-preview { max-width: 120px; max-height: 120px; margin-top: 6px; display: block; }
+  #embed-dlg .actions { display: flex; gap: 8px; margin-top: 14px; }
+  #embed-dlg .actions .spacer { flex: 1; }
+  #embed-dlg [hidden] { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>portfolio editor</h1>
+  <nav id="tabs"></nav>
+  <span id="status">loading…</span>
+  <button id="add">+ section</button>
+  <button id="save" disabled>save</button>
+  <a id="preview" href="/index.html?gallery" target="_blank">preview grid ↗</a>
+</header>
+<p class="hint">
+  drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
+  <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
+  sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled.
+  changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
+</p>
+<div id="error" hidden></div>
+<div id="sections"></div>
+<div id="pool">
+  <h2>unsorted</h2>
+  <p class="sub">tagged <code id="tagname"></code> in cloudinary but not in a section</p>
+  <div class="tiles" data-zone="pool"></div>
+</div>
+<dialog id="embed-dlg">
+  <h2 id="embed-heading">add embed</h2>
+  <label for="e-url">url (album page, video, article…) or pasted embed code</label>
+  <div class="row">
+    <input id="e-url" placeholder="https://…">
+    <button id="e-fetch" type="button">look up</button>
+  </div>
+  <p class="note" id="e-note">bandcamp, spotify and youtube links become players. anything else becomes a link card.</p>
+  <div class="kinds">
+    <label><input type="radio" name="e-kind" value="embed"> player (embedded)</label>
+    <label><input type="radio" name="e-kind" value="link"> link card</label>
+  </div>
+  <label for="e-title">title</label>
+  <input id="e-title">
+  <label for="e-thumb">thumbnail: image url or cloudinary public id (shown in the grid<span id="e-thumb-card"> and on the card</span>)</label>
+  <input id="e-thumb">
+  <img class="thumb-preview" id="e-thumb-preview" alt="" hidden>
+  <div id="e-embed-fields">
+    <label for="e-src">player url (the iframe's src)</label>
+    <input id="e-src">
+    <div class="row">
+      <label for="e-w">width</label><input id="e-w" type="number" min="1">
+      <label for="e-h">height</label><input id="e-h" type="number" min="1">
+    </div>
+    <p class="note">the player is scaled to fit, keeping this shape.</p>
+  </div>
+  <div id="e-link-fields">
+    <label for="e-source">source (shown as "read on …")</label>
+    <input id="e-source">
+  </div>
+  <div class="actions">
+    <button id="e-delete" type="button">delete</button>
+    <span class="spacer"></span>
+    <button id="e-cancel" type="button">cancel</button>
+    <button id="e-ok" type="button">add</button>
+  </div>
+</dialog>
+
+<div id="selbar" hidden>
+  <span id="selcount"></span>
+  <span>move to</span>
+  <select id="target"></select>
+  <button id="move">move</button>
+  <button id="clearsel">clear</button>
+</div>
+
+<script>
+(function () {
+  var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/upload/c_fill,g_auto,w_200,h_200,f_auto,q_auto/';
+  var sectionsEl = document.getElementById('sections');
+  var poolTiles = document.querySelector('#pool .tiles');
+  var statusEl = document.getElementById('status');
+  var saveBtn = document.getElementById('save');
+  var errorEl = document.getElementById('error');
+  var selbar = document.getElementById('selbar');
+  var targetSel = document.getElementById('target');
+
+  var tagged = [];      // public IDs with this gallery's tag, newest first
+  var taggedSet = {};
+  // Sections hold item keys: an image's public ID, or an embed key
+  // ('~embed~N') pointing into `embeds`. Saved as {title, description, items}
+  // with embeds written out as objects.
+  var sections = [];    // [{ title, description, items: [key] }]
+  var embeds = {};      // embed key -> { type: 'embed'|'link', ... }
+  var embedSeq = 0;
+  var selected = {};    // id -> true
+  // Every edit bumps `rev`; a save records the rev it wrote. Unsaved
+  // changes = rev !== savedRev. Edits autosave after AUTOSAVE_MS of quiet.
+  var AUTOSAVE_MS = 3000;
+  var rev = 0, savedRev = 0, saving = false, timer = null;
+  var dragIds = null;
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function getJSON(u) {
+    return fetch(u, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error(u + ' → ' + r.status);
+      return r.json();
+    });
+  }
+  function isDirty() { return rev !== savedRev; }
+  function showStatus() {
+    var d = isDirty();
+    saveBtn.disabled = !d;
+    statusEl.textContent = saving ? 'saving\u2026' : d ? 'unsaved changes' : 'saved';
+    statusEl.classList.toggle('dirty', d && !saving);
+  }
+  function changed() {
+    rev++;
+    clearTimeout(timer);
+    timer = setTimeout(save, AUTOSAVE_MS);
+    showStatus();
+  }
+  function showError(msg) {
+    errorEl.hidden = !msg;
+    errorEl.textContent = msg || '';
+  }
+
+  function isEmbed(key) { return key.indexOf('~embed~') === 0; }
+  function newEmbedKey(obj) {
+    var k = '~embed~' + (++embedSeq);
+    embeds[k] = obj;
+    return k;
+  }
+  function thumbSrc(t) { return /^https?:\/\//.test(t) ? t : CLOUD + t; }
+  function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+  function serialize() {
+    return {
+      sections: sections.map(function (sec) {
+        return {
+          title: sec.title, description: sec.description,
+          items: sec.items.map(function (k) { return isEmbed(k) ? embeds[k] : k; })
+        };
+      })
+    };
+  }
+
+  function inSections() {
+    var s = {};
+    sections.forEach(function (sec) { sec.items.forEach(function (id) { s[id] = true; }); });
+    return s;
+  }
+  function pool() {
+    var used = inSections();
+    return tagged.filter(function (id) { return !used[id]; });
+  }
+
+  function tileHTML(id, removable) {
+    if (isEmbed(id)) {
+      var em = embeds[id];
+      var label = em.title || hostOf(em.url || em.src);
+      return '<div class="tile extra' + (selected[id] ? ' selected' : '') + '" draggable="true" data-id="' + esc(id) +
+        '" title="' + esc(label) + '">' +
+        (em.thumb ? '<img loading="lazy" alt="" src="' + esc(thumbSrc(em.thumb)) + '">' : '<span class="label">' + esc(label) + '</span>') +
+        '<span class="kind">' + (em.type === 'embed' ? '\u25b6 player' : '\u2197 link') + '</span>' +
+        '<button class="edit" title="edit">\u270e</button>' +
+        '<button class="x" title="delete">\u00d7</button></div>';
+    }
+    var missing = !taggedSet[id];
+    return '<div class="tile' + (selected[id] ? ' selected' : '') + (missing ? ' missing' : '') +
+      '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) +
+      (missing ? ' — no longer tagged ' + gallery.tag + ', hidden on the site' : '') + '">' +
+      '<img loading="lazy" alt="" src="' + CLOUD + esc(id) + '">' +
+      (missing ? '<span class="badge">untagged</span>' : '') +
+      (removable ? '<button class="x" title="back to unsorted">×</button>' : '') + '</div>';
+  }
+
+  function render() {
+    sectionsEl.innerHTML = sections.map(function (sec, i) {
+      return '<div class="section" data-i="' + i + '">' +
+        '<div class="section-head">' +
+          '<span class="num">' + (i + 1) + '</span>' +
+          '<input class="title" placeholder="title" value="' + esc(sec.title) + '">' +
+          '<button class="up" title="move section up"' + (i === 0 ? ' disabled' : '') + '>↑</button>' +
+          '<button class="down" title="move section down"' + (i === sections.length - 1 ? ' disabled' : '') + '>↓</button>' +
+          '<button class="add-embed" title="add an album player or article link">+ embed</button>' +
+          '<button class="del" title="delete section (images go back to unsorted)">delete</button>' +
+        '</div>' +
+        '<textarea class="desc" placeholder="description — plain text, [links](https://…) work">' + esc(sec.description) + '</textarea>' +
+        '<div class="tiles" data-zone="' + i + '">' +
+          (sec.items.length ? sec.items.map(function (id) { return tileHTML(id, true); }).join('')
+                            : '<span class="empty">drag images here</span>') +
+        '</div></div>';
+    }).join('');
+    var p = pool();
+    poolTiles.innerHTML = p.length ? p.map(function (id) { return tileHTML(id, false); }).join('')
+                                   : '<span class="empty">everything is in a section</span>';
+    renderSelbar();
+  }
+
+  function renderSelbar() {
+    var ids = Object.keys(selected);
+    selbar.hidden = !ids.length;
+    document.getElementById('selcount').textContent = ids.length + ' selected';
+    var prev = targetSel.value;
+    targetSel.innerHTML = sections.map(function (sec, i) {
+      return '<option value="' + i + '">' + (i + 1) + '. ' + esc(sec.title || 'untitled') + '</option>';
+    }).join('') + '<option value="pool">unsorted</option>';
+    if (prev && targetSel.querySelector('option[value="' + prev + '"]')) targetSel.value = prev;
+  }
+
+  // Remove ids from every section, then insert them into a zone. `beforeId`
+  // / `after` place them next to a specific tile; otherwise they're appended.
+  // Embeds can't go to unsorted (that's only tagged images), so they stay put.
+  function moveTo(ids, zone, refId, after) {
+    if (zone === 'pool') ids = ids.filter(function (id) { return !isEmbed(id); });
+    sections.forEach(function (sec) {
+      sec.items = sec.items.filter(function (id) { return ids.indexOf(id) === -1; });
+    });
+    if (zone !== 'pool') {
+      var list = sections[zone].items;
+      var at = refId ? list.indexOf(refId) : -1;
+      if (at === -1) at = list.length; else if (after) at += 1;
+      list.splice.apply(list, [at, 0].concat(ids));
+    }
+    selected = {};
+    changed();
+    render();
+  }
+
+  // Selected ids in on-screen order, so a multi-drag keeps their order.
+  function orderedSelection() {
+    return [].map.call(document.querySelectorAll('.tile.selected'), function (t) { return t.dataset.id; });
+  }
+
+  // ---- events ----
+  document.addEventListener('click', function (e) {
+    var x = e.target.closest('.tile .x');
+    if (x) {
+      var xid = x.parentNode.dataset.id;
+      if (isEmbed(xid)) deleteEmbed(xid); else moveTo([xid], 'pool');
+      return;
+    }
+    var ed = e.target.closest('.tile .edit');
+    if (ed) { openEmbed(ed.parentNode.dataset.id); return; }
+    var tile = e.target.closest('.tile');
+    if (tile) {
+      var id = tile.dataset.id;
+      if (selected[id]) delete selected[id]; else selected[id] = true;
+      tile.classList.toggle('selected', !!selected[id]);
+      renderSelbar();
+      return;
+    }
+    var secEl = e.target.closest('.section');
+    if (!secEl) return;
+    var i = +secEl.dataset.i;
+    if (e.target.closest('.up') && i > 0) {
+      sections.splice(i - 1, 0, sections.splice(i, 1)[0]); changed(); render();
+    } else if (e.target.closest('.down') && i < sections.length - 1) {
+      sections.splice(i + 1, 0, sections.splice(i, 1)[0]); changed(); render();
+    } else if (e.target.closest('.add-embed')) {
+      openEmbed(null, i);
+    } else if (e.target.closest('.del')) {
+      var sec = sections[i];
+      var n = sec.items.filter(isEmbed).length;
+      var msg = 'delete "' + (sec.title || 'untitled') + '"? its images go back to unsorted' +
+        (n ? ' and its ' + n + ' embed' + (n > 1 ? 's are' : ' is') + ' deleted.' : '.');
+      if ((sec.title || sec.description || n) && !confirm(msg)) return;
+      sec.items.filter(isEmbed).forEach(function (k) { delete embeds[k]; });
+      sections.splice(i, 1); changed(); render();
+    }
+  });
+
+  document.addEventListener('input', function (e) {
+    var secEl = e.target.closest('.section');
+    if (!secEl) return;
+    var sec = sections[+secEl.dataset.i];
+    if (e.target.classList.contains('title')) { sec.title = e.target.value; renderSelbar(); }
+    if (e.target.classList.contains('desc')) sec.description = e.target.value;
+    changed();
+  });
+
+  document.getElementById('add').addEventListener('click', function () {
+    sections.push({ title: '', description: '', items: [] });
+    changed();
+    render();
+    var inputs = sectionsEl.querySelectorAll('.title');
+    inputs[inputs.length - 1].focus();
+  });
+  document.getElementById('move').addEventListener('click', function () {
+    var z = targetSel.value;
+    moveTo(orderedSelection(), z === 'pool' ? 'pool' : +z);
+  });
+  document.getElementById('clearsel').addEventListener('click', function () { selected = {}; render(); });
+
+  // ---- embeds ----
+  var dlg = document.getElementById('embed-dlg');
+  var f = {};
+  ['url', 'title', 'thumb', 'src', 'w', 'h', 'source', 'note'].forEach(function (k) { f[k] = document.getElementById('e-' + k); });
+  var editingKey = null, addTo = null;
+
+  function kind() { var r = dlg.querySelector('input[name="e-kind"]:checked'); return r ? r.value : 'link'; }
+  function setKind(k) {
+    dlg.querySelector('input[name="e-kind"][value="' + k + '"]').checked = true;
+    document.getElementById('e-embed-fields').hidden = k !== 'embed';
+    document.getElementById('e-link-fields').hidden = k !== 'link';
+    document.getElementById('e-thumb-card').hidden = k !== 'link';
+  }
+  function showThumb() {
+    var img = document.getElementById('e-thumb-preview');
+    var t = f.thumb.value.trim();
+    img.hidden = !t;
+    if (t) img.src = thumbSrc(t);
+  }
+  function note(msg, warn) {
+    f.note.textContent = msg;
+    f.note.classList.toggle('warn', !!warn);
+  }
+  var DEFAULT_NOTE = 'bandcamp, spotify and youtube links become players. anything else becomes a link card.';
+
+  function openEmbed(key, sectionIndex) {
+    editingKey = key;
+    addTo = sectionIndex;
+    var em = key ? embeds[key] : {};
+    f.url.value = em.url || '';
+    f.title.value = em.title || '';
+    f.thumb.value = em.thumb || '';
+    f.src.value = em.src || '';
+    f.w.value = em.width || '';
+    f.h.value = em.height || '';
+    f.source.value = em.source || '';
+    setKind(em.type || 'link');
+    showThumb();
+    note(DEFAULT_NOTE);
+    document.getElementById('embed-heading').textContent = key ? 'edit embed' : 'add embed';
+    document.getElementById('e-ok').textContent = key ? 'done' : 'add';
+    document.getElementById('e-delete').hidden = !key;
+    dlg.showModal();
+    if (!key) f.url.focus();
+  }
+
+  // Pasted <iframe> embed code: take its src and size directly.
+  function readEmbedCode(code) {
+    var el = new DOMParser().parseFromString(code, 'text/html').querySelector('iframe');
+    if (!el || !el.getAttribute('src')) return false;
+    var px = function (attr, css) {
+      var v = el.getAttribute(attr) || (el.style[css] || '');
+      return /^\d+(px)?$/.test(v) ? parseInt(v, 10) : '';
+    };
+    setKind('embed');
+    f.src.value = el.getAttribute('src').replace(/^\/\//, 'https://');
+    f.w.value = px('width', 'width');
+    f.h.value = px('height', 'height');
+    if (!f.title.value && el.getAttribute('title')) f.title.value = el.getAttribute('title');
+    f.url.value = '';
+    note('read the embed code. paste the page url here too if you want an "open on \u2026" link.');
+    return true;
+  }
+
+  function lookUp() {
+    var v = f.url.value.trim();
+    if (!v) return;
+    if (/<iframe/i.test(v)) { readEmbedCode(v); return; }
+    if (!/^https?:\/\//.test(v)) { note('that doesn\'t look like a url', true); return; }
+    note('looking up\u2026');
+    getJSON('/api/preview?url=' + encodeURIComponent(v)).then(function (r) {
+      if (f.url.value.trim() !== v) return; // changed while we were fetching
+      setKind(r.type);
+      if (r.title) f.title.value = r.title;
+      if (r.thumb) f.thumb.value = r.thumb;
+      f.src.value = r.src || '';
+      f.w.value = r.width || '';
+      f.h.value = r.height || '';
+      f.source.value = r.source || '';
+      showThumb();
+      note(r.warning || (r.type === 'embed' ? 'found a player.' : 'made a link card.'), !!r.warning);
+    }).catch(function (err) {
+      note('look up failed: ' + err.message + ' (is editor.py still running?)', true);
+    });
+  }
+
+  document.getElementById('e-fetch').addEventListener('click', lookUp);
+  f.url.addEventListener('paste', function () { setTimeout(lookUp, 0); });
+  f.url.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); lookUp(); } });
+  f.thumb.addEventListener('input', showThumb);
+  dlg.querySelectorAll('input[name="e-kind"]').forEach(function (r) {
+    r.addEventListener('change', function () { setKind(kind()); });
+  });
+  document.getElementById('e-cancel').addEventListener('click', function () { dlg.close(); });
+  document.getElementById('e-delete').addEventListener('click', function () {
+    var k = editingKey;
+    dlg.close();
+    deleteEmbed(k);
+  });
+
+  document.getElementById('e-ok').addEventListener('click', function () {
+    var title = f.title.value.trim(), thumb = f.thumb.value.trim(), u = f.url.value.trim();
+    var obj;
+    if (kind() === 'embed') {
+      var src = f.src.value.trim();
+      if (!/^https:\/\//.test(src)) { note('the player url has to start with https://', true); f.src.focus(); return; }
+      obj = { type: 'embed', src: src };
+      if (+f.w.value) obj.width = +f.w.value;
+      if (+f.h.value) obj.height = +f.h.value;
+      if (/^https?:\/\//.test(u)) obj.url = u;
+    } else {
+      if (!/^https?:\/\//.test(u)) { note('a link card needs the page url at the top', true); f.url.focus(); return; }
+      obj = { type: 'link', url: u };
+      if (f.source.value.trim()) obj.source = f.source.value.trim();
+    }
+    if (title) obj.title = title;
+    if (thumb) obj.thumb = thumb;
+
+    if (editingKey) embeds[editingKey] = obj;
+    else sections[addTo].items.push(newEmbedKey(obj));
+    dlg.close();
+    changed();
+    render();
+  });
+
+  function deleteEmbed(key) {
+    var em = embeds[key];
+    if (!confirm('delete "' + (em.title || hostOf(em.url || em.src) || 'this embed') + '"?')) return;
+    sections.forEach(function (sec) { sec.items = sec.items.filter(function (k) { return k !== key; }); });
+    delete embeds[key];
+    delete selected[key];
+    changed();
+    render();
+  }
+
+  // Drag and drop
+  function clearMarks() {
+    document.querySelectorAll('.before, .after, .over').forEach(function (el) {
+      el.classList.remove('before', 'after', 'over');
+    });
+  }
+  function dropSpot(e) {
+    var zoneEl = e.target.closest('.tiles');
+    if (!zoneEl) return null;
+    var tile = e.target.closest('.tile');
+    var after = false;
+    if (tile) {
+      var r = tile.getBoundingClientRect();
+      after = e.clientX > r.left + r.width / 2;
+    }
+    return { zoneEl: zoneEl, tile: tile, after: after };
+  }
+  document.addEventListener('dragstart', function (e) {
+    var tile = e.target.closest && e.target.closest('.tile');
+    if (!tile) return;
+    var id = tile.dataset.id;
+    dragIds = selected[id] ? orderedSelection() : [id];
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', id);
+    dragIds.forEach(function (d) {
+      var t = document.querySelector('.tile[data-id="' + CSS.escape(d) + '"]');
+      if (t) t.classList.add('dragging');
+    });
+  });
+  document.addEventListener('dragend', function () {
+    dragIds = null;
+    clearMarks();
+    document.querySelectorAll('.dragging').forEach(function (t) { t.classList.remove('dragging'); });
+  });
+  document.addEventListener('dragover', function (e) {
+    if (!dragIds) return;
+    var spot = dropSpot(e);
+    clearMarks();
+    if (!spot) return;
+    e.preventDefault();
+    spot.zoneEl.classList.add('over');
+    if (spot.tile && spot.zoneEl.dataset.zone !== 'pool') spot.tile.classList.add(spot.after ? 'after' : 'before');
+  });
+  document.addEventListener('drop', function (e) {
+    if (!dragIds) return;
+    var spot = dropSpot(e);
+    clearMarks();
+    if (!spot) return;
+    e.preventDefault();
+    var zone = spot.zoneEl.dataset.zone;
+    var ref = spot.tile ? spot.tile.dataset.id : null;
+    // Dropping onto one of the dragged photos: nothing to anchor to.
+    if (ref && dragIds.indexOf(ref) !== -1) ref = null;
+    moveTo(dragIds, zone === 'pool' ? 'pool' : +zone, ref, spot.after);
+  });
+
+  // Saving
+  // Returns a promise that settles when this save is done.
+  function save() {
+    clearTimeout(timer);
+    if (!isDirty() || !gallery) return Promise.resolve();
+    // One save at a time; changes made meanwhile go out once it finishes.
+    if (saving) { timer = setTimeout(save, AUTOSAVE_MS); return Promise.resolve(); }
+    saving = true;
+    var writing = rev;
+    showStatus();
+    return fetch('/api/sections?gallery=' + encodeURIComponent(gallery.id), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(serialize())
+    }).then(function (r) {
+      return r.json().then(function (body) {
+        if (!r.ok) throw new Error(body.error || r.status);
+        showError('');
+        savedRev = writing;
+      });
+    }).catch(function (err) {
+      showError('save failed: ' + err.message + ' (is editor.py still running?)');
+    }).then(function () {
+      saving = false;
+      showStatus();
+    });
+  }
+  saveBtn.addEventListener('click', save);
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); save(); }
+    if (e.key === 'Escape' && Object.keys(selected).length) { selected = {}; render(); }
+  });
+  window.addEventListener('beforeunload', function (e) {
+    if (isDirty()) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // Loading: galleries.json lists the galleries; ?g=<id> picks one (default
+  // the first). Each has its own Cloudinary tag and sections file.
+  var gallery = null;
+
+  // Finish any pending save before switching tabs.
+  document.getElementById('tabs').addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a || !isDirty()) return;
+    e.preventDefault();
+    save().then(function () { if (!isDirty()) location.href = a.href; });
+  });
+
+  getJSON('/hpi/gallery/galleries.json').then(function (list) {
+    var want = new URLSearchParams(location.search).get('g');
+    gallery = list.filter(function (g) { return g.id === want; })[0] || list[0];
+    document.getElementById('tabs').innerHTML = list.map(function (g) {
+      return '<a href="?g=' + encodeURIComponent(g.id) + '"' + (g === gallery ? ' class="current"' : '') + '>' + esc(g.label) + '</a>';
+    }).join('');
+    document.title = gallery.label + ' \u00b7 portfolio editor';
+    document.getElementById('preview').href = '/index.html?gallery=' + encodeURIComponent(gallery.id);
+    document.getElementById('file').textContent = 'hpi/gallery/' + gallery.id + '/sections.json';
+    document.getElementById('tagname').textContent = gallery.tag;
+
+    var dir = '/hpi/gallery/' + encodeURIComponent(gallery.id) + '/';
+    var photos = getJSON('https://res.cloudinary.com/do45g1bvk/image/list/' + encodeURIComponent(gallery.tag) + '.json')
+      .then(function (data) {
+        return data.resources.slice().sort(function (a, b) {
+          return a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0;
+        }).map(function (r) { return r.public_id; });
+      })
+      .catch(function () {
+        showError("couldn't load the live cloudinary list for '" + gallery.tag + "', using " + dir.slice(1) + 'photos.json instead');
+        return getJSON(dir + 'photos.json').catch(function () { return []; });
+      });
+    var saved = getJSON(dir + 'sections.json').catch(function () { return { sections: [] }; });
+    return Promise.all([photos, saved]);
+  }).then(function (res) {
+    tagged = res[0];
+    tagged.forEach(function (id) { taggedSet[id] = true; });
+    sections = (res[1].sections || []).map(function (s) {
+      return {
+        title: s.title || '', description: s.description || '',
+        items: (s.items || s.photos || []).map(function (it) {
+          return typeof it === 'string' ? it : newEmbedKey(it);
+        })
+      };
+    });
+    render();
+    showStatus();
+  }).catch(function (err) {
+    showError('failed to load: ' + err.message);
+  });
+})();
+</script>
+</body>
+</html>

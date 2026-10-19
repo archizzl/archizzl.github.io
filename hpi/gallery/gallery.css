@@ -1,6 +1,6 @@
 /* Homepage thumbnail: gallery.js positions it between the balloons and
    the salmon. Shown at the photo's own proportions. */
-#gallery_thumb {
+.gallery-thumb {
   position: absolute;
   display: flex;
   flex-flow: column;
@@ -8,29 +8,29 @@
   gap: 2px;
   text-decoration: none;
 }
-#gallery_thumb[hidden] {
+.gallery-thumb[hidden] {
   display: none;
 }
-#gallery_thumb img {
+.gallery-thumb img {
   display: block;
   max-width: 160px;
   max-height: 160px;
   width: auto;
   height: auto;
 }
-#gallery_thumb span {
+.gallery-thumb span {
   color: #888;
   font-size: 16px;
 }
-#gallery_thumb:hover {
+.gallery-thumb:hover {
   opacity: 0.5;
 }
-#gallery_thumb:hover span {
+.gallery-thumb:hover span {
   text-decoration: underline;
 }
 
 /* Viewer */
-#gallery {
+.gallery-dialog {
   border: 0;
   padding: 0;
   margin: 0;
@@ -40,11 +40,11 @@
   max-height: 100dvh;
   background: white;
 }
-#gallery[open] {
+.gallery-dialog[open] {
   display: flex;
   flex-flow: column;
 }
-#gallery::backdrop {
+.gallery-dialog::backdrop {
   background: white;
 }
 .gallery-bar {
@@ -61,7 +61,7 @@
   font-size: 16px;
   font-variant-numeric: tabular-nums;
 }
-#gallery button {
+.gallery-dialog button {
   background: none;
   border: 1px solid black;
   border-radius: 3px;
@@ -70,7 +70,7 @@
   color: black;
   font-size: 16px;
 }
-#gallery button:hover {
+.gallery-dialog button:hover {
   opacity: 0.5;
 }
 
@@ -110,21 +110,40 @@
   font-size: 16px;
   pointer-events: none;
 }
-#gallery .gallery-prev,
-#gallery .gallery-next {
+.gallery-dialog .gallery-prev,
+.gallery-dialog .gallery-next {
   align-self: center;
 }
 
 .gallery-grid {
   flex: 1;
   overflow-y: auto;
+  padding: 0 10px 10px;
+}
+.gallery-section + .gallery-section {
+  margin-top: 28px;
+}
+.gallery-tiles {
+  margin-top: 6px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 6px;
-  padding: 0 10px 10px;
-  align-content: start;
 }
-#gallery .gallery-grid button {
+.gallery-title {
+  font-weight: normal;
+  font-size: 18px;
+}
+.gallery-desc {
+  max-width: 700px;
+  color: #666;
+  font-size: 16px;
+  white-space: pre-line;
+}
+/* index.css sets every element to 20px; keep links the size of their text. */
+.gallery-desc a {
+  font-size: inherit;
+}
+.gallery-dialog .gallery-grid button {
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -137,8 +156,76 @@
   object-fit: cover;
 }
 
+/* Embeds and link cards, in the single view */
+.gallery-extra {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.gallery-frame iframe {
+  display: block;
+  border: 0;
+}
+.gallery-card {
+  display: block;
+  max-width: 100%;
+}
+.gallery-card img {
+  display: block;
+  max-width: 100%;
+  /* viewport minus the top bar, caption and padding */
+  max-height: calc(100dvh - 150px);
+  object-fit: contain;
+}
+.gallery-card:hover {
+  opacity: 0.8;
+}
+.gallery-extra-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  text-align: center;
+}
+.gallery-extra-title {
+  font-size: 18px;
+}
+.gallery-extra-caption a {
+  color: #888;
+  font-size: 16px;
+}
+
+/* Embeds and link cards, in the grid */
+.gallery-dialog .gallery-grid .gallery-tile-extra {
+  position: relative;
+  background: #efefef;
+}
+.gallery-tile-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+.gallery-badge {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 0 5px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 @media (max-width: 768px) {
-  #gallery_thumb img {
+  .gallery-thumb img {
     max-width: 110px;
     max-height: 110px;
   }
@@ -146,8 +233,8 @@
     padding: 0 4px 10px;
     gap: 4px;
   }
-  #gallery .gallery-prev,
-  #gallery .gallery-next {
+  .gallery-dialog .gallery-prev,
+  .gallery-dialog .gallery-next {
     padding: 0 6px;
   }
 }
