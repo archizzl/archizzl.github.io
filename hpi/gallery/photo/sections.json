@@ -1,9 +1,38 @@
 {
+  "featured": [
+    "SBB102025_Taryn_Emerle_vnstmi",
+    "DS112026_Ruby_la_Rocca__g6h5yw",
+    "DS112026_Will_Xu_pjhbqo",
+    "DS112026_Kel_Weaver_ubtr7q",
+    "SBB102025_Aki_Gaythwaite_gfj98u",
+    "SBB102025_Sneha_Vaidya_bdkhuf",
+    "SBB102025_Caleb_Tesfaye_ta8rud",
+    "SBB102025_Archie_O_Connell_zjec8l",
+    "SBB102025_Melody_Wooster_huoio4",
+    "SBB102025_El_Alvarez-Rosenbloom_d88haz",
+    "DS112026_Kel_Weaver_1_xga2pa",
+    "DS112026_Lance_Marvin_Bell_jjfowf",
+    "sophie_yghqc0",
+    "crest_j10gyr",
+    "older_brother_efcxmf",
+    "jenkinson_s_w3zyla",
+    "stroll_gkpvko",
+    "inky_oomjf6",
+    "753329189_18486460384103231_6049784298949960322_n_b91hpe",
+    "focused_hand_ewhcvn",
+    "trash_trash_l4om93",
+    "chairs_uno5e1",
+    "mikey_o7aptp",
+    "suit_ncqhb4",
+    "aki_s_divine_hammer_qv9qrs",
+    "SBB102025_Jonathan_Bacdayan_cop7pg"
+  ],
+  "hidden": [],
   "sections": [
     {
       "title": "Headshots for Sweetums Baseball Cards",
       "description": "Ongoing project to design & print baseball cards for each of the many members & collaborators of my band, [Sweetums](https://sweetums.org). Taken in McLaughlin Park on Mission Hill in Boston, MA, at Deep Springs College, and at the beach in Bay Head, NJ.",
-      "photos": [
+      "items": [
         "SBB102025_Taryn_Emerle_vnstmi",
         "SBB102025_Jonathan_Bacdayan_cop7pg",
         "DS112026_Ruby_la_Rocca__g6h5yw",
@@ -23,7 +52,7 @@
     {
       "title": "Jersey Shore",
       "description": "Taken at the Costco in Asbury Park, the beach in Bay Head, and the boardwalks of Point Pleasant & Wildwood.",
-      "photos": [
+      "items": [
         "sophie_yghqc0",
         "crest_j10gyr",
         "older_brother_efcxmf",
@@ -35,7 +64,7 @@
     {
       "title": "Misc",
       "description": "",
-      "photos": [
+      "items": [
         "753329189_18486460384103231_6049784298949960322_n_b91hpe",
         "focused_hand_ewhcvn",
         "trash_trash_l4om93",
