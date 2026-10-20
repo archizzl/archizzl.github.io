@@ -79,9 +79,9 @@ def clean_item(item, where: str):
 
 def validate(data) -> dict:
     """Normalise posted JSON into {featured: [...], sections: [{title,
-    description, items}]}. `featured` lists the starred images the homepage
-    thumbnail picks from. Older files used "photos" for the item list;
-    that's still accepted."""
+    description, items], hidden: [...]}. `featured` lists the starred images
+    the homepage thumbnail picks from. Older files used "photos" for the item
+    list; that's still accepted."""
     if not isinstance(data, dict) or not isinstance(data.get("sections"), list):
         raise ValueError("expected {\"sections\": [...]}")
     out = []
@@ -99,7 +99,10 @@ def validate(data) -> dict:
     featured = data.get("featured", [])
     if not isinstance(featured, list) or not all(isinstance(f, str) for f in featured):
         raise ValueError("featured must be a list of public IDs")
-    return {"featured": featured, "sections": out}
+    hidden = data.get("hidden", [])
+    if not isinstance(hidden, list) or not all(isinstance(h, str) for h in hidden):
+        raise ValueError("hidden must be a list of public IDs")
+    return {"featured": featured, "hidden": hidden, "sections": out}
 
 
 # ---- link previews ------------------------------------------------------

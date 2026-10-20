@@ -85,6 +85,7 @@
 
     var dialog = document.createElement('dialog');
     dialog.className = 'gallery-dialog';
+    dialog.tabIndex = -1;
     dialog.setAttribute('aria-label', cfg.label);
     dialog.innerHTML =
       '<div class="gallery-bar">' +
@@ -192,6 +193,14 @@
           (item.thumb ? '<img alt="" src="' + esc(thumbURL(item.thumb, FULL)) + '">' : '') + '</a>' +
           '<p class="gallery-extra-caption">' + caption + link + '</p>';
       }
+      if (item.type === 'embed') {
+        var iframe = box.querySelector('iframe');
+        iframe.addEventListener('focus', function () {
+          if (!dialog.open) return;
+          iframe.blur();
+          dialog.focus();
+        });
+      }
       photo.replaceWith(box);
       photo = box;
     }
@@ -244,16 +253,18 @@
     }
 
     function open(i) {
-      showPhoto(i);
       if (!dialog.open) dialog.showModal();
+      showPhoto(i);
     }
 
-    // Lay the tagged images out into sections. Section images that are no
-    // longer tagged are skipped, and an image only appears in its first
-    // section. Embeds and links always show.
+    // Lay visible tagged images out into sections. Section images that are no
+    // longer tagged or explicitly hidden are skipped, and an image only
+    // appears in its first section. Embeds and links always show.
     function arrange(list, config) {
+      var hidden = {};
+      (config && config.hidden || []).forEach(function (id) { hidden[id] = true; });
       var tagged = {}, used = {};
-      list.forEach(function (id) { tagged[id] = true; });
+      list.forEach(function (id) { if (!hidden[id]) tagged[id] = true; });
       groups = [];
       ((config && config.sections) || []).forEach(function (sec) {
         var items = (sec.items || sec.photos || []).filter(function (item) {
@@ -263,7 +274,7 @@
         });
         if (items.length) groups.push({ title: sec.title || '', description: sec.description || '', items: items });
       });
-      var rest = list.filter(function (id) { return !used[id]; });
+      var rest = list.filter(function (id) { return tagged[id] && !used[id]; });
       if (rest.length) groups.push({ title: '', description: '', items: rest });
 
       ids = [];
@@ -300,6 +311,32 @@
       var b = e.target.closest('button[data-i]');
       if (b) showPhoto(+b.dataset.i);
     });
+    function pointInRect(rect, e) {
+      return e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top && e.clientY <= rect.bottom;
+    }
+    function clickIsOnItem(photoEl, e) {
+      if (photoEl.classList.contains('gallery-extra')) {
+        if (e.target.closest('.gallery-extra-caption')) return true;
+        var content = photoEl.querySelector('.gallery-frame iframe, .gallery-card');
+        return !!content && pointInRect(content.getBoundingClientRect(), e);
+      }
+      if (photoEl.tagName !== 'IMG' || !photoEl.naturalWidth || !photoEl.naturalHeight) return true;
+      var r = photoEl.getBoundingClientRect();
+      var imageRatio = photoEl.naturalWidth / photoEl.naturalHeight;
+      var boxRatio = r.width / r.height;
+      var width = boxRatio > imageRatio ? r.height * imageRatio : r.width;
+      var height = boxRatio > imageRatio ? r.height : r.width / imageRatio;
+      var left = r.left + (r.width - width) / 2;
+      var top = r.top + (r.height - height) / 2;
+      return pointInRect({ left: left, right: left + width, top: top, bottom: top + height }, e);
+    }
+    dialog.addEventListener('click', function (e) {
+      if (single.hidden || e.target.closest('button')) return;
+      var photoEl = e.target.closest('.gallery-photo');
+      if (photoEl && clickIsOnItem(photoEl, e)) return;
+      showGrid();
+    });
     toggle.addEventListener('click', showGrid);
     dialog.querySelector('.gallery-prev').addEventListener('click', function () { showPhoto(index - 1); });
     dialog.querySelector('.gallery-next').addEventListener('click', function () { showPhoto(index + 1); });
@@ -318,7 +355,7 @@
         else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { e.preventDefault(); showPhoto(index + 1); }
       }
       if (e.key === 'g' || e.key === 'G') { e.preventDefault(); if (grid.hidden) showGrid(); else showPhoto(index); }
-    });
+    }, true);
 
     // Swipe between images on touch screens.
     var touchX = null, touchY = null;

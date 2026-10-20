@@ -48,7 +48,7 @@
   #status.dirty { color: #b53a1a; }
   .hint { color: #888; font-size: 16px; margin: 6px 0 14px; }
 
-  .section, #pool {
+  .section, #pool, #hidden {
     border: 1px solid black;
     border-radius: 3px;
     padding: 8px;
@@ -126,6 +126,9 @@
   .pool-head { display: flex; align-items: center; gap: 8px; }
   #starinfo { color: #888; font-size: 16px; margin: -6px 0 14px; }
   .section-head .add-embed { white-space: nowrap; }
+  #hidden { border-style: dashed; }
+  #hidden h2 { font-size: 18px; font-weight: normal; }
+  #hidden .sub { color: #888; font-size: 14px; margin-bottom: 6px; }
 
   #embed-dlg { border: 1px solid black; border-radius: 3px; padding: 14px; width: min(560px, 92vw); margin: auto; }
   #embed-dlg::backdrop { background: rgba(255, 255, 255, 0.8); }
@@ -156,7 +159,7 @@
   drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
   <b>☆</b> on an image or embed stars it as a homepage thumbnail contender.
   <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
-  sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled.
+  sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled. hidden images are kept out of the public gallery.
   changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
 </p>
 <p id="starinfo"></p>
@@ -166,6 +169,11 @@
   <div class="pool-head"><h2>unsorted</h2><button class="selall" data-zone="pool">select all</button></div>
   <p class="sub">tagged <code id="tagname"></code> in cloudinary but not in a section</p>
   <div class="tiles" data-zone="pool"></div>
+</div>
+<div id="hidden">
+  <div class="pool-head"><h2>hidden from view</h2><button class="selall" data-zone="hidden">select all</button></div>
+  <p class="sub">these images stay tagged but do not appear in the public gallery</p>
+  <div class="tiles" data-zone="hidden"></div>
 </div>
 <dialog id="embed-dlg">
   <h2 id="embed-heading">add embed</h2>
@@ -220,6 +228,7 @@
   var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/upload/c_fill,g_auto,w_200,h_200,f_auto,q_auto/';
   var sectionsEl = document.getElementById('sections');
   var poolTiles = document.querySelector('#pool .tiles');
+  var hiddenTiles = document.querySelector('#hidden .tiles');
   var statusEl = document.getElementById('status');
   var saveBtn = document.getElementById('save');
   var errorEl = document.getElementById('error');
@@ -232,6 +241,7 @@
   // ('~embed~N') pointing into `embeds`. Saved as {title, description, items}
   // with embeds written out as objects.
   var sections = [];    // [{ title, description, items: [key] }]
+  var hidden = [];      // tagged image IDs kept out of the public gallery
   var embeds = {};      // embed key -> { type: 'embed'|'link', ... }
   // Starred items: the homepage thumbnail picks one of these at random
   // (any image, if none are starred). Images are saved in "featured";
@@ -285,7 +295,7 @@
     else delete featured[id];
   }
   function starCount() {
-    return Object.keys(featured).length +
+    return Object.keys(featured).filter(function (id) { return hidden.indexOf(id) === -1; }).length +
       Object.keys(embeds).filter(function (k) { return embeds[k].featured && inSections()[k]; }).length;
   }
   function starButton(id) {
@@ -301,6 +311,7 @@
   function serialize() {
     return {
       featured: Object.keys(featured),
+      hidden: hidden.slice(),
       sections: sections.map(function (sec) {
         return {
           title: sec.title, description: sec.description,
@@ -313,12 +324,15 @@
   function inSections() {
     var s = {};
     sections.forEach(function (sec) { sec.items.forEach(function (id) { s[id] = true; }); });
+    hidden.forEach(function (id) { s[id] = true; });
     return s;
   }
   function pool() {
     var used = inSections();
     return tagged.filter(function (id) { return !used[id]; });
   }
+
+  function hiddenItems() { return hidden.slice(); }
 
   function tileHTML(id, removable) {
     if (isEmbed(id)) {
@@ -360,6 +374,9 @@
     var p = pool();
     poolTiles.innerHTML = p.length ? p.map(function (id) { return tileHTML(id, false); }).join('')
                                    : '<span class="empty">everything is in a section</span>';
+    var h = hiddenItems();
+    hiddenTiles.innerHTML = h.length ? h.map(function (id) { return tileHTML(id, true); }).join('')
+                     : '<span class="empty">nothing hidden</span>';
     var n = starCount();
     document.getElementById('starinfo').textContent = n
       ? '\u2605 ' + n + ' starred \u2014 the homepage thumbnail picks one of these at random each visit.'
@@ -367,7 +384,9 @@
     renderSelbar();
   }
 
-  function zoneItems(zone) { return zone === 'pool' ? pool() : sections[+zone].items; }
+  function zoneItems(zone) {
+    return zone === 'pool' ? pool() : zone === 'hidden' ? hiddenItems() : sections[+zone].items;
+  }
 
   function renderSelbar() {
     // "select all" flips to "deselect all" once everything in that zone is selected.
@@ -383,7 +402,7 @@
     var prev = targetSel.value;
     targetSel.innerHTML = sections.map(function (sec, i) {
       return '<option value="' + i + '">' + (i + 1) + '. ' + esc(sec.title || 'untitled') + '</option>';
-    }).join('') + '<option value="pool">unsorted</option>';
+    }).join('') + '<option value="pool">unsorted</option><option value="hidden">hidden from view</option>';
     if (prev && targetSel.querySelector('option[value="' + prev + '"]')) targetSel.value = prev;
   }
 
@@ -391,11 +410,17 @@
   // / `after` place them next to a specific tile; otherwise they're appended.
   // Embeds can't go to unsorted (that's only tagged images), so they stay put.
   function moveTo(ids, zone, refId, after) {
-    if (zone === 'pool') ids = ids.filter(function (id) { return !isEmbed(id); });
+    if (zone === 'pool' || zone === 'hidden') ids = ids.filter(function (id) { return !isEmbed(id); });
     sections.forEach(function (sec) {
       sec.items = sec.items.filter(function (id) { return ids.indexOf(id) === -1; });
     });
-    if (zone !== 'pool') {
+    hidden = hidden.filter(function (id) { return ids.indexOf(id) === -1; });
+    if (zone === 'hidden') {
+      ids.forEach(function (id) { delete featured[id]; });
+      var hiddenAt = refId ? hidden.indexOf(refId) : -1;
+      if (hiddenAt === -1) hiddenAt = hidden.length; else if (after) hiddenAt += 1;
+      hidden.splice.apply(hidden, [hiddenAt, 0].concat(ids));
+    } else if (zone !== 'pool') {
       var list = sections[zone].items;
       var at = refId ? list.indexOf(refId) : -1;
       if (at === -1) at = list.length; else if (after) at += 1;
@@ -483,7 +508,7 @@
   });
   document.getElementById('move').addEventListener('click', function () {
     var z = targetSel.value;
-    moveTo(orderedSelection(), z === 'pool' ? 'pool' : +z);
+    moveTo(orderedSelection(), z === 'pool' || z === 'hidden' ? z : +z);
   });
   document.getElementById('clearsel').addEventListener('click', function () { selected = {}; render(); });
   function starSelected(on) {
@@ -687,7 +712,7 @@
     var ref = spot.tile ? spot.tile.dataset.id : null;
     // Dropping onto one of the dragged photos: nothing to anchor to.
     if (ref && dragIds.indexOf(ref) !== -1) ref = null;
-    moveTo(dragIds, zone === 'pool' ? 'pool' : +zone, ref, spot.after);
+    moveTo(dragIds, zone === 'pool' || zone === 'hidden' ? zone : +zone, ref, spot.after);
   });
 
   // Saving
@@ -782,6 +807,7 @@
         })
       };
     });
+    hidden = (res[1].hidden || []).filter(function (id) { return !live || taggedSet[id]; });
     featured = {};
     (res[1].featured || []).forEach(function (id) {
       if (live && !taggedSet[id]) removed++;
