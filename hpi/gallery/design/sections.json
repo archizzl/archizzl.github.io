@@ -1,4 +1,17 @@
 {
+  "featured": [
+    "New_Project_14_copy_y1w39v",
+    "image_copy_rstfme",
+    "626675445_18315657778269364_6938562610319090161_n_pnl8tu",
+    "503482623_18358645315150466_7790945021245751801_n_f4ekmj",
+    "IMG_4896_copy_80_usua8g",
+    "623817751_18102538783888257_3343450069309706467_n_ntwer6",
+    "627010520_18308680645262716_5651652351688252097_n_epxxmv",
+    "624856807_18105234439752582_385725458049922793_n_gm9bsi",
+    "622456808_18032895944571746_796861689426534045_n_h1fygm",
+    "623455942_18125733061549188_2653289086303706226_n_tcjzmm",
+    "623735870_18053334818433917_2546954615143539777_n_sziedr"
+  ],
   "sections": [
     {
       "title": "Sweetums",
@@ -7,15 +20,6 @@
         "image_copy_rstfme",
         "New_Project_14_copy_y1w39v",
         "gamble_responsibly_ucbnby",
-        {
-          "type": "embed",
-          "src": "https://bandcamp.com/EmbeddedPlayer/album=2055318324/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
-          "width": 350,
-          "height": 470,
-          "url": "https://sweetumsofthebody.bandcamp.com/album/live-at-wecb-sweetums",
-          "title": "Live at WECB: Sweetums, by Sweetums",
-          "thumb": "https://f4.bcbits.com/img/a1997029461_5.jpg"
-        },
         {
           "type": "embed",
           "src": "https://bandcamp.com/EmbeddedPlayer/album=2947369159/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
@@ -33,6 +37,15 @@
           "url": "https://sweetumsofthebody.bandcamp.com/album/the-young-jethros",
           "title": "The Young Jethros, by Sweetums",
           "thumb": "https://f4.bcbits.com/img/a3355688526_5.jpg"
+        },
+        {
+          "type": "embed",
+          "src": "https://bandcamp.com/EmbeddedPlayer/album=2055318324/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
+          "width": 350,
+          "height": 470,
+          "url": "https://sweetumsofthebody.bandcamp.com/album/live-at-wecb-sweetums",
+          "title": "Live at WECB: Sweetums, by Sweetums",
+          "thumb": "https://f4.bcbits.com/img/a1997029461_5.jpg"
         }
       ]
     },
@@ -44,6 +57,7 @@
         "485494720_18350375860150466_1433402339175000571_n_erkgta",
         "503482623_18358645315150466_7790945021245751801_n_f4ekmj",
         "626249129_18390621283150466_3243032704622919550_n_yantjg",
+        "IMG_4896_copy_80_usua8g",
         {
           "type": "embed",
           "src": "https://bandcamp.com/EmbeddedPlayer/album=326203296/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
@@ -51,9 +65,9 @@
           "height": 470,
           "url": "https://flagdayband.bandcamp.com/album/the-delancey-nyc-2-21-26-live",
           "title": "The Delancey NYC 2/21/26 (Live), by Flag Day",
-          "thumb": "https://f4.bcbits.com/img/a1923974253_5.jpg"
+          "thumb": "https://f4.bcbits.com/img/a1923974253_5.jpg",
+          "featured": true
         },
-        "IMG_4896_copy_80_usua8g",
         {
           "type": "embed",
           "src": "https://bandcamp.com/EmbeddedPlayer/album=3318626020/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
@@ -70,7 +84,8 @@
           "height": 470,
           "url": "https://flagdayband.bandcamp.com/album/flags-of-the-world",
           "title": "Flags of the World, by Flag Day",
-          "thumb": "https://f4.bcbits.com/img/a0005162384_5.jpg"
+          "thumb": "https://f4.bcbits.com/img/a0005162384_5.jpg",
+          "featured": true
         }
       ]
     },
@@ -79,17 +94,17 @@
       "description": "Printed and distributed at shows & station events. Resurrected traditional WRBB flyer theme of iconic stills from cult movies captioned with radio-based line parodies.",
       "items": [
         "punch_drunk_v3_ohr71v",
-        "zucc_poster_blpqsq",
+        "bird_t76a8h",
         "kermy_iavnc2",
         "fifth_vqtad0",
         "sam_1_1_qbolgr",
         "ethan_d9rlco",
         "will_rxck1a",
-        "bird_t76a8h",
-        "asteroid_l6sjxg",
+        "flickr1_eoxdyc",
+        "zucc_poster_blpqsq",
         "glisten_1_e0t61g",
-        "kermit_lowres_xhxloh",
-        "flickr1_eoxdyc"
+        "asteroid_l6sjxg",
+        "kermit_lowres_xhxloh"
       ]
     },
     {
@@ -97,11 +112,10 @@
       "description": "Graphics for the @wrbbradio instagram. Some are sadly low quality, as the computer I built the original files on is long gone :(",
       "items": [
         "623817751_18102538783888257_3343450069309706467_n_ntwer6",
-        "619814732_17965190927870350_1094291660907985130_n_icump0",
-        "622211548_18009292469674212_1721295082930564789_n_yjfbfx",
         "624856807_18105234439752582_385725458049922793_n_gm9bsi",
+        "479719705_18486614182050707_3895365781453676844_n_ndybs7",
         "piggy_bjxetw",
-        "479719705_18486614182050707_3895365781453676844_n_ndybs7"
+        "622211548_18009292469674212_1721295082930564789_n_yjfbfx"
       ]
     },
     {

@@ -115,6 +115,16 @@
     padding: 0 5px; font-size: 13px; line-height: 1.3; background: white; display: none;
   }
   .tile:hover .edit { display: block; }
+  .tile .star {
+    position: absolute; top: 2px; left: 2px;
+    padding: 0 4px; font-size: 14px; line-height: 1.2; background: white; display: none;
+  }
+  .tile:hover .star, .tile .star.on { display: block; }
+  .tile.extra .edit { left: 30px; } /* beside the star */
+  .tile .star.on { color: #c9a000; border-color: #c9a000; }
+  .section-head .selall, .pool-head .selall { white-space: nowrap; }
+  .pool-head { display: flex; align-items: center; gap: 8px; }
+  #starinfo { color: #888; font-size: 16px; margin: -6px 0 14px; }
   .section-head .add-embed { white-space: nowrap; }
 
   #embed-dlg { border: 1px solid black; border-radius: 3px; padding: 14px; width: min(560px, 92vw); margin: auto; }
@@ -144,14 +154,16 @@
 </header>
 <p class="hint">
   drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
+  <b>☆</b> on an image or embed stars it as a homepage thumbnail contender.
   <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
   sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled.
   changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
 </p>
+<p id="starinfo"></p>
 <div id="error" hidden></div>
 <div id="sections"></div>
 <div id="pool">
-  <h2>unsorted</h2>
+  <div class="pool-head"><h2>unsorted</h2><button class="selall" data-zone="pool">select all</button></div>
   <p class="sub">tagged <code id="tagname"></code> in cloudinary but not in a section</p>
   <div class="tiles" data-zone="pool"></div>
 </div>
@@ -198,6 +210,8 @@
   <span>move to</span>
   <select id="target"></select>
   <button id="move">move</button>
+  <button id="star-sel" title="put these up for the homepage thumbnail">★ star</button>
+  <button id="unstar-sel">☆ unstar</button>
   <button id="clearsel">clear</button>
 </div>
 
@@ -219,6 +233,10 @@
   // with embeds written out as objects.
   var sections = [];    // [{ title, description, items: [key] }]
   var embeds = {};      // embed key -> { type: 'embed'|'link', ... }
+  // Starred items: the homepage thumbnail picks one of these at random
+  // (any image, if none are starred). Images are saved in "featured";
+  // embeds carry featured: true on themselves.
+  var featured = {};    // public ID -> true
   var embedSeq = 0;
   var selected = {};    // id -> true
   // Every edit bumps `rev`; a save records the rev it wrote. Unsaved
@@ -260,10 +278,29 @@
     embeds[k] = obj;
     return k;
   }
+  function isStarred(id) { return isEmbed(id) ? !!embeds[id].featured : !!featured[id]; }
+  function setStar(id, on) {
+    if (isEmbed(id)) { if (on) embeds[id].featured = true; else delete embeds[id].featured; }
+    else if (on) featured[id] = true;
+    else delete featured[id];
+  }
+  function starCount() {
+    return Object.keys(featured).length +
+      Object.keys(embeds).filter(function (k) { return embeds[k].featured && inSections()[k]; }).length;
+  }
+  function starButton(id) {
+    var on = isStarred(id);
+    var noThumb = isEmbed(id) && !embeds[id].thumb;
+    return '<button class="star' + (on ? ' on' : '') + '" title="' +
+      (on ? 'unstar' : 'star as a homepage thumbnail contender') +
+      (noThumb ? ' (needs a thumbnail to show: add one with \u270e)' : '') + '">' +
+      (on ? '\u2605' : '\u2606') + '</button>';
+  }
   function thumbSrc(t) { return /^https?:\/\//.test(t) ? t : CLOUD + t; }
   function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
   function serialize() {
     return {
+      featured: Object.keys(featured),
       sections: sections.map(function (sec) {
         return {
           title: sec.title, description: sec.description,
@@ -291,12 +328,14 @@
         '" title="' + esc(label) + '">' +
         (em.thumb ? '<img loading="lazy" alt="" src="' + esc(thumbSrc(em.thumb)) + '">' : '<span class="label">' + esc(label) + '</span>') +
         '<span class="kind">' + (em.type === 'embed' ? '\u25b6 player' : '\u2197 link') + '</span>' +
+        starButton(id) +
         '<button class="edit" title="edit">\u270e</button>' +
         '<button class="x" title="delete">\u00d7</button></div>';
     }
     return '<div class="tile' + (selected[id] ? ' selected' : '') +
       '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) + '">' +
       '<img loading="lazy" alt="" src="' + CLOUD + esc(id) + '">' +
+      starButton(id) +
       (removable ? '<button class="x" title="back to unsorted">×</button>' : '') + '</div>';
   }
 
@@ -308,6 +347,7 @@
           '<input class="title" placeholder="title" value="' + esc(sec.title) + '">' +
           '<button class="up" title="move section up"' + (i === 0 ? ' disabled' : '') + '>↑</button>' +
           '<button class="down" title="move section down"' + (i === sections.length - 1 ? ' disabled' : '') + '>↓</button>' +
+          '<button class="selall" data-zone="' + i + '">select all</button>' +
           '<button class="add-embed" title="add an album player or article link">+ embed</button>' +
           '<button class="del" title="delete section (images go back to unsorted)">delete</button>' +
         '</div>' +
@@ -320,10 +360,23 @@
     var p = pool();
     poolTiles.innerHTML = p.length ? p.map(function (id) { return tileHTML(id, false); }).join('')
                                    : '<span class="empty">everything is in a section</span>';
+    var n = starCount();
+    document.getElementById('starinfo').textContent = n
+      ? '\u2605 ' + n + ' starred \u2014 the homepage thumbnail picks one of these at random each visit.'
+      : 'nothing starred, so the homepage thumbnail can be any image. star some to limit it.';
     renderSelbar();
   }
 
+  function zoneItems(zone) { return zone === 'pool' ? pool() : sections[+zone].items; }
+
   function renderSelbar() {
+    // "select all" flips to "deselect all" once everything in that zone is selected.
+    document.querySelectorAll('.selall').forEach(function (b) {
+      var items = zoneItems(b.dataset.zone);
+      var all = items.length && items.every(function (id) { return selected[id]; });
+      b.textContent = all ? 'deselect all' : 'select all';
+      b.disabled = !items.length;
+    });
     var ids = Object.keys(selected);
     selbar.hidden = !ids.length;
     document.getElementById('selcount').textContent = ids.length + ' selected';
@@ -368,6 +421,22 @@
     }
     var ed = e.target.closest('.tile .edit');
     if (ed) { openEmbed(ed.parentNode.dataset.id); return; }
+    var st = e.target.closest('.tile .star');
+    if (st) {
+      var sid = st.parentNode.dataset.id;
+      setStar(sid, !isStarred(sid));
+      changed();
+      render();
+      return;
+    }
+    var sa = e.target.closest('.selall');
+    if (sa) {
+      var items = zoneItems(sa.dataset.zone);
+      var all = items.every(function (id) { return selected[id]; });
+      items.forEach(function (id) { if (all) delete selected[id]; else selected[id] = true; });
+      render();
+      return;
+    }
     var tile = e.target.closest('.tile');
     if (tile) {
       var id = tile.dataset.id;
@@ -417,6 +486,13 @@
     moveTo(orderedSelection(), z === 'pool' ? 'pool' : +z);
   });
   document.getElementById('clearsel').addEventListener('click', function () { selected = {}; render(); });
+  function starSelected(on) {
+    Object.keys(selected).forEach(function (id) { setStar(id, on); });
+    changed();
+    render();
+  }
+  document.getElementById('star-sel').addEventListener('click', function () { starSelected(true); });
+  document.getElementById('unstar-sel').addEventListener('click', function () { starSelected(false); });
 
   // ---- embeds ----
   var dlg = document.getElementById('embed-dlg');
@@ -540,6 +616,7 @@
     if (title) obj.title = title;
     if (thumb) obj.thumb = thumb;
 
+    if (editingKey && embeds[editingKey].featured) obj.featured = true; // keep its star
     if (editingKey) embeds[editingKey] = obj;
     else sections[addTo].items.push(newEmbedKey(obj));
     dlg.close();
@@ -704,6 +781,11 @@
           return typeof it === 'string' ? it : newEmbedKey(it);
         })
       };
+    });
+    featured = {};
+    (res[1].featured || []).forEach(function (id) {
+      if (live && !taggedSet[id]) removed++;
+      else featured[id] = true;
     });
     render();
     showStatus();

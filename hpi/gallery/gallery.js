@@ -14,6 +14,9 @@
 //   player (Bandcamp, Spotify, YouTube...), and
 //   {type: 'link', url, title, thumb, source} shows a card linking out
 //   (articles). `thumb` is a Cloudinary public ID or an image URL.
+// - sections.json's "featured" lists starred images, and starred embeds
+//   carry featured: true. The homepage thumbnail is a random starred item
+//   (an embed shows its thumb); with nothing starred, any image.
 //
 // ?gallery=<id> in the URL opens that gallery straight to its grid (bare
 // ?gallery opens the first). Not a #hash: that's the blog tag filter.
@@ -338,13 +341,23 @@
     ]).then(function (res) {
       arrange(res[0], res[1]);
       if (!ids.length) return;
-      var imageAt = [];
-      ids.forEach(function (item, n) { if (isImage(item)) imageAt.push(n); });
+      var starred = {};
+      ((res[1] && res[1].featured) || []).forEach(function (id) { starred[id] = true; });
+      var imageAt = [], starredAt = [];
+      ids.forEach(function (item, n) {
+        if (isImage(item)) {
+          imageAt.push(n);
+          if (starred[item]) starredAt.push(n);
+        } else if (item.featured && item.thumb) {
+          starredAt.push(n); // an embed needs a thumb to be shown
+        }
+      });
+      if (starredAt.length) imageAt = starredAt;
       if (!imageAt.length) return;
       var start = imageAt[Math.floor(Math.random() * imageAt.length)];
       var img = thumb.querySelector('img');
       img.addEventListener('load', place);
-      img.src = url(ids[start], PREVIEW);
+      img.src = isImage(ids[start]) ? url(ids[start], PREVIEW) : thumbURL(ids[start].thumb, PREVIEW);
       if (!g.pageMode) thumb.hidden = false;
       thumb.addEventListener('click', function (e) { e.preventDefault(); open(start); });
       renderGrid();

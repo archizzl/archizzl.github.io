@@ -18,11 +18,13 @@ published site.
 """
 
 import functools
+import importlib.util
 import json
 import sys
 import webbrowser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from types import SimpleNamespace
 import re
 import urllib.request
 from html import unescape
@@ -59,6 +61,8 @@ def clean_item(item, where: str):
         raise ValueError(f"{where}: items must be public IDs or embed/link objects")
     kind = item.get("type")
     text = {k: str(item[k]).strip() for k in ("title", "thumb", "source") if str(item.get(k) or "").strip()}
+    if item.get("featured") is True:  # starred for the homepage thumbnail
+        text["featured"] = True
     if kind == "embed":
         out = {"type": "embed", "src": _http_url(item.get("src"), "src", where, https_only=True)}
         for k in ("width", "height"):
@@ -74,8 +78,10 @@ def clean_item(item, where: str):
 
 
 def validate(data) -> dict:
-    """Normalise posted JSON into {sections: [{title, description, items}]}.
-    Older files used "photos" for the item list; that's still accepted."""
+    """Normalise posted JSON into {featured: [...], sections: [{title,
+    description, items}]}. `featured` lists the starred images the homepage
+    thumbnail picks from. Older files used "photos" for the item list;
+    that's still accepted."""
     if not isinstance(data, dict) or not isinstance(data.get("sections"), list):
         raise ValueError("expected {\"sections\": [...]}")
     out = []
@@ -90,7 +96,10 @@ def validate(data) -> dict:
             "description": str(sec.get("description", "")).strip(),
             "items": [clean_item(it, f"section {i + 1}, item {j + 1}") for j, it in enumerate(items)],
         })
-    return {"sections": out}
+    featured = data.get("featured", [])
+    if not isinstance(featured, list) or not all(isinstance(f, str) for f in featured):
+        raise ValueError("featured must be a list of public IDs")
+    return {"featured": featured, "sections": out}
 
 
 # ---- link previews ------------------------------------------------------
@@ -224,6 +233,31 @@ def preview(page_url: str) -> dict:
     return {**base, "type": "link", "source": source}
 
 
+# The server can run for days (it's also inside `blog/build.py --watch`), so
+# the save and look-up code is reloaded from this file whenever it changes.
+# Otherwise an old server would quietly drop data a newer editor page sends.
+_SELF = Path(__file__).resolve()
+_fresh = {"mtime": _SELF.stat().st_mtime, "mod": None}
+
+
+def current():
+    """This module, reloaded from disk if editor.py has changed since."""
+    mtime = _SELF.stat().st_mtime
+    if mtime != _fresh["mtime"]:
+        spec = importlib.util.spec_from_file_location("gallery_editor_fresh", _SELF)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)  # type: ignore[union-attr]
+        _fresh.update(mtime=mtime, mod=mod)
+        print("editor.py changed: reloaded the save code", flush=True)
+    return _fresh["mod"] or _THIS
+
+
+# The functions the server calls, from this copy of the file. (Not
+# sys.modules: blog/build.py loads this file without registering it.)
+_THIS = SimpleNamespace(preview=lambda u: preview(u), validate=lambda d: validate(d),
+                        sections_file=lambda g: sections_file(g))
+
+
 class Handler(SimpleHTTPRequestHandler):
     # URLs that show the editor page. blog/build.py swaps these out so the
     # site's own homepage stays at /.
@@ -241,7 +275,7 @@ class Handler(SimpleHTTPRequestHandler):
         path, _, query = self.path.partition("?")
         if path == "/api/preview":
             try:
-                self._json(200, preview(parse_qs(query).get("url", [""])[0]))
+                self._json(200, current().preview(parse_qs(query).get("url", [""])[0]))
             except ValueError as e:
                 self._json(400, {"error": str(e)})
             return
@@ -262,9 +296,10 @@ class Handler(SimpleHTTPRequestHandler):
             return
         try:
             gallery = parse_qs(query).get("gallery", [""])[0]
-            target = sections_file(gallery)
+            code = current()
+            target = code.sections_file(gallery)
             length = int(self.headers.get("Content-Length", 0))
-            data = validate(json.loads(self.rfile.read(length)))
+            data = code.validate(json.loads(self.rfile.read(length)))
         except (ValueError, json.JSONDecodeError) as e:
             self._json(400, {"error": str(e)})
             return

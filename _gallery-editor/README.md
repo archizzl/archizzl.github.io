@@ -65,6 +65,19 @@ Sections are the only part that needs a commit.
 
 "preview grid" opens the homepage straight to that gallery's grid.
 
+**select all / deselect all** on each section (and on unsorted) selects
+everything in it, ready to move or star.
+
+### homepage thumbnails (stars)
+
+Hover an image and click **☆** to star it (or select several and use
+**★ star** in the bar at the bottom). Each visit, the homepage thumbnail
+for that portfolio is a random one of its starred images. With nothing
+starred, it can be any image. Stars save into `sections.json` with
+everything else, so commit that file to publish them. Embeds can be starred
+too: they show their thumbnail on the homepage and open the player or card
+when clicked. An embed needs a thumbnail to be picked.
+
 ## links to the galleries
 
 Each portfolio has its own page, which opens straight onto its grid:
