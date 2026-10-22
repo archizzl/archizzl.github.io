@@ -262,7 +262,8 @@
     // appears in its first section. Embeds and links always show.
     function arrange(list, config) {
       var hidden = {};
-      (config && config.hidden || []).forEach(function (id) { hidden[id] = true; });
+      // Hidden embeds simply aren't in any section; only image IDs matter here.
+      (config && config.hidden || []).forEach(function (id) { if (isImage(id)) hidden[id] = true; });
       var tagged = {}, used = {};
       list.forEach(function (id) { if (!hidden[id]) tagged[id] = true; });
       groups = [];

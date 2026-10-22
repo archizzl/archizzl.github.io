@@ -100,8 +100,9 @@ def validate(data) -> dict:
     if not isinstance(featured, list) or not all(isinstance(f, str) for f in featured):
         raise ValueError("featured must be a list of public IDs")
     hidden = data.get("hidden", [])
-    if not isinstance(hidden, list) or not all(isinstance(h, str) for h in hidden):
-        raise ValueError("hidden must be a list of public IDs")
+    if not isinstance(hidden, list):
+        raise ValueError("hidden must be a list")
+    hidden = [clean_item(h, f"hidden item {j + 1}") for j, h in enumerate(hidden)]
     return {"featured": featured, "hidden": hidden, "sections": out}
 
 

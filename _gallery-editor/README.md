@@ -50,6 +50,16 @@ open the editor, it takes the image out of its section and saves. Commit
 
 To move an image from one portfolio to the other, swap its tag.
 
+### hiding without removing
+
+To take something off the site for a while without untagging or deleting
+it, move it into **hidden from view** at the bottom of the editor. Drag it
+there, or select it and pick "hidden from view" in the "move to" menu. This
+works for images and embeds. Hidden things keep their tags (and embeds keep
+all their details) but don't appear in the gallery, and they can't be the
+homepage thumbnail (hiding something removes its star). Move them back into
+a section or unsorted to show them again. Commit `sections.json` to publish.
+
 ## sections (titles and descriptions)
 
 Sections are optional. They live in each gallery's `sections.json`, which you

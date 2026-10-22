@@ -159,7 +159,7 @@
   drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
   <b>☆</b> on an image or embed stars it as a homepage thumbnail contender.
   <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
-  sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled. hidden images are kept out of the public gallery.
+  sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled. anything in <b>hidden from view</b> (images or embeds) stays out of the public gallery until you move it back.
   changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
 </p>
 <p id="starinfo"></p>
@@ -172,7 +172,7 @@
 </div>
 <div id="hidden">
   <div class="pool-head"><h2>hidden from view</h2><button class="selall" data-zone="hidden">select all</button></div>
-  <p class="sub">these images stay tagged but do not appear in the public gallery</p>
+  <p class="sub">images stay tagged and embeds stay saved, but none of these appear on the site. move them out to show them again.</p>
   <div class="tiles" data-zone="hidden"></div>
 </div>
 <dialog id="embed-dlg">
@@ -241,7 +241,7 @@
   // ('~embed~N') pointing into `embeds`. Saved as {title, description, items}
   // with embeds written out as objects.
   var sections = [];    // [{ title, description, items: [key] }]
-  var hidden = [];      // tagged image IDs kept out of the public gallery
+  var hidden = [];      // item keys (images or embeds) kept out of the public gallery
   var embeds = {};      // embed key -> { type: 'embed'|'link', ... }
   // Starred items: the homepage thumbnail picks one of these at random
   // (any image, if none are starred). Images are saved in "featured";
@@ -296,7 +296,7 @@
   }
   function starCount() {
     return Object.keys(featured).filter(function (id) { return hidden.indexOf(id) === -1; }).length +
-      Object.keys(embeds).filter(function (k) { return embeds[k].featured && inSections()[k]; }).length;
+      Object.keys(embeds).filter(function (k) { return embeds[k].featured && inSections()[k] && hidden.indexOf(k) === -1; }).length;
   }
   function starButton(id) {
     var on = isStarred(id);
@@ -311,7 +311,7 @@
   function serialize() {
     return {
       featured: Object.keys(featured),
-      hidden: hidden.slice(),
+      hidden: hidden.map(function (k) { return isEmbed(k) ? embeds[k] : k; }),
       sections: sections.map(function (sec) {
         return {
           title: sec.title, description: sec.description,
@@ -408,15 +408,15 @@
 
   // Remove ids from every section, then insert them into a zone. `beforeId`
   // / `after` place them next to a specific tile; otherwise they're appended.
-  // Embeds can't go to unsorted (that's only tagged images), so they stay put.
   function moveTo(ids, zone, refId, after) {
-    if (zone === 'pool' || zone === 'hidden') ids = ids.filter(function (id) { return !isEmbed(id); });
+    // Embeds can be hidden, but not unsorted (that's only tagged images).
+    if (zone === 'pool') ids = ids.filter(function (id) { return !isEmbed(id); });
     sections.forEach(function (sec) {
       sec.items = sec.items.filter(function (id) { return ids.indexOf(id) === -1; });
     });
     hidden = hidden.filter(function (id) { return ids.indexOf(id) === -1; });
     if (zone === 'hidden') {
-      ids.forEach(function (id) { delete featured[id]; });
+      ids.forEach(function (id) { setStar(id, false); }); // hidden can't be the thumbnail
       var hiddenAt = refId ? hidden.indexOf(refId) : -1;
       if (hiddenAt === -1) hiddenAt = hidden.length; else if (after) hiddenAt += 1;
       hidden.splice.apply(hidden, [hiddenAt, 0].concat(ids));
@@ -653,6 +653,7 @@
     var em = embeds[key];
     if (!confirm('delete "' + (em.title || hostOf(em.url || em.src) || 'this embed') + '"?')) return;
     sections.forEach(function (sec) { sec.items = sec.items.filter(function (k) { return k !== key; }); });
+    hidden = hidden.filter(function (k) { return k !== key; });
     delete embeds[key];
     delete selected[key];
     changed();
@@ -807,7 +808,11 @@
         })
       };
     });
-    hidden = (res[1].hidden || []).filter(function (id) { return !live || taggedSet[id]; });
+    hidden = (res[1].hidden || []).filter(function (it) {
+      var gone = live && typeof it === 'string' && !taggedSet[it];
+      if (gone) removed++;
+      return !gone;
+    }).map(function (it) { return typeof it === 'string' ? it : newEmbedKey(it); });
     featured = {};
     (res[1].featured || []).forEach(function (id) {
       if (live && !taggedSet[id]) removed++;
