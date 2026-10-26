@@ -53,6 +53,15 @@
           "url": "https://sweetumsofthebody.bandcamp.com/album/the-young-jethros",
           "title": "The Young Jethros, by Sweetums",
           "thumb": "https://f4.bcbits.com/img/a3355688526_5.jpg"
+        },
+        {
+          "type": "embed",
+          "src": "https://bandcamp.com/EmbeddedPlayer/track=546678120/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
+          "width": 350,
+          "height": 470,
+          "url": "https://sweetumsofthebody.bandcamp.com/track/phoenix-landing-demo",
+          "title": "Phoenix Landing (demo), by Sweetums",
+          "thumb": "https://f4.bcbits.com/img/a2314350954_5.jpg"
         }
       ]
     },
