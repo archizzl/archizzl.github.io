@@ -93,6 +93,29 @@ a:hover { text-decoration: underline; opacity: 0.5; }
 }
 .status.error { border-color: #b53a1a; color: #b53a1a; }
 
+/* ------- booklet viewer ------- */
+
+.viewer {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 8px;
+  display: flex;
+  flex-flow: column;
+  gap: 6px;
+}
+.viewer-head { display: flex; gap: 10px; align-items: baseline; font-size: 16px; }
+.stage {
+  height: 480px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+.stage:active { cursor: grabbing; }
+.stage canvas { display: block; }
+.viewer-controls { display: flex; flex-flow: row wrap; align-items: center; gap: 8px; }
+
 /* ------- results ------- */
 
 .results { display: flex; flex-flow: column; gap: 8px; }

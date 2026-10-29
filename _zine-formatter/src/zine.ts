@@ -45,3 +45,32 @@ export function zineify(src: CanvasImageSource, width: number, height: number): 
 
   return out;
 }
+
+/**
+ * Cut the input sheet into its 8 pages in reading order (page 1 first),
+ * scaled so the longest side is at most `maxSide` — used for the booklet preview.
+ */
+export function splitPages(
+  src: CanvasImageSource,
+  width: number,
+  height: number,
+  maxSide = 1024,
+): HTMLCanvasElement[] {
+  const tw = Math.floor(width / COLS);
+  const th = Math.floor(height / ROWS);
+  const scale = Math.min(1, maxSide / Math.max(tw, th));
+  const w = Math.max(1, Math.round(tw * scale));
+  const h = Math.max(1, Math.round(th * scale));
+
+  const pages: HTMLCanvasElement[] = [];
+  for (let i = 0; i < ROWS * COLS; i++) {
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    const ctx = c.getContext("2d");
+    if (!ctx) throw new Error("canvas 2d context unavailable");
+    ctx.drawImage(src, (i % COLS) * tw, Math.floor(i / COLS) * th, tw, th, 0, 0, w, h);
+    pages.push(c);
+  }
+  return pages;
+}

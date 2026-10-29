@@ -1,5 +1,6 @@
 import "./style.css";
-import { zineify, ORDER, FLIPPED, ROWS, COLS } from "./zine";
+import { zineify, splitPages, ORDER, FLIPPED, ROWS, COLS } from "./zine";
+import type { Booklet } from "./booklet";
 
 const $ = <T extends HTMLElement>(sel: string): T => {
   const el = document.querySelector<T>(sel);
@@ -12,6 +13,10 @@ const fileInput = $<HTMLInputElement>("#file");
 const pickBtn = $<HTMLButtonElement>("#pick");
 const statusEl = $<HTMLElement>("#status");
 const resultsEl = $<HTMLElement>("#results");
+const viewerEl = $<HTMLElement>("#viewer");
+const viewerName = $<HTMLElement>("#viewerName");
+const viewerPage = $<HTMLElement>("#viewerPage");
+const stageEl = $<HTMLElement>("#stage");
 
 // ------- layout diagram -------
 
@@ -34,6 +39,57 @@ function setStatus(msg: string, error = false) {
   statusEl.classList.toggle("hidden", !msg);
 }
 
+// ------- booklet viewer -------
+
+// three.js is loaded on first use so the formatter itself stays light.
+let booklet: Booklet | null = null;
+
+function pageLabel(turned: number, total: number): string {
+  if (turned === 0) return "cover";
+  if (turned === total) return "back cover";
+  return `pages ${2 * turned}–${2 * turned + 1}`;
+}
+
+async function showBooklet(name: string, pages: HTMLCanvasElement[]) {
+  if (!booklet) {
+    const { Booklet } = await import("./booklet");
+    viewerEl.classList.remove("hidden");
+    booklet = new Booklet(stageEl);
+    booklet.onChange = (turned, total) => {
+      viewerPage.textContent = pageLabel(turned, total);
+    };
+  }
+  viewerEl.classList.remove("hidden");
+  viewerName.textContent = name;
+  booklet.setPages(pages);
+}
+
+$("#prevPage").addEventListener("click", () => booklet?.prev());
+$("#nextPage").addEventListener("click", () => booklet?.next());
+$("#resetView").addEventListener("click", () => booklet?.resetView());
+
+document.addEventListener("keydown", (e) => {
+  if (!booklet || viewerEl.classList.contains("hidden")) return;
+  if (e.target instanceof HTMLInputElement) return;
+  if (e.key === "ArrowRight") booklet.next();
+  else if (e.key === "ArrowLeft") booklet.prev();
+  else return;
+  e.preventDefault();
+});
+
+// A click (not a drag) on the stage turns the page: right half forward, left half back.
+let downAt: { x: number; y: number } | null = null;
+stageEl.addEventListener("pointerdown", (e) => (downAt = { x: e.clientX, y: e.clientY }));
+stageEl.addEventListener("pointerup", (e) => {
+  if (!booklet || !downAt) return;
+  const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y);
+  downAt = null;
+  if (moved > 4) return;
+  const rect = stageEl.getBoundingClientRect();
+  if (e.clientX - rect.left > rect.width / 2) booklet.next();
+  else booklet.prev();
+});
+
 // ------- processing -------
 
 function outputName(name: string): string {
@@ -44,6 +100,7 @@ function outputName(name: string): string {
 async function processFile(file: File) {
   const bitmap = await createImageBitmap(file);
   const canvas = zineify(bitmap, bitmap.width, bitmap.height);
+  const pages = splitPages(bitmap, bitmap.width, bitmap.height);
   bitmap.close();
 
   const blob = await new Promise<Blob>((resolve, reject) =>
@@ -70,10 +127,18 @@ async function processFile(file: File) {
   link.href = url;
   link.download = name;
   link.innerHTML = `<button type="button">download</button>`;
-  meta.append(title, dims, link);
+  const flip = document.createElement("button");
+  flip.type = "button";
+  flip.textContent = "flip through";
+  flip.addEventListener("click", () => {
+    showBooklet(name, pages);
+    viewerEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+  meta.append(title, dims, link, flip);
 
   row.append(img, meta);
   resultsEl.prepend(row);
+  await showBooklet(name, pages);
 }
 
 async function handleFiles(files: FileList | File[]) {
