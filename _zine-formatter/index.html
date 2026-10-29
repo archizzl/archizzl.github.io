@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+    <title>zine formatter</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main id="app">
+      <header>
+        <h1>zine formatter</h1>
+        <p>
+          drop a sheet of eight zine pages laid out two rows by four, in reading order. it cuts them up, flips the top row, and rearranges them so the printed sheet folds into a one-page zine. runs entirely in your browser, nothing is uploaded.
+        </p>
+      </header>
+
+      <section id="drop" class="drop">
+        <input type="file" id="file" accept="image/*" multiple hidden />
+        <div class="drop-inner">
+          <span>drop one or more images here, or <button type="button" id="pick">choose files</button></span>
+          <span class="muted">png, jpg, webp — anything the browser can open. letter landscape (11 × 8.5) works well.</span>
+        </div>
+      </section>
+
+      <section class="layout">
+        <figure>
+          <figcaption>your sheet</figcaption>
+          <div class="grid" id="inGrid"></div>
+        </figure>
+        <span class="arrow">→</span>
+        <figure>
+          <figcaption>printable sheet</figcaption>
+          <div class="grid" id="outGrid"></div>
+        </figure>
+      </section>
+
+      <section id="status" class="status hidden"></section>
+
+      <section id="results" class="results"></section>
+    </main>
+    <a id="home_link" href="../../index.html"><button class="black_button">home. . .</button></a>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

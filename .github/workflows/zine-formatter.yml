@@ -1,0 +1,60 @@
+name: Build zine-formatter
+
+# Fires whenever something under _zine-formatter/ changes on main.
+# The workflow itself commits back to projects/zine-formatter/ — that path is
+# NOT in the trigger, so a build commit does not retrigger the workflow.
+# `[skip ci]` in the commit message is a second guard.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_zine-formatter/**"
+      - ".github/workflows/zine-formatter.yml"
+  workflow_dispatch: # lets you kick a rebuild by hand from the Actions tab
+
+permissions:
+  contents: write # needed so GITHUB_TOKEN can push the built files back
+
+concurrency:
+  group: zine-formatter-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: _zine-formatter/package-lock.json
+
+      - name: Install deps
+        working-directory: _zine-formatter
+        run: npm ci
+
+      - name: Build
+        working-directory: _zine-formatter
+        run: npm run build
+
+      - name: Sync build into projects/zine-formatter
+        run: |
+          rm -rf projects/zine-formatter
+          mkdir -p projects/zine-formatter
+          cp -R _zine-formatter/dist/. projects/zine-formatter/
+
+      - name: Commit if there is a diff
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/zine-formatter
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Build zine-formatter [skip ci]"
+          git push
