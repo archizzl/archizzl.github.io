@@ -1,6 +1,0 @@
-title: bank of roommates
-date: 2026-09-16
-description: 
-tags: spreadsheets, money
-status: draft
----

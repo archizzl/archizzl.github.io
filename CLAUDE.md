@@ -12,6 +12,7 @@ Each app has its source in `_<name>/` (Vite + TypeScript). The site serves the b
 
 - To add a new app, create `_<name>/` (copy `_zine-formatter/` as a template, keeping `base: "./"` in `vite.config.ts`) and add `<name>` to `VITE_PROJECTS` in `blog/build.py`.
 - Every blog build, including `--watch` on startup, rewrites `blog/feed.xml` and the date in `blog/src/template.txt`, and `--watch` also builds draft posts. Stopping `--watch` with Ctrl+C runs a clean build that drops the drafts again. If you stop it any other way (for example by killing a background job), run `python3 blog/build.py` yourself. Don't commit `feed.xml` or `template.txt` changes you didn't intend to make.
+- Blog drafts live in `blog/drafts/`, which is gitignored so unpublished posts never reach the public repo. To publish one, move it to `blog/src/`. Anything in `blog/src/` is committed and published.
 - `.github/workflows/<name>.yml` is a fallback GitHub Action that's meant to build on push. It's set to run on `main`, but the site deploys from `master`, so in practice it never runs. Don't rely on it.
 - To build an app once without the server: `npm run build` in `_<name>/`, then copy `dist/` over `projects/<name>/`.
 

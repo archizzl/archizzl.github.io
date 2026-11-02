@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Build the blog: reads text files in blog/src/, writes HTML posts to blog/
-and regenerates blog/posts.json.
+Build the blog: reads text files in blog/src/ (published) and blog/drafts/
+(drafts, gitignored), writes HTML posts to blog/ and regenerates
+blog/posts.json. To publish a draft, move it from blog/drafts/ to blog/src/.
 
 With --watch, also builds the vite projects (set-splitter, zine-formatter —
 whichever are present) into projects/<name>/ and rebuilds each on source
@@ -14,12 +15,11 @@ Usage:
     python blog/build.py --watch               # blog + vite projects, live
     python blog/build.py --watch --no-projects # blog only
 
-Source format (blog/src/my-slug.txt):
+Source format (blog/src/my-slug.txt, or blog/drafts/my-slug.txt):
 
     title: My First Post
     date: 2026-09-16
     tags: personal, tech
-    status: draft            # optional; default published. draft = only visible via --watch
     ---
     Body text. Paragraphs are separated by blank lines.
 
@@ -31,7 +31,8 @@ Source format (blog/src/my-slug.txt):
     **text** for bold, *text* for italic.
     Raw HTML is passed through.
 
-The filename (without .txt) becomes the URL slug.
+The filename (without .txt) becomes the URL slug. Everything in
+blog/drafts/ is a draft: only visible via --watch, and never committed.
 """
 
 import functools
@@ -67,6 +68,8 @@ def project_src(name: str) -> Path:
 def project_dist(name: str) -> Path:
     return SITE_ROOT / "projects" / name
 SRC = ROOT / "src"
+# Gitignored, so unpublished posts never reach the public repo.
+DRAFTS = ROOT / "drafts"
 TEMPLATE = SRC / "template.txt"
 POSTS_DIR = ROOT / "posts"
 MANIFEST = ROOT / "posts.json"
@@ -226,6 +229,14 @@ def refresh_template_date() -> None:
         TEMPLATE.write_text(new_text, encoding="utf-8")
 
 
+def source_files() -> list[Path]:
+    """Published posts from src/, then drafts from drafts/."""
+    files = sorted(SRC.glob("*.txt"))
+    if DRAFTS.exists():
+        files += sorted(DRAFTS.glob("*.txt"))
+    return files
+
+
 def build(include_drafts: bool = False) -> None:
     if not SRC.exists():
         print(f"no src directory at {SRC}", file=sys.stderr)
@@ -238,7 +249,7 @@ def build(include_drafts: bool = False) -> None:
     seen_slugs: set[str] = set()
     draft_count = 0
 
-    for txt in sorted(SRC.glob("*.txt")):
+    for txt in source_files():
         if txt.resolve() == TEMPLATE.resolve():
             continue  # template.txt is a scaffold, not a post
         slug = txt.stem
@@ -254,8 +265,13 @@ def build(include_drafts: bool = False) -> None:
             print(f"{txt.name}: {e}", file=sys.stderr)
             sys.exit(1)
 
-        status = meta.get("status", "published").strip().lower()
-        is_draft = status == "draft"
+        is_draft = txt.parent == DRAFTS
+        if not is_draft and meta.get("status", "").strip().lower() == "draft":
+            print(
+                f"warning: {txt.name} says 'status: draft' but is in blog/src/, "
+                "so it's committed and published. Move it to blog/drafts/.",
+                file=sys.stderr,
+            )
         if is_draft and not include_drafts:
             # Skip drafts entirely in production builds.
             seen_slugs.discard(slug)  # allow cleanup to remove any stale dir
@@ -453,7 +469,7 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
     handler = functools.partial(site_handler(), directory=str(SITE_ROOT))
     server = ThreadingHTTPServer(("localhost", port), handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
-    watched = f"{SRC.relative_to(SITE_ROOT)}/*.txt"
+    watched = f"{SRC.relative_to(SITE_ROOT)}/*.txt + {DRAFTS.relative_to(SITE_ROOT)}/*.txt"
     for name in projects:
         watched += f" + {project_src(name).relative_to(SITE_ROOT)}/**"
     print(f"serving http://localhost:{port}/ — watching {watched}", flush=True)
@@ -465,7 +481,7 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
     proj_mtimes: dict[str, dict[Path, float]] = {n: project_sources(n) for n in projects}
     try:
         while True:
-            current_blog = {p: p.stat().st_mtime for p in SRC.glob("*.txt")}
+            current_blog = {p: p.stat().st_mtime for p in source_files()}
             if current_blog != blog_mtimes:
                 if blog_mtimes:
                     print("blog change — rebuilding", flush=True)

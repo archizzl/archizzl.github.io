@@ -1,7 +1,0 @@
-title: 
-date: 2026-09-18
-description: 
-tags: 
-status: draft
----
-blah blah
