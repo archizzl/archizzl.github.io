@@ -1,0 +1,10 @@
+{
+  "name": "archizzl.github.io",
+  "private": true,
+  "description": "Shortcuts for blog/build.py. Extra flags pass through, e.g. npm run dev -- --port=9000",
+  "scripts": {
+    "dev": "python3 blog/build.py --watch",
+    "dev:blog": "python3 blog/build.py --watch --no-projects",
+    "build": "python3 blog/build.py"
+  }
+}

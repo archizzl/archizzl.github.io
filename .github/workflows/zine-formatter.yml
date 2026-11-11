@@ -1,16 +1,10 @@
 name: Build zine-formatter
 
-# Fires whenever something under _zine-formatter/ changes on main.
-# The workflow itself commits back to projects/zine-formatter/ — that path is
-# NOT in the trigger, so a build commit does not retrigger the workflow.
-# `[skip ci]` in the commit message is a second guard.
+# Manual only (Actions tab > Run workflow). The site deploys from main, and
+# builds are done locally with `npm run dev` and committed, so an automatic
+# run here would push a second build commit and make local pushes fail.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "_zine-formatter/**"
-      - ".github/workflows/zine-formatter.yml"
-  workflow_dispatch: # lets you kick a rebuild by hand from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write # needed so GITHUB_TOKEN can push the built files back

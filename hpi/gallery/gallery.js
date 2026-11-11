@@ -18,11 +18,17 @@
 //   carry featured: true. The homepage thumbnail is a random starred item
 //   (an embed shows its thumb); with nothing starred, any image.
 //
-// ?gallery=<id> in the URL opens that gallery straight to its grid (bare
-// ?gallery opens the first). Not a #hash: that's the blog tag filter.
+// The URL follows the viewer, so any view can be linked to:
+// - ?gallery=<id> opens that gallery on its grid (bare ?gallery opens the
+//   first). Not a #hash: that's the blog tag filter.
+// - &item=<key> opens one item instead. An image's key is its public ID; an
+//   embed or link's is its title (or URL) as a slug, e.g. item=my-song.
+// Moving around the viewer updates these with replaceState, and closing it
+// removes them.
 //
 // Gallery pages (/photo/, /design/): an element with data-gallery-page="<id>"
-// shows just that gallery, open on its grid. Closing it goes to the homepage.
+// shows just that gallery, open on its grid (or on ?item=<key>). Closing it
+// goes to the homepage.
 (function () {
   var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/';
   // Data files sit next to this script, wherever the page is.
@@ -50,6 +56,10 @@
       if (!r.ok) throw new Error(r.status);
       return r.json();
     });
+  }
+  function slug(s) {
+    return String(s || '').toLowerCase().replace(/^https?:\/\/(www\.)?/, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
   }
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -109,12 +119,26 @@
     var toggle = dialog.querySelector('.gallery-toggle');
 
     var ids = [];     // items in order: image public IDs or embed/link objects
+    var keys = [];    // item index -> its key in the URL (?item=)
     var groupOf = []; // item index -> its group in `groups`
     var groups = [];  // [{ title, description, items }]
     var index = 0;
     // Bumped on every image change so a slow load for an image we've already
     // moved past doesn't overwrite the current one.
     var token = 0;
+
+    // Keep the address bar pointing at what's on screen: item is a key for
+    // the single view, '' for the grid, null once the viewer is closed.
+    function setURL(item) {
+      var u = new URL(location.href);
+      if (!pageMode) {
+        if (item === null) u.searchParams.delete('gallery');
+        else u.searchParams.set('gallery', cfg.id);
+      }
+      if (item) u.searchParams.set('item', item);
+      else u.searchParams.delete('item');
+      if (u.href !== location.href) history.replaceState(history.state, '', u);
+    }
 
     function showPhoto(i) {
       index = (i + ids.length) % ids.length;
@@ -133,6 +157,7 @@
       grid.hidden = true;
       toggle.hidden = false;
       fitFrame(); // needs the single view visible to measure it
+      setURL(keys[index]);
       // Warm the cache for the neighbours so arrowing feels instant.
       [index - 1, index + 1].forEach(function (j) {
         var n = ids[(j + ids.length) % ids.length];
@@ -214,7 +239,7 @@
       photo.replaceWith(blank);
       photo = blank;
     }
-    dialog.addEventListener('close', stopExtra);
+    dialog.addEventListener('close', function () { stopExtra(); setURL(null); });
 
     // Scale an embed to fit the space, keeping its own aspect ratio.
     // Height only (e.g. Spotify's width="100%"): fill the width, keep the
@@ -248,6 +273,7 @@
       counter.textContent = cfg.label + ' \u00b7 ' + ids.length;
       toggle.hidden = true;
       stopExtra();
+      setURL('');
       var cur = grid.querySelector('[data-i="' + index + '"]');
       if (cur) cur.scrollIntoView({ block: 'nearest' });
     }
@@ -280,8 +306,17 @@
 
       ids = [];
       groupOf = [];
+      keys = [];
+      var seen = {};
       groups.forEach(function (g, gi) {
-        g.items.forEach(function (item) { ids.push(item); groupOf.push(gi); });
+        g.items.forEach(function (item) {
+          var key = isImage(item) ? item
+            : slug(item.title) || slug(item.url || item.src) || 'item';
+          // Two embeds with the same title get my-song, my-song-2, ...
+          for (var n = 2, base = key; seen[key]; n++) key = base + '-' + n;
+          seen[key] = true;
+          ids.push(item); groupOf.push(gi); keys.push(key);
+        });
       });
     }
 
@@ -397,13 +432,18 @@
       img.addEventListener('load', place);
       img.src = isImage(ids[start]) ? url(ids[start], PREVIEW) : thumbURL(ids[start].thumb, PREVIEW);
       if (!g.pageMode) thumb.hidden = false;
+      // A real link too, so it can be copied or opened in a new tab.
+      thumb.href = '?gallery=' + encodeURIComponent(cfg.id) + '&item=' + encodeURIComponent(keys[start]);
       thumb.addEventListener('click', function (e) { e.preventDefault(); open(start); });
       renderGrid();
       place();
     }).catch(function () {});
-    g.openGrid = function () {
+    // Open on the item with this key, or on the grid if there's no such item.
+    g.openAt = function (key) {
       return g.ready.then(function () {
         if (!ids.length) return;
+        var i = key ? keys.indexOf(key) : -1;
+        if (i >= 0) { open(i); return; }
         showGrid();
         dialog.showModal();
       });
@@ -462,7 +502,7 @@
         if (!cfg) { location.replace(HOME); return; }
         pageMode = true;
         var g = createGallery(cfg);
-        g.openGrid();
+        g.openAt(new URLSearchParams(location.search).get('item'));
         g.dialog.addEventListener('close', function () { location.href = HOME; });
       }).catch(function () {});
       return;
@@ -472,11 +512,11 @@
   }
   function start(list) {
     galleries = list.map(createGallery);
-    var m = location.search.match(/[?&]gallery(?:=([^&]*))?(?:&|$)/);
-    if (m) {
-      var want = m[1] ? decodeURIComponent(m[1]) : list[0].id;
+    var params = new URLSearchParams(location.search);
+    if (params.has('gallery')) {
+      var want = params.get('gallery') || list[0].id;
       var g = galleries.filter(function (x) { return x.cfg.id === want; })[0];
-      if (g) g.openGrid();
+      if (g) g.openAt(params.get('item'));
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

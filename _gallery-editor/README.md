@@ -96,7 +96,13 @@ gallery there (× or Esc) goes to the homepage. These are the links to share.
 The pages are `photo/index.html` and `design/index.html`.
 
 `archizzl.com/?gallery=photo` (or `=design`) also works. It opens the
-gallery on top of the homepage instead.
+gallery on top of the homepage instead. Opening a portfolio from the
+homepage thumbnail puts this in the address bar.
+
+To link one item, add `item=`: `archizzl.com/photo/?item=<public ID>` or
+`archizzl.com/?gallery=photo&item=<public ID>`. An embed or link card's key
+is its title as a slug (`item=my-song`). You don't need to work these out:
+the address bar always shows the link to whatever is on screen.
 
 ## embeds (album players, articles)
 
