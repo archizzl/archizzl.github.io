@@ -3,6 +3,9 @@
 Build the blog: reads text files in blog/src/ (published) and blog/drafts/
 (drafts, gitignored), writes HTML posts to blog/ and regenerates
 blog/posts.json. To publish a draft, move it from blog/drafts/ to blog/src/.
+Every build also writes the portfolio pages /<gallery>/ and
+/<gallery>/<item>/ with link-preview tags (see gallery_pages.py); --watch
+rewrites them when a hpi/gallery/ JSON file changes.
 
 With --watch, also builds the vite projects (set-splitter, zine-formatter —
 whichever are present) into projects/<name>/ and rebuilds each on source
@@ -49,6 +52,8 @@ from html import escape
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import quote
+
+from gallery_pages import GALLERY_DIR, build_gallery_pages
 
 ROOT = Path(__file__).resolve().parent
 SITE_ROOT = ROOT.parent
@@ -343,6 +348,21 @@ def build(include_drafts: bool = False) -> None:
     else:
         print(f"built {published} post(s)")
 
+    gallery_pages()
+
+
+def gallery_pages() -> None:
+    """Per-item gallery pages with link-preview tags (see gallery_pages.py).
+    A failure here shouldn't stop the blog build."""
+    try:
+        build_gallery_pages()
+    except Exception as e:  # noqa: BLE001
+        print(f"gallery pages failed: {e}", file=sys.stderr)
+
+
+def gallery_sources() -> dict[Path, float]:
+    return {p: p.stat().st_mtime for p in GALLERY_DIR.glob("**/*.json")}
+
 
 def write_feed(entries: list[dict]) -> None:
     items = []
@@ -479,6 +499,7 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
 
     blog_mtimes: dict[Path, float] = {}
     proj_mtimes: dict[str, dict[Path, float]] = {n: project_sources(n) for n in projects}
+    gallery_mtimes = gallery_sources()
     try:
         while True:
             current_blog = {p: p.stat().st_mtime for p in source_files()}
@@ -492,6 +513,12 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
                     except Exception as e:  # noqa: BLE001
                         print(f"blog build failed: {e}", flush=True)
                 blog_mtimes = current_blog
+
+            # The gallery editor saves sections.json; refresh the item pages.
+            current_gallery = gallery_sources()
+            if current_gallery != gallery_mtimes:
+                gallery_mtimes = current_gallery
+                gallery_pages()
 
             for name in projects:
                 current_proj = project_sources(name)

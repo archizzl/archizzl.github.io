@@ -18,22 +18,30 @@
 //   carry featured: true. The homepage thumbnail is a random starred item
 //   (an embed shows its thumb); with nothing starred, any image.
 //
-// The URL follows the viewer, so any view can be linked to:
-// - ?gallery=<id> opens that gallery on its grid (bare ?gallery opens the
-//   first). Not a #hash: that's the blog tag filter.
-// - &item=<key> opens one item instead. An image's key is its public ID; an
-//   embed or link's is its title (or URL) as a slug, e.g. item=my-song.
-// Moving around the viewer updates these with replaceState, and closing it
-// removes them.
+// The address bar follows the viewer, so any view can be linked to:
+// /<id>/ for a gallery's grid and /<id>/<key>/ for one item. An image's key
+// is its public ID; an embed or link's is its title (or URL) as a slug, e.g.
+// /design/my-song/. blog/gallery_pages.py writes a page at each of those
+// paths with link-preview tags (crawlers don't run this script), and keys
+// and order there must match arrange() here. 404.html sends an item with no
+// page yet on to /<id>/?item=<key>.
+// On the homepage the viewer opens in place and the address bar moves to
+// those paths with replaceState; closing it puts the homepage URL back.
+// Old links: ?gallery=<id> (bare ?gallery opens the first) and
+// &item=<key> on the homepage still work. Not a #hash: that's the blog tag
+// filter.
 //
-// Gallery pages (/photo/, /design/): an element with data-gallery-page="<id>"
-// shows just that gallery, open on its grid (or on ?item=<key>). Closing it
-// goes to the homepage.
+// Gallery pages: an element with data-gallery-page="<id>" (and optionally
+// data-gallery-item="<key>") shows just that gallery, open on that item or
+// its grid. Closing it goes to the homepage.
 (function () {
   var CLOUD = 'https://res.cloudinary.com/do45g1bvk/image/';
   // Data files sit next to this script, wherever the page is.
   var BASE = new URL('.', document.currentScript.src).href;
   var HOME = new URL('../../', BASE).href;
+  // Keys that can be a folder name (same rule as gallery_pages.py); others
+  // are linked as /<id>/?item=<key>.
+  var PATH_SAFE = /^[A-Za-z0-9_-][A-Za-z0-9_.-]*$/;
   var THUMB = 'c_fill,g_auto,w_300,h_300,f_auto,q_auto';
   var PREVIEW = 'c_limit,w_400,h_400,f_auto,q_auto';
   var FULL = 'c_limit,w_2000,h_2000,f_auto,q_auto';
@@ -127,17 +135,40 @@
     // moved past doesn't overwrite the current one.
     var token = 0;
 
-    // Keep the address bar pointing at what's on screen: item is a key for
-    // the single view, '' for the grid, null once the viewer is closed.
+    // Keep the address bar and tab title on what's on screen: item is a key
+    // for the single view, '' for the grid, null once the viewer is closed.
+    var homeURL = null, homeTitle = document.title;
     function setURL(item) {
-      var u = new URL(location.href);
-      if (!pageMode) {
-        if (item === null) u.searchParams.delete('gallery');
-        else u.searchParams.set('gallery', cfg.id);
+      var u;
+      if (item === null) {
+        if (pageMode || homeURL === null) return;
+        u = homeURL;
+        homeURL = null;
+        document.title = homeTitle;
+      } else {
+        if (!pageMode && homeURL === null) {
+          // Remember the homepage URL to go back to, minus old-style params.
+          var h = new URL(location.href);
+          h.searchParams.delete('gallery');
+          h.searchParams.delete('item');
+          homeURL = h.href;
+        }
+        u = item ? itemURL(item) : pageURL();
+        document.title = titleFor(item);
       }
-      if (item) u.searchParams.set('item', item);
-      else u.searchParams.delete('item');
-      if (u.href !== location.href) history.replaceState(history.state, '', u);
+      if (u !== location.href) history.replaceState(history.state, '', u);
+    }
+    function pageURL() { return HOME + encodeURIComponent(cfg.id) + '/'; }
+    function itemURL(key) {
+      return PATH_SAFE.test(key) ? pageURL() + key + '/' : pageURL() + '?item=' + encodeURIComponent(key);
+    }
+    // Same titles as the generated pages.
+    function titleFor(key) {
+      var i = key ? keys.indexOf(key) : -1;
+      if (i < 0) return cfg.label + ' \u2014 archie';
+      var item = ids[i];
+      var name = (!isImage(item) && item.title) || groups[groupOf[i]].title;
+      return (name ? name + ' \u2014 ' : '') + cfg.label + ' \u2014 archie';
     }
 
     function showPhoto(i) {
@@ -433,7 +464,7 @@
       img.src = isImage(ids[start]) ? url(ids[start], PREVIEW) : thumbURL(ids[start].thumb, PREVIEW);
       if (!g.pageMode) thumb.hidden = false;
       // A real link too, so it can be copied or opened in a new tab.
-      thumb.href = '?gallery=' + encodeURIComponent(cfg.id) + '&item=' + encodeURIComponent(keys[start]);
+      thumb.href = itemURL(keys[start]);
       thumb.addEventListener('click', function (e) { e.preventDefault(); open(start); });
       renderGrid();
       place();
@@ -502,7 +533,7 @@
         if (!cfg) { location.replace(HOME); return; }
         pageMode = true;
         var g = createGallery(cfg);
-        g.openAt(new URLSearchParams(location.search).get('item'));
+        g.openAt(page.dataset.galleryItem || new URLSearchParams(location.search).get('item'));
         g.dialog.addEventListener('close', function () { location.href = HOME; });
       }).catch(function () {});
       return;

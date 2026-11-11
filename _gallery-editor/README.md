@@ -99,10 +99,21 @@ The pages are `photo/index.html` and `design/index.html`.
 gallery on top of the homepage instead. Opening a portfolio from the
 homepage thumbnail puts this in the address bar.
 
-To link one item, add `item=`: `archizzl.com/photo/?item=<public ID>` or
-`archizzl.com/?gallery=photo&item=<public ID>`. An embed or link card's key
-is its title as a slug (`item=my-song`). You don't need to work these out:
-the address bar always shows the link to whatever is on screen.
+Every item has its own link: `archizzl.com/photo/<public ID>/`. An embed
+or link card's is its title as a slug (`archizzl.com/design/my-song/`). You
+don't need to work these out: the address bar always shows the link to
+whatever is on screen, including when the gallery is opened from the
+homepage.
+
+Those links get a proper preview when shared (iMessage, Slack, etc.): the
+section title, its description and the image. `npm run build` (or
+`npm run dev`, which also redoes it whenever you save in the editor) writes
+a small page for each item from `sections.json` and the Cloudinary tag, via
+`blog/gallery_pages.py`. Commit the `photo/` and `design/` folders with
+`sections.json`. A photo tagged since the last build still opens from its
+link (`404.html` forwards it), it just shows the generic preview until you
+rebuild. Don't hand-edit `photo/index.html` or `design/index.html`: they're
+generated too.
 
 ## embeds (album players, articles)
 

@@ -8,6 +8,10 @@ Before adding or restyling a page, read `STYLE.md`.
 
 The root `package.json` only wraps `blog/build.py` (no dependencies): `npm run dev` (watch + preview server + Vite builds), `npm run dev:blog` (same without Vite builds), `npm run build` (one-shot blog build). Extra flags pass through: `npm run dev -- --port=9000`.
 
+## Portfolio galleries
+
+`hpi/gallery/gallery.js` is the viewer; `_gallery-editor/README.md` explains the data. Every build (`npm run build`, and `npm run dev` whenever a `hpi/gallery/*.json` changes) runs `blog/gallery_pages.py`, which writes `<gallery>/index.html` and one `<gallery>/<item>/index.html` per item with link-preview meta tags. It reads the live Cloudinary tag list, so it needs the network (it falls back to `photos.json`). Commit the generated pages; don't hand-edit them. Item keys and order in `gallery_pages.py` must match `arrange()` in `gallery.js`. `404.html` forwards `/<gallery>/<key>/` with no page yet to `/<gallery>/?item=<key>`.
+
 ## Vite projects (set-splitter, zine-formatter)
 
 Each app has its source in `_<name>/` (Vite + TypeScript). The site serves the built copy in `projects/<name>/`.
