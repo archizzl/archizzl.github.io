@@ -270,7 +270,16 @@
       photo.replaceWith(blank);
       photo = blank;
     }
-    dialog.addEventListener('close', function () { stopExtra(); setURL(null); });
+    // Runs when the viewer closes, however it closes. Called directly from
+    // the × button and Esc as well as from the 'close' event, which can
+    // arrive late (or, in a hidden tab, not at all); repeat calls do nothing.
+    function onClosed() {
+      stopExtra();
+      setURL(null);
+      if (g.onClose) g.onClose();
+    }
+    dialog.addEventListener('close', onClosed);
+    dialog.addEventListener('cancel', function () { setTimeout(function () { if (!dialog.open) onClosed(); }); });
 
     // Scale an embed to fit the space, keeping its own aspect ratio.
     // Height only (e.g. Spotify's width="100%"): fill the width, keep the
@@ -407,7 +416,7 @@
     toggle.addEventListener('click', showGrid);
     dialog.querySelector('.gallery-prev').addEventListener('click', function () { showPhoto(index - 1); });
     dialog.querySelector('.gallery-next').addEventListener('click', function () { showPhoto(index + 1); });
-    dialog.querySelector('.gallery-close').addEventListener('click', function () { dialog.close(); });
+    dialog.querySelector('.gallery-close').addEventListener('click', function () { dialog.close(); onClosed(); });
 
     // Listen on the document, not the dialog: clicking a blank spot can leave
     // focus on <body>, and key presses would then never reach the dialog.
@@ -534,7 +543,7 @@
         pageMode = true;
         var g = createGallery(cfg);
         g.openAt(page.dataset.galleryItem || new URLSearchParams(location.search).get('item'));
-        g.dialog.addEventListener('close', function () { location.href = HOME; });
+        g.onClose = function () { g.onClose = null; location.href = HOME; };
       }).catch(function () {});
       return;
     }

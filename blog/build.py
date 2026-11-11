@@ -12,7 +12,8 @@ New posts start from blog/src/template.txt, which says 'status: draft', so
 a copy made in either folder stays a draft until you change that line.
 Every build also writes the portfolio pages /<gallery>/ and
 /<gallery>/<item>/ with link-preview tags (see gallery_pages.py); --watch
-rewrites them when a hpi/gallery/ JSON file changes.
+rewrites them when a hpi/gallery/ JSON file, gallery.js or gallery.css
+changes.
 
 With --watch, also builds the vite projects (set-splitter, zine-formatter —
 whichever are present) into projects/<name>/ and rebuilds each on source
@@ -407,7 +408,8 @@ def gallery_pages() -> None:
 
 
 def gallery_sources() -> dict[Path, float]:
-    return {p: p.stat().st_mtime for p in GALLERY_DIR.glob("**/*.json")}
+    files = [*GALLERY_DIR.glob("**/*.json"), *GALLERY_DIR.glob("gallery.*")]
+    return {p: p.stat().st_mtime for p in files}
 
 
 def write_feed(entries: list[dict]) -> None:
