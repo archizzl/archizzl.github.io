@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """
 Build the blog: reads text files in blog/src/ (published) and blog/drafts/
-(drafts, gitignored), writes HTML posts to blog/ and regenerates
-blog/posts.json. To publish a draft, move it from blog/drafts/ to blog/src/.
+(drafts, gitignored), writes HTML posts to blog/posts/ and regenerates
+blog/posts.json and blog/feed.xml. Those outputs only ever hold published
+posts.
+
+Publishing is set by a post's status line: 'status: live' on a draft moves
+it to blog/src/ at the next build (or just move it yourself), and
+'status: draft' on a post in blog/src/ moves it back to blog/drafts/.
+New posts start from blog/src/template.txt, which says 'status: draft', so
+a copy made in either folder stays a draft until you change that line.
 Every build also writes the portfolio pages /<gallery>/ and
 /<gallery>/<item>/ with link-preview tags (see gallery_pages.py); --watch
 rewrites them when a hpi/gallery/ JSON file changes.
@@ -23,6 +30,7 @@ Source format (blog/src/my-slug.txt, or blog/drafts/my-slug.txt):
     title: My First Post
     date: 2026-09-16
     tags: personal, tech
+    status: draft            (or live; see above)
     ---
     Body text. Paragraphs are separated by blank lines.
 
@@ -35,7 +43,9 @@ Source format (blog/src/my-slug.txt, or blog/drafts/my-slug.txt):
     Raw HTML is passed through.
 
 The filename (without .txt) becomes the URL slug. Everything in
-blog/drafts/ is a draft: only visible via --watch, and never committed.
+blog/drafts/ is a draft: only visible via --watch, which builds drafts into
+blog/.preview/ (gitignored) and serves that over blog/, so they're never in
+a tracked file.
 """
 
 import functools
@@ -79,6 +89,11 @@ TEMPLATE = SRC / "template.txt"
 POSTS_DIR = ROOT / "posts"
 MANIFEST = ROOT / "posts.json"
 FEED = ROOT / "feed.xml"
+# Gitignored too. --watch builds drafts here (posts/<slug>/ and a posts.json
+# that includes them), never into the tracked POSTS_DIR / MANIFEST, and the
+# preview server serves this folder on top of blog/. So committing while
+# --watch runs can't publish a draft.
+PREVIEW = ROOT / ".preview"
 
 SITE_URL = "https://archizzl.com"
 SITE_TITLE = "archie"
@@ -242,13 +257,44 @@ def source_files() -> list[Path]:
     return files
 
 
+def post_status(txt: Path) -> str:
+    """The post's 'status:' line, lowercased ('' if none)."""
+    try:
+        meta, _ = parse_source(txt.read_text(encoding="utf-8"))
+    except ValueError:
+        return ""
+    return meta.get("status", "").strip().lower()
+
+
+def sort_by_status() -> None:
+    """A post's status decides where it lives: 'status: live' in drafts/
+    moves it to src/ (published, committed); 'status: draft' in src/ moves
+    it back to drafts/ (gitignored)."""
+    DRAFTS.mkdir(exist_ok=True)
+    moves = [(t, SRC) for t in sorted(DRAFTS.glob("*.txt")) if post_status(t) == "live"]
+    moves += [(t, DRAFTS) for t in sorted(SRC.glob("*.txt"))
+              if t.resolve() != TEMPLATE.resolve() and post_status(t) == "draft"]
+    for txt, dest in moves:
+        target = dest / txt.name
+        if target.exists():
+            print(f"warning: can't move {txt.relative_to(SITE_ROOT)}: "
+                  f"{target.relative_to(SITE_ROOT)} already exists", file=sys.stderr)
+            continue
+        txt.rename(target)
+        what = "published" if dest == SRC else "unpublished (back to drafts)"
+        print(f"{txt.stem}: {what} — moved to {target.relative_to(SITE_ROOT)}")
+
+
 def build(include_drafts: bool = False) -> None:
     if not SRC.exists():
         print(f"no src directory at {SRC}", file=sys.stderr)
         sys.exit(1)
     POSTS_DIR.mkdir(exist_ok=True)
 
+    sort_by_status()
     refresh_template_date()
+    # Rebuilt from scratch each time; gone entirely after a plain build.
+    shutil.rmtree(PREVIEW, ignore_errors=True)
 
     entries: list[dict] = []
     seen_slugs: set[str] = set()
@@ -271,12 +317,6 @@ def build(include_drafts: bool = False) -> None:
             sys.exit(1)
 
         is_draft = txt.parent == DRAFTS
-        if not is_draft and meta.get("status", "").strip().lower() == "draft":
-            print(
-                f"warning: {txt.name} says 'status: draft' but is in blog/src/, "
-                "so it's committed and published. Move it to blog/drafts/.",
-                file=sys.stderr,
-            )
         if is_draft and not include_drafts:
             # Skip drafts entirely in production builds.
             seen_slugs.discard(slug)  # allow cleanup to remove any stale dir
@@ -301,8 +341,8 @@ def build(include_drafts: bool = False) -> None:
             tags_html = ""
 
         body_html = render_body(body)
-        post_dir = POSTS_DIR / slug
-        post_dir.mkdir(exist_ok=True)
+        post_dir = (PREVIEW / "posts" if is_draft else POSTS_DIR) / slug
+        post_dir.mkdir(parents=True, exist_ok=True)
         robots_meta = '<meta name="robots" content="noindex">\n' if is_draft else ""
         html = POST_TEMPLATE.format(
             title=escape(title),
@@ -331,13 +371,19 @@ def build(include_drafts: bool = False) -> None:
     # Feed never contains drafts, even in preview mode.
     write_feed([e for e in entries if e.get("status") != "draft"])
 
-    # Strip internal-only fields before writing the public manifest.
+    # Strip internal-only fields before writing the manifests. The tracked
+    # one never lists drafts; the preview one (served by --watch) does.
     manifest = [{k: v for k, v in e.items() if not k.startswith("_")} for e in entries]
-    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    published_manifest = [e for e in manifest if e.get("status") != "draft"]
+    MANIFEST.write_text(json.dumps(published_manifest, indent=2) + "\n", encoding="utf-8")
+    if draft_count:
+        (PREVIEW / "posts.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
-    # Clean up stale generated post directories.
+    # Clean up stale generated post directories (including any draft that
+    # an older version of this script built into posts/).
+    published_slugs = {e["slug"] for e in published_manifest}
     for existing in POSTS_DIR.iterdir():
-        if existing.is_dir() and existing.name not in seen_slugs:
+        if existing.is_dir() and existing.name not in published_slugs:
             for f in existing.iterdir():
                 f.unlink()
             existing.rmdir()
@@ -471,13 +517,29 @@ def site_handler() -> type:
         class Handler(mod.Handler):
             EDITOR_PATHS = ("/gallery-editor", "/gallery-editor/")
 
-        return Handler
+        base = Handler
+    else:
+        class Quiet(SimpleHTTPRequestHandler):
+            def log_message(self, *a, **k):
+                pass
 
-    class Quiet(SimpleHTTPRequestHandler):
-        def log_message(self, *a, **k):
-            pass
+        base = Quiet
 
-    return Quiet
+    class WithDrafts(base):
+        """Serves blog/.preview/ over blog/, so drafts show up in the preview
+        (their pages, and posts.json listing them) without being written to
+        tracked files."""
+
+        def translate_path(self, path):
+            real = super().translate_path(path)
+            try:
+                rel = Path(real).relative_to(ROOT)
+            except ValueError:
+                return real
+            overlay = PREVIEW / rel
+            return str(overlay) if rel.parts and overlay.exists() else real
+
+    return WithDrafts
 
 
 def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
@@ -495,7 +557,7 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
     print(f"serving http://localhost:{port}/ — watching {watched}", flush=True)
     urls = "".join(f", {n}: /projects/{n}/" for n in projects)
     print(f"open http://localhost:{port}/ (blog: /blog/posts/<slug>/{urls}, gallery editor: /gallery-editor/)", flush=True)
-    print("drafts included in preview; a clean build runs on Ctrl+C so it's safe to commit", flush=True)
+    print("drafts show in the preview only (built into blog/.preview/, gitignored); safe to commit any time", flush=True)
 
     blog_mtimes: dict[Path, float] = {}
     proj_mtimes: dict[str, dict[Path, float]] = {n: project_sources(n) for n in projects}
@@ -529,12 +591,8 @@ def watch_and_serve(port: int = 8000, build_projects: bool = True) -> None:
 
             time.sleep(0.4)
     except KeyboardInterrupt:
-        print("\nrunning clean build (drafts excluded) before exit…", flush=True)
-        try:
-            build(include_drafts=False)
-        except SystemExit:
-            print("clean build failed — run 'python3 blog/build.py' manually before committing", flush=True)
-        print("bye", flush=True)
+        shutil.rmtree(PREVIEW, ignore_errors=True)
+        print("\nbye", flush=True)
 
 
 if __name__ == "__main__":

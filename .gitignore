@@ -3,3 +3,4 @@ blog/images
 blog/drafts/
 __pycache__/
 .DS_Store
+blog/.preview/
