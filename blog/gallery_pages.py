@@ -218,7 +218,7 @@ def build_gallery_pages() -> None:
         featured = [i for i in config.get("featured", []) if i in sizes or (not live and i in images)]
         cover = featured[0] if featured else next((x["item"] for x in items if is_image(x["item"])), "")
         changed = write(out_dir / "index.html", page(
-            cfg, f"{base}/{gid}/", f"{label} — archie", f"archie o'connell — {label}",
+            cfg, f"{base}/{gid}/", label, label,
             "", image_url(cover) if cover else "", sizes.get(cover)))
 
         keep = set()
@@ -234,10 +234,10 @@ def build_gallery_pages() -> None:
             else:
                 img, size = (image_url(item["thumb"]) if item.get("thumb") else
                              image_url(cover) if cover else ""), sizes.get(item.get("thumb"))
-            title = f"{name} — {label} — archie" if name != label else f"{label} — archie"
-            og_title = f"{name} · archie o'connell's {label}" if name != label else f"archie o'connell — {label}"
+            # Just the item's or section's own title, nothing added
+            # (gallery.js titleFor() matches).
             changed |= write(out_dir / key / "index.html", page(
-                cfg, f"{base}/{gid}/{key}/", title, og_title,
+                cfg, f"{base}/{gid}/{key}/", name, name,
                 plain(x["description"]), img, size, key))
 
         # Remove pages for items that are gone, but only ones we generated,

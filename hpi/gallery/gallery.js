@@ -162,13 +162,13 @@
     function itemURL(key) {
       return PATH_SAFE.test(key) ? pageURL() + key + '/' : pageURL() + '?item=' + encodeURIComponent(key);
     }
-    // Same titles as the generated pages.
+    // Same titles as the generated pages: the item's or its section's own
+    // title, or the gallery's name when there's neither.
     function titleFor(key) {
       var i = key ? keys.indexOf(key) : -1;
-      if (i < 0) return cfg.label + ' \u2014 archie';
+      if (i < 0) return cfg.label;
       var item = ids[i];
-      var name = (!isImage(item) && item.title) || groups[groupOf[i]].title;
-      return (name ? name + ' \u2014 ' : '') + cfg.label + ' \u2014 archie';
+      return (!isImage(item) && item.title) || groups[groupOf[i]].title || cfg.label;
     }
 
     function showPhoto(i) {
