@@ -1,3 +1,5 @@
 .venv
 blog/images
 blog/drafts/
+__pycache__/
+.DS_Store
