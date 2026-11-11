@@ -1,0 +1,24 @@
+#!/bin/sh
+# Refuses commits that would publish a blog draft. Enabled per clone with:
+#   git config core.hooksPath .githooks
+# Skip it once, if you're sure: git commit --no-verify
+bad=""
+for f in $(git diff --cached --name-only --diff-filter=ACMR -- 'blog/src/*.txt' 'blog/posts/*' 'blog/posts.json'); do
+  case "$f" in
+    blog/src/template.txt) continue ;;
+    blog/src/*.txt)
+      git show ":$f" | sed '/^---$/q' | grep -qiE '^status:[[:space:]]*draft[[:space:]]*$' && bad="$bad
+  $f (status: draft)" ;;
+    blog/posts.json)
+      git show ":$f" | grep -q '"status": "draft"' && bad="$bad
+  $f (lists a draft)" ;;
+    blog/posts/*)
+      git show ":$f" | grep -q 'name="robots" content="noindex"' && bad="$bad
+  $f (a built draft)" ;;
+  esac
+done
+if [ -n "$bad" ]; then
+  echo "Not committing: these would publish a blog draft:$bad" >&2
+  echo "Run 'npm run build' (it moves status: draft posts back to blog/drafts/), then commit again." >&2
+  exit 1
+fi
