@@ -27,9 +27,12 @@
     "aki_s_divine_hammer_qv9qrs",
     "SBB102025_Jonathan_Bacdayan_cop7pg"
   ],
+  "backgrounds": {
+    "P1110897_hj0pqd": "#00010d",
+    "P1110869_h4x1wf": "#00010d"
+  },
   "hidden": [
-    "P1110941_qdne6m",
-    "P1110854_qzw3qg"
+    "P1110860_phopya"
   ],
   "sections": [
     {
@@ -39,7 +42,6 @@
         "P1110848_nxzora",
         "P1110852_qsf4s5",
         "P1110857_ormwoy",
-        "P1110860_phopya",
         "P1110869_h4x1wf",
         "P1110897_hj0pqd"
       ]
