@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/kate-freeman-cook",
+ "pieces": [
+  {
+   "id": "salted-earth",
+   "slug": "salted-earth",
+   "title": "Salted Earth",
+   "artistId": "kate-freeman-cook",
+   "artistName": "Kate Freeman-Cook",
+   "medium": "stone lithograph on Rives BFK paper",
+   "createdAt": "2026-10-20T16:45:13.001283+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5343e224-1232-4805-ff3f-b613f02e1200/public",
+   "year": 2025,
+   "price": 280,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=salted-earth",
+   "artistUrl": "https://iris.ooo/artists/kate-freeman-cook"
+  },
+  {
+   "id": "on-an-otherwise-smooth-horizon-2",
+   "slug": "on-an-otherwise-smooth-horizon-2",
+   "title": "On an otherwise smooth horizon",
+   "artistId": "kate-freeman-cook",
+   "artistName": "Kate Freeman-Cook",
+   "medium": "3 color full stone lithograph on mulberry paper",
+   "createdAt": "2026-10-20T16:39:41.818160+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/26d0c0dd-f939-4c51-8569-dbd1e4890a00/public",
+   "year": 2024,
+   "price": 180,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=on-an-otherwise-smooth-horizon-2",
+   "artistUrl": "https://iris.ooo/artists/kate-freeman-cook"
+  },
+  {
+   "id": "on-an-otherwise-smooth-horizon-1",
+   "slug": "on-an-otherwise-smooth-horizon-1",
+   "title": "On an otherwise smooth horizon",
+   "artistId": "kate-freeman-cook",
+   "artistName": "Kate Freeman-Cook",
+   "medium": "3 color full stone lithograph on mulberry paper",
+   "createdAt": "2026-10-20T16:33:57.018797+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5c8a377e-5643-4301-f7fb-3269c1be0600/public",
+   "year": 2024,
+   "price": 180,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=on-an-otherwise-smooth-horizon-1",
+   "artistUrl": "https://iris.ooo/artists/kate-freeman-cook"
+  }
+ ]
+}

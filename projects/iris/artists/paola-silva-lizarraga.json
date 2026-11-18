@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/paola-silva-lizarraga",
+ "pieces": [
+  {
+   "id": "if-youre-seeing-this-this-message-is-for-you",
+   "slug": "if-youre-seeing-this-this-message-is-for-you",
+   "title": "if you're seeing this, this message is for you",
+   "artistId": "paola-silva-lizarraga",
+   "artistName": "Paola Silva Lizárraga",
+   "medium": "Electronic interactive sculpture, Raspberry Pi 3B+, acrylic plexiglass frame",
+   "createdAt": "2026-11-10T16:16:28.318728+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0d8cf026-a488-4e96-f5e7-9a5ddf711e00/public",
+   "year": 2026,
+   "price": 777,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=if-youre-seeing-this-this-message-is-for-you",
+   "artistUrl": "https://iris.ooo/artists/paola-silva-lizarraga"
+  },
+  {
+   "id": "i-raise-my-flag-wax-figures-i",
+   "slug": "i-raise-my-flag-wax-figures-i",
+   "title": "I RAISE MY FLAG, WAX FIGURES I",
+   "artistId": "paola-silva-lizarraga",
+   "artistName": "Paola Silva Lizárraga",
+   "medium": "acrylic plexiglass inkjet print",
+   "createdAt": "2026-10-29T17:05:04.830896+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fd4e30fa-44bc-49d8-a9f2-48d8afa98900/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=i-raise-my-flag-wax-figures-i",
+   "artistUrl": "https://iris.ooo/artists/paola-silva-lizarraga"
+  },
+  {
+   "id": "declutters-vol-2",
+   "slug": "declutters-vol-2",
+   "title": "declutters vol. 2",
+   "artistId": "paola-silva-lizarraga",
+   "artistName": "Paola Silva Lizárraga",
+   "medium": "",
+   "createdAt": "2026-05-27T13:32:33.256755+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2f7cb771-a305-40fd-b2c7-6bf9004d2300/public",
+   "year": 2026,
+   "price": 50,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=declutters-vol-2",
+   "artistUrl": "https://iris.ooo/artists/paola-silva-lizarraga"
+  },
+  {
+   "id": "altar-for-salamanders-ii",
+   "slug": "altar-for-salamanders-ii",
+   "title": "Altar for Salamanders II",
+   "artistId": "paola-silva-lizarraga",
+   "artistName": "Paola Silva Lizárraga",
+   "medium": "Ink on paper",
+   "createdAt": "2026-02-23T19:35:37.347586+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e123fc80-6b67-4299-d643-73bb63347a00/public",
+   "year": 2025,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=altar-for-salamanders-ii",
+   "artistUrl": "https://iris.ooo/artists/paola-silva-lizarraga"
+  }
+ ]
+}

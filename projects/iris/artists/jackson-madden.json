@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/jackson-madden",
+ "pieces": [
+  {
+   "id": "a-wave-of-pale-dirt",
+   "slug": "a-wave-of-pale-dirt",
+   "title": "A Wave of Pale Dirt",
+   "artistId": "jackson-madden",
+   "artistName": "Jackson Madden",
+   "medium": "Oil on Canvas on Board",
+   "createdAt": "2026-04-16T19:26:43.390424+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a864a95b-05d8-4b6b-c521-8207585b8f00/public",
+   "year": 2026,
+   "price": 250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=a-wave-of-pale-dirt",
+   "artistUrl": "https://iris.ooo/artists/jackson-madden"
+  },
+  {
+   "id": "rarity",
+   "slug": "rarity",
+   "title": "Rarity",
+   "artistId": "jackson-madden",
+   "artistName": "Jackson Madden",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-04-16T19:21:44.482862+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5611173e-97a3-4829-1e29-96a67290fe00/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rarity",
+   "artistUrl": "https://iris.ooo/artists/jackson-madden"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/finn-odriscoll",
+ "pieces": [
+  {
+   "id": "untitled-new-mexico-1",
+   "slug": "untitled-new-mexico-1",
+   "title": "untitled - new mexico",
+   "artistId": "finn-odriscoll",
+   "artistName": "Finn O'Driscoll",
+   "medium": "chromogenic print - matte",
+   "createdAt": "2026-01-04T00:08:30.718176+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/560d07df-7098-499a-e2a2-9b2a41bccc00/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-new-mexico-1",
+   "artistUrl": "https://iris.ooo/artists/finn-odriscoll"
+  },
+  {
+   "id": "untitled-new-mexico",
+   "slug": "untitled-new-mexico",
+   "title": "untitled - new mexico",
+   "artistId": "finn-odriscoll",
+   "artistName": "Finn O'Driscoll",
+   "medium": "chromogenic print - matte",
+   "createdAt": "2026-01-02T02:54:18.409274+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e3afb638-614c-4daa-4ced-3d188310cf00/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-new-mexico",
+   "artistUrl": "https://iris.ooo/artists/finn-odriscoll"
+  }
+ ]
+}

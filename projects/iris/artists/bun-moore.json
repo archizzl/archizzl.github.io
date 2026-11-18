@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/bun-moore",
+ "pieces": [
+  {
+   "id": "you-will-never-see-the-heavenly-gates",
+   "slug": "you-will-never-see-the-heavenly-gates",
+   "title": "You Will Never See The Heavenly Gates",
+   "artistId": "bun-moore",
+   "artistName": "Bun Moore",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-05-19T18:16:38.820426+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e23d5710-a038-415e-1627-b99e31d86b00/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=you-will-never-see-the-heavenly-gates",
+   "artistUrl": "https://iris.ooo/artists/bun-moore"
+  },
+  {
+   "id": "untitled-chestplate",
+   "slug": "untitled-chestplate",
+   "title": "Untitled Chestplate",
+   "artistId": "bun-moore",
+   "artistName": "Bun Moore",
+   "medium": "Oil on Wood Panel",
+   "createdAt": "2026-05-12T14:40:46.976502+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/846bff3b-30ea-4f5f-9a7c-c96933cda600/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-chestplate",
+   "artistUrl": "https://iris.ooo/artists/bun-moore"
+  },
+  {
+   "id": "experiment",
+   "slug": "experiment",
+   "title": "Experiment",
+   "artistId": "bun-moore",
+   "artistName": "Bun Moore",
+   "medium": "Oil and Acrylic Molding Paste on Canvas",
+   "createdAt": "2026-03-26T18:31:44.487246+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e7e0868f-0a51-4903-939d-aa95307da300/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=experiment",
+   "artistUrl": "https://iris.ooo/artists/bun-moore"
+  }
+ ]
+}

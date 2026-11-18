@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/adrienne-akemi-hanson",
+ "pieces": [
+  {
+   "id": "pervert",
+   "slug": "pervert",
+   "title": "pervert",
+   "artistId": "adrienne-akemi-hanson",
+   "artistName": "Adrienne Akemi Hanson",
+   "medium": "oil on wood",
+   "createdAt": "2026-04-01T18:22:25.996386+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2a40e451-e48e-40f2-9e3a-fe95a2c16500/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pervert",
+   "artistUrl": "https://iris.ooo/artists/adrienne-akemi-hanson"
+  },
+  {
+   "id": "husk",
+   "slug": "husk",
+   "title": "husk",
+   "artistId": "adrienne-akemi-hanson",
+   "artistName": "Adrienne Akemi Hanson",
+   "medium": "oil on wood",
+   "createdAt": "2026-04-01T18:20:57.335766+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6e73a985-d062-48df-6b96-3a0effa35700/public",
+   "year": 2026,
+   "price": 150,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=husk",
+   "artistUrl": "https://iris.ooo/artists/adrienne-akemi-hanson"
+  }
+ ]
+}

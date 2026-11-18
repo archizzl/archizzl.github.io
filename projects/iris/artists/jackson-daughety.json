@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/jackson-daughety",
+ "pieces": [
+  {
+   "id": "moist-critical-theory",
+   "slug": "moist-critical-theory",
+   "title": "Moist Critical Theory",
+   "artistId": "jackson-daughety",
+   "artistName": "Jackson Daughety",
+   "medium": "Acrylic on Board",
+   "createdAt": "2026-05-21T18:57:13.722412+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c5479a5e-21c6-4d62-abc0-3dcef94a5700/public",
+   "year": 2025,
+   "price": 1400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=moist-critical-theory",
+   "artistUrl": "https://iris.ooo/artists/jackson-daughety"
+  },
+  {
+   "id": "germ-propaganda",
+   "slug": "germ-propaganda",
+   "title": "Germ Propaganda",
+   "artistId": "jackson-daughety",
+   "artistName": "Jackson Daughety",
+   "medium": "Ink, Acrylic on Stitched Canvas",
+   "createdAt": "2026-05-21T18:52:28.802746+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f117e94b-ab06-41f7-cd40-27af10f19900/public",
+   "year": 2025,
+   "price": 2000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=germ-propaganda",
+   "artistUrl": "https://iris.ooo/artists/jackson-daughety"
+  }
+ ]
+}

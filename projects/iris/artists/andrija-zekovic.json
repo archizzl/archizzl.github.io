@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/andrija-zekovic",
+ "pieces": [
+  {
+   "id": "untitled-58",
+   "slug": "untitled-58",
+   "title": "untitled",
+   "artistId": "andrija-zekovic",
+   "artistName": "Andrija Zeković",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-06-03T16:15:41.748777+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5c0a2118-8b9a-4f3c-9d3f-6e7974d33a00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-58",
+   "artistUrl": "https://iris.ooo/artists/andrija-zekovic"
+  },
+  {
+   "id": "untitled-57",
+   "slug": "untitled-57",
+   "title": "untitled",
+   "artistId": "andrija-zekovic",
+   "artistName": "Andrija Zeković",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-06-03T16:15:00.619138+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/03f4401c-5939-4a7c-bd27-a47168767300/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-57",
+   "artistUrl": "https://iris.ooo/artists/andrija-zekovic"
+  },
+  {
+   "id": "untitled-10",
+   "slug": "untitled-10",
+   "title": "untitled",
+   "artistId": "andrija-zekovic",
+   "artistName": "Andrija Zeković",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-01-31T18:54:59.709396+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e5d8a24d-4ad5-403c-a48c-e244ea137e00/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-10",
+   "artistUrl": "https://iris.ooo/artists/andrija-zekovic"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/monday-holland",
+ "pieces": [
+  {
+   "id": "summer-in-chainmail",
+   "slug": "summer-in-chainmail",
+   "title": "Summer In Chainmail",
+   "artistId": "monday-holland",
+   "artistName": "Monday Holland",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-28T04:34:32.669844+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8c694f6e-cadd-49b6-c8f3-287106550c00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=summer-in-chainmail",
+   "artistUrl": "https://iris.ooo/artists/monday-holland"
+  }
+ ]
+}

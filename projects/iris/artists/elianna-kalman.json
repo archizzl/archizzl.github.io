@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/elianna-kalman",
+ "pieces": [
+  {
+   "id": "euie",
+   "slug": "euie",
+   "title": "Euie",
+   "artistId": "elianna-kalman",
+   "artistName": "Elianna Kalman",
+   "medium": "Oil On Canvas",
+   "createdAt": "2026-07-30T20:16:18.326681+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c12623d8-d9c2-4ef8-abd7-0667e4025a00/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=euie",
+   "artistUrl": "https://iris.ooo/artists/elianna-kalman"
+  },
+  {
+   "id": "anatomy-of-a-treat",
+   "slug": "anatomy-of-a-treat",
+   "title": "Anatomy Of A Treat",
+   "artistId": "elianna-kalman",
+   "artistName": "Elianna Kalman",
+   "medium": "Charcoal and Oil On Wood",
+   "createdAt": "2026-07-30T19:25:37.042505+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/08a6b7d1-4b89-4678-692f-33e485ec5000/public",
+   "year": 2025,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=anatomy-of-a-treat",
+   "artistUrl": "https://iris.ooo/artists/elianna-kalman"
+  }
+ ]
+}

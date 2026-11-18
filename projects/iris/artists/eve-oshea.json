@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/eve-oshea",
+ "pieces": [
+  {
+   "id": "castelnou",
+   "slug": "castelnou",
+   "title": "Castelnou",
+   "artistId": "eve-oshea",
+   "artistName": "Eve O'Shea",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-29T23:05:22.553152+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e58e1a07-fef2-4099-e02c-1e3ab5548000/public",
+   "year": 2020,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=castelnou",
+   "artistUrl": "https://iris.ooo/artists/eve-oshea"
+  },
+  {
+   "id": "rockaway",
+   "slug": "rockaway",
+   "title": "Rockaway",
+   "artistId": "eve-oshea",
+   "artistName": "Eve O'Shea",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-29T23:01:09.237198+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2e6d3038-e577-4f8c-c7b1-a0f8fb03e800/public",
+   "year": 2020,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rockaway",
+   "artistUrl": "https://iris.ooo/artists/eve-oshea"
+  },
+  {
+   "id": "pathway-2",
+   "slug": "pathway-2",
+   "title": "Pathway",
+   "artistId": "eve-oshea",
+   "artistName": "Eve O'Shea",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-29T22:58:49.730673+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8d0719e9-fcbc-4c27-00bf-981bdddf1600/public",
+   "year": 2019,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pathway-2",
+   "artistUrl": "https://iris.ooo/artists/eve-oshea"
+  }
+ ]
+}
