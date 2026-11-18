@@ -53,6 +53,16 @@ def _http_url(v, field: str, where: str, https_only=False) -> str:
     return v
 
 
+HEX_COLOR = re.compile(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})")
+
+
+def _color(v, where: str) -> str:
+    v = str(v or "").strip()
+    if not HEX_COLOR.fullmatch(v):
+        raise ValueError(f"{where}: background must be a hex colour like #000000")
+    return v.lower()
+
+
 def clean_item(item, where: str):
     """An image public ID (string), or an embed / link object."""
     if isinstance(item, str):
@@ -63,6 +73,8 @@ def clean_item(item, where: str):
     text = {k: str(item[k]).strip() for k in ("title", "thumb", "source") if str(item.get(k) or "").strip()}
     if item.get("featured") is True:  # starred for the homepage thumbnail
         text["featured"] = True
+    if item.get("background"):  # single-view background colour
+        text["background"] = _color(item["background"], where)
     if kind == "embed":
         out = {"type": "embed", "src": _http_url(item.get("src"), "src", where, https_only=True)}
         for k in ("width", "height"):
@@ -78,9 +90,10 @@ def clean_item(item, where: str):
 
 
 def validate(data) -> dict:
-    """Normalise posted JSON into {featured: [...], sections: [{title,
-    description, items], hidden: [...]}. `featured` lists the starred images
-    the homepage thumbnail picks from. Older files used "photos" for the item
+    """Normalise posted JSON into {featured: [...], backgrounds: {...},
+    hidden: [...], sections: [{title, description, items}]}. `featured` lists
+    the starred images the homepage thumbnail picks from; `backgrounds` maps
+    image public IDs to the colour behind them in the single view. Older files used "photos" for the item
     list; that's still accepted."""
     if not isinstance(data, dict) or not isinstance(data.get("sections"), list):
         raise ValueError("expected {\"sections\": [...]}")
@@ -103,7 +116,14 @@ def validate(data) -> dict:
     if not isinstance(hidden, list):
         raise ValueError("hidden must be a list")
     hidden = [clean_item(h, f"hidden item {j + 1}") for j, h in enumerate(hidden)]
-    return {"featured": featured, "hidden": hidden, "sections": out}
+    backgrounds = data.get("backgrounds", {})
+    if not isinstance(backgrounds, dict):
+        raise ValueError("backgrounds must map public IDs to colours")
+    backgrounds = {str(k): _color(v, f"background for {k}") for k, v in backgrounds.items()}
+    result = {"featured": featured}
+    if backgrounds:
+        result["backgrounds"] = backgrounds
+    return {**result, "hidden": hidden, "sections": out}
 
 
 # ---- link previews ------------------------------------------------------

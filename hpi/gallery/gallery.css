@@ -38,7 +38,8 @@
   height: 100dvh;
   max-width: 100vw;
   max-height: 100dvh;
-  background: white;
+  background: var(--gallery-bg, white);
+  color: black;
 }
 .gallery-dialog[open] {
   display: flex;
@@ -105,7 +106,7 @@
   bottom: 16px;
   transform: translateX(-50%);
   padding: 0 6px;
-  background: white;
+  background: var(--gallery-bg, white);
   color: #888;
   font-size: 16px;
   pointer-events: none;
@@ -222,6 +223,20 @@
   border-radius: 3px;
   font-size: 13px;
   line-height: 1.4;
+}
+
+/* Single view on a dark background (per-image, see gallery.js) */
+.gallery-dialog.gallery-dark {
+  color: white;
+}
+.gallery-dark .gallery-bar,
+.gallery-dark .gallery-extra-caption a,
+.gallery-dark .gallery-single.loading::after {
+  color: #aaa;
+}
+.gallery-dialog.gallery-dark button {
+  border-color: #aaa;
+  color: white;
 }
 
 @media (max-width: 768px) {

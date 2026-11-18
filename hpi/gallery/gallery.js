@@ -14,6 +14,10 @@
 //   player (Bandcamp, Spotify, YouTube...), and
 //   {type: 'link', url, title, thumb, source} shows a card linking out
 //   (articles). `thumb` is a Cloudinary public ID or an image URL.
+// - sections.json's "backgrounds" maps image public IDs to a hex colour
+//   used behind them in the single view (default white); embeds and links
+//   carry background: '#…' themselves. Dark colours switch the controls
+//   to light ones. The grid stays white.
 // - sections.json's "featured" lists starred images, and starred embeds
 //   carry featured: true. The homepage thumbnail is a random starred item
 //   (an embed shows its thumb); with nothing starred, any image.
@@ -54,6 +58,14 @@
   // Embed/link thumbnails can be a Cloudinary public ID or any image URL.
   function thumbURL(src, t) { return /^https?:\/\//.test(src) ? src : url(src, t); }
   function isImage(item) { return typeof item === 'string'; }
+  var HEX = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
+  // Perceived lightness of a hex colour, 0 (black) to 1 (white).
+  function lightness(hex) {
+    var h = hex.slice(1);
+    if (h.length === 3) h = h.replace(/./g, '$&$&');
+    var n = parseInt(h, 16);
+    return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
+  }
   function hostOf(u) {
     try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; }
   }
@@ -130,6 +142,7 @@
     var keys = [];    // item index -> its key in the URL (?item=)
     var groupOf = []; // item index -> its group in `groups`
     var groups = [];  // [{ title, description, items }]
+    var backgrounds = {}; // image public ID -> single-view background colour
     var index = 0;
     // Bumped on every image change so a slow load for an image we've already
     // moved past doesn't overwrite the current one.
@@ -187,6 +200,7 @@
       single.hidden = false;
       grid.hidden = true;
       toggle.hidden = false;
+      setBackground(isImage(item) ? backgrounds[item] : item.background);
       fitFrame(); // needs the single view visible to measure it
       setURL(keys[index]);
       // Warm the cache for the neighbours so arrowing feels instant.
@@ -307,7 +321,17 @@
     }
     window.addEventListener('resize', function () { if (dialog.open && !single.hidden) fitFrame(); });
 
+    // The single view's background; null (or anything but a hex colour)
+    // puts the default white back.
+    function setBackground(c) {
+      var ok = typeof c === 'string' && HEX.test(c);
+      if (ok) dialog.style.setProperty('--gallery-bg', c);
+      else dialog.style.removeProperty('--gallery-bg');
+      dialog.classList.toggle('gallery-dark', ok && lightness(c) < 0.5);
+    }
+
     function showGrid() {
+      setBackground(null);
       single.hidden = true;
       grid.hidden = false;
       counter.textContent = cfg.label + ' \u00b7 ' + ids.length;
@@ -453,6 +477,7 @@
       getJSON(BASE + cfg.id + '/sections.json').catch(function () { return null; })
     ]).then(function (res) {
       arrange(res[0], res[1]);
+      backgrounds = (res[1] && res[1].backgrounds) || {};
       if (!ids.length) return;
       var starred = {};
       ((res[1] && res[1].featured) || []).forEach(function (id) { starred[id] = true; });

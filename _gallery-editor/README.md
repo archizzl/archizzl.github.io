@@ -88,6 +88,20 @@ everything else, so commit that file to publish them. Embeds can be starred
 too: they show their thumbnail on the homepage and open the player or card
 when clicked. An embed needs a thumbnail to be picked.
 
+### solo-view background
+
+When an image is open on its own, it sits on white. To put one on a dark
+colour instead, hover it in the editor and click **◐** (bottom right). Each
+click goes white → black → dark blue. For any other colour, select the
+images and pick **solo background → other colour…** in the bar at the
+bottom. A tile with a colour set shows it as a small swatch. Embeds and
+link cards can have one too.
+
+On a dark background the counter, arrows and buttons switch to light
+colours. The grid always stays white. Colours save into `sections.json`
+(`"backgrounds"` for images, `background` on an embed), so commit that file
+to publish them.
+
 ## links to the galleries
 
 Each portfolio has its own page, which opens straight onto its grid:

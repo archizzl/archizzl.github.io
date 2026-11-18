@@ -122,6 +122,14 @@
   .tile:hover .star, .tile .star.on { display: block; }
   .tile.extra .edit { left: 30px; } /* beside the star */
   .tile .star.on { color: #c9a000; border-color: #c9a000; }
+  .tile .bg {
+    position: absolute; right: 2px; bottom: 2px;
+    width: 22px; height: 18px; padding: 0; font-size: 12px; line-height: 1;
+    background: white; display: none;
+  }
+  .tile:hover .bg, .tile .bg.on { display: block; }
+  .tile .bg.on { box-shadow: 0 0 0 1px white; }
+  #bg-custom { width: 0; height: 0; padding: 0; border: 0; opacity: 0; }
   .section-head .selall, .pool-head .selall { white-space: nowrap; }
   .pool-head { display: flex; align-items: center; gap: 8px; }
   #starinfo { color: #888; font-size: 16px; margin: -6px 0 14px; }
@@ -158,6 +166,7 @@
 <p class="hint">
   drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
   <b>☆</b> on an image or embed stars it as a homepage thumbnail contender.
+  <b>◐</b> (bottom right) sets the background behind it when it's open on its own: click to go white → black → dark blue. select some and use <b>solo background</b> in the bar at the bottom for any other colour.
   <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
   sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled. anything in <b>hidden from view</b> (images or embeds) stays out of the public gallery until you move it back.
   changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
@@ -220,6 +229,14 @@
   <button id="move">move</button>
   <button id="star-sel" title="put these up for the homepage thumbnail">★ star</button>
   <button id="unstar-sel">☆ unstar</button>
+  <select id="bg-sel" title="background behind these when open on their own">
+    <option value="_">solo background…</option>
+    <option value="">white (default)</option>
+    <option value="#000000">black</option>
+    <option value="#0b1d3a">dark blue</option>
+    <option value="custom">other colour…</option>
+  </select>
+  <input type="color" id="bg-custom" value="#000000" tabindex="-1" aria-hidden="true">
   <button id="clearsel">clear</button>
 </div>
 
@@ -247,6 +264,10 @@
   // (any image, if none are starred). Images are saved in "featured";
   // embeds carry featured: true on themselves.
   var featured = {};    // public ID -> true
+  // Single-view background colours (default white). Images are saved in
+  // "backgrounds"; embeds carry background: '#…' on themselves.
+  var backgrounds = {}; // public ID -> '#rrggbb'
+  var BG_PRESETS = [['', 'white'], ['#000000', 'black'], ['#0b1d3a', 'dark blue']];
   var embedSeq = 0;
   var selected = {};    // id -> true
   // Every edit bumps `rev`; a save records the rev it wrote. Unsaved
@@ -306,11 +327,27 @@
       (noThumb ? ' (needs a thumbnail to show: add one with \u270e)' : '') + '">' +
       (on ? '\u2605' : '\u2606') + '</button>';
   }
+  function getBg(id) { return (isEmbed(id) ? embeds[id].background : backgrounds[id]) || ''; }
+  function setBg(id, c) {
+    if (isEmbed(id)) { if (c) embeds[id].background = c; else delete embeds[id].background; }
+    else if (c) backgrounds[id] = c;
+    else delete backgrounds[id];
+  }
+  function bgName(c) {
+    var p = BG_PRESETS.filter(function (x) { return x[0] === c; })[0];
+    return p ? p[1] : c;
+  }
+  function bgButton(id) {
+    var c = getBg(id);
+    return '<button class="bg' + (c ? ' on' : '') + '" title="solo background: ' + esc(bgName(c)) +
+      ' (click to change)"' + (c ? ' style="background:' + esc(c) + '"' : '') + '>' + (c ? '' : '\u25d0') + '</button>';
+  }
   function thumbSrc(t) { return /^https?:\/\//.test(t) ? t : CLOUD + t; }
   function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
   function serialize() {
     return {
       featured: Object.keys(featured),
+      backgrounds: backgrounds,
       hidden: hidden.map(function (k) { return isEmbed(k) ? embeds[k] : k; }),
       sections: sections.map(function (sec) {
         return {
@@ -342,14 +379,14 @@
         '" title="' + esc(label) + '">' +
         (em.thumb ? '<img loading="lazy" alt="" src="' + esc(thumbSrc(em.thumb)) + '">' : '<span class="label">' + esc(label) + '</span>') +
         '<span class="kind">' + (em.type === 'embed' ? '\u25b6 player' : '\u2197 link') + '</span>' +
-        starButton(id) +
+        starButton(id) + bgButton(id) +
         '<button class="edit" title="edit">\u270e</button>' +
         '<button class="x" title="delete">\u00d7</button></div>';
     }
     return '<div class="tile' + (selected[id] ? ' selected' : '') +
       '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) + '">' +
       '<img loading="lazy" alt="" src="' + CLOUD + esc(id) + '">' +
-      starButton(id) +
+      starButton(id) + bgButton(id) +
       (removable ? '<button class="x" title="back to unsorted">×</button>' : '') + '</div>';
   }
 
@@ -454,6 +491,16 @@
       render();
       return;
     }
+    var bg = e.target.closest('.tile .bg');
+    if (bg) {
+      // Cycle through the presets; a custom colour goes back to white.
+      var bid = bg.parentNode.dataset.id;
+      var at = BG_PRESETS.map(function (x) { return x[0]; }).indexOf(getBg(bid));
+      setBg(bid, at === -1 ? '' : BG_PRESETS[(at + 1) % BG_PRESETS.length][0]);
+      changed();
+      render();
+      return;
+    }
     var sa = e.target.closest('.selall');
     if (sa) {
       var items = zoneItems(sa.dataset.zone);
@@ -518,6 +565,25 @@
   }
   document.getElementById('star-sel').addEventListener('click', function () { starSelected(true); });
   document.getElementById('unstar-sel').addEventListener('click', function () { starSelected(false); });
+  var bgSel = document.getElementById('bg-sel');
+  var bgCustom = document.getElementById('bg-custom');
+  function bgSelected(c) {
+    Object.keys(selected).forEach(function (id) { setBg(id, c); });
+    changed();
+    render();
+  }
+  bgSel.addEventListener('change', function () {
+    var v = bgSel.value;
+    bgSel.value = '_';
+    if (v === 'custom') {
+      var ids = Object.keys(selected);
+      bgCustom.value = (ids.length && getBg(ids[0])) || '#000000';
+      if (bgCustom.showPicker) bgCustom.showPicker(); else bgCustom.click();
+    } else if (v !== '_') {
+      bgSelected(v);
+    }
+  });
+  bgCustom.addEventListener('change', function () { bgSelected(bgCustom.value.toLowerCase()); });
 
   // ---- embeds ----
   var dlg = document.getElementById('embed-dlg');
@@ -642,6 +708,7 @@
     if (thumb) obj.thumb = thumb;
 
     if (editingKey && embeds[editingKey].featured) obj.featured = true; // keep its star
+    if (editingKey && embeds[editingKey].background) obj.background = embeds[editingKey].background;
     if (editingKey) embeds[editingKey] = obj;
     else sections[addTo].items.push(newEmbedKey(obj));
     dlg.close();
@@ -817,6 +884,12 @@
     (res[1].featured || []).forEach(function (id) {
       if (live && !taggedSet[id]) removed++;
       else featured[id] = true;
+    });
+    backgrounds = {};
+    var bgs = res[1].backgrounds || {};
+    Object.keys(bgs).forEach(function (id) {
+      if (live && !taggedSet[id]) removed++;
+      else backgrounds[id] = bgs[id];
     });
     render();
     showStatus();
