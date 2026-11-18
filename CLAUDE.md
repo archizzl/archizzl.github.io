@@ -27,7 +27,9 @@ Each app has its source in `_<name>/` (Vite + TypeScript). The site serves the b
 
 ## Pushing
 
-Git in Claude sessions has no GitHub login, so pushes fail. Commit locally and ask the user to push:
+**Claude Code on the web (cloud sessions):** pushing works there. When the work is done, without being asked, push a branch, open a PR, and merge it into `main` so it goes live, unless the user says not to. Before merging, rebase on the latest `main`: the iris workflow commits to it every 6 hours.
+
+**Local sessions:** git has no GitHub login, so pushes fail. Commit locally and ask the user to push:
 
 ```bash
 cd ~/dev/archizzl.github.io && git push
