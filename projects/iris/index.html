@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <title>iris, on the wall</title>
+  <meta name="description" content="a random new piece from iris.ooo, every few minutes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: white;
+      color: black;
+      font-family: 'Calibri', 'Atkinson Hyperlegible', 'Helvetica', sans-serif;
+      font-size: 20px;
+      overflow: hidden;
+    }
+    a, a:visited { color: blue; text-decoration: none; }
+    a:hover { text-decoration: underline; opacity: 0.5; }
+
+    #frame {
+      position: fixed;
+      inset: 24px 24px 72px 24px;
+      cursor: pointer;
+    }
+    #frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    #frame img.shown { opacity: 1; }
+
+    #caption {
+      position: fixed;
+      left: 24px;
+      right: 24px;
+      bottom: 16px;
+      height: 44px;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-end;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: opacity 1.5s ease;
+    }
+    #caption.fading { opacity: 0; }
+    #title { font-style: italic; overflow: hidden; text-overflow: ellipsis; }
+    #meta { color: #666; font-size: 15px; overflow: hidden; text-overflow: ellipsis; }
+
+    #status {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 16px;
+    }
+    #status[hidden] { display: none; }
+
+    body.idle, body.idle #frame { cursor: none; }
+  </style>
+</head>
+<body>
+  <div id="frame" title="next piece">
+    <img alt="">
+    <img alt="">
+  </div>
+  <div id="caption">
+    <a id="title" target="_blank" rel="noopener"></a>
+    <div id="meta"></div>
+  </div>
+  <div id="status">finding something to look at…</div>
+
+  <script>
+    // pieces.json is refreshed from iris.ooo's front page by
+    // .github/workflows/iris.yml (see _iris/scrape.py).
+    // ?every=N sets minutes per piece (default 3).
+    const params = new URLSearchParams(location.search);
+    const EVERY_MS = Math.max(0.25, parseFloat(params.get('every')) || 3) * 60 * 1000;
+    const LIST_REFRESH_MS = 30 * 60 * 1000;
+
+    const imgs = document.querySelectorAll('#frame img');
+    const caption = document.getElementById('caption');
+    const titleEl = document.getElementById('title');
+    const metaEl = document.getElementById('meta');
+    const statusEl = document.getElementById('status');
+
+    let pieces = [];
+    let bag = [];          // shuffled ids still to show this round
+    let current = null;
+    let front = 0;         // which <img> is visible
+    let timer = null;
+    let busy = false;
+
+    async function loadList() {
+      try {
+        const res = await fetch('pieces.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        if (Array.isArray(data.pieces) && data.pieces.length) pieces = data.pieces;
+      } catch (e) {
+        console.warn('could not load pieces.json', e);
+      }
+    }
+
+    // shuffle-bag: every piece shows once before any repeats
+    function pick() {
+      const ids = new Set(pieces.map(p => p.id));
+      bag = bag.filter(id => ids.has(id));
+      if (!bag.length) {
+        bag = pieces.map(p => p.id).filter(id => pieces.length < 2 || id !== current?.id);
+        for (let i = bag.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [bag[i], bag[j]] = [bag[j], bag[i]];
+        }
+      }
+      const id = bag.pop();
+      return pieces.find(p => p.id === id);
+    }
+
+    function preload(url) {
+      return new Promise((resolve, reject) => {
+        const im = new Image();
+        im.onload = () => resolve(url);
+        im.onerror = reject;
+        im.src = url;
+      });
+    }
+
+    async function next() {
+      if (busy || !pieces.length) return;
+      busy = true;
+      clearTimeout(timer);
+      let piece = null;
+      for (let tries = 0; tries < 5 && !piece; tries++) {
+        const p = pick();
+        if (!p) break;
+        try { await preload(p.imageUrl); piece = p; } catch (e) { /* skip broken image */ }
+      }
+      if (piece) show(piece);
+      else if (!current) statusEl.textContent = "couldn't load any pieces. trying again soon.";
+      busy = false;
+      timer = setTimeout(next, piece ? EVERY_MS : 60 * 1000);
+    }
+
+    function show(piece) {
+      current = piece;
+      statusEl.hidden = true;
+      const back = 1 - front;
+      imgs[back].src = piece.imageUrl;
+      imgs[back].alt = `${piece.title} by ${piece.artistName}`;
+      imgs[back].classList.add('shown');
+      imgs[front].classList.remove('shown');
+      front = back;
+
+      caption.classList.add('fading');
+      setTimeout(() => {
+        titleEl.textContent = piece.title;
+        titleEl.href = piece.url;
+        const bits = [piece.artistName, piece.year, piece.medium && piece.medium.toLowerCase()];
+        metaEl.textContent = bits.filter(Boolean).join(' · ') + ' — on iris';
+        caption.classList.remove('fading');
+      }, titleEl.textContent ? 700 : 0); // first piece: no old caption to fade out
+    }
+
+    // click the picture, or press → / space, for the next one. f for fullscreen.
+    document.getElementById('frame').addEventListener('click', next);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+      if (e.key === 'f') {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else document.documentElement.requestFullscreen?.();
+      }
+    });
+
+    // hide the cursor when it sits still
+    let idleTimer;
+    document.addEventListener('mousemove', () => {
+      document.body.classList.remove('idle');
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+    });
+
+    (async () => {
+      await loadList();
+      if (!pieces.length) statusEl.textContent = "couldn't reach the list. trying again soon.";
+      next();
+      setInterval(loadList, LIST_REFRESH_MS);
+    })();
+  </script>
+</body>
+</html>
