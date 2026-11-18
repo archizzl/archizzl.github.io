@@ -129,7 +129,25 @@
   }
   .tile:hover .bg, .tile .bg.on { display: block; }
   .tile .bg.on { box-shadow: 0 0 0 1px white; }
-  #bg-custom { width: 0; height: 0; padding: 0; border: 0; opacity: 0; }
+
+  /* solo-background picker */
+  #bgpop {
+    position: fixed; z-index: 10; width: 200px;
+    background: white; border: 1px solid black; border-radius: 3px; padding: 8px;
+    display: flex; flex-flow: column; gap: 8px;
+  }
+  #bgpop[hidden] { display: none; }
+  #bgpop .lbl { color: #888; font-size: 13px; margin-bottom: -4px; }
+  #bgpop .swatches { display: flex; flex-wrap: wrap; gap: 4px; }
+  #bgpop .sw { width: 24px; height: 24px; padding: 0; border: 1px solid #888; }
+  #bgpop .sw:hover { opacity: 1; transform: scale(1.1); }
+  #bgpop .sw.cur { outline: 2px solid blue; outline-offset: 1px; }
+  #bgpop .sw.default { background: linear-gradient(to top right, white 45%, #b53a1a 45%, #b53a1a 55%, white 55%); }
+  #wheel { width: 182px; height: 182px; align-self: center; cursor: crosshair; touch-action: none; }
+  #bright { width: 100%; padding: 0; border: 0; }
+  #bgpop .hexrow { display: flex; gap: 6px; align-items: center; }
+  #bgpop .hexrow span { width: 24px; height: 24px; flex: none; border: 1px solid #888; border-radius: 3px; }
+  #bg-hex { font-size: 15px; font-family: ui-monospace, monospace; }
   .section-head .selall, .pool-head .selall { white-space: nowrap; }
   .pool-head { display: flex; align-items: center; gap: 8px; }
   #starinfo { color: #888; font-size: 16px; margin: -6px 0 14px; }
@@ -166,7 +184,7 @@
 <p class="hint">
   drag images between sections (drop on an image to put it before or after it). click images to select several, then move them all at once.
   <b>☆</b> on an image or embed stars it as a homepage thumbnail contender.
-  <b>◐</b> (bottom right) sets the background behind it when it's open on its own: click to go white → black → dark blue. select some and use <b>solo background</b> in the bar at the bottom for any other colour.
+  <b>◐</b> (bottom right) picks the background behind it when it's open on its own (default white). select several to set them all at once from the bar at the bottom.
   <b>+ embed</b> on a section adds an album player or article link card. embeds live only in their section (they're not cloudinary images).
   sections show in the gallery grid in this order, with the title and description above their images. unsorted images go last, untitled. anything in <b>hidden from view</b> (images or embeds) stays out of the public gallery until you move it back.
   changes save to <code id="file">sections.json</code> automatically a few seconds after you stop editing (or right away with save / cmd+s). commit it to publish.
@@ -222,6 +240,14 @@
   </div>
 </dialog>
 
+<div id="bgpop" role="dialog" aria-label="solo background" hidden>
+  <p class="lbl">in use</p>
+  <div class="swatches"></div>
+  <canvas id="wheel" aria-label="colour wheel"></canvas>
+  <input type="range" id="bright" min="0" max="100" aria-label="brightness">
+  <div class="hexrow"><span></span><input id="bg-hex" maxlength="7" spellcheck="false" placeholder="white (default)" aria-label="hex colour"></div>
+</div>
+
 <div id="selbar" hidden>
   <span id="selcount"></span>
   <span>move to</span>
@@ -229,14 +255,7 @@
   <button id="move">move</button>
   <button id="star-sel" title="put these up for the homepage thumbnail">★ star</button>
   <button id="unstar-sel">☆ unstar</button>
-  <select id="bg-sel" title="background behind these when open on their own">
-    <option value="_">solo background…</option>
-    <option value="">white (default)</option>
-    <option value="#000000">black</option>
-    <option value="#0b1d3a">dark blue</option>
-    <option value="custom">other colour…</option>
-  </select>
-  <input type="color" id="bg-custom" value="#000000" tabindex="-1" aria-hidden="true">
+  <button id="bg-sel">◐ solo background</button>
   <button id="clearsel">clear</button>
 </div>
 
@@ -267,7 +286,6 @@
   // Single-view background colours (default white). Images are saved in
   // "backgrounds"; embeds carry background: '#…' on themselves.
   var backgrounds = {}; // public ID -> '#rrggbb'
-  var BG_PRESETS = [['', 'white'], ['#000000', 'black'], ['#0b1d3a', 'dark blue']];
   var embedSeq = 0;
   var selected = {};    // id -> true
   // Every edit bumps `rev`; a save records the rev it wrote. Unsaved
@@ -333,14 +351,10 @@
     else if (c) backgrounds[id] = c;
     else delete backgrounds[id];
   }
-  function bgName(c) {
-    var p = BG_PRESETS.filter(function (x) { return x[0] === c; })[0];
-    return p ? p[1] : c;
-  }
   function bgButton(id) {
     var c = getBg(id);
-    return '<button class="bg' + (c ? ' on' : '') + '" title="solo background: ' + esc(bgName(c)) +
-      ' (click to change)"' + (c ? ' style="background:' + esc(c) + '"' : '') + '>' + (c ? '' : '\u25d0') + '</button>';
+    return '<button class="bg' + (c ? ' on' : '') + '" aria-label="solo background"' +
+      (c ? ' style="background:' + esc(c) + '"' : '') + '>' + (c ? '' : '\u25d0') + '</button>';
   }
   function thumbSrc(t) { return /^https?:\/\//.test(t) ? t : CLOUD + t; }
   function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
@@ -384,7 +398,7 @@
         '<button class="x" title="delete">\u00d7</button></div>';
     }
     return '<div class="tile' + (selected[id] ? ' selected' : '') +
-      '" draggable="true" data-id="' + esc(id) + '" title="' + esc(id) + '">' +
+      '" draggable="true" data-id="' + esc(id) + '">' +
       '<img loading="lazy" alt="" src="' + CLOUD + esc(id) + '">' +
       starButton(id) + bgButton(id) +
       (removable ? '<button class="x" title="back to unsorted">×</button>' : '') + '</div>';
@@ -492,15 +506,7 @@
       return;
     }
     var bg = e.target.closest('.tile .bg');
-    if (bg) {
-      // Cycle through the presets; a custom colour goes back to white.
-      var bid = bg.parentNode.dataset.id;
-      var at = BG_PRESETS.map(function (x) { return x[0]; }).indexOf(getBg(bid));
-      setBg(bid, at === -1 ? '' : BG_PRESETS[(at + 1) % BG_PRESETS.length][0]);
-      changed();
-      render();
-      return;
-    }
+    if (bg) { openBg([bg.parentNode.dataset.id], bg); return; }
     var sa = e.target.closest('.selall');
     if (sa) {
       var items = zoneItems(sa.dataset.zone);
@@ -565,25 +571,150 @@
   }
   document.getElementById('star-sel').addEventListener('click', function () { starSelected(true); });
   document.getElementById('unstar-sel').addEventListener('click', function () { starSelected(false); });
-  var bgSel = document.getElementById('bg-sel');
-  var bgCustom = document.getElementById('bg-custom');
-  function bgSelected(c) {
-    Object.keys(selected).forEach(function (id) { setBg(id, c); });
-    changed();
-    render();
+
+  // ---- solo-background picker ----
+  // One popover for a tile's ◐ or the selection bar's button. It shows the
+  // colours already used in this gallery, a hue/saturation wheel and a
+  // brightness slider. Changes apply (and autosave) as you pick.
+  var pop = document.getElementById('bgpop');
+  var wheel = document.getElementById('wheel');
+  var wctx = wheel.getContext('2d');
+  var bright = document.getElementById('bright');
+  var hexIn = document.getElementById('bg-hex');
+  var HEX = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
+  var popIds = [];
+  var hsv = { h: 0, s: 0, v: 1 };
+
+  function hsvRgb(h, s, v) {
+    return [5, 3, 1].map(function (n) {
+      var k = (n + h / 60) % 6;
+      return Math.round((v - v * s * Math.max(0, Math.min(k, 4 - k, 1))) * 255);
+    });
   }
-  bgSel.addEventListener('change', function () {
-    var v = bgSel.value;
-    bgSel.value = '_';
-    if (v === 'custom') {
-      var ids = Object.keys(selected);
-      bgCustom.value = (ids.length && getBg(ids[0])) || '#000000';
-      if (bgCustom.showPicker) bgCustom.showPicker(); else bgCustom.click();
-    } else if (v !== '_') {
-      bgSelected(v);
+  function hsvHex(h, s, v) {
+    return '#' + hsvRgb(h, s, v).map(function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+  }
+  function hexHsv(hex) {
+    var h6 = hex.slice(1);
+    if (h6.length === 3) h6 = h6.replace(/./g, '$&$&');
+    var n = parseInt(h6, 16), r = (n >> 16) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255;
+    var max = Math.max(r, g, b), d = max - Math.min(r, g, b);
+    var h = !d ? 0 : max === r ? ((g - b) / d + 6) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    return { h: h * 60, s: max ? d / max : 0, v: max };
+  }
+
+  // The wheel is drawn at the current brightness, with a ring on the pick.
+  function drawWheel() {
+    var W = wheel.width, R = W / 2;
+    var img = wctx.createImageData(W, W), d = img.data;
+    for (var y = 0; y < W; y++) {
+      for (var x = 0; x < W; x++) {
+        var dx = x + 0.5 - R, dy = y + 0.5 - R, r = Math.sqrt(dx * dx + dy * dy);
+        if (r > R) continue;
+        var rgb = hsvRgb((Math.atan2(dy, dx) * 180 / Math.PI + 360) % 360, r / R, hsv.v);
+        var i = (y * W + x) * 4;
+        d[i] = rgb[0]; d[i + 1] = rgb[1]; d[i + 2] = rgb[2];
+        d[i + 3] = Math.min(1, R - r) * 255; // soft edge
+      }
     }
+    wctx.putImageData(img, 0, 0);
+    var a = hsv.h * Math.PI / 180, mx = R + Math.cos(a) * hsv.s * R, my = R + Math.sin(a) * hsv.s * R;
+    var dpr = W / 182;
+    wctx.lineWidth = 2 * dpr;
+    wctx.strokeStyle = hsv.v > 0.5 ? 'black' : 'white';
+    wctx.beginPath();
+    wctx.arc(mx, my, 6 * dpr, 0, 2 * Math.PI);
+    wctx.stroke();
+  }
+
+  function usedColours() {
+    var seen = {}, out = [];
+    Object.keys(backgrounds).map(function (k) { return backgrounds[k]; })
+      .concat(Object.keys(embeds).map(function (k) { return embeds[k].background; }))
+      .forEach(function (c) { if (c && !seen[c]) { seen[c] = true; out.push(c); } });
+    return out;
+  }
+
+  // Show colour c ('' = default white) in the picker without applying it.
+  function syncPicker(c, keepHex) {
+    bright.value = Math.round(hsv.v * 100);
+    bright.style.background = 'linear-gradient(to right, black, ' + hsvHex(hsv.h, hsv.s, 1) + ')';
+    if (!keepHex) hexIn.value = c;
+    pop.querySelector('.hexrow span').style.background = c || 'white';
+    pop.querySelectorAll('.sw').forEach(function (b) { b.classList.toggle('cur', b.dataset.c === c); });
+    drawWheel();
+  }
+
+  function applyBg(c, keepHex) {
+    popIds.forEach(function (id) {
+      setBg(id, c);
+      var b = document.querySelector('.tile[data-id="' + CSS.escape(id) + '"] .bg');
+      if (b) b.outerHTML = bgButton(id);
+    });
+    changed();
+    syncPicker(c, keepHex);
+  }
+
+  function openBg(ids, anchorEl) {
+    if (!ids.length) return;
+    popIds = ids;
+    var cur = getBg(ids[0]);
+    hsv = cur ? hexHsv(cur) : { h: 0, s: 0, v: 1 };
+    var used = usedColours();
+    pop.querySelector('.swatches').innerHTML =
+      '<button class="sw default" data-c="" aria-label="white (default)"></button>' +
+      used.map(function (c) {
+        return '<button class="sw" data-c="' + esc(c) + '" aria-label="' + esc(c) + '" style="background:' + esc(c) + '"></button>';
+      }).join('');
+    pop.querySelector('.lbl').textContent = used.length ? 'in use' : 'default';
+    var dpr = window.devicePixelRatio || 1;
+    wheel.width = wheel.height = Math.round(182 * dpr);
+    pop.hidden = false;
+    syncPicker(cur);
+    // Below the button, or above it when there's no room (the selection bar).
+    var r = anchorEl.getBoundingClientRect();
+    var w = pop.offsetWidth, h = pop.offsetHeight;
+    var top = r.bottom + 4;
+    if (top + h > innerHeight - 8) top = Math.max(8, r.top - h - 4);
+    pop.style.left = Math.max(8, Math.min(r.left, innerWidth - w - 8)) + 'px';
+    pop.style.top = top + 'px';
+  }
+  function closeBg() { pop.hidden = true; popIds = []; }
+
+  pop.addEventListener('click', function (e) {
+    var sw = e.target.closest('.sw');
+    if (!sw) return;
+    hsv = sw.dataset.c ? hexHsv(sw.dataset.c) : { h: 0, s: 0, v: 1 };
+    applyBg(sw.dataset.c);
   });
-  bgCustom.addEventListener('change', function () { bgSelected(bgCustom.value.toLowerCase()); });
+  var picking = false;
+  function pickAt(e) {
+    var r = wheel.getBoundingClientRect();
+    var dx = e.clientX - r.left - r.width / 2, dy = e.clientY - r.top - r.height / 2;
+    hsv.h = (Math.atan2(dy, dx) * 180 / Math.PI + 360) % 360;
+    hsv.s = Math.min(1, Math.sqrt(dx * dx + dy * dy) / (r.width / 2));
+    applyBg(hsvHex(hsv.h, hsv.s, hsv.v));
+  }
+  wheel.addEventListener('pointerdown', function (e) { picking = true; wheel.setPointerCapture(e.pointerId); pickAt(e); });
+  wheel.addEventListener('pointermove', function (e) { if (picking) pickAt(e); });
+  wheel.addEventListener('pointerup', function () { picking = false; });
+  bright.addEventListener('input', function () {
+    hsv.v = bright.value / 100;
+    applyBg(hsvHex(hsv.h, hsv.s, hsv.v));
+  });
+  hexIn.addEventListener('input', function () {
+    var v = hexIn.value.trim();
+    if (v && v[0] !== '#') v = '#' + v;
+    if (!HEX.test(v)) return;
+    v = v.toLowerCase();
+    hsv = hexHsv(v);
+    applyBg(v, true);
+  });
+  document.getElementById('bg-sel').addEventListener('click', function () { openBg(orderedSelection(), this); });
+  document.addEventListener('pointerdown', function (e) {
+    if (!pop.hidden && !pop.contains(e.target) && !e.target.closest('.tile .bg, #bg-sel')) closeBg();
+  });
+  window.addEventListener('resize', closeBg);
 
   // ---- embeds ----
   var dlg = document.getElementById('embed-dlg');
@@ -813,6 +944,7 @@
   saveBtn.addEventListener('click', save);
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); save(); }
+    if (e.key === 'Escape' && !pop.hidden) { closeBg(); return; }
     if (e.key === 'Escape' && Object.keys(selected).length) { selected = {}; render(); }
   });
   window.addEventListener('beforeunload', function (e) {

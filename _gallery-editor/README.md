@@ -90,11 +90,12 @@ when clicked. An embed needs a thumbnail to be picked.
 
 ### solo-view background
 
-When an image is open on its own, it sits on white. To put one on a dark
-colour instead, hover it in the editor and click **◐** (bottom right). Each
-click goes white → black → dark blue. For any other colour, select the
-images and pick **solo background → other colour…** in the bar at the
-bottom. A tile with a colour set shows it as a small swatch. Embeds and
+When an image is open on its own, it sits on white. To change that, hover
+it in the editor and click **◐** (bottom right). A picker opens with the
+colours already used in that gallery (plus white, the default), a colour
+wheel, a brightness slider and a hex box. Changes apply as you pick. To set
+several at once, select them and click **◐ solo background** in the bar at
+the bottom. A tile with a colour set shows it as a small swatch. Embeds and
 link cards can have one too.
 
 On a dark background the counter, arrows and buttons switch to light
