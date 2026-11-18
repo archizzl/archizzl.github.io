@@ -1,0 +1,203 @@
+{
+ "source": "https://iris.ooo/",
+ "pieces": [
+  {
+   "id": "35519",
+   "slug": "35519",
+   "title": "35519",
+   "artistName": "Alex Ehmer",
+   "medium": "Photo transfer, gauche, wax on wood",
+   "createdAt": "2026-11-15T20:44:33.373527+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a3958dce-e0ae-48d2-607f-a79c05184d00/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=35519"
+  },
+  {
+   "id": "look-back-side-b",
+   "slug": "look-back-side-b",
+   "title": "Look back (Side B)",
+   "artistName": "Kadin Harris",
+   "medium": "Acrylic on Canvas",
+   "createdAt": "2026-11-07T00:13:39.031351+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e7f63c92-8486-49d3-836a-dba3bd14d200/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=look-back-side-b"
+  },
+  {
+   "id": "salted-earth",
+   "slug": "salted-earth",
+   "title": "Salted Earth",
+   "artistName": "Kate Freeman-Cook",
+   "medium": "stone lithograph on Rives BFK paper",
+   "createdAt": "2026-10-20T16:45:13.001283+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5343e224-1232-4805-ff3f-b613f02e1200/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=salted-earth"
+  },
+  {
+   "id": "right-side",
+   "slug": "right-side",
+   "title": "Right Side",
+   "artistName": "Bella Oliver-Steinberg",
+   "medium": "oil on linen",
+   "createdAt": "2026-10-13T20:08:27.486877+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0f53780-6401-4b69-4c0c-9cce793b8a00/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=right-side"
+  },
+  {
+   "id": "50-for-1",
+   "slug": "50-for-1",
+   "title": "50 for 1",
+   "artistName": "Guido Corbisiero",
+   "medium": "Tartan cloth and transfer on wood panel",
+   "createdAt": "2026-10-09T17:17:50.148531+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a9e87b75-106c-47b9-511d-344fbd2b0b00/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=50-for-1"
+  },
+  {
+   "id": "princess-and-the-pea-nightlight",
+   "slug": "princess-and-the-pea-nightlight",
+   "title": "princess and the pea (nightlight)",
+   "artistName": "artie greene",
+   "medium": "electronics, sla print, brass",
+   "createdAt": "2026-09-08T01:03:47.744054+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/63a0d0c7-af32-4ec5-e15c-7d911e8b3000/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=princess-and-the-pea-nightlight"
+  },
+  {
+   "id": "race-day",
+   "slug": "race-day",
+   "title": "race day",
+   "artistName": "walker smith",
+   "medium": "oil on canvas, collaged teak frame",
+   "createdAt": "2026-08-28T16:36:39.351169+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/eaad7907-3a5b-4f4a-2755-40a0f1d34e00/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=race-day"
+  },
+  {
+   "id": "glitsky",
+   "slug": "glitsky",
+   "title": "Glitský",
+   "artistName": "Max Giesecke",
+   "medium": "pencil on paper",
+   "createdAt": "2026-08-21T19:41:33.763971+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e9c8ec7a-1d8d-428a-1602-12fc05683d00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=glitsky"
+  },
+  {
+   "id": "convection-cells-1",
+   "slug": "convection-cells-1",
+   "title": "Convection Cells",
+   "artistName": "organicsnakeoil",
+   "medium": "Acrylic on wood",
+   "createdAt": "2026-07-10T21:34:56.481482+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/40dddc52-3286-432e-46c3-8a956c02f500/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=convection-cells-1"
+  },
+  {
+   "id": "summer-in-chainmail",
+   "slug": "summer-in-chainmail",
+   "title": "Summer In Chainmail",
+   "artistName": "Monday Holland",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-28T04:34:32.669844+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8c694f6e-cadd-49b6-c8f3-287106550c00/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=summer-in-chainmail"
+  },
+  {
+   "id": "ant-bites-wound-the-tongue",
+   "slug": "ant-bites-wound-the-tongue",
+   "title": "ant bites wound the tongue",
+   "artistName": "Julia Cheng",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-20T02:58:46.875328+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/61f17f28-0b80-48d3-ef5f-d5c2bd9f6b00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=ant-bites-wound-the-tongue"
+  },
+  {
+   "id": "you-will-never-see-the-heavenly-gates",
+   "slug": "you-will-never-see-the-heavenly-gates",
+   "title": "You Will Never See The Heavenly Gates",
+   "artistName": "Bun Moore",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-05-19T18:16:38.820426+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e23d5710-a038-415e-1627-b99e31d86b00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=you-will-never-see-the-heavenly-gates"
+  },
+  {
+   "id": "fist-of-fury",
+   "slug": "fist-of-fury",
+   "title": "fist of fury",
+   "artistName": "Khoi Le",
+   "medium": "graphite on paper",
+   "createdAt": "2026-04-14T03:06:31.419879+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/88e14c83-211d-4f0a-2453-0d44c7afcd00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=fist-of-fury"
+  },
+  {
+   "id": "shoe-strips",
+   "slug": "shoe-strips",
+   "title": "shoe strips",
+   "artistName": "Alex Bloise",
+   "medium": "film portraits, digital collage, gloss print matches and found postcard quote mounted on wood.",
+   "createdAt": "2026-04-07T04:30:52.994636+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c06f3c14-241b-48a1-afb2-734200cbd000/public",
+   "year": 2026,
+   "url": "https://iris.ooo/artwork?id=shoe-strips"
+  },
+  {
+   "id": "i-dont-miss",
+   "slug": "i-dont-miss",
+   "title": "I DON'T MISS",
+   "artistName": "Mark Wong",
+   "medium": "ballpoint pen plot on paper",
+   "createdAt": "2026-04-02T23:13:17.381348+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/302446ba-d272-4355-d1fc-28e314439000/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=i-dont-miss"
+  },
+  {
+   "id": "you",
+   "slug": "you",
+   "title": "you",
+   "artistName": "Olivia Jieun Sung",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-02-25T03:07:15.050710+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7bdaa51d-f0c9-4803-5403-12902c0bbc00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=you"
+  },
+  {
+   "id": "self-portrait",
+   "slug": "self-portrait",
+   "title": "self portrait",
+   "artistName": "Dean Sylvan Brown",
+   "medium": "oil, wax, spray paint, coffee on canvas",
+   "createdAt": "2026-02-03T20:17:22.313775+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8d911062-ac3f-4a26-a00e-97dbf4bbb000/public",
+   "year": 2024,
+   "url": "https://iris.ooo/artwork?id=self-portrait"
+  },
+  {
+   "id": "untitled-new-mexico",
+   "slug": "untitled-new-mexico",
+   "title": "untitled - new mexico",
+   "artistName": "Finn O'Driscoll",
+   "medium": "chromogenic print - matte",
+   "createdAt": "2026-01-02T02:54:18.409274+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e3afb638-614c-4daa-4ced-3d188310cf00/public",
+   "year": 2025,
+   "url": "https://iris.ooo/artwork?id=untitled-new-mexico"
+  }
+ ]
+}

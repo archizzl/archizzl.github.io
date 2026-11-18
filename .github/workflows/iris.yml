@@ -1,0 +1,40 @@
+name: Refresh iris pieces
+
+# Pulls the pieces on iris.ooo's front page into projects/iris/pieces.json
+# for the gallery at archizzl.com/projects/iris/. Only commits when the list
+# changed. These bot commits land on main, so `git pull --rebase` before
+# pushing local work.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write # so GITHUB_TOKEN can push the refreshed list
+
+concurrency:
+  group: iris
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Scrape iris.ooo
+        run: python3 _iris/scrape.py
+
+      - name: Commit if there is a diff
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/iris/pieces.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "iris: refresh pieces [skip ci]"
+          git pull --rebase
+          git push
