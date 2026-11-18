@@ -13,6 +13,9 @@ iris's own API only answers iris.ooo, so the browser can't fetch this live.
 
 Run by .github/workflows/iris.yml on a schedule. Locally:
     python3 _iris/scrape.py
+
+To add artists who haven't been in the pool yet (they're kept from then on):
+    python3 _iris/scrape.py --artist alice-jean-clarice-barreras [more-ids ...]
 """
 import json
 import re
@@ -91,6 +94,13 @@ def backfill(piece):
 
 
 def main():
+    if sys.argv[1:2] == ["--artist"]:
+        added = refresh_artists({a.strip().lower() for a in sys.argv[2:] if a.strip()}, keep=False)
+        missing = set(a.strip().lower() for a in sys.argv[2:]) - added
+        if missing:
+            sys.exit("no works found for: " + ", ".join(sorted(missing)))
+        return
+
     fresh = parse(fetch(SOURCE))
     if not fresh:
         # Their page changed shape. Fail loudly and leave the old list alone.
@@ -119,11 +129,16 @@ def write_json(path, data):
     path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
 
 
-def refresh_artists(in_pool):
+def refresh_artists(in_pool, keep=True):
     """Write artists/<id>.json for everyone in the pool, and keep refreshing
-    artists who have since left it so their links keep working."""
-    ids = in_pool | {f.stem for f in ARTISTS_DIR.glob("*.json")}
+    artists who have since left it (or were added by hand) so their links
+    keep working. keep=False refreshes only the given ids. Returns the ids
+    that have a file."""
+    ids = set(in_pool)
+    if keep:
+        ids |= {f.stem for f in ARTISTS_DIR.glob("*.json")}
     changed = 0
+    found = set()
     for artist_id in sorted(ids):
         url = ARTIST_URL + urllib.request.quote(artist_id)
         try:
@@ -135,6 +150,7 @@ def refresh_artists(in_pool):
             time.sleep(0.5)  # be gentle with iris
         if not works:
             continue
+        found.add(artist_id)
         works.sort(key=lambda p: p.get("createdAt") or "", reverse=True)
         path = ARTISTS_DIR / (artist_id + ".json")
         data = {"source": url, "pieces": works}
@@ -143,6 +159,7 @@ def refresh_artists(in_pool):
         write_json(path, data)
         changed += 1
     print(f"{len(ids)} artists, {changed} updated")
+    return found
 
 
 if __name__ == "__main__":
