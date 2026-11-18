@@ -66,6 +66,22 @@
    "artistUrl": "https://iris.ooo/artists/kadin-harris"
   },
   {
+   "id": "cupid-shuffle",
+   "slug": "cupid-shuffle",
+   "title": "Cupid Shuffle",
+   "artistId": "brookeraven",
+   "artistName": "Brooke Elizabeth Raven",
+   "medium": "oil on canvas",
+   "createdAt": "2026-10-22T20:02:46.423804+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f9b7f700-a339-4dac-f729-2221c82ead00/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=cupid-shuffle",
+   "artistUrl": "https://iris.ooo/artists/brookeraven"
+  },
+  {
    "id": "salted-earth",
    "slug": "salted-earth",
    "title": "Salted Earth",
@@ -82,6 +98,22 @@
    "artistUrl": "https://iris.ooo/artists/kate-freeman-cook"
   },
   {
+   "id": "walking-ladder",
+   "slug": "walking-ladder",
+   "title": "Walking Ladder",
+   "artistId": "inga-manticas",
+   "artistName": "Inga Manticas",
+   "medium": "Found wood objects",
+   "createdAt": "2026-10-14T03:12:34.644370+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3fbba9d8-4e22-4356-e58d-693fa7f58b00/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=walking-ladder",
+   "artistUrl": "https://iris.ooo/artists/inga-manticas"
+  },
+  {
    "id": "right-side",
    "slug": "right-side",
    "title": "Right Side",
@@ -96,6 +128,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=right-side",
    "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
+  },
+  {
+   "id": "wendi-for-lure-adaptation",
+   "slug": "wendi-for-lure-adaptation",
+   "title": "Wendi (for Lure & Adaptation)",
+   "artistId": "ketty-haolin-zhang",
+   "artistName": "Ketty Haolin Zhang",
+   "medium": "vinyl print on Dibond, Plexiglass, found objects",
+   "createdAt": "2026-10-12T18:21:30.691855+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f8213742-f84f-4dd5-97b0-785d49174e00/public",
+   "year": 2025,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=wendi-for-lure-adaptation",
+   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
   },
   {
    "id": "50-for-1",
@@ -194,6 +242,38 @@
    "artistUrl": "https://iris.ooo/artists/max"
   },
   {
+   "id": "except-for-the-usual-papers-on-birth-marriage-land-ownership-and-death",
+   "slug": "except-for-the-usual-papers-on-birth-marriage-land-ownership-and-death",
+   "title": "except for the usual papers on birth, marriage, land ownership and death",
+   "artistId": "clayton-harris",
+   "artistName": "Clayton Harris",
+   "medium": "Inkjet prints, matte medium, tar gel, ink, wood burning and plywood on wood panel",
+   "createdAt": "2026-08-16T00:02:33.562030+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4599c4bd-662d-4d44-a4c7-9fa401948200/public",
+   "year": 2026,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=except-for-the-usual-papers-on-birth-marriage-land-ownership-and-death",
+   "artistUrl": "https://iris.ooo/artists/clayton-harris"
+  },
+  {
+   "id": "head-is-a-rock-on-the-shore-of-the-beach",
+   "slug": "head-is-a-rock-on-the-shore-of-the-beach",
+   "title": "Head is a rock on the shore of the beach",
+   "artistId": "mark-harrington",
+   "artistName": "Mark Harrington",
+   "medium": "Acrylic, Flashe, Color pencil on wood",
+   "createdAt": "2026-08-13T16:20:13.223373+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cf8d0b67-92ea-448e-e6b9-e93fcecb9f00/public",
+   "year": 2025,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=head-is-a-rock-on-the-shore-of-the-beach",
+   "artistUrl": "https://iris.ooo/artists/mark-harrington"
+  },
+  {
    "id": "euie",
    "slug": "euie",
    "title": "Euie",
@@ -242,6 +322,38 @@
    "artistUrl": "https://iris.ooo/artists/organicsnakeoil"
   },
   {
+   "id": "willoughby-11206",
+   "slug": "willoughby-11206",
+   "title": "Willoughby 11206",
+   "artistId": "sophia-kroto",
+   "artistName": "Sophia Kroto",
+   "medium": "Graphite drawing mounted on steel, distressed wood, handmade chainmail, steel hardware, skeleton key.",
+   "createdAt": "2026-06-19T21:10:24.050512+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c721d65d-fe6f-44d0-1ac8-6cc4f42dee00/public",
+   "year": 2026,
+   "price": 1020,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=willoughby-11206",
+   "artistUrl": "https://iris.ooo/artists/sophia-kroto"
+  },
+  {
+   "id": "rice-theory-12-1",
+   "slug": "rice-theory-12-1",
+   "title": "Rice Theory 1/2",
+   "artistId": "cassandra-m-kellner",
+   "artistName": "Cassandra M Kellner",
+   "medium": "ceramic",
+   "createdAt": "2026-06-07T17:58:12.781700+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/34789bde-8ac4-4d10-79eb-307113c0e900/public",
+   "year": 2026,
+   "price": 4000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rice-theory-12-1",
+   "artistUrl": "https://iris.ooo/artists/cassandra-m-kellner"
+  },
+  {
    "id": "summer-in-chainmail",
    "slug": "summer-in-chainmail",
    "title": "Summer In Chainmail",
@@ -256,6 +368,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=summer-in-chainmail",
    "artistUrl": "https://iris.ooo/artists/monday-holland"
+  },
+  {
+   "id": "ecstasy",
+   "slug": "ecstasy",
+   "title": "Ecstasy",
+   "artistId": "angela-nmn-wei",
+   "artistName": "Angela NMN Wei",
+   "medium": "Acrylic on canvas",
+   "createdAt": "2026-05-22T04:25:48.023948+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/15cdc4ed-a0d4-44d2-399d-35c6a2932300/public",
+   "year": 2025,
+   "price": 2000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ecstasy",
+   "artistUrl": "https://iris.ooo/artists/angela-nmn-wei"
   },
   {
    "id": "germ-propaganda",
@@ -306,6 +434,22 @@
    "artistUrl": "https://iris.ooo/artists/bun-moore"
   },
   {
+   "id": "three-marys",
+   "slug": "three-marys",
+   "title": "Three Marys",
+   "artistId": "amy-pearl-lang",
+   "artistName": "Amy Pearl Lang",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-18T20:44:23.870110+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1848ac34-aacf-4746-a0b7-1d06694f4400/public",
+   "year": 2023,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=three-marys",
+   "artistUrl": "https://iris.ooo/artists/amy-pearl-lang"
+  },
+  {
    "id": "the-last-christmas-ever",
    "slug": "the-last-christmas-ever",
    "title": "The last christmas ever",
@@ -338,6 +482,22 @@
    "artistUrl": "https://iris.ooo/artists/elliott-moore"
   },
   {
+   "id": "nosferatu",
+   "slug": "nosferatu",
+   "title": "Nosferatu",
+   "artistId": "ian-patrick-cato",
+   "artistName": "Ian Patrick Cato",
+   "medium": "acrylic, colored pencil, graphite on paper",
+   "createdAt": "2026-04-29T09:31:54.791212+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1e7d2233-0053-4bca-0a38-3b2559f66500/public",
+   "year": 2025,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=nosferatu",
+   "artistUrl": "https://iris.ooo/artists/ian-patrick-cato"
+  },
+  {
    "id": "willow-i",
    "slug": "willow-i",
    "title": "Willow I",
@@ -354,6 +514,22 @@
    "artistUrl": "https://iris.ooo/artists/erin-elizabeth-murphy-oflynn"
   },
   {
+   "id": "rarity",
+   "slug": "rarity",
+   "title": "Rarity",
+   "artistId": "jackson-madden",
+   "artistName": "Jackson Madden",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-04-16T19:21:44.482862+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5611173e-97a3-4829-1e29-96a67290fe00/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rarity",
+   "artistUrl": "https://iris.ooo/artists/jackson-madden"
+  },
+  {
    "id": "fist-of-fury",
    "slug": "fist-of-fury",
    "title": "fist of fury",
@@ -368,6 +544,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=fist-of-fury",
    "artistUrl": "https://iris.ooo/artists/khoi-le"
+  },
+  {
+   "id": "skid-plate",
+   "slug": "skid-plate",
+   "title": "SKID PLATE",
+   "artistId": "koda-smith",
+   "artistName": "Koda Smith",
+   "medium": "Oil on canvas, aluminum, steel",
+   "createdAt": "2026-04-10T16:38:49.845227+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4a8972c2-c01b-47bc-9ac6-38d27c973b00/public",
+   "year": 2023,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=skid-plate",
+   "artistUrl": "https://iris.ooo/artists/koda-smith"
   },
   {
    "id": "shoe-strips",
@@ -402,6 +594,22 @@
    "artistUrl": "https://iris.ooo/artists/mark-wong"
   },
   {
+   "id": "husk",
+   "slug": "husk",
+   "title": "husk",
+   "artistId": "adrienne-akemi-hanson",
+   "artistName": "Adrienne Akemi Hanson",
+   "medium": "oil on wood",
+   "createdAt": "2026-04-01T18:20:57.335766+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6e73a985-d062-48df-6b96-3a0effa35700/public",
+   "year": 2026,
+   "price": 150,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=husk",
+   "artistUrl": "https://iris.ooo/artists/adrienne-akemi-hanson"
+  },
+  {
    "id": "the-tragedy-of-spending-your-life-desperately-wanting-to-be-something-that-you-already-were-all-along",
    "slug": "the-tragedy-of-spending-your-life-desperately-wanting-to-be-something-that-you-already-were-all-along",
    "title": "(the tragedy of) spending your life desperately wanting to be something that you already were all along",
@@ -416,6 +624,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=the-tragedy-of-spending-your-life-desperately-wanting-to-be-something-that-you-already-were-all-along",
    "artistUrl": "https://iris.ooo/artists/clayton-harris"
+  },
+  {
+   "id": "so-nice-but-so-mean-so-smart-but-so-dumb",
+   "slug": "so-nice-but-so-mean-so-smart-but-so-dumb",
+   "title": "so nice but so mean, so smart but so dumb",
+   "artistId": "rosemary-matthews",
+   "artistName": "Rosemary Matthews",
+   "medium": "oil on canvas",
+   "createdAt": "2026-03-24T17:49:44.671499+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/42889077-a3ee-4a34-3ede-80114cb87300/public",
+   "year": 2024,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=so-nice-but-so-mean-so-smart-but-so-dumb",
+   "artistUrl": "https://iris.ooo/artists/rosemary-matthews"
   },
   {
    "id": "anonymous-desire-3",
@@ -448,6 +672,38 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=exposing-his-eyes-to-the-rays-he-was-healed",
    "artistUrl": "https://iris.ooo/artists/jaxson-jaffe"
+  },
+  {
+   "id": "swallowing-teeth-1",
+   "slug": "swallowing-teeth-1",
+   "title": "Swallowing Teeth",
+   "artistId": "rebecca-holt",
+   "artistName": "Rebecca Holt",
+   "medium": "oil on canvas",
+   "createdAt": "2026-03-13T15:56:39.023368+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/52cecb78-b215-4528-6f9a-2ea46f456700/public",
+   "year": 2025,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=swallowing-teeth-1",
+   "artistUrl": "https://iris.ooo/artists/rebecca-holt"
+  },
+  {
+   "id": "stains-03",
+   "slug": "stains-03",
+   "title": "Stains 03",
+   "artistId": "lucia-faye-rosenast",
+   "artistName": "Lucia Faye Rosenast",
+   "medium": "linen, cotton, cyanotype, silk, bleach",
+   "createdAt": "2026-03-13T13:54:18.227810+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/dc367c69-097e-417c-b851-2a09f06ee500/public",
+   "year": 2023,
+   "price": 750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=stains-03",
+   "artistUrl": "https://iris.ooo/artists/lucia-faye-rosenast"
   },
   {
    "id": "you",
@@ -528,6 +784,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=flock-mini",
    "artistUrl": "https://iris.ooo/artists/hazel-many"
+  },
+  {
+   "id": "downtown-event-for-a-mayoral-candidate",
+   "slug": "downtown-event-for-a-mayoral-candidate",
+   "title": "downtown event for a mayoral candidate",
+   "artistId": "elliot-dickinson-wright",
+   "artistName": "Elliot Dickinson Wright",
+   "medium": "graphite",
+   "createdAt": "2026-01-05T20:02:42.311193+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8779c97b-3049-449e-f6f2-00fa37236500/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=downtown-event-for-a-mayoral-candidate",
+   "artistUrl": "https://iris.ooo/artists/elliot-dickinson-wright"
   },
   {
    "id": "untitled-couple-and-cityscape",

@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/bella-oliver-steinberg",
+ "pieces": [
+  {
+   "id": "pulling-rain",
+   "slug": "pulling-rain",
+   "title": "Pulling Rain",
+   "artistId": "bella-oliver-steinberg",
+   "artistName": "Bella Oliver-Steinberg",
+   "medium": "oil on linen",
+   "createdAt": "2026-10-13T20:49:55.893878+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/bc125630-dc98-4b80-be70-288dbf416500/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pulling-rain",
+   "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
+  },
+  {
+   "id": "a-natural-violence",
+   "slug": "a-natural-violence",
+   "title": "A Natural Violence",
+   "artistId": "bella-oliver-steinberg",
+   "artistName": "Bella Oliver-Steinberg",
+   "medium": "oil on linen",
+   "createdAt": "2026-10-13T20:34:16.023892+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f73805bf-4b83-4e8b-1496-5aefa335a200/public",
+   "year": 2026,
+   "price": 280,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=a-natural-violence",
+   "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
+  },
+  {
+   "id": "before-the-exit",
+   "slug": "before-the-exit",
+   "title": "Before the exit",
+   "artistId": "bella-oliver-steinberg",
+   "artistName": "Bella Oliver-Steinberg",
+   "medium": "oil on canvas",
+   "createdAt": "2026-10-13T20:28:52.306896+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/bcfc4e28-11e2-45b5-f88a-69181b919e00/public",
+   "year": 2026,
+   "price": 250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=before-the-exit",
+   "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
+  },
+  {
+   "id": "right-side",
+   "slug": "right-side",
+   "title": "Right Side",
+   "artistId": "bella-oliver-steinberg",
+   "artistName": "Bella Oliver-Steinberg",
+   "medium": "oil on linen",
+   "createdAt": "2026-10-13T20:08:27.486877+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0f53780-6401-4b69-4c0c-9cce793b8a00/public",
+   "year": 2026,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=right-side",
+   "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/hazel-many",
+ "pieces": [
+  {
+   "id": "flock-mini",
+   "slug": "flock-mini",
+   "title": "Flock Mini",
+   "artistId": "hazel-many",
+   "artistName": "Hazel Many",
+   "medium": "Ceramic",
+   "createdAt": "2026-01-07T00:26:10.143843+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/15576ea5-f782-4a8a-3ea2-f52115361c00/public",
+   "year": 2025,
+   "price": 880,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=flock-mini",
+   "artistUrl": "https://iris.ooo/artists/hazel-many"
+  }
+ ]
+}

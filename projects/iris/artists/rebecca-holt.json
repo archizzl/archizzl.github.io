@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/rebecca-holt",
+ "pieces": [
+  {
+   "id": "swallowing-teeth-1",
+   "slug": "swallowing-teeth-1",
+   "title": "Swallowing Teeth",
+   "artistId": "rebecca-holt",
+   "artistName": "Rebecca Holt",
+   "medium": "oil on canvas",
+   "createdAt": "2026-03-13T15:56:39.023368+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/52cecb78-b215-4528-6f9a-2ea46f456700/public",
+   "year": 2025,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=swallowing-teeth-1",
+   "artistUrl": "https://iris.ooo/artists/rebecca-holt"
+  }
+ ]
+}

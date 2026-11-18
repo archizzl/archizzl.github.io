@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/alex-bloise",
+ "pieces": [
+  {
+   "id": "indifference",
+   "slug": "indifference",
+   "title": "indifference",
+   "artistId": "alex-bloise",
+   "artistName": "Alex Bloise",
+   "medium": "mixed media on raw canvas",
+   "createdAt": "2026-05-17T16:16:20.018607+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ad813ad0-c235-48fe-bc4b-2894fd6cc000/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=indifference",
+   "artistUrl": "https://iris.ooo/artists/alex-bloise"
+  },
+  {
+   "id": "shoe-strips",
+   "slug": "shoe-strips",
+   "title": "shoe strips",
+   "artistId": "alex-bloise",
+   "artistName": "Alex Bloise",
+   "medium": "film portraits, digital collage, gloss print matches and found postcard quote mounted on wood.",
+   "createdAt": "2026-04-07T04:30:52.994636+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c06f3c14-241b-48a1-afb2-734200cbd000/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shoe-strips",
+   "artistUrl": "https://iris.ooo/artists/alex-bloise"
+  },
+  {
+   "id": "corner-bound",
+   "slug": "corner-bound",
+   "title": "corner bound",
+   "artistId": "alex-bloise",
+   "artistName": "Alex Bloise",
+   "medium": "cyanotype on found coupon sheet and wet paint sign",
+   "createdAt": "2026-04-07T04:11:54.021140+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/349801b5-4477-427f-8c00-075751621400/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=corner-bound",
+   "artistUrl": "https://iris.ooo/artists/alex-bloise"
+  }
+ ]
+}

@@ -14,6 +14,18 @@
     // has no page yet (tagged since the last build, see blog/gallery_pages.py)
     // is /<gallery>/<key>/: send it to /<gallery>/?item=<key>, which opens it.
     (function () {
+      // Hidden: /projects/iris/<artist>/ shows only that artist's pieces, for
+      // anyone with a projects/iris/artists/<artist>.json (see _iris/scrape.py).
+      var a = location.pathname.match(/^\/projects\/iris\/([^\/]+)\/?$/);
+      if (a) {
+        var id = decodeURIComponent(a[1]).toLowerCase();
+        document.documentElement.style.visibility = 'hidden';
+        fetch('/projects/iris/artists/' + encodeURIComponent(id) + '.json', { method: 'HEAD' }).then(function (r) {
+          if (!r.ok) throw 0;
+          location.replace('/projects/iris/?artist=' + encodeURIComponent(id) + location.search.replace(/^\?/, '&'));
+        }).catch(function () { document.documentElement.style.visibility = ''; });
+        return;
+      }
       var m = location.pathname.match(/^\/([^\/]+)\/([^\/]+)\/?$/);
       if (!m) return;
       document.documentElement.style.visibility = 'hidden';

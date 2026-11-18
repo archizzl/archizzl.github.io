@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/alex-ehmer",
+ "pieces": [
+  {
+   "id": "35519",
+   "slug": "35519",
+   "title": "35519",
+   "artistId": "alex-ehmer",
+   "artistName": "Alex Ehmer",
+   "medium": "Photo transfer, gauche, wax on wood",
+   "createdAt": "2026-11-15T20:44:33.373527+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a3958dce-e0ae-48d2-607f-a79c05184d00/public",
+   "year": 2026,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=35519",
+   "artistUrl": "https://iris.ooo/artists/alex-ehmer"
+  },
+  {
+   "id": "thirst",
+   "slug": "thirst",
+   "title": "Thirst",
+   "artistId": "alex-ehmer",
+   "artistName": "Alex Ehmer",
+   "medium": "Inkjet photo transfer, copic marker, wax on board",
+   "createdAt": "2026-05-08T17:58:46.480261+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/65f831be-a5a7-4813-8fd2-7b7db4bd3800/public",
+   "year": 2026,
+   "price": 850,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=thirst",
+   "artistUrl": "https://iris.ooo/artists/alex-ehmer"
+  }
+ ]
+}

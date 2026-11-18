@@ -6,17 +6,24 @@ it shows (about 18, newest first) inline as serialized JS objects, so this
 reads those. New pieces are merged into the existing file and the list is
 capped at the newest MAX_PIECES, so the pool grows past one front page.
 
+Every artist who has been in the pool also gets projects/iris/artists/<id>.json
+with all of their works, read from their profile page (iris.ooo/artists/<id>),
+for the hidden archizzl.com/projects/iris/<id>/ view (routed by /404.html).
+iris's own API only answers iris.ooo, so the browser can't fetch this live.
+
 Run by .github/workflows/iris.yml on a schedule. Locally:
     python3 _iris/scrape.py
 """
 import json
 import re
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
 SOURCE = "https://iris.ooo/"
 OUT = Path(__file__).resolve().parent.parent / "projects" / "iris" / "pieces.json"
+ARTISTS_DIR = OUT.parent / "artists"
 MAX_PIECES = 120
 
 # A work object starts like  $R[534]={id:"burning-out",workId:"…",
@@ -100,10 +107,42 @@ def main():
 
     if merged == old:
         print(f"no change ({len(merged)} pieces)")
-        return
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"source": SOURCE, "pieces": merged}, indent=1, ensure_ascii=False) + "\n")
-    print(f"{len(fresh)} on the front page, {len(merged)} in the pool")
+    else:
+        write_json(OUT, {"source": SOURCE, "pieces": merged})
+        print(f"{len(fresh)} on the front page, {len(merged)} in the pool")
+
+    refresh_artists({p["artistId"] for p in merged if p.get("artistUrl")})
+
+
+def write_json(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+
+
+def refresh_artists(in_pool):
+    """Write artists/<id>.json for everyone in the pool, and keep refreshing
+    artists who have since left it so their links keep working."""
+    ids = in_pool | {f.stem for f in ARTISTS_DIR.glob("*.json")}
+    changed = 0
+    for artist_id in sorted(ids):
+        url = ARTIST_URL + urllib.request.quote(artist_id)
+        try:
+            works = [p for p in parse(fetch(url)) if p["artistId"] == artist_id]
+        except Exception as e:  # keep the old file if one page fails
+            print(f"couldn't read {url}: {e}")
+            continue
+        finally:
+            time.sleep(0.5)  # be gentle with iris
+        if not works:
+            continue
+        works.sort(key=lambda p: p.get("createdAt") or "", reverse=True)
+        path = ARTISTS_DIR / (artist_id + ".json")
+        data = {"source": url, "pieces": works}
+        if path.exists() and json.loads(path.read_text()) == data:
+            continue
+        write_json(path, data)
+        changed += 1
+    print(f"{len(ids)} artists, {changed} updated")
 
 
 if __name__ == "__main__":

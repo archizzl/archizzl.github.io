@@ -102,8 +102,18 @@
     // pieces.json is refreshed from iris.ooo's front page by
     // .github/workflows/iris.yml (see _iris/scrape.py).
     // ?every=N sets minutes per piece (default 3).
+    // Hidden: /projects/iris/<artist>/ (sent here by /404.html as ?artist=)
+    // shows only that artist's pieces, from artists/<artist>.json.
     const params = new URLSearchParams(location.search);
     const EVERY_MS = Math.max(0.25, parseFloat(params.get('every')) || 3) * 60 * 1000;
+    const ARTIST = params.get('artist');
+    // resolve before the URL is tidied below, which would break relative paths
+    const LIST_URL = new URL(ARTIST ? 'artists/' + encodeURIComponent(ARTIST) + '.json' : 'pieces.json', location.href);
+    if (ARTIST) {
+      params.delete('artist');
+      const rest = params.toString();
+      window.history.replaceState(null, '', new URL(encodeURIComponent(ARTIST) + '/' + (rest ? '?' + rest : ''), location.href));
+    }
     const LIST_REFRESH_MS = 30 * 60 * 1000;
 
     const imgs = document.querySelectorAll('#frame img');
@@ -115,8 +125,8 @@
     let pieces = [];
     let bag = [];          // shuffled ids still to show this round
     let current = null;
-    let history = [];      // pieces shown so far, oldest first
-    let pos = -1;          // where in history we are; < length-1 after going back
+    let shown = [];        // pieces shown so far, oldest first
+    let pos = -1;          // where in `shown` we are; < length-1 after going back
     const HISTORY_MAX = 100;
     const prevBtn = document.getElementById('prev');
     let front = 0;         // which <img> is visible
@@ -125,12 +135,12 @@
 
     async function loadList() {
       try {
-        const res = await fetch('pieces.json?t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch(LIST_URL + '?t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(res.status);
         const data = await res.json();
         if (Array.isArray(data.pieces) && data.pieces.length) pieces = data.pieces;
       } catch (e) {
-        console.warn('could not load pieces.json', e);
+        console.warn('could not load ' + LIST_URL, e);
       }
     }
 
@@ -163,9 +173,9 @@
       busy = true;
       clearTimeout(timer);
       let piece = null;
-      if (pos < history.length - 1) {
+      if (pos < shown.length - 1) {
         // went back earlier: retrace forward before picking anything new
-        piece = history[++pos];
+        piece = shown[++pos];
       } else {
         for (let tries = 0; tries < 5 && !piece; tries++) {
           const p = pick();
@@ -173,9 +183,9 @@
           try { await preload(p.imageUrl); piece = p; } catch (e) { /* skip broken image */ }
         }
         if (piece) {
-          history.push(piece);
-          if (history.length > HISTORY_MAX) history.shift();
-          pos = history.length - 1;
+          shown.push(piece);
+          if (shown.length > HISTORY_MAX) shown.shift();
+          pos = shown.length - 1;
         }
       }
       if (piece) show(piece);
@@ -195,7 +205,7 @@
     function prev() {
       if (busy || pos <= 0) return;
       clearTimeout(timer);
-      show(history[--pos]);
+      show(shown[--pos]);
       timer = setTimeout(next, EVERY_MS);
     }
 

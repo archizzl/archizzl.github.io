@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/lucia-faye-rosenast",
+ "pieces": [
+  {
+   "id": "stains-03",
+   "slug": "stains-03",
+   "title": "Stains 03",
+   "artistId": "lucia-faye-rosenast",
+   "artistName": "Lucia Faye Rosenast",
+   "medium": "linen, cotton, cyanotype, silk, bleach",
+   "createdAt": "2026-03-13T13:54:18.227810+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/dc367c69-097e-417c-b851-2a09f06ee500/public",
+   "year": 2023,
+   "price": 750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=stains-03",
+   "artistUrl": "https://iris.ooo/artists/lucia-faye-rosenast"
+  },
+  {
+   "id": "stains-05",
+   "slug": "stains-05",
+   "title": "Stains 05",
+   "artistId": "lucia-faye-rosenast",
+   "artistName": "Lucia Faye Rosenast",
+   "medium": "cyanotype, indigo, linen, cotton, poly",
+   "createdAt": "2026-03-13T13:49:13.621584+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d2b314e4-444c-401d-ed25-f20c9b7ba900/public",
+   "year": 2024,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=stains-05",
+   "artistUrl": "https://iris.ooo/artists/lucia-faye-rosenast"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/cassandra-m-kellner",
+ "pieces": [
+  {
+   "id": "rice-theory-12-1",
+   "slug": "rice-theory-12-1",
+   "title": "Rice Theory 1/2",
+   "artistId": "cassandra-m-kellner",
+   "artistName": "Cassandra M Kellner",
+   "medium": "ceramic",
+   "createdAt": "2026-06-07T17:58:12.781700+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/34789bde-8ac4-4d10-79eb-307113c0e900/public",
+   "year": 2026,
+   "price": 4000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rice-theory-12-1",
+   "artistUrl": "https://iris.ooo/artists/cassandra-m-kellner"
+  }
+ ]
+}
