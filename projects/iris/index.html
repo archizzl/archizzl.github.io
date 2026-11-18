@@ -40,7 +40,7 @@
     #caption {
       position: fixed;
       left: 24px;
-      right: 140px; /* room for the previous button */
+      right: 64px; /* room for the back arrow */
       bottom: 16px;
       height: 44px;
       display: flex;
@@ -54,20 +54,23 @@
     #caption.fading { opacity: 0; }
     #title { font-style: italic; overflow: hidden; text-overflow: ellipsis; }
     #meta { color: #666; font-size: 15px; overflow: hidden; text-overflow: ellipsis; }
+    #meta a, #meta a:visited { color: inherit; text-decoration: underline; }
 
-    .black_button {
+    #prev {
       position: fixed;
-      right: 24px;
-      bottom: 18px;
-      background: black;
-      color: white;
+      right: 20px;
+      bottom: 14px;
+      background: none;
       border: none;
-      padding: 3px 6px;
+      padding: 0 4px;
+      color: #888;
       font: inherit;
-      font-size: 15px;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
     }
-    .black_button:hover { opacity: 0.8; cursor: pointer; }
-    .black_button[hidden] { display: none; }
+    #prev:hover { opacity: 0.5; }
+    #prev[hidden] { display: none; }
 
     #status {
       position: fixed;
@@ -92,7 +95,7 @@
     <a id="title" target="_blank" rel="noopener"></a>
     <div id="meta"></div>
   </div>
-  <button id="prev" class="black_button" title="previous piece (←)" hidden>← previous</button>
+  <button id="prev" title="previous piece (←)" aria-label="previous piece" hidden>←</button>
   <div id="status">finding something to look at…</div>
 
   <script>
@@ -220,7 +223,7 @@
           artist.rel = 'noopener';
         }
         const bits = [artist, price(piece), piece.medium && piece.medium.toLowerCase()].filter(Boolean);
-        metaEl.replaceChildren(...bits.flatMap((b, i) => i ? [' · ', b] : [b]), ' — on iris');
+        metaEl.replaceChildren(...bits.flatMap((b, i) => i ? [' · ', b] : [b]));
         caption.classList.remove('fading');
       }, titleEl.textContent ? 700 : 0); // first piece: no old caption to fade out
     }
