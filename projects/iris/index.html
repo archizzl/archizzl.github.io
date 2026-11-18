@@ -40,7 +40,7 @@
     #caption {
       position: fixed;
       left: 24px;
-      right: 24px;
+      right: 140px; /* room for the previous button */
       bottom: 16px;
       height: 44px;
       display: flex;
@@ -54,6 +54,20 @@
     #caption.fading { opacity: 0; }
     #title { font-style: italic; overflow: hidden; text-overflow: ellipsis; }
     #meta { color: #666; font-size: 15px; overflow: hidden; text-overflow: ellipsis; }
+
+    .black_button {
+      position: fixed;
+      right: 24px;
+      bottom: 18px;
+      background: black;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      font: inherit;
+      font-size: 15px;
+    }
+    .black_button:hover { opacity: 0.8; cursor: pointer; }
+    .black_button[hidden] { display: none; }
 
     #status {
       position: fixed;
@@ -78,6 +92,7 @@
     <a id="title" target="_blank" rel="noopener"></a>
     <div id="meta"></div>
   </div>
+  <button id="prev" class="black_button" title="previous piece (←)" hidden>← previous</button>
   <div id="status">finding something to look at…</div>
 
   <script>
@@ -97,6 +112,10 @@
     let pieces = [];
     let bag = [];          // shuffled ids still to show this round
     let current = null;
+    let history = [];      // pieces shown so far, oldest first
+    let pos = -1;          // where in history we are; < length-1 after going back
+    const HISTORY_MAX = 100;
+    const prevBtn = document.getElementById('prev');
     let front = 0;         // which <img> is visible
     let timer = null;
     let busy = false;
@@ -141,10 +160,20 @@
       busy = true;
       clearTimeout(timer);
       let piece = null;
-      for (let tries = 0; tries < 5 && !piece; tries++) {
-        const p = pick();
-        if (!p) break;
-        try { await preload(p.imageUrl); piece = p; } catch (e) { /* skip broken image */ }
+      if (pos < history.length - 1) {
+        // went back earlier: retrace forward before picking anything new
+        piece = history[++pos];
+      } else {
+        for (let tries = 0; tries < 5 && !piece; tries++) {
+          const p = pick();
+          if (!p) break;
+          try { await preload(p.imageUrl); piece = p; } catch (e) { /* skip broken image */ }
+        }
+        if (piece) {
+          history.push(piece);
+          if (history.length > HISTORY_MAX) history.shift();
+          pos = history.length - 1;
+        }
       }
       if (piece) show(piece);
       else if (!current) statusEl.textContent = "couldn't load any pieces. trying again soon.";
@@ -160,8 +189,16 @@
       return null;
     }
 
+    function prev() {
+      if (busy || pos <= 0) return;
+      clearTimeout(timer);
+      show(history[--pos]);
+      timer = setTimeout(next, EVERY_MS);
+    }
+
     function show(piece) {
       current = piece;
+      prevBtn.hidden = pos <= 0;
       statusEl.hidden = true;
       const back = 1 - front;
       imgs[back].src = piece.imageUrl;
@@ -188,10 +225,13 @@
       }, titleEl.textContent ? 700 : 0); // first piece: no old caption to fade out
     }
 
-    // click the picture, or press → / space, for the next one. f for fullscreen.
+    // click the picture, or press → / space, for the next one; ← or the
+    // button to go back. f for fullscreen.
     document.getElementById('frame').addEventListener('click', next);
+    prevBtn.addEventListener('click', () => { prev(); prevBtn.blur(); });
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
       if (e.key === 'f') {
         if (document.fullscreenElement) document.exitFullscreen();
         else document.documentElement.requestFullscreen?.();
