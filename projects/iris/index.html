@@ -152,6 +152,14 @@
       timer = setTimeout(next, piece ? EVERY_MS : 60 * 1000);
     }
 
+    // iris prices are whole US dollars; no price means the artist takes offers
+    function price(piece) {
+      if (piece.isSold) return 'sold';
+      if (piece.price != null) return '$' + piece.price.toLocaleString('en-US');
+      if (piece.offersOnly) return 'offers only';
+      return null;
+    }
+
     function show(piece) {
       current = piece;
       statusEl.hidden = true;
@@ -166,8 +174,16 @@
       setTimeout(() => {
         titleEl.textContent = piece.title;
         titleEl.href = piece.url;
-        const bits = [piece.artistName, piece.year, piece.medium && piece.medium.toLowerCase()];
-        metaEl.textContent = bits.filter(Boolean).join(' · ') + ' — on iris';
+        let artist = piece.artistName;
+        if (artist && piece.artistUrl) {
+          artist = document.createElement('a');
+          artist.textContent = piece.artistName;
+          artist.href = piece.artistUrl;
+          artist.target = '_blank';
+          artist.rel = 'noopener';
+        }
+        const bits = [artist, price(piece), piece.medium && piece.medium.toLowerCase()].filter(Boolean);
+        metaEl.replaceChildren(...bits.flatMap((b, i) => i ? [' · ', b] : [b]), ' — on iris');
         caption.classList.remove('fading');
       }, titleEl.textContent ? 700 : 0); // first piece: no old caption to fade out
     }
