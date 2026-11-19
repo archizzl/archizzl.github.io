@@ -34,6 +34,22 @@
    "artistUrl": "https://iris.ooo/artists/alex-ehmer"
   },
   {
+   "id": "isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "slug": "isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "title": "Isaac Wood singing ''Say It Ain't So'' by Weezer at Haldern",
+   "artistId": "dante-slomp",
+   "artistName": "Dante Slomp",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-15T15:31:54.419479+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4cf6e69f-2242-43f1-bc86-4d55caddf300/public",
+   "year": 2025,
+   "price": 385,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "artistUrl": "https://iris.ooo/artists/dante-slomp"
+  },
+  {
    "id": "looker-backer",
    "slug": "looker-backer",
    "title": "Looker-backer",
@@ -48,6 +64,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=looker-backer",
    "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  },
+  {
+   "id": "houndstooth-in-the-pavement",
+   "slug": "houndstooth-in-the-pavement",
+   "title": "Houndstooth in the Pavement",
+   "artistId": "ella-shubert",
+   "artistName": "Ella Frances Shubert",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-12T22:39:24.094933+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/88c76378-a3f5-4ebb-39c8-33f394b8d300/public",
+   "year": 2026,
+   "price": 792,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=houndstooth-in-the-pavement",
+   "artistUrl": "https://iris.ooo/artists/ella-shubert"
   },
   {
    "id": "if-youre-seeing-this-this-message-is-for-you",
@@ -80,6 +112,38 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=look-back-side-b",
    "artistUrl": "https://iris.ooo/artists/kadin-harris"
+  },
+  {
+   "id": "bird-envy",
+   "slug": "bird-envy",
+   "title": "Bird Envy",
+   "artistId": "olivia-nevins-carbins",
+   "artistName": "Olivia Nevins-Carbins",
+   "medium": "oil and acrylic paint on canvas",
+   "createdAt": "2026-11-06T18:23:47.818800+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7cee18f6-4c48-4f4d-779c-6ce77e480000/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bird-envy",
+   "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
+  },
+  {
+   "id": "tattoo-1",
+   "slug": "tattoo-1",
+   "title": "Tattoo 1",
+   "artistId": "primo-ledeboer-gill",
+   "artistName": "primo Ledeboer Gill",
+   "medium": "Acrylic on Canvas",
+   "createdAt": "2026-10-27T17:47:10.335875+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ded5404c-b4bf-4cf5-16ce-da4bcf4c1900/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tattoo-1",
+   "artistUrl": "https://iris.ooo/artists/primo-ledeboer-gill"
   },
   {
    "id": "cupid-shuffle",
@@ -210,6 +274,22 @@
    "artistUrl": "https://iris.ooo/artists/guido-corbisiero"
   },
   {
+   "id": "first-principles",
+   "slug": "first-principles",
+   "title": "First Principles",
+   "artistId": "richard-medina",
+   "artistName": "Richard Medina",
+   "medium": "Acrylic, silkscreen, and image transfer on panel",
+   "createdAt": "2026-10-09T15:56:51.872011+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/aecf07c7-44e9-4b74-4259-2881dbe55900/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=first-principles",
+   "artistUrl": "https://iris.ooo/artists/richard-medina"
+  },
+  {
    "id": "operation-doily",
    "slug": "operation-doily",
    "title": "Operation doily",
@@ -274,6 +354,54 @@
    "artistUrl": "https://iris.ooo/artists/sophia-meng"
   },
   {
+   "id": "sparkle-1",
+   "slug": "sparkle-1",
+   "title": "Sparkle",
+   "artistId": "ruby-beenhouwer",
+   "artistName": "Ruby Beenhouwer",
+   "medium": "oil on canvas",
+   "createdAt": "2026-09-20T20:18:12.016523+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fa3fc1ef-c816-4291-8baf-2c729dcb0800/public",
+   "year": 2023,
+   "price": 1500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sparkle-1",
+   "artistUrl": "https://iris.ooo/artists/ruby-beenhouwer"
+  },
+  {
+   "id": "mani-vekja-bjornsdottr-moon-wakes-the-daughter-of-bears",
+   "slug": "mani-vekja-bjornsdottr-moon-wakes-the-daughter-of-bears",
+   "title": "Maní vekja bjornsdottr (Moon wakes the daughter of bears)",
+   "artistId": "isa-olsen",
+   "artistName": "Isa Olsen",
+   "medium": "lithograph on paper",
+   "createdAt": "2026-09-19T20:06:58.981415+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f3ccc358-111e-4dd1-e0dd-9ccafe377c00/public",
+   "year": 2026,
+   "price": 35,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=mani-vekja-bjornsdottr-moon-wakes-the-daughter-of-bears",
+   "artistUrl": "https://iris.ooo/artists/isa-olsen"
+  },
+  {
+   "id": "request-for-pending-repairs",
+   "slug": "request-for-pending-repairs",
+   "title": "request for pending repairs",
+   "artistId": "sofia-coholan",
+   "artistName": "Sofía Coholan",
+   "medium": "oil paint, relief print, paper maché, wood panel",
+   "createdAt": "2026-09-16T16:51:38.387761+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/47392ec9-0b31-4451-6189-3fbed1772800/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=request-for-pending-repairs",
+   "artistUrl": "https://iris.ooo/artists/sofia-coholan"
+  },
+  {
    "id": "princess-and-the-pea-nightlight",
    "slug": "princess-and-the-pea-nightlight",
    "title": "princess and the pea (nightlight)",
@@ -288,6 +416,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=princess-and-the-pea-nightlight",
    "artistUrl": "https://iris.ooo/artists/artie-greene"
+  },
+  {
+   "id": "the-one",
+   "slug": "the-one",
+   "title": "The One",
+   "artistId": "jarret-rubin",
+   "artistName": "Jarret Rubin",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-08-28T23:29:55.993577+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d3656dcf-a94e-4291-7ab9-b20fadb85400/public",
+   "year": 2025,
+   "price": 14000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-one",
+   "artistUrl": "https://iris.ooo/artists/jarret-rubin"
   },
   {
    "id": "race-day",
@@ -352,6 +496,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=head-is-a-rock-on-the-shore-of-the-beach",
    "artistUrl": "https://iris.ooo/artists/mark-harrington"
+  },
+  {
+   "id": "irving",
+   "slug": "irving",
+   "title": "irving",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-08-06T17:55:07.052122+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fdc08e56-1bf4-4e83-7c6c-49d6f272c300/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=irving",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
   },
   {
    "id": "euie",
@@ -432,6 +592,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=convection-cells-1",
    "artistUrl": "https://iris.ooo/artists/organicsnakeoil"
+  },
+  {
+   "id": "belly-button-window",
+   "slug": "belly-button-window",
+   "title": "Belly Button Window",
+   "artistId": "taylor-green",
+   "artistName": "Taylor Green",
+   "medium": "Oil on Wooden Door",
+   "createdAt": "2026-06-23T13:04:27.948151+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0e5689e-2688-4964-e39c-495936937a00/public",
+   "year": 2025,
+   "price": 1750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=belly-button-window",
+   "artistUrl": "https://iris.ooo/artists/taylor-green"
   },
   {
    "id": "standing-on-a-pin",
@@ -610,6 +786,22 @@
    "artistUrl": "https://iris.ooo/artists/ashley-stokols"
   },
   {
+   "id": "drinking-from-the-big-glass",
+   "slug": "drinking-from-the-big-glass",
+   "title": "drinking from the big glass",
+   "artistId": "francesca-bertani",
+   "artistName": "Francesca Bella Bertani",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-13T20:25:30.364776+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f6b66f29-32f5-4226-ab3f-949c7f569300/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=drinking-from-the-big-glass",
+   "artistUrl": "https://iris.ooo/artists/francesca-bertani"
+  },
+  {
    "id": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
    "slug": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
    "title": "Halsey St, Grand Ave, W 60 St, Pacific St, Myrtle Ave",
@@ -624,6 +816,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
    "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
+  },
+  {
+   "id": "honk-4-jesus",
+   "slug": "honk-4-jesus",
+   "title": "Honk 4 Jesus",
+   "artistId": "owen-michael-wills",
+   "artistName": "Owen Michael Wills",
+   "medium": "Oil on wooden panel",
+   "createdAt": "2026-05-01T18:10:53.092286+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a7a2a914-bcf0-481e-3023-d77521ccbb00/public",
+   "year": 2025,
+   "price": 2000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=honk-4-jesus",
+   "artistUrl": "https://iris.ooo/artists/owen-michael-wills"
   },
   {
    "id": "xenomorphgirl",
@@ -754,6 +962,22 @@
    "artistUrl": "https://iris.ooo/artists/alex-bloise"
   },
   {
+   "id": "polka-dot-politics",
+   "slug": "polka-dot-politics",
+   "title": "Polka Dot Politics",
+   "artistId": "jackson-siegal",
+   "artistName": "Jackson Siegal",
+   "medium": "Acrylic and Gansai on board with selection from \"The Photograph Collector's Guide\"",
+   "createdAt": "2026-04-05T20:28:13.799088+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d6bb4830-e5a6-4da9-a7d1-a36f83982800/public",
+   "year": 2025,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=polka-dot-politics",
+   "artistUrl": "https://iris.ooo/artists/jackson-siegal"
+  },
+  {
    "id": "i-dont-miss",
    "slug": "i-dont-miss",
    "title": "I DON'T MISS",
@@ -848,6 +1072,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=i-3-moss",
    "artistUrl": "https://iris.ooo/artists/siya-kumar"
+  },
+  {
+   "id": "the-mapping-of-a-movement",
+   "slug": "the-mapping-of-a-movement",
+   "title": "the mapping of a movement",
+   "artistId": "max-jade-manko",
+   "artistName": "Max Jade Manko",
+   "medium": "Archival pigment print",
+   "createdAt": "2026-03-20T00:08:28.793816+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c4b653ce-13cd-4787-9852-f6068faea600/public",
+   "year": 2024,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-mapping-of-a-movement",
+   "artistUrl": "https://iris.ooo/artists/max-jade-manko"
   },
   {
    "id": "anonymous-desire-3",
@@ -1040,6 +1280,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=connate",
    "artistUrl": "https://iris.ooo/artists/hailey-scheff"
+  },
+  {
+   "id": "ive-seen-ye-smoke",
+   "slug": "ive-seen-ye-smoke",
+   "title": "I've Seen Ye Smoke",
+   "artistId": "sarah-schacht",
+   "artistName": "Sarah Schacht",
+   "medium": "archival fine art ink; printed on epson enhanced matte paper",
+   "createdAt": "2026-01-13T19:38:01.696228+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e7b61d3d-2f59-43ff-504e-b478af4a5b00/public",
+   "year": 2024,
+   "price": 155,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ive-seen-ye-smoke",
+   "artistUrl": "https://iris.ooo/artists/sarah-schacht"
   },
   {
    "id": "flock-mini",

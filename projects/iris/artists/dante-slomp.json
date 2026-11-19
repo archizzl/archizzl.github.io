@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/dante-slomp",
+ "pieces": [
+  {
+   "id": "ppe",
+   "slug": "ppe",
+   "title": "PPE",
+   "artistId": "dante-slomp",
+   "artistName": "Dante Slomp",
+   "medium": "Oil pastel on paper",
+   "createdAt": "2026-11-15T15:43:15.702391+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c1bda1b3-6a05-4a7c-e0c2-a4d4e131ae00/public",
+   "year": 2024,
+   "price": 165,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ppe",
+   "artistUrl": "https://iris.ooo/artists/dante-slomp"
+  },
+  {
+   "id": "hazmat-love",
+   "slug": "hazmat-love",
+   "title": "Hazmat love",
+   "artistId": "dante-slomp",
+   "artistName": "Dante Slomp",
+   "medium": "Oil pastel on paper",
+   "createdAt": "2026-11-15T15:39:11.886878+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5571db3c-9a1e-4d9e-2bf0-beb8c5092e00/public",
+   "year": 2025,
+   "price": 165,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=hazmat-love",
+   "artistUrl": "https://iris.ooo/artists/dante-slomp"
+  },
+  {
+   "id": "isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "slug": "isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "title": "Isaac Wood singing ''Say It Ain't So'' by Weezer at Haldern",
+   "artistId": "dante-slomp",
+   "artistName": "Dante Slomp",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-15T15:31:54.419479+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4cf6e69f-2242-43f1-bc86-4d55caddf300/public",
+   "year": 2025,
+   "price": 385,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=isaac-wood-singing-say-it-aint-so-by-weezer-at-haldern",
+   "artistUrl": "https://iris.ooo/artists/dante-slomp"
+  },
+  {
+   "id": "blue-teeth",
+   "slug": "blue-teeth",
+   "title": "Blue Teeth",
+   "artistId": "dante-slomp",
+   "artistName": "Dante Slomp",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-15T15:10:58.397050+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c527bbdf-4ab8-4090-4346-601787798a00/public",
+   "year": 2025,
+   "price": 880,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=blue-teeth",
+   "artistUrl": "https://iris.ooo/artists/dante-slomp"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/sofia-coholan",
+ "pieces": [
+  {
+   "id": "keep-the-windows-open",
+   "slug": "keep-the-windows-open",
+   "title": "keep the windows open",
+   "artistId": "sofia-coholan",
+   "artistName": "Sofía Coholan",
+   "medium": "etching with surface roll",
+   "createdAt": "2026-11-10T23:10:19.995537+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5faf0806-a432-4877-9b5a-8434f2921c00/public",
+   "year": 2026,
+   "price": 50,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=keep-the-windows-open",
+   "artistUrl": "https://iris.ooo/artists/sofia-coholan"
+  },
+  {
+   "id": "request-for-pending-repairs",
+   "slug": "request-for-pending-repairs",
+   "title": "request for pending repairs",
+   "artistId": "sofia-coholan",
+   "artistName": "Sofía Coholan",
+   "medium": "oil paint, relief print, paper maché, wood panel",
+   "createdAt": "2026-09-16T16:51:38.387761+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/47392ec9-0b31-4451-6189-3fbed1772800/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=request-for-pending-repairs",
+   "artistUrl": "https://iris.ooo/artists/sofia-coholan"
+  },
+  {
+   "id": "corrosive-repetition",
+   "slug": "corrosive-repetition",
+   "title": "corrosive repetition",
+   "artistId": "sofia-coholan",
+   "artistName": "Sofía Coholan",
+   "medium": "etching",
+   "createdAt": "2026-06-08T01:51:17.016355+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/57ea77b8-71cb-45e0-78a8-4835bc449f00/public",
+   "year": 2025,
+   "price": 75,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=corrosive-repetition",
+   "artistUrl": "https://iris.ooo/artists/sofia-coholan"
+  }
+ ]
+}

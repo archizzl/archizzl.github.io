@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/ella-shubert",
+ "pieces": [
+  {
+   "id": "houndstooth-in-the-pavement",
+   "slug": "houndstooth-in-the-pavement",
+   "title": "Houndstooth in the Pavement",
+   "artistId": "ella-shubert",
+   "artistName": "Ella Frances Shubert",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-12T22:39:24.094933+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/bba1d28e-fddb-4378-28ac-7eb5fd1fa500/public",
+   "year": 2026,
+   "price": 792,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=houndstooth-in-the-pavement",
+   "artistUrl": "https://iris.ooo/artists/ella-shubert"
+  },
+  {
+   "id": "butterfly-temple",
+   "slug": "butterfly-temple",
+   "title": "Butterfly Temple",
+   "artistId": "ella-shubert",
+   "artistName": "Ella Frances Shubert",
+   "medium": "bra straps",
+   "createdAt": "2026-11-12T22:27:39.542613+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/88f5dcda-effc-445b-10f9-c92f95acef00/public",
+   "year": 2026,
+   "price": 1320,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=butterfly-temple",
+   "artistUrl": "https://iris.ooo/artists/ella-shubert"
+  },
+  {
+   "id": "peggy",
+   "slug": "peggy",
+   "title": "Peggy",
+   "artistId": "ella-shubert",
+   "artistName": "Ella Frances Shubert",
+   "medium": "bra straps",
+   "createdAt": "2026-11-12T22:24:14.923495+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6fe41810-68c9-4c7c-8a0c-66e8862ea000/public",
+   "year": 2026,
+   "price": 480,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=peggy",
+   "artistUrl": "https://iris.ooo/artists/ella-shubert"
+  }
+ ]
+}

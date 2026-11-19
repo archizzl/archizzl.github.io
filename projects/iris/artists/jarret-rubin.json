@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/jarret-rubin",
+ "pieces": [
+  {
+   "id": "the-one",
+   "slug": "the-one",
+   "title": "The One",
+   "artistId": "jarret-rubin",
+   "artistName": "Jarret Rubin",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-08-28T23:29:55.993577+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d3656dcf-a94e-4291-7ab9-b20fadb85400/public",
+   "year": 2025,
+   "price": 14000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-one",
+   "artistUrl": "https://iris.ooo/artists/jarret-rubin"
+  }
+ ]
+}

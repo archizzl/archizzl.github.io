@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/max-jade-manko",
+ "pieces": [
+  {
+   "id": "bike-charm",
+   "slug": "bike-charm",
+   "title": "Bike Charm",
+   "artistId": "max-jade-manko",
+   "artistName": "Max Jade Manko",
+   "medium": "Screenprint",
+   "createdAt": "2026-10-16T23:51:53.082678+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/78e96cfe-d6f8-425f-725a-1a5cda30b000/public",
+   "year": 2025,
+   "price": 125,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bike-charm",
+   "artistUrl": "https://iris.ooo/artists/max-jade-manko"
+  },
+  {
+   "id": "tales-of-the-fish-pt2",
+   "slug": "tales-of-the-fish-pt2",
+   "title": "tales of the fish pt.2",
+   "artistId": "max-jade-manko",
+   "artistName": "Max Jade Manko",
+   "medium": "screenprint on wood",
+   "createdAt": "2026-06-14T17:50:18.044721+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/654b6f10-d97f-45bd-df36-95af9ef4b000/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tales-of-the-fish-pt2",
+   "artistUrl": "https://iris.ooo/artists/max-jade-manko"
+  },
+  {
+   "id": "tales-of-the-fish-pt-1",
+   "slug": "tales-of-the-fish-pt-1",
+   "title": "tales of the fish pt. 1",
+   "artistId": "max-jade-manko",
+   "artistName": "Max Jade Manko",
+   "medium": "screenprint on wood",
+   "createdAt": "2026-06-14T17:45:09.279768+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8d5e9b88-4952-498e-5b47-647df80aec00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tales-of-the-fish-pt-1",
+   "artistUrl": "https://iris.ooo/artists/max-jade-manko"
+  },
+  {
+   "id": "the-mapping-of-a-movement",
+   "slug": "the-mapping-of-a-movement",
+   "title": "the mapping of a movement",
+   "artistId": "max-jade-manko",
+   "artistName": "Max Jade Manko",
+   "medium": "Archival pigment print",
+   "createdAt": "2026-03-20T00:08:28.793816+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c4b653ce-13cd-4787-9852-f6068faea600/public",
+   "year": 2024,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-mapping-of-a-movement",
+   "artistUrl": "https://iris.ooo/artists/max-jade-manko"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/taylor-green",
+ "pieces": [
+  {
+   "id": "belly-button-window",
+   "slug": "belly-button-window",
+   "title": "Belly Button Window",
+   "artistId": "taylor-green",
+   "artistName": "Taylor Green",
+   "medium": "Oil on Wooden Door",
+   "createdAt": "2026-06-23T13:04:27.948151+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0e5689e-2688-4964-e39c-495936937a00/public",
+   "year": 2025,
+   "price": 1750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=belly-button-window",
+   "artistUrl": "https://iris.ooo/artists/taylor-green"
+  },
+  {
+   "id": "cyanotype-series-hi-tom-peep",
+   "slug": "cyanotype-series-hi-tom-peep",
+   "title": "Cyanotype Series / Hi Tom Peep!",
+   "artistId": "taylor-green",
+   "artistName": "Taylor Green",
+   "medium": "Cyanotype on Paper",
+   "createdAt": "2026-06-12T18:21:58.769829+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/dd3ecbbc-79d8-4798-f32e-92cf097ba500/public",
+   "year": 2025,
+   "price": 130,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=cyanotype-series-hi-tom-peep",
+   "artistUrl": "https://iris.ooo/artists/taylor-green"
+  },
+  {
+   "id": "cradle",
+   "slug": "cradle",
+   "title": "Cradle",
+   "artistId": "taylor-green",
+   "artistName": "Taylor Green",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-06-12T18:16:22.233696+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f5d3bf32-3312-493b-3904-d0fd4af6ea00/public",
+   "year": 2025,
+   "price": 1750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=cradle",
+   "artistUrl": "https://iris.ooo/artists/taylor-green"
+  },
+  {
+   "id": "arrangement",
+   "slug": "arrangement",
+   "title": "Arrangement",
+   "artistId": "taylor-green",
+   "artistName": "Taylor Green",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-06-07T14:59:27.851929+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/79ac1f43-c4e2-4551-379a-489347793e00/public",
+   "year": 2025,
+   "price": 2800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=arrangement",
+   "artistUrl": "https://iris.ooo/artists/taylor-green"
+  }
+ ]
+}

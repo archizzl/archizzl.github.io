@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/mia-hause",
+ "pieces": [
+  {
+   "id": "irving",
+   "slug": "irving",
+   "title": "irving",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-08-06T17:55:07.052122+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fdc08e56-1bf4-4e83-7c6c-49d6f272c300/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=irving",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
+  },
+  {
+   "id": "old-barn-market-1",
+   "slug": "old-barn-market-1",
+   "title": "old barn market",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "colored pencil and solarfast on paper",
+   "createdAt": "2026-07-17T17:19:12.342945+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5af43cd8-82ad-4c72-db06-261dd7920a00/public",
+   "year": 2026,
+   "price": 75,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=old-barn-market-1",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
+  },
+  {
+   "id": "collection-i",
+   "slug": "collection-i",
+   "title": "Collection I",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "oil on canvas",
+   "createdAt": "2026-07-17T16:59:52.178557+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/629c574c-ad96-4064-5715-275f10e0df00/public",
+   "year": 2022,
+   "price": 150,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=collection-i",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
+  },
+  {
+   "id": "baby",
+   "slug": "baby",
+   "title": "baby",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "Oil on wood panel",
+   "createdAt": "2026-04-22T01:10:28.186989+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/29fa4986-f4d1-48f3-cb8c-0825a5968a00/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=baby",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
+  }
+ ]
+}

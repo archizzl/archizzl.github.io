@@ -2,6 +2,38 @@
  "source": "https://iris.ooo/artists/ketty-haolin-zhang",
  "pieces": [
   {
+   "id": "peach-blossom-spring",
+   "slug": "peach-blossom-spring",
+   "title": "Peach Blossom Spring",
+   "artistId": "ketty-haolin-zhang",
+   "artistName": "Ketty Haolin Zhang",
+   "medium": "ink on candles, found objects",
+   "createdAt": "2026-11-19T19:28:22.540890+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c337135b-7f3b-4dff-adf1-3f7c4d165b00/public",
+   "year": 2024,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=peach-blossom-spring",
+   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
+  },
+  {
+   "id": "ask-politely",
+   "slug": "ask-politely",
+   "title": "Ask Politely",
+   "artistId": "ketty-haolin-zhang",
+   "artistName": "Ketty Haolin Zhang",
+   "medium": "ink on resin, English worksheet, carpenter pencils, charm, beads, chains, key rings",
+   "createdAt": "2026-11-19T19:18:35.506365+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8559fef3-6d76-4ab3-fcd6-420716936e00/public",
+   "year": 2024,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ask-politely",
+   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
+  },
+  {
    "id": "wendi-for-lure-adaptation",
    "slug": "wendi-for-lure-adaptation",
    "title": "Wendi (for Lure & Adaptation)",
@@ -18,22 +50,6 @@
    "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
   },
   {
-   "id": "love-will-keep-me-alive",
-   "slug": "love-will-keep-me-alive",
-   "title": "love will keep me alive",
-   "artistId": "ketty-haolin-zhang",
-   "artistName": "Ketty Haolin Zhang",
-   "medium": "mixed media",
-   "createdAt": "2026-07-27T18:03:10.418023+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c4e27aab-6300-4591-782f-2875f6687800/public",
-   "year": 2026,
-   "price": 1800,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=love-will-keep-me-alive",
-   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
-  },
-  {
    "id": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
    "slug": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
    "title": "Halsey St, Grand Ave, W 60 St, Pacific St, Myrtle Ave",
@@ -42,27 +58,11 @@
    "medium": "abalone shells, inkjet on paper, resin, chains, beads",
    "createdAt": "2026-05-07T17:06:18.644747+00:00",
    "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2c3c1e1f-5977-4bca-fd46-deb2eb489500/public",
-   "year": 2026,
+   "year": 2025,
    "price": 800,
    "offersOnly": false,
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
-   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
-  },
-  {
-   "id": "specimen-smoke-break",
-   "slug": "specimen-smoke-break",
-   "title": "Specimen (smoke break)",
-   "artistId": "ketty-haolin-zhang",
-   "artistName": "Ketty Haolin Zhang",
-   "medium": "Inkjet on paper, acrylic on shell, resin, packing foam, found metal box",
-   "createdAt": "2026-03-11T02:48:40.519315+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/86c4afee-b1b3-4417-5895-87600b5feb00/public",
-   "year": 2026,
-   "price": 350,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=specimen-smoke-break",
    "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
   }
  ]

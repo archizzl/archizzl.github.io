@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/olivia-nevins-carbins",
+ "pieces": [
+  {
+   "id": "wedding-day",
+   "slug": "wedding-day",
+   "title": "Wedding Day",
+   "artistId": "olivia-nevins-carbins",
+   "artistName": "Olivia Nevins-Carbins",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-06T18:50:57.118760+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/b42fbe3e-75cf-41f3-9148-af8bf4298100/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=wedding-day",
+   "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
+  },
+  {
+   "id": "off-duty",
+   "slug": "off-duty",
+   "title": "Off Duty",
+   "artistId": "olivia-nevins-carbins",
+   "artistName": "Olivia Nevins-Carbins",
+   "medium": "oil and graphite on canvas",
+   "createdAt": "2026-11-06T18:48:13.699644+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2d12ae2b-a584-474e-f3b8-e5c254e56f00/public",
+   "year": 2026,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=off-duty",
+   "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
+  },
+  {
+   "id": "untitled-90",
+   "slug": "untitled-90",
+   "title": "Untitled",
+   "artistId": "olivia-nevins-carbins",
+   "artistName": "Olivia Nevins-Carbins",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-06T18:35:44.606212+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1473d76f-72b2-4026-28d9-f2dc1c652c00/public",
+   "year": 2026,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-90",
+   "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
+  },
+  {
+   "id": "bird-envy",
+   "slug": "bird-envy",
+   "title": "Bird Envy",
+   "artistId": "olivia-nevins-carbins",
+   "artistName": "Olivia Nevins-Carbins",
+   "medium": "oil and acrylic paint on canvas",
+   "createdAt": "2026-11-06T18:23:47.818800+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7cee18f6-4c48-4f4d-779c-6ce77e480000/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bird-envy",
+   "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
+  }
+ ]
+}

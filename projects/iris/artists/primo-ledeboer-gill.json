@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/primo-ledeboer-gill",
+ "pieces": [
+  {
+   "id": "tattoo-1",
+   "slug": "tattoo-1",
+   "title": "Tattoo 1",
+   "artistId": "primo-ledeboer-gill",
+   "artistName": "primo Ledeboer Gill",
+   "medium": "Acrylic on Canvas",
+   "createdAt": "2026-10-27T17:47:10.335875+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ded5404c-b4bf-4cf5-16ce-da4bcf4c1900/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tattoo-1",
+   "artistUrl": "https://iris.ooo/artists/primo-ledeboer-gill"
+  }
+ ]
+}

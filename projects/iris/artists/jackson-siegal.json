@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/jackson-siegal",
+ "pieces": [
+  {
+   "id": "learning-how-to-think",
+   "slug": "learning-how-to-think",
+   "title": "Learning How to Think",
+   "artistId": "jackson-siegal",
+   "artistName": "Jackson Siegal",
+   "medium": "Acrylic and collage on board",
+   "createdAt": "2026-04-05T20:32:47.140140+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cf2ce780-2ac6-4c32-b45d-d2ec7bfe3800/public",
+   "year": 2025,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=learning-how-to-think",
+   "artistUrl": "https://iris.ooo/artists/jackson-siegal"
+  },
+  {
+   "id": "polka-dot-politics",
+   "slug": "polka-dot-politics",
+   "title": "Polka Dot Politics",
+   "artistId": "jackson-siegal",
+   "artistName": "Jackson Siegal",
+   "medium": "Acrylic and Gansai on board with selection from \"The Photograph Collector's Guide\"",
+   "createdAt": "2026-04-05T20:28:13.799088+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d6bb4830-e5a6-4da9-a7d1-a36f83982800/public",
+   "year": 2025,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=polka-dot-politics",
+   "artistUrl": "https://iris.ooo/artists/jackson-siegal"
+  }
+ ]
+}

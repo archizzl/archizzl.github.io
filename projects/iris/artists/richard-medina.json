@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/richard-medina",
+ "pieces": [
+  {
+   "id": "last-call",
+   "slug": "last-call",
+   "title": "Last Call",
+   "artistId": "richard-medina",
+   "artistName": "Richard Medina",
+   "medium": "Acrylic and image transfer on panels",
+   "createdAt": "2026-10-09T16:04:16.574489+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/dffa426d-6f14-4098-d9ed-193d9331b400/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=last-call",
+   "artistUrl": "https://iris.ooo/artists/richard-medina"
+  },
+  {
+   "id": "endpapers",
+   "slug": "endpapers",
+   "title": "Endpapers",
+   "artistId": "richard-medina",
+   "artistName": "Richard Medina",
+   "medium": "Acrylic and image transfer on panel",
+   "createdAt": "2026-10-09T16:01:28.537925+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d854a132-7a5c-4eaa-4bb7-25795f7eb700/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=endpapers",
+   "artistUrl": "https://iris.ooo/artists/richard-medina"
+  },
+  {
+   "id": "all-saints-day",
+   "slug": "all-saints-day",
+   "title": "All Saints' Day",
+   "artistId": "richard-medina",
+   "artistName": "Richard Medina",
+   "medium": "Acrylic and image transfer on panel",
+   "createdAt": "2026-10-09T15:59:59.590626+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fc379703-531c-4ffb-e5ba-c6000f21f800/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=all-saints-day",
+   "artistUrl": "https://iris.ooo/artists/richard-medina"
+  },
+  {
+   "id": "first-principles",
+   "slug": "first-principles",
+   "title": "First Principles",
+   "artistId": "richard-medina",
+   "artistName": "Richard Medina",
+   "medium": "Acrylic, silkscreen, and image transfer on panel",
+   "createdAt": "2026-10-09T15:56:51.872011+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/aecf07c7-44e9-4b74-4259-2881dbe55900/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=first-principles",
+   "artistUrl": "https://iris.ooo/artists/richard-medina"
+  }
+ ]
+}
