@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/theo-osborn",
+ "pieces": [
+  {
+   "id": "isolation-within-extremes-4",
+   "slug": "isolation-within-extremes-4",
+   "title": "Isolation Within Extremes #4",
+   "artistId": "theo-osborn",
+   "artistName": "Theo Osborn",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-07-24T05:46:26.591588+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/45b61227-a53c-4a07-36c5-e593aa110b00/public",
+   "year": 2026,
+   "price": 1400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=isolation-within-extremes-4",
+   "artistUrl": "https://iris.ooo/artists/theo-osborn"
+  },
+  {
+   "id": "bathroom-congregators",
+   "slug": "bathroom-congregators",
+   "title": "Bathroom Congregators",
+   "artistId": "theo-osborn",
+   "artistName": "Theo Osborn",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-04-01T23:31:53.300300+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/50cc7632-f17e-4c8a-988b-2049f5c57d00/public",
+   "year": 2025,
+   "price": 825,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bathroom-congregators",
+   "artistUrl": "https://iris.ooo/artists/theo-osborn"
+  },
+  {
+   "id": "zipbye",
+   "slug": "zipbye",
+   "title": "Zipbye",
+   "artistId": "theo-osborn",
+   "artistName": "Theo Osborn",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-04-01T23:23:34.849662+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4e13bfa9-f9ac-49dc-0146-7db14720b200/public",
+   "year": 2025,
+   "price": 825,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=zipbye",
+   "artistUrl": "https://iris.ooo/artists/theo-osborn"
+  },
+  {
+   "id": "tool-1",
+   "slug": "tool-1",
+   "title": "Tool #1",
+   "artistId": "theo-osborn",
+   "artistName": "Theo Osborn",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-04-01T23:21:13.469025+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/33ef971b-14f8-41b6-6cff-ff6f40b4e800/public",
+   "year": 2025,
+   "price": 825,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tool-1",
+   "artistUrl": "https://iris.ooo/artists/theo-osborn"
+  }
+ ]
+}

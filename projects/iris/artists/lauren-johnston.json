@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/lauren-johnston",
+ "pieces": [
+  {
+   "id": "pound-of-flesh",
+   "slug": "pound-of-flesh",
+   "title": "Pound of Flesh",
+   "artistId": "lauren-johnston",
+   "artistName": "Lauren Johnston",
+   "medium": "cross stitch on canvas",
+   "createdAt": "2026-07-13T02:04:58.578241+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/84b93671-36aa-435c-d400-70f6b92b2800/public",
+   "year": 2025,
+   "price": 170,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pound-of-flesh",
+   "artistUrl": "https://iris.ooo/artists/lauren-johnston"
+  },
+  {
+   "id": "one-mans-trash",
+   "slug": "one-mans-trash",
+   "title": "One Man's Trash",
+   "artistId": "lauren-johnston",
+   "artistName": "Lauren Johnston",
+   "medium": "oil on panel",
+   "createdAt": "2026-07-13T02:02:14.637071+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8161a173-90f5-4e26-49fc-90b3ad12b000/public",
+   "year": 2025,
+   "price": 160,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=one-mans-trash",
+   "artistUrl": "https://iris.ooo/artists/lauren-johnston"
+  },
+  {
+   "id": "monkey-business",
+   "slug": "monkey-business",
+   "title": "Monkey Business",
+   "artistId": "lauren-johnston",
+   "artistName": "Lauren Johnston",
+   "medium": "oil on panel",
+   "createdAt": "2026-07-13T01:35:25.047072+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cec75cc9-62b8-4f80-bcd4-c79a8ebfd300/public",
+   "year": 2026,
+   "price": 160,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=monkey-business",
+   "artistUrl": "https://iris.ooo/artists/lauren-johnston"
+  },
+  {
+   "id": "field-trip-to-the-field-museum",
+   "slug": "field-trip-to-the-field-museum",
+   "title": "Field Trip to the Field Museum",
+   "artistId": "lauren-johnston",
+   "artistName": "Lauren Johnston",
+   "medium": "oil on canvas",
+   "createdAt": "2026-07-13T01:20:02.678762+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c978025a-6fcd-4746-1c37-fb759df63f00/public",
+   "year": 2026,
+   "price": 2500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=field-trip-to-the-field-museum",
+   "artistUrl": "https://iris.ooo/artists/lauren-johnston"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/gyae-kim",
+ "pieces": [
+  {
+   "id": "flavor",
+   "slug": "flavor",
+   "title": "Flavor",
+   "artistId": "gyae-kim",
+   "artistName": "Gyae Kim",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-10-20T21:17:00.191361+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7714ce44-9328-4c1e-0e17-efe5301cd500/public",
+   "year": 2026,
+   "price": 1200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=flavor",
+   "artistUrl": "https://iris.ooo/artists/gyae-kim"
+  },
+  {
+   "id": "nurtured",
+   "slug": "nurtured",
+   "title": "Nurtured",
+   "artistId": "gyae-kim",
+   "artistName": "Gyae Kim",
+   "medium": "Acrylic and oil on canvas",
+   "createdAt": "2026-10-08T16:25:38.477996+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/61b86513-b274-46c7-1b95-04613c93bc00/public",
+   "year": 2026,
+   "price": 3000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=nurtured",
+   "artistUrl": "https://iris.ooo/artists/gyae-kim"
+  }
+ ]
+}

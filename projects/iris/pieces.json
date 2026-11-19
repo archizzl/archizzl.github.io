@@ -34,6 +34,22 @@
    "artistUrl": "https://iris.ooo/artists/alex-ehmer"
   },
   {
+   "id": "looker-backer",
+   "slug": "looker-backer",
+   "title": "Looker-backer",
+   "artistId": "louise-giddings",
+   "artistName": "Louise Giddings",
+   "medium": "oil on linen",
+   "createdAt": "2026-11-14T20:44:04.999859+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5d6bae37-8e96-409e-6455-8232c9c78200/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=looker-backer",
+   "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  },
+  {
    "id": "if-youre-seeing-this-this-message-is-for-you",
    "slug": "if-youre-seeing-this-this-message-is-for-you",
    "title": "if you're seeing this, this message is for you",
@@ -98,6 +114,22 @@
    "artistUrl": "https://iris.ooo/artists/kate-freeman-cook"
   },
   {
+   "id": "every-image-i-ever-was-01",
+   "slug": "every-image-i-ever-was-01",
+   "title": "Every Image I Ever Was 01",
+   "artistId": "maybekai",
+   "artistName": "Kai Miller",
+   "medium": "Pigment print",
+   "createdAt": "2026-10-14T18:22:46.547879+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/58abc761-eced-4782-711f-a958b0848200/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=every-image-i-ever-was-01",
+   "artistUrl": "https://iris.ooo/artists/maybekai"
+  },
+  {
    "id": "walking-ladder",
    "slug": "walking-ladder",
    "title": "Walking Ladder",
@@ -130,6 +162,22 @@
    "artistUrl": "https://iris.ooo/artists/bella-oliver-steinberg"
   },
   {
+   "id": "the-confessional",
+   "slug": "the-confessional",
+   "title": "the confessional",
+   "artistId": "teresa-eleonora",
+   "artistName": "Teresa Eleonora",
+   "medium": "oil on canvas",
+   "createdAt": "2026-10-12T20:48:32.522399+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/682ee3c5-588d-41b9-bba5-d144896bb900/public",
+   "year": 2025,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-confessional",
+   "artistUrl": "https://iris.ooo/artists/teresa-eleonora"
+  },
+  {
    "id": "wendi-for-lure-adaptation",
    "slug": "wendi-for-lure-adaptation",
    "title": "Wendi (for Lure & Adaptation)",
@@ -160,6 +208,38 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=50-for-1",
    "artistUrl": "https://iris.ooo/artists/guido-corbisiero"
+  },
+  {
+   "id": "operation-doily",
+   "slug": "operation-doily",
+   "title": "Operation doily",
+   "artistId": "ella-elizabeth-faulkner-smith",
+   "artistName": "Ella Elizabeth Faulkner-Smith",
+   "medium": "Watercolour on cotton",
+   "createdAt": "2026-10-09T11:17:59.737764+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/39129c39-7fee-4137-539d-e6f9844aa200/public",
+   "year": 2025,
+   "price": 115,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=operation-doily",
+   "artistUrl": "https://iris.ooo/artists/ella-elizabeth-faulkner-smith"
+  },
+  {
+   "id": "nurtured",
+   "slug": "nurtured",
+   "title": "Nurtured",
+   "artistId": "gyae-kim",
+   "artistName": "Gyae Kim",
+   "medium": "Acrylic and oil on canvas",
+   "createdAt": "2026-10-08T16:25:38.477996+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/61b86513-b274-46c7-1b95-04613c93bc00/public",
+   "year": 2026,
+   "price": 3000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=nurtured",
+   "artistUrl": "https://iris.ooo/artists/gyae-kim"
   },
   {
    "id": "septuplets",
@@ -306,6 +386,38 @@
    "artistUrl": "https://iris.ooo/artists/pasha-smelyantsev"
   },
   {
+   "id": "best-in-class",
+   "slug": "best-in-class",
+   "title": "Best in class",
+   "artistId": "sofia-belen-criswell",
+   "artistName": "Sofia Belen Criswell",
+   "medium": "acrylic on wood",
+   "createdAt": "2026-07-28T00:37:11.271682+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7f635484-e2b4-4e56-7dee-d86970035200/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=best-in-class",
+   "artistUrl": "https://iris.ooo/artists/sofia-belen-criswell"
+  },
+  {
+   "id": "field-trip-to-the-field-museum",
+   "slug": "field-trip-to-the-field-museum",
+   "title": "Field Trip to the Field Museum",
+   "artistId": "lauren-johnston",
+   "artistName": "Lauren Johnston",
+   "medium": "oil on canvas",
+   "createdAt": "2026-07-13T01:20:02.678762+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c978025a-6fcd-4746-1c37-fb759df63f00/public",
+   "year": 2026,
+   "price": 2500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=field-trip-to-the-field-museum",
+   "artistUrl": "https://iris.ooo/artists/lauren-johnston"
+  },
+  {
    "id": "convection-cells-1",
    "slug": "convection-cells-1",
    "title": "Convection Cells",
@@ -320,6 +432,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=convection-cells-1",
    "artistUrl": "https://iris.ooo/artists/organicsnakeoil"
+  },
+  {
+   "id": "standing-on-a-pin",
+   "slug": "standing-on-a-pin",
+   "title": "Standing On a Pin",
+   "artistId": "olivia-porter",
+   "artistName": "Olivia Porter",
+   "medium": "oil pastel",
+   "createdAt": "2026-06-22T19:47:30.093436+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6d5d1d9d-2dcd-440b-e70d-0fd64096fd00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=standing-on-a-pin",
+   "artistUrl": "https://iris.ooo/artists/olivia-porter"
   },
   {
    "id": "willoughby-11206",
@@ -383,6 +511,22 @@
    "offersOnly": false,
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=ecstasy",
+   "artistUrl": "https://iris.ooo/artists/angela-nmn-wei"
+  },
+  {
+   "id": "figure-8",
+   "slug": "figure-8",
+   "title": "Figure 8.",
+   "artistId": "angela-nmn-wei",
+   "artistName": "Angela NMN Wei",
+   "medium": "Acrylic on canvas",
+   "createdAt": "2026-05-22T04:19:39.999817+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/632efd4a-572b-4802-27ae-313f75a89400/public",
+   "year": 2026,
+   "price": 2000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=figure-8",
    "artistUrl": "https://iris.ooo/artists/angela-nmn-wei"
   },
   {
@@ -466,6 +610,22 @@
    "artistUrl": "https://iris.ooo/artists/ashley-stokols"
   },
   {
+   "id": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
+   "slug": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
+   "title": "Halsey St, Grand Ave, W 60 St, Pacific St, Myrtle Ave",
+   "artistId": "ketty-haolin-zhang",
+   "artistName": "Ketty Haolin Zhang",
+   "medium": "abalone shells, inkjet on paper, resin, chains, beads",
+   "createdAt": "2026-05-07T17:06:18.644747+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2c3c1e1f-5977-4bca-fd46-deb2eb489500/public",
+   "year": 2026,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
+   "artistUrl": "https://iris.ooo/artists/ketty-haolin-zhang"
+  },
+  {
    "id": "xenomorphgirl",
    "slug": "xenomorphgirl",
    "title": "Xenomorphgirl",
@@ -512,6 +672,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=willow-i",
    "artistUrl": "https://iris.ooo/artists/erin-elizabeth-murphy-oflynn"
+  },
+  {
+   "id": "revenge-of-akhilleus",
+   "slug": "revenge-of-akhilleus",
+   "title": "Revenge of Akhilleus",
+   "artistId": "marco-passalacqua",
+   "artistName": "Marco Passalacqua",
+   "medium": "acrylic and collage on canvas",
+   "createdAt": "2026-04-17T18:04:28.180534+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/51079933-38ed-4e73-a59e-cad14d3bbc00/public",
+   "year": 2025,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=revenge-of-akhilleus",
+   "artistUrl": "https://iris.ooo/artists/marco-passalacqua"
   },
   {
    "id": "rarity",
@@ -594,6 +770,22 @@
    "artistUrl": "https://iris.ooo/artists/mark-wong"
   },
   {
+   "id": "bathroom-congregators",
+   "slug": "bathroom-congregators",
+   "title": "Bathroom Congregators",
+   "artistId": "theo-osborn",
+   "artistName": "Theo Osborn",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-04-01T23:31:53.300300+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/50cc7632-f17e-4c8a-988b-2049f5c57d00/public",
+   "year": 2025,
+   "price": 825,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bathroom-congregators",
+   "artistUrl": "https://iris.ooo/artists/theo-osborn"
+  },
+  {
    "id": "husk",
    "slug": "husk",
    "title": "husk",
@@ -642,6 +834,22 @@
    "artistUrl": "https://iris.ooo/artists/rosemary-matthews"
   },
   {
+   "id": "i-3-moss",
+   "slug": "i-3-moss",
+   "title": "I <3 Moss",
+   "artistId": "siya-kumar",
+   "artistName": "Siya Kumar",
+   "medium": "Oil and crayon on panel",
+   "createdAt": "2026-03-20T00:57:11.523907+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d465e6b2-3582-4c3e-5082-6f9164e18800/public",
+   "year": 2024,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=i-3-moss",
+   "artistUrl": "https://iris.ooo/artists/siya-kumar"
+  },
+  {
    "id": "anonymous-desire-3",
    "slug": "anonymous-desire-3",
    "title": "Anonymous Desire #3",
@@ -674,6 +882,22 @@
    "artistUrl": "https://iris.ooo/artists/jaxson-jaffe"
   },
   {
+   "id": "sun-said",
+   "slug": "sun-said",
+   "title": "Sun Said",
+   "artistId": "glox-lyra",
+   "artistName": "M. Gloxinia Lyra",
+   "medium": "oil on canvas",
+   "createdAt": "2026-03-13T20:47:54.134616+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c0cd3add-eb8b-455f-b7cf-5cae008fca00/public",
+   "year": 2025,
+   "price": 5000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sun-said",
+   "artistUrl": "https://iris.ooo/artists/glox-lyra"
+  },
+  {
    "id": "swallowing-teeth-1",
    "slug": "swallowing-teeth-1",
    "title": "Swallowing Teeth",
@@ -704,6 +928,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=stains-03",
    "artistUrl": "https://iris.ooo/artists/lucia-faye-rosenast"
+  },
+  {
+   "id": "coin-toss",
+   "slug": "coin-toss",
+   "title": "Coin Toss",
+   "artistId": "ruby-hewitt",
+   "artistName": "Ruby Hewitt",
+   "medium": "monotype on BFK rives (framed)",
+   "createdAt": "2026-02-26T20:18:14.226489+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0ebbb03d-01f6-4271-0b0a-db937f504f00/public",
+   "year": 2025,
+   "price": 350,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=coin-toss",
+   "artistUrl": "https://iris.ooo/artists/ruby-hewitt"
   },
   {
    "id": "you",
@@ -768,6 +1008,38 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=untitled-10",
    "artistUrl": "https://iris.ooo/artists/andrija-zekovic"
+  },
+  {
+   "id": "incestuous-birth-asexual-life",
+   "slug": "incestuous-birth-asexual-life",
+   "title": "incestuous birth (asexual life)",
+   "artistId": "charlie-lange",
+   "artistName": "Charlie Lange",
+   "medium": "colored pencil on wood panel",
+   "createdAt": "2026-01-28T19:05:02.473698+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cee97291-04d6-4c00-e427-b9f218caa800/public",
+   "year": 2025,
+   "price": 175,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=incestuous-birth-asexual-life",
+   "artistUrl": "https://iris.ooo/artists/charlie-lange"
+  },
+  {
+   "id": "connate",
+   "slug": "connate",
+   "title": "Connate",
+   "artistId": "hailey-scheff",
+   "artistName": "Hailey Scheff",
+   "medium": "Oil, found objects, & alchemical processes on canvas, stainless steel",
+   "createdAt": "2026-01-20T01:24:02.619808+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/53b35f2a-c8df-4d5d-e61b-6b52e4972800/public",
+   "year": 2025,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=connate",
+   "artistUrl": "https://iris.ooo/artists/hailey-scheff"
   },
   {
    "id": "flock-mini",
@@ -848,6 +1120,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=castelnou",
    "artistUrl": "https://iris.ooo/artists/eve-oshea"
+  },
+  {
+   "id": "psychoanalysis-of-fire",
+   "slug": "psychoanalysis-of-fire",
+   "title": "Psychoanalysis of Fire",
+   "artistId": "liby-hays",
+   "artistName": "Liby Hays",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-22T04:36:00.688980+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9108c005-ba08-4189-99d2-1b89464e7f00/public",
+   "year": 2025,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=psychoanalysis-of-fire",
+   "artistUrl": "https://iris.ooo/artists/liby-hays"
   }
  ]
 }

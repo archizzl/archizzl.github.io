@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/louise-giddings",
+ "pieces": [
+  {
+   "id": "landing-on-dry-fly-wings",
+   "slug": "landing-on-dry-fly-wings",
+   "title": "landing on dry fly wings",
+   "artistId": "louise-giddings",
+   "artistName": "Louise Giddings",
+   "medium": "oil on wood panel",
+   "createdAt": "2026-11-14T20:49:18.471977+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3240ad7f-49f3-40ce-cb4e-cc527122fe00/public",
+   "year": 2025,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=landing-on-dry-fly-wings",
+   "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  },
+  {
+   "id": "looker-backer",
+   "slug": "looker-backer",
+   "title": "Looker-backer",
+   "artistId": "louise-giddings",
+   "artistName": "Louise Giddings",
+   "medium": "oil on linen",
+   "createdAt": "2026-11-14T20:44:04.999859+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5d6bae37-8e96-409e-6455-8232c9c78200/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=looker-backer",
+   "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  },
+  {
+   "id": "pinstripe-duel",
+   "slug": "pinstripe-duel",
+   "title": "Pinstripe duel",
+   "artistId": "louise-giddings",
+   "artistName": "Louise Giddings",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-14T20:38:43.327149+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/96712e44-4b25-48d4-2265-f6882578cd00/public",
+   "year": 2026,
+   "price": 1100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pinstripe-duel",
+   "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  },
+  {
+   "id": "taxidermists-2",
+   "slug": "taxidermists-2",
+   "title": "Taxidermists",
+   "artistId": "louise-giddings",
+   "artistName": "Louise Giddings",
+   "medium": "oil on canvas",
+   "createdAt": "2026-11-14T20:36:12.401341+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/129ae610-b4bb-4e40-b85a-5d9aa9de6b00/public",
+   "year": 2026,
+   "price": 3000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=taxidermists-2",
+   "artistUrl": "https://iris.ooo/artists/louise-giddings"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/liby-hays",
+ "pieces": [
+  {
+   "id": "psychoanalysis-of-fire",
+   "slug": "psychoanalysis-of-fire",
+   "title": "Psychoanalysis of Fire",
+   "artistId": "liby-hays",
+   "artistName": "Liby Hays",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-22T04:36:00.688980+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9108c005-ba08-4189-99d2-1b89464e7f00/public",
+   "year": 2025,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=psychoanalysis-of-fire",
+   "artistUrl": "https://iris.ooo/artists/liby-hays"
+  },
+  {
+   "id": "i-plead-propinquity",
+   "slug": "i-plead-propinquity",
+   "title": "I Plead Propinquity",
+   "artistId": "liby-hays",
+   "artistName": "Liby Hays",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-22T04:07:17.110922+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9b0ea95c-df72-4704-f593-018dc6e8cd00/public",
+   "year": 2025,
+   "price": 770,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=i-plead-propinquity",
+   "artistUrl": "https://iris.ooo/artists/liby-hays"
+  },
+  {
+   "id": "untitled-to-meet-in-synanon",
+   "slug": "untitled-to-meet-in-synanon",
+   "title": "Untitled (To-Meet-In-Synanon)",
+   "artistId": "liby-hays",
+   "artistName": "Liby Hays",
+   "medium": "Oil on canvas",
+   "createdAt": "2025-12-22T03:35:26.609342+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/b677b3ea-2788-4329-e38f-d0a5b5f61100/public",
+   "year": 2024,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-to-meet-in-synanon",
+   "artistUrl": "https://iris.ooo/artists/liby-hays"
+  }
+ ]
+}
