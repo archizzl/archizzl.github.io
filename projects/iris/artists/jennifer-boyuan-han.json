@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/jennifer-boyuan-han",
+ "pieces": [
+  {
+   "id": "self-collage-16",
+   "slug": "self-collage-16",
+   "title": "Self-Collage 16",
+   "artistId": "jennifer-boyuan-han",
+   "artistName": "Jennifer Boyuan Han",
+   "medium": "Colored sand on sand art board",
+   "createdAt": "2026-06-12T22:25:49.090049+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f23fa69e-2951-446e-34b6-7142431a8900/public",
+   "year": 2025,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=self-collage-16",
+   "artistUrl": "https://iris.ooo/artists/jennifer-boyuan-han"
+  },
+  {
+   "id": "self-collage-17",
+   "slug": "self-collage-17",
+   "title": "Self-Collage #17",
+   "artistId": "jennifer-boyuan-han",
+   "artistName": "Jennifer Boyuan Han",
+   "medium": "Colored sand on sand art board",
+   "createdAt": "2026-06-11T07:13:50.594433+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/542e42ec-a2c4-4106-c083-95eeccbc6b00/public",
+   "year": 2025,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=self-collage-17",
+   "artistUrl": "https://iris.ooo/artists/jennifer-boyuan-han"
+  },
+  {
+   "id": "feb-23-1997",
+   "slug": "feb-23-1997",
+   "title": "Feb 23, 1997",
+   "artistId": "jennifer-boyuan-han",
+   "artistName": "Jennifer Boyuan Han",
+   "medium": "Colored sand, mod podge matte on canvas",
+   "createdAt": "2026-06-11T06:58:33.079022+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6a398cdd-33df-4a6c-d57b-d013690cd700/public",
+   "year": 2026,
+   "price": 1120,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=feb-23-1997",
+   "artistUrl": "https://iris.ooo/artists/jennifer-boyuan-han"
+  },
+  {
+   "id": "teapots-and-cups-feb-28-1997",
+   "slug": "teapots-and-cups-feb-28-1997",
+   "title": "Teapots and cups, Feb 28, 1997",
+   "artistId": "jennifer-boyuan-han",
+   "artistName": "Jennifer Boyuan Han",
+   "medium": "Colored sand on sand art board",
+   "createdAt": "2026-06-11T06:45:33.979357+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/440f2f40-4298-46aa-498b-33aa8f97b500/public",
+   "year": 2026,
+   "price": 568,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=teapots-and-cups-feb-28-1997",
+   "artistUrl": "https://iris.ooo/artists/jennifer-boyuan-han"
+  }
+ ]
+}

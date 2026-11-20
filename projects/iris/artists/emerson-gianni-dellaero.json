@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/emerson-gianni-dellaero",
+ "pieces": [
+  {
+   "id": "the-station-1",
+   "slug": "the-station-1",
+   "title": "The Station",
+   "artistId": "emerson-gianni-dellaero",
+   "artistName": "Emerson Gianni Dellaero",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-04T21:10:55.165614+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2a8d86df-69e7-4f33-2eb8-e62b2f06dc00/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-station-1",
+   "artistUrl": "https://iris.ooo/artists/emerson-gianni-dellaero"
+  },
+  {
+   "id": "mercy-medical-ii",
+   "slug": "mercy-medical-ii",
+   "title": "Mercy Medical II",
+   "artistId": "emerson-gianni-dellaero",
+   "artistName": "Emerson Gianni Dellaero",
+   "medium": "acrylic on wooden board",
+   "createdAt": "2026-09-28T17:30:16.624891+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3481bd33-236a-40a1-daa9-fa1795e14a00/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=mercy-medical-ii",
+   "artistUrl": "https://iris.ooo/artists/emerson-gianni-dellaero"
+  },
+  {
+   "id": "mercy-medical",
+   "slug": "mercy-medical",
+   "title": "Mercy Medical",
+   "artistId": "emerson-gianni-dellaero",
+   "artistName": "Emerson Gianni Dellaero",
+   "medium": "oil on canvas",
+   "createdAt": "2026-09-28T17:23:17.817393+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a04a310e-85a4-4cf8-cef9-08fa729eb600/public",
+   "year": 2025,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=mercy-medical",
+   "artistUrl": "https://iris.ooo/artists/emerson-gianni-dellaero"
+  }
+ ]
+}

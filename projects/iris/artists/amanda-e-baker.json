@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/amanda-e-baker",
+ "pieces": [
+  {
+   "id": "number-8-ducts",
+   "slug": "number-8-ducts",
+   "title": "Number 8, \"DUCTS\"",
+   "artistId": "amanda-e-baker",
+   "artistName": "Amanda Baker",
+   "medium": "Sublimation print on performance fabric, styrofoam, polyester fabric, steel pins, and inkjet-printed adhesive-backed laminated vinyl",
+   "createdAt": "2026-05-17T14:54:28.942598+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2d269ce7-662e-41a9-0031-b95f5c967400/public",
+   "year": 2026,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=number-8-ducts",
+   "artistUrl": "https://iris.ooo/artists/amanda-e-baker"
+  },
+  {
+   "id": "number-9-b-r",
+   "slug": "number-9-b-r",
+   "title": "Number 9, \"B-R\"",
+   "artistId": "amanda-e-baker",
+   "artistName": "Amanda Baker",
+   "medium": "Sublimation print on performance fabric, styrofoam, polyester fabric, steel pins, and inkjet-printed adhesive-backed laminated vinyl.",
+   "createdAt": "2026-05-17T14:31:05.763326+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1bd1345b-de87-46d8-021d-ac727631e500/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=number-9-b-r",
+   "artistUrl": "https://iris.ooo/artists/amanda-e-baker"
+  }
+ ]
+}

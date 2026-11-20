@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/sloan-atwood-pirie",
+ "pieces": [
+  {
+   "id": "juice-cleanse-spiritual-incontinence",
+   "slug": "juice-cleanse-spiritual-incontinence",
+   "title": "Juice Cleanse (Spiritual Incontinence)",
+   "artistId": "sloan-atwood-pirie",
+   "artistName": "Sloan Atwood Pirie",
+   "medium": "Stone lithography, green juice powder, and wax on mulberry",
+   "createdAt": "2026-09-07T16:09:04.948418+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/73ceb264-50db-411c-a032-002131b60b00/public",
+   "year": 2026,
+   "price": 325,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=juice-cleanse-spiritual-incontinence",
+   "artistUrl": "https://iris.ooo/artists/sloan-atwood-pirie"
+  },
+  {
+   "id": "untitled-probing-device",
+   "slug": "untitled-probing-device",
+   "title": "Untitled (probing device)",
+   "artistId": "sloan-atwood-pirie",
+   "artistName": "Sloan Atwood Pirie",
+   "medium": "Pyrography on found wood",
+   "createdAt": "2026-08-19T15:05:10.024139+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4bda1e0e-3210-42d7-2b4a-aac45d132f00/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-probing-device",
+   "artistUrl": "https://iris.ooo/artists/sloan-atwood-pirie"
+  }
+ ]
+}

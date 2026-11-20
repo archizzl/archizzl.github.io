@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/madeline-cortes-reyes",
+ "pieces": [
+  {
+   "id": "tres-hijas",
+   "slug": "tres-hijas",
+   "title": "tres hijas",
+   "artistId": "madeline-cortes-reyes",
+   "artistName": "Madeline Cortes Reyes",
+   "medium": "oil on canvas",
+   "createdAt": "2026-06-07T17:40:12.274578+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c13b6e81-2221-4439-7d79-34d8a2aa6f00/public",
+   "year": 2024,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=tres-hijas",
+   "artistUrl": "https://iris.ooo/artists/madeline-cortes-reyes"
+  },
+  {
+   "id": "untitled-63",
+   "slug": "untitled-63",
+   "title": "untitled",
+   "artistId": "madeline-cortes-reyes",
+   "artistName": "Madeline Cortes Reyes",
+   "medium": "acrylic and oil on canvas",
+   "createdAt": "2026-06-07T17:19:10.939493+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/de4a4d99-7ebe-4e75-38aa-0b2c8bbb5600/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-63",
+   "artistUrl": "https://iris.ooo/artists/madeline-cortes-reyes"
+  }
+ ]
+}

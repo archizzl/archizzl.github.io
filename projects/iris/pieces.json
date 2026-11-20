@@ -130,6 +130,22 @@
    "artistUrl": "https://iris.ooo/artists/olivia-nevins-carbins"
   },
   {
+   "id": "the-station-1",
+   "slug": "the-station-1",
+   "title": "The Station",
+   "artistId": "emerson-gianni-dellaero",
+   "artistName": "Emerson Gianni Dellaero",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-04T21:10:55.165614+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2a8d86df-69e7-4f33-2eb8-e62b2f06dc00/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-station-1",
+   "artistUrl": "https://iris.ooo/artists/emerson-gianni-dellaero"
+  },
+  {
    "id": "tattoo-1",
    "slug": "tattoo-1",
    "title": "Tattoo 1",
@@ -160,6 +176,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=cupid-shuffle",
    "artistUrl": "https://iris.ooo/artists/brookeraven"
+  },
+  {
+   "id": "liquid-cow-3",
+   "slug": "liquid-cow-3",
+   "title": "Liquid Cow 3",
+   "artistId": "jude-larson",
+   "artistName": "Jude Larson",
+   "medium": "Crayon on plywood",
+   "createdAt": "2026-10-20T17:55:49.427924+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0b60b77b-4141-4f76-0ba6-5aaea4147800/public",
+   "year": 2026,
+   "price": 450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=liquid-cow-3",
+   "artistUrl": "https://iris.ooo/artists/jude-larson"
   },
   {
    "id": "salted-earth",
@@ -402,6 +434,22 @@
    "artistUrl": "https://iris.ooo/artists/sofia-coholan"
   },
   {
+   "id": "noted",
+   "slug": "noted",
+   "title": "Noted",
+   "artistId": "nick-sardo",
+   "artistName": "Nick Sardo",
+   "medium": "oil on wall mounted plywood pedestal",
+   "createdAt": "2026-09-14T17:30:41.542603+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/48e0e994-72e7-42b7-e26a-fc4ffe703900/public",
+   "year": 2025,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=noted",
+   "artistUrl": "https://iris.ooo/artists/nick-sardo"
+  },
+  {
    "id": "princess-and-the-pea-nightlight",
    "slug": "princess-and-the-pea-nightlight",
    "title": "princess and the pea (nightlight)",
@@ -464,6 +512,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=glitsky",
    "artistUrl": "https://iris.ooo/artists/max"
+  },
+  {
+   "id": "untitled-probing-device",
+   "slug": "untitled-probing-device",
+   "title": "Untitled (probing device)",
+   "artistId": "sloan-atwood-pirie",
+   "artistName": "Sloan Atwood Pirie",
+   "medium": "Pyrography on found wood",
+   "createdAt": "2026-08-19T15:05:10.024139+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4bda1e0e-3210-42d7-2b4a-aac45d132f00/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-probing-device",
+   "artistUrl": "https://iris.ooo/artists/sloan-atwood-pirie"
   },
   {
    "id": "except-for-the-usual-papers-on-birth-marriage-land-ownership-and-death",
@@ -562,6 +626,22 @@
    "artistUrl": "https://iris.ooo/artists/sofia-belen-criswell"
   },
   {
+   "id": "fox-his-friends",
+   "slug": "fox-his-friends",
+   "title": "fox & his friends",
+   "artistId": "alex-wettrich",
+   "artistName": "Alex Wettrich",
+   "medium": "Oil and acrylic on canvas",
+   "createdAt": "2026-07-23T06:22:22.572874+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/902f3ce2-46b7-4be6-7d99-0f3050dbcf00/public",
+   "year": 2026,
+   "price": 75,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=fox-his-friends",
+   "artistUrl": "https://iris.ooo/artists/alex-wettrich"
+  },
+  {
    "id": "field-trip-to-the-field-museum",
    "slug": "field-trip-to-the-field-museum",
    "title": "Field Trip to the Field Museum",
@@ -592,6 +672,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=convection-cells-1",
    "artistUrl": "https://iris.ooo/artists/organicsnakeoil"
+  },
+  {
+   "id": "simulacrum",
+   "slug": "simulacrum",
+   "title": "Simulacrum",
+   "artistId": "alice-jean-clarice-barreras",
+   "artistName": "Alice Jean Clarice Barreras",
+   "medium": "acrylic on cradled wood panel",
+   "createdAt": "2026-07-05T20:17:01.711362+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/83e8832c-27c1-41a7-8941-1bc084152600/public",
+   "year": 2026,
+   "price": 525,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=simulacrum",
+   "artistUrl": "https://iris.ooo/artists/alice-jean-clarice-barreras"
   },
   {
    "id": "belly-button-window",
@@ -642,6 +738,22 @@
    "artistUrl": "https://iris.ooo/artists/sophia-kroto"
   },
   {
+   "id": "feb-23-1997",
+   "slug": "feb-23-1997",
+   "title": "Feb 23, 1997",
+   "artistId": "jennifer-boyuan-han",
+   "artistName": "Jennifer Boyuan Han",
+   "medium": "Colored sand, mod podge matte on canvas",
+   "createdAt": "2026-06-11T06:58:33.079022+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6a398cdd-33df-4a6c-d57b-d013690cd700/public",
+   "year": 2026,
+   "price": 1120,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=feb-23-1997",
+   "artistUrl": "https://iris.ooo/artists/jennifer-boyuan-han"
+  },
+  {
    "id": "rice-theory-12-1",
    "slug": "rice-theory-12-1",
    "title": "Rice Theory 1/2",
@@ -658,6 +770,22 @@
    "artistUrl": "https://iris.ooo/artists/cassandra-m-kellner"
   },
   {
+   "id": "untitled-63",
+   "slug": "untitled-63",
+   "title": "untitled",
+   "artistId": "madeline-cortes-reyes",
+   "artistName": "Madeline Cortes Reyes",
+   "medium": "acrylic and oil on canvas",
+   "createdAt": "2026-06-07T17:19:10.939493+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/de4a4d99-7ebe-4e75-38aa-0b2c8bbb5600/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-63",
+   "artistUrl": "https://iris.ooo/artists/madeline-cortes-reyes"
+  },
+  {
    "id": "summer-in-chainmail",
    "slug": "summer-in-chainmail",
    "title": "Summer In Chainmail",
@@ -672,6 +800,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=summer-in-chainmail",
    "artistUrl": "https://iris.ooo/artists/monday-holland"
+  },
+  {
+   "id": "ive-been-praying-in-my-dreams-1",
+   "slug": "ive-been-praying-in-my-dreams-1",
+   "title": "i've been praying in my dreams",
+   "artistId": "julia-cheng",
+   "artistName": "Julia Cheng",
+   "medium": "oil on canvas",
+   "createdAt": "2026-05-23T20:07:02.999956+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7e6a8201-2173-4056-21ca-514b426e5e00/public",
+   "year": 2025,
+   "price": 1750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ive-been-praying-in-my-dreams-1",
+   "artistUrl": "https://iris.ooo/artists/julia-cheng"
   },
   {
    "id": "ecstasy",
@@ -770,6 +914,22 @@
    "artistUrl": "https://iris.ooo/artists/amy-pearl-lang"
   },
   {
+   "id": "number-8-ducts",
+   "slug": "number-8-ducts",
+   "title": "Number 8, \"DUCTS\"",
+   "artistId": "amanda-e-baker",
+   "artistName": "Amanda Baker",
+   "medium": "Sublimation print on performance fabric, styrofoam, polyester fabric, steel pins, and inkjet-printed adhesive-backed laminated vinyl",
+   "createdAt": "2026-05-17T14:54:28.942598+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2d269ce7-662e-41a9-0031-b95f5c967400/public",
+   "year": 2026,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=number-8-ducts",
+   "artistUrl": "https://iris.ooo/artists/amanda-e-baker"
+  },
+  {
    "id": "the-last-christmas-ever",
    "slug": "the-last-christmas-ever",
    "title": "The last christmas ever",
@@ -800,6 +960,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=drinking-from-the-big-glass",
    "artistUrl": "https://iris.ooo/artists/francesca-bertani"
+  },
+  {
+   "id": "thirst",
+   "slug": "thirst",
+   "title": "Thirst",
+   "artistId": "alex-ehmer",
+   "artistName": "Alex Ehmer",
+   "medium": "Inkjet photo transfer, copic marker, wax on board",
+   "createdAt": "2026-05-08T17:58:46.480261+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/65f831be-a5a7-4813-8fd2-7b7db4bd3800/public",
+   "year": 2026,
+   "price": 850,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=thirst",
+   "artistUrl": "https://iris.ooo/artists/alex-ehmer"
   },
   {
    "id": "halsey-st-grand-ave-w-60-st-pacific-st-myrtle-ave",
@@ -847,6 +1023,22 @@
    "offersOnly": false,
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=xenomorphgirl",
+   "artistUrl": "https://iris.ooo/artists/elliott-moore"
+  },
+  {
+   "id": "innocence-white-rabbit",
+   "slug": "innocence-white-rabbit",
+   "title": "INNOCENCE (White Rabbit)",
+   "artistId": "elliott-moore",
+   "artistName": "Elliott Moore",
+   "medium": "Marble",
+   "createdAt": "2026-04-30T00:37:05.365871+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2f79b5de-df78-4ba2-de17-b5cc0c2d8b00/public",
+   "year": 2025,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=innocence-white-rabbit",
    "artistUrl": "https://iris.ooo/artists/elliott-moore"
   },
   {
@@ -1122,6 +1314,22 @@
    "artistUrl": "https://iris.ooo/artists/jaxson-jaffe"
   },
   {
+   "id": "outhouses",
+   "slug": "outhouses",
+   "title": "Outhouses",
+   "artistId": "glox-lyra",
+   "artistName": "M. Gloxinia Lyra",
+   "medium": "oil on canvas",
+   "createdAt": "2026-03-13T21:11:25.637987+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0311b186-3b1c-4d27-5694-e6c1a80a7e00/public",
+   "year": 2025,
+   "price": 2800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=outhouses",
+   "artistUrl": "https://iris.ooo/artists/glox-lyra"
+  },
+  {
    "id": "sun-said",
    "slug": "sun-said",
    "title": "Sun Said",
@@ -1216,6 +1424,38 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=diana-dodi-st-tropez",
    "artistUrl": "https://iris.ooo/artists/jake-molter"
+  },
+  {
+   "id": "scour",
+   "slug": "scour",
+   "title": "scour",
+   "artistId": "zoe-ilic",
+   "artistName": "Zoe Ilić",
+   "medium": "gouache, india ink, gel medium, paper",
+   "createdAt": "2026-02-18T18:01:48.144494+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/614a206d-4a47-42c3-5315-796e8034ea00/public",
+   "year": 2026,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=scour",
+   "artistUrl": "https://iris.ooo/artists/zoe-ilic"
+  },
+  {
+   "id": "pin-after-hernandez",
+   "slug": "pin-after-hernandez",
+   "title": "Pin (After Hernandez)",
+   "artistId": "nina-d-kulikov",
+   "artistName": "Nina D Kulikov",
+   "medium": "oil on canvas",
+   "createdAt": "2026-02-10T22:54:45.005453+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c2067419-6980-46cb-44dc-0c975593c200/public",
+   "year": 2025,
+   "price": 250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pin-after-hernandez",
+   "artistUrl": "https://iris.ooo/artists/nina-d-kulikov"
   },
   {
    "id": "self-portrait",
