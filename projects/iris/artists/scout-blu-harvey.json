@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/scout-blu-harvey",
+ "pieces": [
+  {
+   "id": "sunset-from-memory",
+   "slug": "sunset-from-memory",
+   "title": "Sunset from Memory",
+   "artistId": "scout-blu-harvey",
+   "artistName": "Scout Blu Harvey",
+   "medium": "oil on foam backed sandpaper",
+   "createdAt": "2026-03-29T19:05:50.393489+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fbc5dc3d-6397-4e01-2b92-700f6db12e00/public",
+   "year": 2025,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sunset-from-memory",
+   "artistUrl": "https://iris.ooo/artists/scout-blu-harvey"
+  },
+  {
+   "id": "bus-to-the-medina",
+   "slug": "bus-to-the-medina",
+   "title": "Bus to the Medina",
+   "artistId": "scout-blu-harvey",
+   "artistName": "Scout Blu Harvey",
+   "medium": "oil on foam backed sandpaper",
+   "createdAt": "2026-03-29T18:42:35.747270+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fc9cf70e-2167-4e8f-64b5-177ca8a56700/public",
+   "year": 2025,
+   "price": 325,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=bus-to-the-medina",
+   "artistUrl": "https://iris.ooo/artists/scout-blu-harvey"
+  },
+  {
+   "id": "chess-players-1",
+   "slug": "chess-players-1",
+   "title": "Chess Players",
+   "artistId": "scout-blu-harvey",
+   "artistName": "Scout Blu Harvey",
+   "medium": "Oil on Gesso Paper, Foam Board Backing.",
+   "createdAt": "2026-03-16T20:14:10.129100+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a4f38aab-7c99-468d-7bf2-255e9c9e1700/public",
+   "year": 2024,
+   "price": 350,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=chess-players-1",
+   "artistUrl": "https://iris.ooo/artists/scout-blu-harvey"
+  }
+ ]
+}

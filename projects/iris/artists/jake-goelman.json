@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/jake-goelman",
+ "pieces": [
+  {
+   "id": "a-sunday-afternoon-after-seurat-al-fresco-1",
+   "slug": "a-sunday-afternoon-after-seurat-al-fresco-1",
+   "title": "A Sunday Afternoon (after Seurat) (al fresco)",
+   "artistId": "jake-goelman",
+   "artistName": "Jake Goelman",
+   "medium": "acrylic and wood on canvas",
+   "createdAt": "2026-09-06T21:15:49.570757+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/edd644b1-3d55-46ed-f401-1c53c7484400/public",
+   "year": 2024,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=a-sunday-afternoon-after-seurat-al-fresco-1",
+   "artistUrl": "https://iris.ooo/artists/jake-goelman"
+  },
+  {
+   "id": "under-the-apple-tree-waiting-for-an-idea",
+   "slug": "under-the-apple-tree-waiting-for-an-idea",
+   "title": "Under the apple tree (waiting for an idea)",
+   "artistId": "jake-goelman",
+   "artistName": "Jake Goelman",
+   "medium": "acrylic and wood on canvas",
+   "createdAt": "2026-09-06T20:47:23.413019+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7750c616-1303-4d47-653b-a8511d9cc800/public",
+   "year": 2025,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=under-the-apple-tree-waiting-for-an-idea",
+   "artistUrl": "https://iris.ooo/artists/jake-goelman"
+  },
+  {
+   "id": "window-shopping",
+   "slug": "window-shopping",
+   "title": "Window Shopping",
+   "artistId": "jake-goelman",
+   "artistName": "Jake Goelman",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-09-06T20:14:24.381543+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ddf16b74-82ad-4bfb-4459-cf70bea6ff00/public",
+   "year": 2025,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=window-shopping",
+   "artistUrl": "https://iris.ooo/artists/jake-goelman"
+  }
+ ]
+}

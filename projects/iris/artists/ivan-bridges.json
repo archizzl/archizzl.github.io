@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/ivan-bridges",
+ "pieces": [
+  {
+   "id": "kazu-in-green",
+   "slug": "kazu-in-green",
+   "title": "Kazu in Green",
+   "artistId": "ivan-bridges",
+   "artistName": "Ivan Bridges",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-06-01T17:02:46.818945+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c10d2546-da6e-4355-0f3b-db8e1b958d00/public",
+   "year": 2025,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=kazu-in-green",
+   "artistUrl": "https://iris.ooo/artists/ivan-bridges"
+  },
+  {
+   "id": "hide-and-seek",
+   "slug": "hide-and-seek",
+   "title": "Hide and Seek",
+   "artistId": "ivan-bridges",
+   "artistName": "Ivan Bridges",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-03-16T23:19:25.945969+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/eb10c97a-4fc9-487a-e70a-8d013d7d1300/public",
+   "year": 2025,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=hide-and-seek",
+   "artistUrl": "https://iris.ooo/artists/ivan-bridges"
+  },
+  {
+   "id": "venus",
+   "slug": "venus",
+   "title": "Venus",
+   "artistId": "ivan-bridges",
+   "artistName": "Ivan Bridges",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-03-14T00:29:03.547735+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/bb07a081-2636-4c78-66e8-70bee698ca00/public",
+   "year": 2025,
+   "price": 2250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=venus",
+   "artistUrl": "https://iris.ooo/artists/ivan-bridges"
+  },
+  {
+   "id": "about-a-kid",
+   "slug": "about-a-kid",
+   "title": "About a Kid",
+   "artistId": "ivan-bridges",
+   "artistName": "Ivan Bridges",
+   "medium": "Oil on Canvas",
+   "createdAt": "2026-01-27T02:00:21.477053+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cd4b618a-1192-47b3-81b3-61c136311b00/public",
+   "year": 2025,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=about-a-kid",
+   "artistUrl": "https://iris.ooo/artists/ivan-bridges"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/kate-donoghue",
+ "pieces": [
+  {
+   "id": "shopping-flag-ii",
+   "slug": "shopping-flag-ii",
+   "title": "Shopping Flag II",
+   "artistId": "kate-donoghue",
+   "artistName": "Kate Donoghue",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-11-05T15:42:37.051044+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c5b5dd65-e019-4883-5cf9-ad5fc35edf00/public",
+   "year": 2025,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shopping-flag-ii",
+   "artistUrl": "https://iris.ooo/artists/kate-donoghue"
+  },
+  {
+   "id": "shopping-flag-i",
+   "slug": "shopping-flag-i",
+   "title": "Shopping Flag I",
+   "artistId": "kate-donoghue",
+   "artistName": "Kate Donoghue",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-11-05T15:37:02.444186+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1100160d-33eb-4803-4fd2-191b32557600/public",
+   "year": 2025,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shopping-flag-i",
+   "artistUrl": "https://iris.ooo/artists/kate-donoghue"
+  }
+ ]
+}

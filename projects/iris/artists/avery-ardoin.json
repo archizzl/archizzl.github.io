@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/avery-ardoin",
+ "pieces": [
+  {
+   "id": "untitled-smiling-fur",
+   "slug": "untitled-smiling-fur",
+   "title": "Untitled (Smiling Fur)",
+   "artistId": "avery-ardoin",
+   "artistName": "Avery Ardoin",
+   "medium": "Acrylic on Wood, Faux Fur on Masonite",
+   "createdAt": "2026-05-09T01:03:20.285680+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fe379bd5-5c7b-4d1b-794e-25e6704aa900/public",
+   "year": 2026,
+   "price": 225,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-smiling-fur",
+   "artistUrl": "https://iris.ooo/artists/avery-ardoin"
+  },
+  {
+   "id": "untitled-double-smile",
+   "slug": "untitled-double-smile",
+   "title": "Untitled (Double Smile)",
+   "artistId": "avery-ardoin",
+   "artistName": "Avery Ardoin",
+   "medium": "Acrylic on Wood, Faux Fur on Masonite",
+   "createdAt": "2026-05-09T01:00:58.859247+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2e0e4f3d-a0ed-40b0-fb02-ca211ee3ca00/public",
+   "year": 2026,
+   "price": 225,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-double-smile",
+   "artistUrl": "https://iris.ooo/artists/avery-ardoin"
+  },
+  {
+   "id": "untitled-perfect-smile",
+   "slug": "untitled-perfect-smile",
+   "title": "Untitled (Perfect Smile)",
+   "artistId": "avery-ardoin",
+   "artistName": "Avery Ardoin",
+   "medium": "Acrylic on Wood, Fuax Fur on Masonite",
+   "createdAt": "2026-05-09T00:57:20.989944+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/659e8871-6e99-45cb-affe-dd2ce325ae00/public",
+   "year": 2026,
+   "price": 225,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-perfect-smile",
+   "artistUrl": "https://iris.ooo/artists/avery-ardoin"
+  },
+  {
+   "id": "untitled-carpet-muncher",
+   "slug": "untitled-carpet-muncher",
+   "title": "Untitled (Carpet Muncher)",
+   "artistId": "avery-ardoin",
+   "artistName": "Avery Ardoin",
+   "medium": "Acrylic on Wood, Faux Fur on Masonite",
+   "createdAt": "2026-05-09T00:52:15.982711+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/1198d444-0e2a-4301-c8d4-91740f076c00/public",
+   "year": 2026,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-carpet-muncher",
+   "artistUrl": "https://iris.ooo/artists/avery-ardoin"
+  }
+ ]
+}

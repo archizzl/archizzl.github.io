@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/emptysource",
+ "pieces": [
+  {
+   "id": "feather",
+   "slug": "feather",
+   "title": "Feather",
+   "artistId": "emptysource",
+   "artistName": "nick blake",
+   "medium": "Oil on panel",
+   "createdAt": "2026-11-20T07:23:30.227261+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/32dbd07c-ef6a-4237-dbd5-a2d2bf313000/public",
+   "year": 2026,
+   "price": 1400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=feather",
+   "artistUrl": "https://iris.ooo/artists/emptysource"
+  },
+  {
+   "id": "the-drinking-well",
+   "slug": "the-drinking-well",
+   "title": "The Drinking Well",
+   "artistId": "emptysource",
+   "artistName": "nick blake",
+   "medium": "oil on panel",
+   "createdAt": "2026-11-05T06:51:57.904278+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2f665b7e-6c06-4af8-e434-400631a20800/public",
+   "year": 2026,
+   "price": 1400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-drinking-well",
+   "artistUrl": "https://iris.ooo/artists/emptysource"
+  },
+  {
+   "id": "soil-from-the-winter-ad-1221",
+   "slug": "soil-from-the-winter-ad-1221",
+   "title": "Soil from the Winter; AD 1221",
+   "artistId": "emptysource",
+   "artistName": "nick blake",
+   "medium": "oil on panel",
+   "createdAt": "2026-11-05T06:04:46.157797+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8141417a-6d79-415d-1931-1d40c2b73d00/public",
+   "year": 2026,
+   "price": 1400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=soil-from-the-winter-ad-1221",
+   "artistUrl": "https://iris.ooo/artists/emptysource"
+  }
+ ]
+}

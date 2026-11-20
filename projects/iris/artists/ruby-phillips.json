@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/ruby-phillips",
+ "pieces": [
+  {
+   "id": "torch",
+   "slug": "torch",
+   "title": "Torch",
+   "artistId": "ruby-phillips",
+   "artistName": "Ruby Phillips",
+   "medium": "oil, acrylic, and charcoal on found wood",
+   "createdAt": "2026-11-16T23:12:29.768366+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cbb8f51a-4482-421e-8abd-7a0f2cb14400/public",
+   "year": 2026,
+   "price": 480,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=torch",
+   "artistUrl": "https://iris.ooo/artists/ruby-phillips"
+  },
+  {
+   "id": "untitled-102",
+   "slug": "untitled-102",
+   "title": "Untitled",
+   "artistId": "ruby-phillips",
+   "artistName": "Ruby Phillips",
+   "medium": "oil and charcoal on back of mirror",
+   "createdAt": "2026-11-16T22:49:26.327466+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3fc92288-9293-40b6-5256-8adb87b83200/public",
+   "year": 2026,
+   "price": 1380,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-102",
+   "artistUrl": "https://iris.ooo/artists/ruby-phillips"
+  }
+ ]
+}

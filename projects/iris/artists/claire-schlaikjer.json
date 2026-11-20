@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/claire-schlaikjer",
+ "pieces": [
+  {
+   "id": "thirteen-bears-2",
+   "slug": "thirteen-bears-2",
+   "title": "Thirteen Bears",
+   "artistId": "claire-schlaikjer",
+   "artistName": "Claire Schlaikjer",
+   "medium": "archival pigment print on hahnemühle photo rag 308 gsm",
+   "createdAt": "2026-07-13T17:04:34.236418+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2c5fe997-e738-42b6-a8b8-6744eedee800/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=thirteen-bears-2",
+   "artistUrl": "https://iris.ooo/artists/claire-schlaikjer"
+  },
+  {
+   "id": "thirteen-bears",
+   "slug": "thirteen-bears",
+   "title": "Thirteen Bears",
+   "artistId": "claire-schlaikjer",
+   "artistName": "Claire Schlaikjer",
+   "medium": "Oil on panel",
+   "createdAt": "2025-12-29T04:49:31.339875+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/88dee625-65a5-44e5-7fb4-34d9f3c84e00/public",
+   "year": 2025,
+   "price": 950,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=thirteen-bears",
+   "artistUrl": "https://iris.ooo/artists/claire-schlaikjer"
+  },
+  {
+   "id": "exactly-the-same",
+   "slug": "exactly-the-same",
+   "title": "Exactly The Same",
+   "artistId": "claire-schlaikjer",
+   "artistName": "Claire Schlaikjer",
+   "medium": "Oil on panel",
+   "createdAt": "2025-12-29T04:42:42.130554+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5bad9bf6-862b-4233-d379-fa5d98179300/public",
+   "year": 2025,
+   "price": 850,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=exactly-the-same",
+   "artistUrl": "https://iris.ooo/artists/claire-schlaikjer"
+  }
+ ]
+}
