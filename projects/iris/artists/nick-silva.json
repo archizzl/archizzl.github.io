@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/nick-silva",
+ "pieces": [
+  {
+   "id": "monday-night",
+   "slug": "monday-night",
+   "title": "monday night",
+   "artistId": "nick-silva",
+   "artistName": "Nick Silva",
+   "medium": "Archival Inkjet Print",
+   "createdAt": "2026-02-24T22:32:27.533312+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/17b2c1e1-a435-4746-df4f-edc6ace24d00/public",
+   "year": 2025,
+   "price": 650,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=monday-night",
+   "artistUrl": "https://iris.ooo/artists/nick-silva"
+  },
+  {
+   "id": "untitled-crawl",
+   "slug": "untitled-crawl",
+   "title": "Untitled (crawl)",
+   "artistId": "nick-silva",
+   "artistName": "Nick Silva",
+   "medium": "Archival Inkjet Print",
+   "createdAt": "2026-02-24T22:17:47.853850+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/742bb7c2-0519-4ff9-1f61-9d21f84ad400/public",
+   "year": 2025,
+   "price": 650,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=untitled-crawl",
+   "artistUrl": "https://iris.ooo/artists/nick-silva"
+  },
+  {
+   "id": "operating-instructions",
+   "slug": "operating-instructions",
+   "title": "operating instructions",
+   "artistId": "nick-silva",
+   "artistName": "Nick Silva",
+   "medium": "Archival Inkjet Print",
+   "createdAt": "2026-02-24T21:55:33.206422+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/baa2503f-2853-4e24-c425-0ff4cba0db00/public",
+   "year": 2024,
+   "price": 650,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=operating-instructions",
+   "artistUrl": "https://iris.ooo/artists/nick-silva"
+  }
+ ]
+}

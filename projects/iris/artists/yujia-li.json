@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/yujia-li",
+ "pieces": [
+  {
+   "id": "shojo-sect",
+   "slug": "shojo-sect",
+   "title": "Shojo Sect",
+   "artistId": "yujia-li",
+   "artistName": "Yujia Li",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-07-08T20:24:41.172606+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fa49b489-311f-4e8e-0230-b0c39742ab00/public",
+   "year": 2024,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shojo-sect",
+   "artistUrl": "https://iris.ooo/artists/yujia-li"
+  },
+  {
+   "id": "nicomaki",
+   "slug": "nicomaki",
+   "title": "Nicomaki",
+   "artistId": "yujia-li",
+   "artistName": "Yujia Li",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-07-08T15:20:09.747793+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3afaccfd-c1b8-4283-a925-b968b105e800/public",
+   "year": 2023,
+   "price": 1700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=nicomaki",
+   "artistUrl": "https://iris.ooo/artists/yujia-li"
+  },
+  {
+   "id": "fetish",
+   "slug": "fetish",
+   "title": "Fetish",
+   "artistId": "yujia-li",
+   "artistName": "Yujia Li",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-07-08T15:15:32.964427+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ce27f56b-eb35-4175-3b9a-48f5c338f600/public",
+   "year": 2023,
+   "price": 900,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=fetish",
+   "artistUrl": "https://iris.ooo/artists/yujia-li"
+  },
+  {
+   "id": "pg",
+   "slug": "pg",
+   "title": "PG",
+   "artistId": "yujia-li",
+   "artistName": "Yujia Li",
+   "medium": "oil and acrylic on wood",
+   "createdAt": "2026-07-06T22:57:23.366595+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9572a01b-2474-4591-1e12-54ee3aa3c900/public",
+   "year": 2026,
+   "price": 1000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=pg",
+   "artistUrl": "https://iris.ooo/artists/yujia-li"
+  }
+ ]
+}
