@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/serena-shaye",
+ "pieces": [
+  {
+   "id": "vintage_overdrive_2",
+   "slug": "vintage_overdrive_2",
+   "title": "vintage_overdrive_2",
+   "artistId": "serena-shaye",
+   "artistName": "Serena Shaye",
+   "medium": "modified guitar effects pedal",
+   "createdAt": "2026-04-20T20:32:11.840083+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cada6ef4-e286-42aa-d459-b263a66a2e00/public",
+   "year": 2026,
+   "price": 650,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=vintage_overdrive_2",
+   "artistUrl": "https://iris.ooo/artists/serena-shaye"
+  }
+ ]
+}

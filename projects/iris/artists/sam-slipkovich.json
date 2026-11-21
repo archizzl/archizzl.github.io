@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/sam-slipkovich",
+ "pieces": [
+  {
+   "id": "baby-ford",
+   "slug": "baby-ford",
+   "title": "Baby Ford",
+   "artistId": "sam-slipkovich",
+   "artistName": "Sam Slipkovich",
+   "medium": "Wool and cotton crochet filet",
+   "createdAt": "2026-07-03T05:42:52.373061+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/918f9d04-fa6f-4e99-a1c6-e41187cc0000/public",
+   "year": 2026,
+   "price": 1005,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=baby-ford",
+   "artistUrl": "https://iris.ooo/artists/sam-slipkovich"
+  },
+  {
+   "id": "angel",
+   "slug": "angel",
+   "title": "Angel",
+   "artistId": "sam-slipkovich",
+   "artistName": "Sam Slipkovich",
+   "medium": "Cotton filet crochet",
+   "createdAt": "2026-07-03T05:39:34.643752+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/90864e53-8f95-4f6d-1fa3-3d55548f3900/public",
+   "year": 2026,
+   "price": 1250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=angel",
+   "artistUrl": "https://iris.ooo/artists/sam-slipkovich"
+  },
+  {
+   "id": "a-kiss-on-the-cheek",
+   "slug": "a-kiss-on-the-cheek",
+   "title": "A Kiss on the Cheek",
+   "artistId": "sam-slipkovich",
+   "artistName": "Sam Slipkovich",
+   "medium": "Linen filet crochet",
+   "createdAt": "2026-07-03T05:28:46.206132+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a53eb259-dd3c-4077-d701-9015c8614900/public",
+   "year": 2026,
+   "price": 1050,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=a-kiss-on-the-cheek",
+   "artistUrl": "https://iris.ooo/artists/sam-slipkovich"
+  },
+  {
+   "id": "sabian-symbol",
+   "slug": "sabian-symbol",
+   "title": "Sabian Symbol",
+   "artistId": "sam-slipkovich",
+   "artistName": "Sam Slipkovich",
+   "medium": "Linen and cotton crochet filet",
+   "createdAt": "2026-05-28T03:58:38.907026+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8b9b871d-78bf-4243-7c86-2b2cae219300/public",
+   "year": 2026,
+   "price": 850,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sabian-symbol",
+   "artistUrl": "https://iris.ooo/artists/sam-slipkovich"
+  }
+ ]
+}

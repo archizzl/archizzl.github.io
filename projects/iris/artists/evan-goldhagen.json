@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/evan-goldhagen",
+ "pieces": [
+  {
+   "id": "double-horizon",
+   "slug": "double-horizon",
+   "title": "double horizon",
+   "artistId": "evan-goldhagen",
+   "artistName": "Evan Goldhagen",
+   "medium": "watercolor on cold pressed paper",
+   "createdAt": "2026-05-15T18:11:00.557451+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ca25635f-4c02-4290-54c4-b4aa19ece700/public",
+   "year": 2025,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=double-horizon",
+   "artistUrl": "https://iris.ooo/artists/evan-goldhagen"
+  }
+ ]
+}

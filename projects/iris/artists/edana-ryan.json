@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/edana-ryan",
+ "pieces": [
+  {
+   "id": "dekalb-ave",
+   "slug": "dekalb-ave",
+   "title": "Dekalb Ave",
+   "artistId": "edana-ryan",
+   "artistName": "Edana Ryan",
+   "medium": "oil on canvas",
+   "createdAt": "2026-04-21T22:37:39.310978+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/37b49e12-415d-4d07-3666-160aab24a900/public",
+   "year": 2024,
+   "price": 250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=dekalb-ave",
+   "artistUrl": "https://iris.ooo/artists/edana-ryan"
+  },
+  {
+   "id": "mourning",
+   "slug": "mourning",
+   "title": "mourning",
+   "artistId": "edana-ryan",
+   "artistName": "Edana Ryan",
+   "medium": "oil on canvas",
+   "createdAt": "2026-04-21T22:20:49.985273+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/484b41e4-e26d-4a5f-74a6-a5e4eba13100/public",
+   "year": 2023,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=mourning",
+   "artistUrl": "https://iris.ooo/artists/edana-ryan"
+  }
+ ]
+}
