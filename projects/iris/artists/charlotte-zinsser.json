@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/charlotte-zinsser",
+ "pieces": [
+  {
+   "id": "interstate-15",
+   "slug": "interstate-15",
+   "title": "Interstate 15",
+   "artistId": "charlotte-zinsser",
+   "artistName": "Charlotte Zinsser",
+   "medium": "Carbon copy, correction fluid, photograph, found media, and vellum envelopes on wood panel",
+   "createdAt": "2026-08-28T13:17:40.636527+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6340e4b6-9bbc-4f0e-aff8-05c6c0bb3400/public",
+   "year": 2026,
+   "price": 750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=interstate-15",
+   "artistUrl": "https://iris.ooo/artists/charlotte-zinsser"
+  },
+  {
+   "id": "dust-bunny",
+   "slug": "dust-bunny",
+   "title": "Dust Bunny",
+   "artistId": "charlotte-zinsser",
+   "artistName": "Charlotte Zinsser",
+   "medium": "xerox transfer and letterpress print on found index cards",
+   "createdAt": "2026-08-28T13:14:11.684748+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0e3e17e7-d6fd-4166-dfa6-83f06c2e6a00/public",
+   "year": 2026,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=dust-bunny",
+   "artistUrl": "https://iris.ooo/artists/charlotte-zinsser"
+  }
+ ]
+}
