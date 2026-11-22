@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/siri-burt",
+ "pieces": [
+  {
+   "id": "disobedient-mouths",
+   "slug": "disobedient-mouths",
+   "title": "Disobedient Mouths",
+   "artistId": "siri-burt",
+   "artistName": "Siri Burt",
+   "medium": "Porcelain",
+   "createdAt": "2026-11-03T02:41:38.508988+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/39d0b0f6-c1fc-40d3-d76a-c992efbc5c00/public",
+   "year": 2025,
+   "price": 400,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=disobedient-mouths",
+   "artistUrl": "https://iris.ooo/artists/siri-burt"
+  },
+  {
+   "id": "the-fold",
+   "slug": "the-fold",
+   "title": "The Fold",
+   "artistId": "siri-burt",
+   "artistName": "Siri Burt",
+   "medium": "Ceramic, Inkjet, Steel",
+   "createdAt": "2026-11-03T02:31:52.532937+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2c1f0366-2cb3-4e3f-10c7-c9a23058ea00/public",
+   "year": 2024,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-fold",
+   "artistUrl": "https://iris.ooo/artists/siri-burt"
+  },
+  {
+   "id": "seeing-your-breath-fill-a-room",
+   "slug": "seeing-your-breath-fill-a-room",
+   "title": "Seeing your breath fill a room",
+   "artistId": "siri-burt",
+   "artistName": "Siri Burt",
+   "medium": "Ceramic, Inkjet",
+   "createdAt": "2026-11-03T02:19:20.302044+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fef17a1d-82a2-49a9-09f7-5421bd241900/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=seeing-your-breath-fill-a-room",
+   "artistUrl": "https://iris.ooo/artists/siri-burt"
+  }
+ ]
+}

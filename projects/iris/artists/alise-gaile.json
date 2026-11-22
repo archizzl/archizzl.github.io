@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/alise-gaile",
+ "pieces": [
+  {
+   "id": "when-it-went-gone",
+   "slug": "when-it-went-gone",
+   "title": "When It Went Gone",
+   "artistId": "alise-gaile",
+   "artistName": "Alise Gaile",
+   "medium": "oil on linen",
+   "createdAt": "2026-10-15T14:57:02.839922+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/614a3f1e-78d8-4b6f-f428-a68d94bc1d00/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=when-it-went-gone",
+   "artistUrl": "https://iris.ooo/artists/alise-gaile"
+  },
+  {
+   "id": "swamp-swallow-me",
+   "slug": "swamp-swallow-me",
+   "title": "Swamp, Swallow Me",
+   "artistId": "alise-gaile",
+   "artistName": "Alise Gaile",
+   "medium": "oil on canvas",
+   "createdAt": "2026-10-15T14:47:07.529771+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0b2193fc-4071-4889-82e2-d2f0c5b2bb00/public",
+   "year": 2024,
+   "price": 260,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=swamp-swallow-me",
+   "artistUrl": "https://iris.ooo/artists/alise-gaile"
+  },
+  {
+   "id": "lichen",
+   "slug": "lichen",
+   "title": "Lichen",
+   "artistId": "alise-gaile",
+   "artistName": "Alise Gaile",
+   "medium": "oil on canvas",
+   "createdAt": "2026-10-15T14:23:50.275068+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ebb821a7-a3d1-477c-3317-ac994d31e200/public",
+   "year": 2025,
+   "price": 460,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=lichen",
+   "artistUrl": "https://iris.ooo/artists/alise-gaile"
+  }
+ ]
+}

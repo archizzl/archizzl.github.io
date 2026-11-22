@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/patricia-kirby",
+ "pieces": [
+  {
+   "id": "lindsays-out-of-control-again",
+   "slug": "lindsays-out-of-control-again",
+   "title": "Lindsay's Out of Control... Again",
+   "artistId": "patricia-kirby",
+   "artistName": "Patricia Kirby",
+   "medium": "Oil on wood pannel",
+   "createdAt": "2026-11-02T18:47:04.128065+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3a618fe5-8a5b-456f-e87b-8aa18e3a7300/public",
+   "year": 2026,
+   "price": 250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=lindsays-out-of-control-again",
+   "artistUrl": "https://iris.ooo/artists/patricia-kirby"
+  },
+  {
+   "id": "screw-u",
+   "slug": "screw-u",
+   "title": "Screw U",
+   "artistId": "patricia-kirby",
+   "artistName": "Patricia Kirby",
+   "medium": "Wheat paste on wood panel + stickers",
+   "createdAt": "2026-10-06T19:59:26.869262+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/eb51b264-e21f-4fdc-c82c-048b9935a700/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=screw-u",
+   "artistUrl": "https://iris.ooo/artists/patricia-kirby"
+  },
+  {
+   "id": "lindsay-lohan-shielding-her-face-from-paparazzi",
+   "slug": "lindsay-lohan-shielding-her-face-from-paparazzi",
+   "title": "Lindsay Lohan Shielding Her Face From Paparazzi",
+   "artistId": "patricia-kirby",
+   "artistName": "Patricia Kirby",
+   "medium": "Oil paint on wood panel",
+   "createdAt": "2026-10-06T19:47:18.085968+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/38f21051-dbd7-4a63-c7e4-8aa47ba60c00/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=lindsay-lohan-shielding-her-face-from-paparazzi",
+   "artistUrl": "https://iris.ooo/artists/patricia-kirby"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/lucy-harrington",
+ "pieces": [
+  {
+   "id": "you-and-the-neon-pink-light-beam-remain-most-compelled-by-the-body-and-all-of-its-outrageous-sculptures",
+   "slug": "you-and-the-neon-pink-light-beam-remain-most-compelled-by-the-body-and-all-of-its-outrageous-sculptures",
+   "title": "You and the neon pink light beam remain most compelled by the body and all of its outrageous sculptures",
+   "artistId": "lucy-harrington",
+   "artistName": "Lucy Harrington",
+   "medium": "oil on canvas",
+   "createdAt": "2026-08-29T17:31:59.318570+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/83a3f8b8-d6fc-4d93-9ef5-ee0cf0f27600/public",
+   "year": 2026,
+   "price": 650,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=you-and-the-neon-pink-light-beam-remain-most-compelled-by-the-body-and-all-of-its-outrageous-sculptures",
+   "artistUrl": "https://iris.ooo/artists/lucy-harrington"
+  },
+  {
+   "id": "light-spilling-through-bone",
+   "slug": "light-spilling-through-bone",
+   "title": "light spilling through bone",
+   "artistId": "lucy-harrington",
+   "artistName": "Lucy Harrington",
+   "medium": "oil on canvas",
+   "createdAt": "2026-08-29T17:29:25.776229+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/036b8ee6-54f6-42dc-50f1-f74d22966e00/public",
+   "year": 2026,
+   "price": 950,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=light-spilling-through-bone",
+   "artistUrl": "https://iris.ooo/artists/lucy-harrington"
+  }
+ ]
+}
