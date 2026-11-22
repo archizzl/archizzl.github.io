@@ -65,15 +65,18 @@
 
   // Up/down step between posts in the same order as the homepage list
   // (newest first), so up is the more recent post.
+  // The posts live on KMP (see post.js, which sets window.ARCHIE_BLOG); the list there is
+  // newest first, like the homepage.
   var siblings = { newer: null, older: null };
-  var isLocal = ['localhost', '127.0.0.1', ''].indexOf(location.hostname) !== -1;
-  var slugMatch = location.pathname.match(/\/posts\/([^/]+)/);
-  if (slugMatch) {
-    fetch('../../posts.json', { cache: 'no-cache' })
+  var blog = window.ARCHIE_BLOG;
+  var current = new URLSearchParams(location.search).get('p') ||
+    (location.pathname.match(/\/blog\/posts\/([^/]+)/) || [])[1];
+  if (blog && current) {
+    fetch(blog.kmp + '/' + blog.user + '/posts.json?brief=1&limit=1000')
       .then(function (r) { return r.json(); })
-      .then(function (posts) {
-        if (!isLocal) posts = posts.filter(function (p) { return p.status !== 'draft'; });
-        var i = posts.findIndex(function (p) { return p.slug === slugMatch[1]; });
+      .then(function (data) {
+        var posts = data.posts || [];
+        var i = posts.findIndex(function (p) { return p.slug === current; });
         if (i === -1) return;
         if (i > 0) siblings.newer = posts[i - 1].slug;
         if (i < posts.length - 1) siblings.older = posts[i + 1].slug;
@@ -83,7 +86,7 @@
 
   function goPost(which) {
     var slug = siblings[which];
-    if (slug) location.href = '../' + slug + '/';
+    if (slug) location.href = '/blog/post/?p=' + encodeURIComponent(slug);
   }
 
   var BACK = { ArrowLeft: 1, a: 1, A: 1 };

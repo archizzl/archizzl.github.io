@@ -12,6 +12,18 @@ The root `package.json` only wraps `blog/build.py` (no dependencies): `npm run d
 
 `hpi/gallery/gallery.js` is the viewer; `_gallery-editor/README.md` explains the data. Every build (`npm run build`, and `npm run dev` whenever a `hpi/gallery/*.json` changes) runs `blog/gallery_pages.py`, which writes `<gallery>/index.html` and one `<gallery>/<item>/index.html` per item with link-preview meta tags. It reads the live Cloudinary tag list, so it needs the network (it falls back to `photos.json`). Commit the generated pages; don't hand-edit them. Item keys and order in `gallery_pages.py` must match `arrange()` in `gallery.js`. `404.html` forwards `/<gallery>/<key>/` with no page yet to `/<gallery>/?item=<key>`. The site is behind Cloudflare, which caches `.js`/`.css` for 4 hours, so the build also stamps `gallery.js`/`gallery.css` with a content hash (`?v=…`) in `index.html` and the generated pages. After editing either file, run a build (or have `npm run dev` running) and commit the re-stamped HTML with it, or visitors keep the old file.
 
+## Blog (on KMP since 2026-11-22)
+
+The blog is written and stored on KMP, archie's blog host at https://kylemaclachlanphotography.org (dashboard `/dashboard`, user `archie`, repo `~/dev/blog-cdn`). This site only displays it:
+- **Homepage list** (`index.html`): reads `https://kylemaclachlanphotography.org/archie/posts.json?brief=1&limit=1000`. Tags come from the post field `tags`, and `#tag,tag` filters work as before.
+- **Post pages**: `blog/post/?p=<slug>`, filled in by `blog/post.js` from `/archie/<slug>.json`, then paged by `blog/reader.js` (w/a/s/d and swipe).
+  - The old addresses `blog/posts/<slug>/` are copies of `blog/post/index.html`.
+  - New posts don't need a folder.
+  - After changing `post.js` or `reader.js`, bump their `?v=` in `blog/post/index.html` and its copies, because Cloudflare caches JS for 4 hours.
+- **RSS** is KMP's feed: https://kylemaclachlanphotography.org/archie/feed.xml. `blog/feed.xml` is a frozen copy of the old feed.
+- **Local preview**: on localhost these pages read a local KMP dev server (`http://localhost:8127`) instead.
+- **Old files**: `blog/src/` and `blog/drafts/` are the pre-KMP originals, kept as an archive. `build.py` has `BLOG_ON_KMP = True`, so builds don't touch the blog; they only build galleries and the Vite apps. The notes below about drafts and `feed.xml` describe the old setup.
+
 ## Vite projects (set-splitter, zine-formatter)
 
 Each app has its source in `_<name>/` (Vite + TypeScript). The site serves the built copy in `projects/<name>/`.

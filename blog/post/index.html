@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>archie</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" href="/index.css">
+<link rel="alternate" type="application/rss+xml" title="archie's blog" href="https://kylemaclachlanphotography.org/archie/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--
+  One blog post, loaded from KMP (kylemaclachlanphotography.org), where archie writes now.
+  The same page serves /blog/post/?p=<slug> and the older /blog/posts/<slug>/ addresses (each of
+  those folders holds a copy of this file). blog/post.js fills it in; blog/reader.js pages it.
+-->
+<div id="landing_page">
+<div id="blog-container">
+<span><a href="/">← home</a></span>
+<span class="post-meta"><time id="post-date"></time></span>
+<h1 class="post-title" id="post-title"></h1>
+<span class="post-tags" id="post-tags" hidden></span>
+<div id="post-viewport">
+<div id="post-pages"><p class="loading">loading…</p></div>
+</div>
+<div id="post-nav" hidden>
+<button id="page-prev" aria-label="previous page">←</button>
+<span id="page-indicator"></span>
+<button id="page-next" aria-label="next page">→</button>
+</div>
+<div id="video_wrapper">
+<video
+id="salmon"
+src="https://res.cloudinary.com/do45g1bvk/video/upload/salmon_2_m7xu32.mp4"
+muted
+loop
+playsinline
+preload="auto"
+style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
+></video>
+</div>
+<script>
+(function () {
+  var v = document.getElementById('salmon');
+  v.addEventListener('click', function () {
+    if (v.paused) v.play(); else v.pause();
+  });
+})();
+</script>
+</div>
+<dialog id="img_modal"><img id="img_modal_content" alt=""></dialog>
+<script src="/blog/post.js?v=1"></script>
+</div>
+</body>
+</html>

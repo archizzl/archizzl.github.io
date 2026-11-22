@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <link rel="stylesheet" href="index.css">
-  <link rel="alternate" type="application/rss+xml" title="archie's blog" href="/blog/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="archie's blog" href="https://kylemaclachlanphotography.org/archie/feed.xml">
   <link rel="stylesheet" href="hpi/art_generator/art_generator.css">
   <link rel="stylesheet" href="hpi/workout/workout.css">
   <link rel="stylesheet" href="hpi/gallery/gallery.css?v=62cf2af94b">
@@ -47,12 +47,15 @@
 
       <!-- <span id="blog-header">x is my blog. i'm going to try to post every day.</span> -->
       <ul id="blog_posts"></ul>
-      <span id="rss-link"><a href="/blog/feed.xml">rss</a></span>
+      <span id="rss-link"><a href="https://kylemaclachlanphotography.org/archie/feed.xml">rss</a></span>
       <script>
         (function () {
+          // The posts live on KMP (kylemaclachlanphotography.org); this list reads them from there.
+          // Previewing locally, it reads a local KMP dev server instead.
           const ul = document.getElementById('blog_posts');
           const esc = s => String(s).replace(/</g, '&lt;');
           const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname);
+          const KMP = isLocal ? 'http://localhost:8127' : 'https://kylemaclachlanphotography.org';
           let allPosts = [];
 
           function currentFilters() {
@@ -70,7 +73,7 @@
 
           function render() {
             const filters = currentFilters();
-            const visible = isLocal ? allPosts : allPosts.filter(p => p.status !== 'draft');
+            const visible = allPosts; // KMP only ever lists published posts
             const shown = filters.length
               ? visible.filter(p => {
                   const pt = (p.tags || []).map(t => t.toLowerCase());
@@ -93,9 +96,8 @@
                 '<a class="tag" href="#" data-add="' + encodeURIComponent(t) +
                 '">#' + esc(t) + '</a>'
               ).join(' ');
-              const draftBadge = p.status === 'draft' ? ' <span class="draft-badge">(draft)</span>' : '';
               return '<li><time datetime="' + p.date + '">' + p.date + '</time> ' +
-                '<a href="./blog/posts/' + p.slug + '/">' + esc(p.title) + '</a>' + draftBadge +
+                '<a href="./blog/post/?p=' + encodeURIComponent(p.slug) + '">' + esc(p.title) + '</a>' +
                 (tagHtml ? ' ' + tagHtml : '') + '</li>';
             }).join('');
           }
@@ -116,9 +118,12 @@
             }
           });
 
-          fetch('./blog/posts.json', { cache: 'no-cache' })
+          fetch(KMP + '/archie/posts.json?brief=1&limit=1000')
             .then(r => r.json())
-            .then(posts => { allPosts = posts; render(); })
+            .then(data => {
+              allPosts = (data.posts || []).map(p => ({ slug: p.slug, title: p.title, date: p.date, tags: (p.fields && p.fields.tags) || [] }));
+              render();
+            })
             .catch(() => {});
           addEventListener('hashchange', render);
         })();

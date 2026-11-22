@@ -96,6 +96,12 @@ FEED = ROOT / "feed.xml"
 # --watch runs can't publish a draft.
 PREVIEW = ROOT / ".preview"
 
+# Since 2026-11-22 the blog is written and stored on KMP (kylemaclachlanphotography.org, user
+# "archie"). blog/src/ and blog/drafts/ are the pre-KMP originals, kept as an archive; nothing here
+# builds them any more. Set BLOG_ON_KMP = False only to go back to the old text-file blog.
+BLOG_ON_KMP = True
+KMP_DASHBOARD = "https://kylemaclachlanphotography.org/dashboard"
+
 SITE_URL = "https://archizzl.com"
 SITE_TITLE = "archie"
 SITE_DESCRIPTION = "archie's blog"
@@ -287,6 +293,12 @@ def sort_by_status() -> None:
 
 
 def build(include_drafts: bool = False) -> None:
+    if BLOG_ON_KMP:
+        # The posts moved to KMP. blog/post/ (and the old blog/posts/<slug>/ pages, which are copies
+        # of it) load them from there, so there's nothing to build; building would delete those pages.
+        print(f"blog: posts live on KMP ({KMP_DASHBOARD}); nothing to build here")
+        gallery_pages()
+        return
     if not SRC.exists():
         print(f"no src directory at {SRC}", file=sys.stderr)
         sys.exit(1)
