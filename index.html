@@ -118,10 +118,18 @@
             }
           });
 
-          fetch(KMP + '/archie/posts.json?brief=1&limit=1000')
-            .then(r => r.json())
-            .then(data => {
-              allPosts = (data.posts || []).map(p => ({ slug: p.slug, title: p.title, date: p.date, tags: (p.fields && p.fields.tags) || [] }));
+          // KMP answers up to 1000 posts at a time; keep asking until there are no more.
+          async function allFromKmp() {
+            const out = [];
+            for (let offset = 0; ; offset += 1000) {
+              const data = await (await fetch(KMP + '/archie/posts.json?brief=1&limit=1000&offset=' + offset)).json();
+              out.push(...(data.posts || []));
+              if ((data.posts || []).length < 1000) return out;
+            }
+          }
+          allFromKmp()
+            .then(posts => {
+              allPosts = posts.map(p => ({ slug: p.slug, title: p.title, date: p.date, tags: (p.fields && p.fields.tags) || [] }));
               render();
             })
             .catch(() => {});
