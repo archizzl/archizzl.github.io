@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/bri-cene",
+ "pieces": [
+  {
+   "id": "fight-cloud",
+   "slug": "fight-cloud",
+   "title": "fight cloud",
+   "artistId": "bri-cene",
+   "artistName": "Bri Cene",
+   "medium": "graphite on paper",
+   "createdAt": "2026-11-23T00:52:45.681033+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/ebdeb3ac-7263-4544-c581-3896a2b36100/public",
+   "year": 2026,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=fight-cloud",
+   "artistUrl": "https://iris.ooo/artists/bri-cene"
+  },
+  {
+   "id": "somnambulist",
+   "slug": "somnambulist",
+   "title": "Somnambulist",
+   "artistId": "bri-cene",
+   "artistName": "Bri Cene",
+   "medium": "graphite on paper",
+   "createdAt": "2026-11-23T00:18:44.377697+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/852fd1c8-15c9-4add-fbc6-39abd1145b00/public",
+   "year": 2025,
+   "price": 4000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=somnambulist",
+   "artistUrl": "https://iris.ooo/artists/bri-cene"
+  },
+  {
+   "id": "lotte",
+   "slug": "lotte",
+   "title": "Lotte",
+   "artistId": "bri-cene",
+   "artistName": "Bri Cene",
+   "medium": "charcoal, colored pencil, grease marker, graphite on toned paper",
+   "createdAt": "2026-11-23T00:13:41.895226+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/478efe17-b86b-479f-a9e3-e6062ed8fb00/public",
+   "year": 2024,
+   "price": 3000,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=lotte",
+   "artistUrl": "https://iris.ooo/artists/bri-cene"
+  }
+ ]
+}

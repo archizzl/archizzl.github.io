@@ -109,7 +109,7 @@
    "year": 2026,
    "price": 75,
    "offersOnly": false,
-   "isSold": false,
+   "isSold": true,
    "url": "https://iris.ooo/artwork?id=tinsel",
    "artistUrl": "https://iris.ooo/artists/alex-wettrich"
   },
