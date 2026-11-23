@@ -1,4 +1,4 @@
 [
-  { "id": "photo", "label": "photo portfolio", "tag": "photo-portfolio" },
+  { "id": "photo", "label": "photo potfolio", "tag": "photo-portfolio" },
   { "id": "design", "label": "design portfolio", "tag": "design-portfolio" }
 ]

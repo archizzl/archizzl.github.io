@@ -25,15 +25,16 @@
     "mikey_o7aptp",
     "suit_ncqhb4",
     "aki_s_divine_hammer_qv9qrs",
-    "SBB102025_Jonathan_Bacdayan_cop7pg"
+    "SBB102025_Jonathan_Bacdayan_cop7pg",
+    "P1110848_nxzora",
+    "P1110869_h4x1wf",
+    "P1110897_hj0pqd"
   ],
   "backgrounds": {
     "P1110897_hj0pqd": "#00010d",
     "P1110869_h4x1wf": "#00010d"
   },
-  "hidden": [
-    "P1110860_phopya"
-  ],
+  "hidden": [],
   "sections": [
     {
       "title": "Halloween 2026",
@@ -48,21 +49,21 @@
     },
     {
       "title": "Headshots for Sweetums Baseball Cards",
-      "description": "Ongoing project to design & print baseball cards for each of the many members & collaborators of my band, [Sweetums](https://sweetums.org). Taken in McLaughlin Park on Mission Hill in Boston, MA, at Deep Springs College, and at the beach in Bay Head, NJ.",
+      "description": "Ongoing project to design & print baseball cards for each of the many members & collaborators of my band, [Sweetums](https://sweetums.org). Taken in McLaughlin Park on Mission Hill in Boston, MA, Herbert Von King Park in Bedstuy, Deep Springs College, and at the beach in Bay Head, NJ.",
       "items": [
-        "SBB102025_Taryn_Emerle_vnstmi",
-        "SBB102025_Jonathan_Bacdayan_cop7pg",
-        "DS112026_Ruby_la_Rocca__g6h5yw",
-        "DS112026_Will_Xu_pjhbqo",
-        "DS112026_Kel_Weaver_ubtr7q",
-        "SBB102025_Aki_Gaythwaite_gfj98u",
+        "SBB102025_El_Alvarez-Rosenbloom_d88haz",
         "SBB102025_Sneha_Vaidya_bdkhuf",
         "SBB102025_Caleb_Tesfaye_ta8rud",
-        "SBB102025_Archie_O_Connell_zjec8l",
+        "SBB102025_Taryn_Emerle_vnstmi",
+        "SBB102025_Jonathan_Bacdayan_cop7pg",
         "SBB102025_Melody_Wooster_huoio4",
-        "SBB102025_El_Alvarez-Rosenbloom_d88haz",
-        "DS112026_Kel_Weaver_1_xga2pa",
+        "SBB102025_Archie_O_Connell_zjec8l",
+        "SBB102025_Aki_Gaythwaite_gfj98u",
+        "DS112026_Will_Xu_pjhbqo",
+        "DS112026_Ruby_la_Rocca__g6h5yw",
         "DS112026_Lance_Marvin_Bell_jjfowf",
+        "DS112026_Kel_Weaver_ubtr7q",
+        "DS112026_Kel_Weaver_1_xga2pa",
         "FD022026_Billy_Hessler_xqyxru"
       ]
     },
@@ -86,6 +87,7 @@
         "focused_hand_ewhcvn",
         "trash_trash_l4om93",
         "chairs_uno5e1",
+        "P1110860_phopya",
         "mikey_o7aptp",
         "suit_ncqhb4",
         "aki_s_divine_hammer_qv9qrs"
