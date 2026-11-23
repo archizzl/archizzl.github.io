@@ -1,0 +1,53 @@
+{
+ "source": "https://iris.ooo/artists/macey-kay-knowles",
+ "pieces": [
+  {
+   "id": "shadow-monster-i",
+   "slug": "shadow-monster-i",
+   "title": "shadow monster i",
+   "artistId": "macey-kay-knowles",
+   "artistName": "macey kay knowles",
+   "medium": "framed inkjet print",
+   "createdAt": "2026-10-21T18:29:38.966398+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/009fb201-9952-4087-a5ae-5b5c2a716e00/public",
+   "year": 2026,
+   "price": 100,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shadow-monster-i",
+   "artistUrl": "https://iris.ooo/artists/macey-kay-knowles"
+  },
+  {
+   "id": "spotted-owl-avenue-ii",
+   "slug": "spotted-owl-avenue-ii",
+   "title": "spotted owl avenue ii",
+   "artistId": "macey-kay-knowles",
+   "artistName": "macey kay knowles",
+   "medium": "inkjet print in hand-painted frame",
+   "createdAt": "2026-08-19T01:27:25.624262+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7769fac4-1d80-4eda-f332-0a5473ce2900/public",
+   "year": 2026,
+   "price": 150,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=spotted-owl-avenue-ii",
+   "artistUrl": "https://iris.ooo/artists/macey-kay-knowles"
+  },
+  {
+   "id": "spotted-owl-avenue-i",
+   "slug": "spotted-owl-avenue-i",
+   "title": "spotted owl avenue i",
+   "artistId": "macey-kay-knowles",
+   "artistName": "macey kay knowles",
+   "medium": "cyanotype on watercolor paper in hand-painted frame",
+   "createdAt": "2026-07-21T20:01:40.102425+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/2ef784a3-8196-426b-4ac1-a8f8a6188b00/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=spotted-owl-avenue-i",
+   "artistUrl": "https://iris.ooo/artists/macey-kay-knowles"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/allison-rich",
+ "pieces": [
+  {
+   "id": "snookislope",
+   "slug": "snookislope",
+   "title": "snookislope",
+   "artistId": "allison-rich",
+   "artistName": "allison rich",
+   "medium": "acrylic and pastel on wood",
+   "createdAt": "2026-10-02T23:06:56.414061+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/315c7563-1561-4d45-0bce-39c2d03c9400/public",
+   "year": 2026,
+   "price": 950,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=snookislope",
+   "artistUrl": "https://iris.ooo/artists/allison-rich"
+  },
+  {
+   "id": "algo1",
+   "slug": "algo1",
+   "title": "algo1",
+   "artistId": "allison-rich",
+   "artistName": "allison rich",
+   "medium": "crayon on clear acrylic",
+   "createdAt": "2026-10-02T23:02:55.908127+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a0cef59e-7709-4395-8328-a5dc9e2e8100/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=algo1",
+   "artistUrl": "https://iris.ooo/artists/allison-rich"
+  },
+  {
+   "id": "shia-dogs",
+   "slug": "shia-dogs",
+   "title": "shia dogs",
+   "artistId": "allison-rich",
+   "artistName": "allison rich",
+   "medium": "pastel on paper",
+   "createdAt": "2026-03-25T20:10:02.806953+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/7f2c96b9-7efa-4173-11d3-9231d2ce2f00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=shia-dogs",
+   "artistUrl": "https://iris.ooo/artists/allison-rich"
+  },
+  {
+   "id": "hemadbecause",
+   "slug": "hemadbecause",
+   "title": "hemadbecause",
+   "artistId": "allison-rich",
+   "artistName": "allison rich",
+   "medium": "pastel on wood",
+   "createdAt": "2026-03-25T19:53:26.951334+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3eda80f7-62c2-42b5-c46e-52f0d25bfa00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=hemadbecause",
+   "artistUrl": "https://iris.ooo/artists/allison-rich"
+  }
+ ]
+}
