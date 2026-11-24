@@ -1,0 +1,69 @@
+{
+ "source": "https://iris.ooo/artists/lola-reed",
+ "pieces": [
+  {
+   "id": "customs-of-collection",
+   "slug": "customs-of-collection",
+   "title": "Customs of Collection",
+   "artistId": "lola-reed",
+   "artistName": "Lola Reed",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-07-07T17:08:36.366452+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9a373046-2a69-4d67-b622-6c057d424f00/public",
+   "year": 2026,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=customs-of-collection",
+   "artistUrl": "https://iris.ooo/artists/lola-reed"
+  },
+  {
+   "id": "cant-stop-toppling-over",
+   "slug": "cant-stop-toppling-over",
+   "title": "Can't Stop Toppling Over",
+   "artistId": "lola-reed",
+   "artistName": "Lola Reed",
+   "medium": "Oil on printed canvas",
+   "createdAt": "2026-04-01T04:46:11.954464+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d065532d-91af-40c1-8812-c09ca91a4900/public",
+   "year": 2025,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": true,
+   "url": "https://iris.ooo/artwork?id=cant-stop-toppling-over",
+   "artistUrl": "https://iris.ooo/artists/lola-reed"
+  },
+  {
+   "id": "rough-approximation",
+   "slug": "rough-approximation",
+   "title": "Rough Approximation",
+   "artistId": "lola-reed",
+   "artistName": "Lola Reed",
+   "medium": "Oil on wood",
+   "createdAt": "2026-04-01T04:45:08.234988+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/cfc88396-3a3f-48b2-9e4f-b7cfe6cb1900/public",
+   "year": 2024,
+   "price": 300,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=rough-approximation",
+   "artistUrl": "https://iris.ooo/artists/lola-reed"
+  },
+  {
+   "id": "ode-to-all-the-parts-ive-severed",
+   "slug": "ode-to-all-the-parts-ive-severed",
+   "title": "Ode to All the Parts I've Severed",
+   "artistId": "lola-reed",
+   "artistName": "Lola Reed",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-04-01T04:38:03.729719+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/aa12237a-6590-4fbb-49b6-d287717a1b00/public",
+   "year": 2026,
+   "price": null,
+   "offersOnly": true,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=ode-to-all-the-parts-ive-severed",
+   "artistUrl": "https://iris.ooo/artists/lola-reed"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/pippi-nola",
+ "pieces": [
+  {
+   "id": "girl-hell-1",
+   "slug": "girl-hell-1",
+   "title": "Girl Hell 1",
+   "artistId": "pippi-nola",
+   "artistName": "Pippi Nola",
+   "medium": "acrylic and resin on canvas",
+   "createdAt": "2026-09-01T14:46:08.446467+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c68ae9af-009e-47c1-0025-dfdccbe07d00/public",
+   "year": 2024,
+   "price": 1450,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=girl-hell-1",
+   "artistUrl": "https://iris.ooo/artists/pippi-nola"
+  },
+  {
+   "id": "i-wish-you-were-still-in-my-pocket-but-at-least-you-can-swim-around-my-head-1",
+   "slug": "i-wish-you-were-still-in-my-pocket-but-at-least-you-can-swim-around-my-head-1",
+   "title": "I Wish You Were Still In My Pocket But At Least You Can Swim Around My Head",
+   "artistId": "pippi-nola",
+   "artistName": "Pippi Nola",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-09-01T14:40:38.397716+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/4de38570-3c70-4489-1ae0-37592d98af00/public",
+   "year": 2025,
+   "price": 1950,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=i-wish-you-were-still-in-my-pocket-but-at-least-you-can-swim-around-my-head-1",
+   "artistUrl": "https://iris.ooo/artists/pippi-nola"
+  }
+ ]
+}
