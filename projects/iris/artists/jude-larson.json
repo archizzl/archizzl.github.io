@@ -2,6 +2,38 @@
  "source": "https://iris.ooo/artists/jude-larson",
  "pieces": [
   {
+   "id": "carousel-1",
+   "slug": "carousel-1",
+   "title": "Carousel",
+   "artistId": "jude-larson",
+   "artistName": "Jude Larson",
+   "medium": "Acrylic and glitter on canvas",
+   "createdAt": "2026-11-24T00:19:40.592111+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8cbff788-5a8b-49c5-54ae-489e1f339600/public",
+   "year": 2026,
+   "price": 600,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=carousel-1",
+   "artistUrl": "https://iris.ooo/artists/jude-larson"
+  },
+  {
+   "id": "dog-and-gun",
+   "slug": "dog-and-gun",
+   "title": "Dog and Gun",
+   "artistId": "jude-larson",
+   "artistName": "Jude Larson",
+   "medium": "Acrylic on canvas",
+   "createdAt": "2026-11-24T00:16:30.586162+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/fbdc7cf6-bc15-4ce0-c0c6-27e4751f8700/public",
+   "year": 2026,
+   "price": 550,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=dog-and-gun",
+   "artistUrl": "https://iris.ooo/artists/jude-larson"
+  },
+  {
    "id": "plane-bomb-house",
    "slug": "plane-bomb-house",
    "title": "Plane, Bomb, House",

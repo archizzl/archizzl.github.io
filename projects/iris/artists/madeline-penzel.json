@@ -1,0 +1,37 @@
+{
+ "source": "https://iris.ooo/artists/madeline-penzel",
+ "pieces": [
+  {
+   "id": "stars",
+   "slug": "stars",
+   "title": "stars",
+   "artistId": "madeline-penzel",
+   "artistName": "Madeline Penzel",
+   "medium": "Found fabric, hand-dyed cotton fabric, embroidery thread, screen printed graphic, wooden stretcher bars.",
+   "createdAt": "2026-08-27T13:50:05.859510+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/05bae009-4609-4c0f-1a4b-3e975872cd00/public",
+   "year": 2024,
+   "price": 275,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=stars",
+   "artistUrl": "https://iris.ooo/artists/madeline-penzel"
+  },
+  {
+   "id": "on-the-run-1",
+   "slug": "on-the-run-1",
+   "title": "on the run",
+   "artistId": "madeline-penzel",
+   "artistName": "Madeline Penzel",
+   "medium": "hand dyed and woven yarn with embellishments",
+   "createdAt": "2026-07-10T22:20:37.877070+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f29ae580-9f95-4f9f-f1fb-d6d16b662a00/public",
+   "year": 2026,
+   "price": 325,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=on-the-run-1",
+   "artistUrl": "https://iris.ooo/artists/madeline-penzel"
+  }
+ ]
+}

@@ -34,38 +34,6 @@
    "artistUrl": "https://iris.ooo/artists/alex-wettrich"
   },
   {
-   "id": "my-favorite-beer-is-an-open-one",
-   "slug": "my-favorite-beer-is-an-open-one",
-   "title": "My favorite beer is an open one!",
-   "artistId": "alex-wettrich",
-   "artistName": "Alex Wettrich",
-   "medium": "Oil on canvas",
-   "createdAt": "2026-09-20T22:26:08.230191+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c5da0774-a6dc-476f-e04a-5d2a8e8ee200/public",
-   "year": 2026,
-   "price": 150,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=my-favorite-beer-is-an-open-one",
-   "artistUrl": "https://iris.ooo/artists/alex-wettrich"
-  },
-  {
-   "id": "a-haircut-that-is-performed-by-someone-trying-to-give-up-smoking-jesus-loves-winners",
-   "slug": "a-haircut-that-is-performed-by-someone-trying-to-give-up-smoking-jesus-loves-winners",
-   "title": "a haircut that is performed by someone trying to give up smoking (“Jesus Loves Winners”)",
-   "artistId": "alex-wettrich",
-   "artistName": "Alex Wettrich",
-   "medium": "Oil and flashe on canvas",
-   "createdAt": "2026-08-06T19:23:28.240250+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/bfb7bbd7-5bb9-421b-a9d8-3cea555f5700/public",
-   "year": 2026,
-   "price": 200,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=a-haircut-that-is-performed-by-someone-trying-to-give-up-smoking-jesus-loves-winners",
-   "artistUrl": "https://iris.ooo/artists/alex-wettrich"
-  },
-  {
    "id": "fox-his-friends",
    "slug": "fox-his-friends",
    "title": "fox & his friends",
@@ -75,7 +43,7 @@
    "createdAt": "2026-07-23T06:22:22.572874+00:00",
    "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/902f3ce2-46b7-4be6-7d99-0f3050dbcf00/public",
    "year": 2026,
-   "price": 75,
+   "price": 110,
    "offersOnly": false,
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=fox-his-friends",
@@ -111,22 +79,6 @@
    "offersOnly": false,
    "isSold": true,
    "url": "https://iris.ooo/artwork?id=tinsel",
-   "artistUrl": "https://iris.ooo/artists/alex-wettrich"
-  },
-  {
-   "id": "within-a-budding-grove",
-   "slug": "within-a-budding-grove",
-   "title": "within a budding grove...",
-   "artistId": "alex-wettrich",
-   "artistName": "Alex Wettrich",
-   "medium": "Oil, acrylic, flash paint, and inkjet image on canvas",
-   "createdAt": "2026-07-23T06:16:48.030122+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0f2fe2a-748c-432e-f5d6-3837eb880300/public",
-   "year": 2026,
-   "price": 150,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=within-a-budding-grove",
    "artistUrl": "https://iris.ooo/artists/alex-wettrich"
   }
  ]

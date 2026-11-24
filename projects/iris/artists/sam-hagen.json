@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/sam-hagen",
+ "pieces": [
+  {
+   "id": "panflute",
+   "slug": "panflute",
+   "title": "Panflute",
+   "artistId": "sam-hagen",
+   "artistName": "Sam Hagen",
+   "medium": "Oil and Charcoal on stretched cotton fabric",
+   "createdAt": "2026-09-02T07:27:17.376978+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/831e0f4c-e063-4e71-6265-e8a44b922100/public",
+   "year": 2025,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=panflute",
+   "artistUrl": "https://iris.ooo/artists/sam-hagen"
+  }
+ ]
+}
