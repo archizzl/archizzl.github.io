@@ -402,6 +402,22 @@
    "artistUrl": "https://iris.ooo/artists/alice-jean-clarice-barreras"
   },
   {
+   "id": "if-i-were-a-girl-i-could-do-magic",
+   "slug": "if-i-were-a-girl-i-could-do-magic",
+   "title": "If I Were a Girl I Could Do Magic",
+   "artistId": "alice-jean-clarice-barreras",
+   "artistName": "Alice Jean Clarice Barreras",
+   "medium": "acrylic and colored pencil on cradled birch panel",
+   "createdAt": "2026-11-05T21:59:10.570421+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/65c97122-1ae3-4593-355d-5b48b7829b00/public",
+   "year": 2026,
+   "price": 6800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=if-i-were-a-girl-i-could-do-magic",
+   "artistUrl": "https://iris.ooo/artists/alice-jean-clarice-barreras"
+  },
+  {
    "id": "shopping-flag-i",
    "slug": "shopping-flag-i",
    "title": "Shopping Flag I",
@@ -1056,6 +1072,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=mani-vekja-bjornsdottr-moon-wakes-the-daughter-of-bears",
    "artistUrl": "https://iris.ooo/artists/isa-olsen"
+  },
+  {
+   "id": "port-of-oakland",
+   "slug": "port-of-oakland",
+   "title": "Port of Oakland",
+   "artistId": "drew-villanueva",
+   "artistName": "Drew Villanueva",
+   "medium": "acrylic on canvas",
+   "createdAt": "2026-09-18T04:41:22.023681+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e4a42c2d-cfc5-4ea7-2990-b8114ecc5f00/public",
+   "year": 2026,
+   "price": 200,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=port-of-oakland",
+   "artistUrl": "https://iris.ooo/artists/drew-villanueva"
   },
   {
    "id": "request-for-pending-repairs",
@@ -1888,38 +1920,6 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=moist-critical-theory",
    "artistUrl": "https://iris.ooo/artists/jackson-daughety"
-  },
-  {
-   "id": "germ-propaganda",
-   "slug": "germ-propaganda",
-   "title": "Germ Propaganda",
-   "artistId": "jackson-daughety",
-   "artistName": "Jackson Daughety",
-   "medium": "Ink, Acrylic on Stitched Canvas",
-   "createdAt": "2026-05-21T18:52:28.802746+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/f117e94b-ab06-41f7-cd40-27af10f19900/public",
-   "year": 2025,
-   "price": 2000,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=germ-propaganda",
-   "artistUrl": "https://iris.ooo/artists/jackson-daughety"
-  },
-  {
-   "id": "subway-study-2",
-   "slug": "subway-study-2",
-   "title": "Subway Study (2)",
-   "artistId": "eduardo-joaquin",
-   "artistName": "Eduardo Joaquin",
-   "medium": "Oil on canvas",
-   "createdAt": "2026-05-21T01:07:54.395378+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/a5c7a0fe-339c-4eaa-6cad-481289b96700/public",
-   "year": 2026,
-   "price": 450,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=subway-study-2",
-   "artistUrl": "https://iris.ooo/artists/eduardo-joaquin"
   }
  ]
 }
