@@ -530,6 +530,22 @@
    "artistUrl": "https://iris.ooo/artists/primo-ledeboer-gill"
   },
   {
+   "id": "mating-rituals",
+   "slug": "mating-rituals",
+   "title": "Mating Rituals",
+   "artistId": "bernara-rustam",
+   "artistName": "Bernara Rustam",
+   "medium": "Acrylics on canvas",
+   "createdAt": "2026-10-25T19:48:20.218868+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/42fb6df8-3dc3-487d-00f1-fc3944d31800/public",
+   "year": 2025,
+   "price": 750,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=mating-rituals",
+   "artistUrl": "https://iris.ooo/artists/bernara-rustam"
+  },
+  {
    "id": "stella-and-a-dandelion",
    "slug": "stella-and-a-dandelion",
    "title": "Stella and a Dandelion",
@@ -1442,6 +1458,22 @@
    "artistUrl": "https://iris.ooo/artists/mark-harrington"
   },
   {
+   "id": "sitting-in-wait",
+   "slug": "sitting-in-wait",
+   "title": "Sitting In Wait",
+   "artistId": "nico-lown-heitz",
+   "artistName": "Nico Lown heitz",
+   "medium": "Acrylic, flashe, and house paint on paper",
+   "createdAt": "2026-08-11T21:22:54.140664+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e5bc6aab-33e1-4e95-a3e9-16e141e49a00/public",
+   "year": 2026,
+   "price": 1642,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sitting-in-wait",
+   "artistUrl": "https://iris.ooo/artists/nico-lown-heitz"
+  },
+  {
    "id": "irving",
    "slug": "irving",
    "title": "irving",
@@ -1552,6 +1584,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=spotted-owl-avenue-i",
    "artistUrl": "https://iris.ooo/artists/macey-kay-knowles"
+  },
+  {
+   "id": "old-barn-market-1",
+   "slug": "old-barn-market-1",
+   "title": "old barn market",
+   "artistId": "mia-hause",
+   "artistName": "Mia Hause",
+   "medium": "colored pencil and solarfast on paper",
+   "createdAt": "2026-07-17T17:19:12.342945+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5af43cd8-82ad-4c72-db06-261dd7920a00/public",
+   "year": 2026,
+   "price": 75,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=old-barn-market-1",
+   "artistUrl": "https://iris.ooo/artists/mia-hause"
   },
   {
    "id": "collection-i",
@@ -1696,6 +1744,22 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=a-kiss-on-the-cheek",
    "artistUrl": "https://iris.ooo/artists/sam-slipkovich"
+  },
+  {
+   "id": "screen-visit",
+   "slug": "screen-visit",
+   "title": "Screen (visit)",
+   "artistId": "eduardo-joaquin",
+   "artistName": "Eduardo Joaquin",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-07-03T00:38:22.903526+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/5bdc0869-c882-44f7-46aa-09f857d49400/public",
+   "year": 2026,
+   "price": 3330,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=screen-visit",
+   "artistUrl": "https://iris.ooo/artists/eduardo-joaquin"
   },
   {
    "id": "untitled-with-sweater",
@@ -1856,70 +1920,6 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=rice-theory-12-1",
    "artistUrl": "https://iris.ooo/artists/cassandra-m-kellner"
-  },
-  {
-   "id": "tres-hijas",
-   "slug": "tres-hijas",
-   "title": "tres hijas",
-   "artistId": "madeline-cortes-reyes",
-   "artistName": "Madeline Cortes Reyes",
-   "medium": "oil on canvas",
-   "createdAt": "2026-06-07T17:40:12.274578+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c13b6e81-2221-4439-7d79-34d8a2aa6f00/public",
-   "year": 2024,
-   "price": null,
-   "offersOnly": true,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=tres-hijas",
-   "artistUrl": "https://iris.ooo/artists/madeline-cortes-reyes"
-  },
-  {
-   "id": "untitled-63",
-   "slug": "untitled-63",
-   "title": "untitled",
-   "artistId": "madeline-cortes-reyes",
-   "artistName": "Madeline Cortes Reyes",
-   "medium": "acrylic and oil on canvas",
-   "createdAt": "2026-06-07T17:19:10.939493+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/de4a4d99-7ebe-4e75-38aa-0b2c8bbb5600/public",
-   "year": 2026,
-   "price": null,
-   "offersOnly": true,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=untitled-63",
-   "artistUrl": "https://iris.ooo/artists/madeline-cortes-reyes"
-  },
-  {
-   "id": "swinger-holiday",
-   "slug": "swinger-holiday",
-   "title": "Swinger Holiday",
-   "artistId": "ruby-hewitt",
-   "artistName": "Ruby Hewitt",
-   "medium": "Monoprint on BFK rives",
-   "createdAt": "2026-06-01T20:03:52.428014+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/3f8d4fb7-55ae-4926-fa4e-432284c70200/public",
-   "year": 2026,
-   "price": 120,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=swinger-holiday",
-   "artistUrl": "https://iris.ooo/artists/ruby-hewitt"
-  },
-  {
-   "id": "kazu-in-green",
-   "slug": "kazu-in-green",
-   "title": "Kazu in Green",
-   "artistId": "ivan-bridges",
-   "artistName": "Ivan Bridges",
-   "medium": "Oil on Canvas",
-   "createdAt": "2026-06-01T17:02:46.818945+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c10d2546-da6e-4355-0f3b-db8e1b958d00/public",
-   "year": 2025,
-   "price": 900,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=kazu-in-green",
-   "artistUrl": "https://iris.ooo/artists/ivan-bridges"
   }
  ]
 }
