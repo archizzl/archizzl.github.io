@@ -2,19 +2,19 @@
  "source": "https://iris.ooo/artists/lola-reed",
  "pieces": [
   {
-   "id": "customs-of-collection",
-   "slug": "customs-of-collection",
-   "title": "Customs of Collection",
+   "id": "portrait-of-the-artist",
+   "slug": "portrait-of-the-artist",
+   "title": "Portrait of the Artist",
    "artistId": "lola-reed",
    "artistName": "Lola Reed",
    "medium": "Oil on canvas",
-   "createdAt": "2026-07-07T17:08:36.366452+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9a373046-2a69-4d67-b622-6c057d424f00/public",
+   "createdAt": "2026-11-25T22:09:11.326283+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/33733b7a-1142-45b9-8818-986969970b00/public",
    "year": 2026,
-   "price": 500,
+   "price": 600,
    "offersOnly": false,
    "isSold": false,
-   "url": "https://iris.ooo/artwork?id=customs-of-collection",
+   "url": "https://iris.ooo/artwork?id=portrait-of-the-artist",
    "artistUrl": "https://iris.ooo/artists/lola-reed"
   },
   {
@@ -47,22 +47,6 @@
    "offersOnly": false,
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=rough-approximation",
-   "artistUrl": "https://iris.ooo/artists/lola-reed"
-  },
-  {
-   "id": "ode-to-all-the-parts-ive-severed",
-   "slug": "ode-to-all-the-parts-ive-severed",
-   "title": "Ode to All the Parts I've Severed",
-   "artistId": "lola-reed",
-   "artistName": "Lola Reed",
-   "medium": "Oil on canvas",
-   "createdAt": "2026-04-01T04:38:03.729719+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/aa12237a-6590-4fbb-49b6-d287717a1b00/public",
-   "year": 2026,
-   "price": null,
-   "offersOnly": true,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=ode-to-all-the-parts-ive-severed",
    "artistUrl": "https://iris.ooo/artists/lola-reed"
   }
  ]

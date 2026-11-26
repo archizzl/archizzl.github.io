@@ -594,6 +594,22 @@
    "artistUrl": "https://iris.ooo/artists/amira-priest"
   },
   {
+   "id": "sweat-i",
+   "slug": "sweat-i",
+   "title": "sweat (I)",
+   "artistId": "amira-priest",
+   "artistName": "Amira Priest",
+   "medium": "oil on hardboard panel",
+   "createdAt": "2026-10-22T18:16:27.777185+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/60e792fe-4cdd-42b5-73d6-c7c865e4c100/public",
+   "year": 2026,
+   "price": 800,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=sweat-i",
+   "artistUrl": "https://iris.ooo/artists/amira-priest"
+  },
+  {
    "id": "liquid-cow-3",
    "slug": "liquid-cow-3",
    "title": "Liquid Cow 3",
@@ -1904,22 +1920,6 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=kazu-in-green",
    "artistUrl": "https://iris.ooo/artists/ivan-bridges"
-  },
-  {
-   "id": "all-your-light-times-like-these",
-   "slug": "all-your-light-times-like-these",
-   "title": "all your light (times like these)",
-   "artistId": "alexa-toews",
-   "artistName": "Alexa Toews",
-   "medium": "oil on canvas",
-   "createdAt": "2026-05-31T16:31:58.529574+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/0640120e-050d-4a48-9cdd-7c5daac02d00/public",
-   "year": 2025,
-   "price": 400,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=all-your-light-times-like-these",
-   "artistUrl": "https://iris.ooo/artists/alexa-toews"
   }
  ]
 }
