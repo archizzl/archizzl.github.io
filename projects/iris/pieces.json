@@ -2,6 +2,22 @@
  "source": "https://iris.ooo/",
  "pieces": [
   {
+   "id": "portrait-of-a-good-day",
+   "slug": "portrait-of-a-good-day",
+   "title": "Portrait of a Good Day",
+   "artistId": "sophia-menoche",
+   "artistName": "Sophia L Menoche",
+   "medium": "acrylic and oil paint on wood",
+   "createdAt": "2026-11-27T18:31:39.767517+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/9e848ba1-97ab-446e-7a8b-29d447ae4100/public",
+   "year": 2025,
+   "price": 320,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=portrait-of-a-good-day",
+   "artistUrl": "https://iris.ooo/artists/sophia-menoche"
+  },
+  {
    "id": "fight-cloud",
    "slug": "fight-cloud",
    "title": "fight cloud",
@@ -1904,22 +1920,6 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=standing-on-a-pin",
    "artistUrl": "https://iris.ooo/artists/olivia-porter"
-  },
-  {
-   "id": "willoughby-11206",
-   "slug": "willoughby-11206",
-   "title": "Willoughby 11206",
-   "artistId": "sophia-kroto",
-   "artistName": "Sophia Kroto",
-   "medium": "Graphite drawing mounted on steel, distressed wood, handmade chainmail, steel hardware, skeleton key.",
-   "createdAt": "2026-06-19T21:10:24.050512+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/c721d65d-fe6f-44d0-1ac8-6cc4f42dee00/public",
-   "year": 2026,
-   "price": 1020,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=willoughby-11206",
-   "artistUrl": "https://iris.ooo/artists/sophia-kroto"
   }
  ]
 }
