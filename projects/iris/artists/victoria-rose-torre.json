@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/victoria-rose-torre",
+ "pieces": [
+  {
+   "id": "i-saw-the-mountain-from-a-dirty-window",
+   "slug": "i-saw-the-mountain-from-a-dirty-window",
+   "title": "I saw the Mountain from a dirty window",
+   "artistId": "victoria-rose-torre",
+   "artistName": "Victoria Rose Torre",
+   "medium": "Oil on canvas",
+   "createdAt": "2026-11-17T18:30:51.623225+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/232f8e42-28d2-4b49-4185-1044fb166c00/public",
+   "year": 2026,
+   "price": 999,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=i-saw-the-mountain-from-a-dirty-window",
+   "artistUrl": "https://iris.ooo/artists/victoria-rose-torre"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "source": "https://iris.ooo/artists/jake-bowen",
+ "pieces": [
+  {
+   "id": "the-prophet",
+   "slug": "the-prophet",
+   "title": "\"The Prophet\"",
+   "artistId": "jake-bowen",
+   "artistName": "Jake Bowen",
+   "medium": "spackle, cement, found imagery, past work, oil, spray paint and acrylic on canvas",
+   "createdAt": "2026-10-24T15:12:09.994935+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/d3557e33-1e2c-4b06-161c-b4cd085acc00/public",
+   "year": 2026,
+   "price": 700,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=the-prophet",
+   "artistUrl": "https://iris.ooo/artists/jake-bowen"
+  }
+ ]
+}
