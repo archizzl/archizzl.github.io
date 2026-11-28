@@ -546,6 +546,22 @@
    "artistUrl": "https://iris.ooo/artists/dj-meisner"
   },
   {
+   "id": "relics-of-the-npce-bank-of-credit-and-commerce-international",
+   "slug": "relics-of-the-npce-bank-of-credit-and-commerce-international",
+   "title": "Relics of the N.P.C.E. (Bank of Credit and Commerce International)",
+   "artistId": "dj-meisner",
+   "artistName": "DJ Meisner",
+   "medium": "Etched platter with patina",
+   "createdAt": "2026-10-31T22:53:00.242339+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/05c54d7a-eb97-42a8-ecb9-d5696de33f00/public",
+   "year": 2022,
+   "price": 500,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=relics-of-the-npce-bank-of-credit-and-commerce-international",
+   "artistUrl": "https://iris.ooo/artists/dj-meisner"
+  },
+  {
    "id": "tattoo-1",
    "slug": "tattoo-1",
    "title": "Tattoo 1",
@@ -1410,6 +1426,22 @@
    "artistUrl": "https://iris.ooo/artists/alyson-petruncio"
   },
   {
+   "id": "flies-by",
+   "slug": "flies-by",
+   "title": "flies by",
+   "artistId": "walker-smith",
+   "artistName": "walker smith",
+   "medium": "oil, charcoal, and prismacolor on panel, oak frame",
+   "createdAt": "2026-08-28T16:56:21.013126+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8ac1ba5b-aaa7-4a33-27b0-b9f3476d3f00/public",
+   "year": 2026,
+   "price": 1250,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=flies-by",
+   "artistUrl": "https://iris.ooo/artists/walker-smith"
+  },
+  {
    "id": "race-day",
    "slug": "race-day",
    "title": "race day",
@@ -1826,6 +1858,22 @@
    "artistUrl": "https://iris.ooo/artists/yujia-li"
   },
   {
+   "id": "cornell-45220",
+   "slug": "cornell-45220",
+   "title": "Cornell 45220",
+   "artistId": "sophia-kroto",
+   "artistName": "Sophia Kroto",
+   "medium": "Graphite drawing on paper mounted on steel panel, tagged/sticker-ed steel plate, stanless steel hardware, hand-rusted, handmade chain.",
+   "createdAt": "2026-07-06T13:51:59.836986+00:00",
+   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/73918483-4626-4356-d0c5-8803a715a900/public",
+   "year": 2026,
+   "price": 925,
+   "offersOnly": false,
+   "isSold": false,
+   "url": "https://iris.ooo/artwork?id=cornell-45220",
+   "artistUrl": "https://iris.ooo/artists/sophia-kroto"
+  },
+  {
    "id": "simulacrum",
    "slug": "simulacrum",
    "title": "Simulacrum",
@@ -1872,54 +1920,6 @@
    "isSold": false,
    "url": "https://iris.ooo/artwork?id=screen-visit",
    "artistUrl": "https://iris.ooo/artists/eduardo-joaquin"
-  },
-  {
-   "id": "untitled-with-sweater",
-   "slug": "untitled-with-sweater",
-   "title": "Untitled (with sweater)",
-   "artistId": "sarah-bellum",
-   "artistName": "Sarah Bellum",
-   "medium": "cyanotype",
-   "createdAt": "2026-07-01T01:51:37.657794+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6ccbe9ed-f60b-4fd7-ec03-8fb4b42a8100/public",
-   "year": 2026,
-   "price": 30,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=untitled-with-sweater",
-   "artistUrl": "https://iris.ooo/artists/sarah-bellum"
-  },
-  {
-   "id": "belly-button-window",
-   "slug": "belly-button-window",
-   "title": "Belly Button Window",
-   "artistId": "taylor-green",
-   "artistName": "Taylor Green",
-   "medium": "Oil on Wooden Door",
-   "createdAt": "2026-06-23T13:04:27.948151+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/e0e5689e-2688-4964-e39c-495936937a00/public",
-   "year": 2025,
-   "price": 1750,
-   "offersOnly": false,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=belly-button-window",
-   "artistUrl": "https://iris.ooo/artists/taylor-green"
-  },
-  {
-   "id": "standing-on-a-pin",
-   "slug": "standing-on-a-pin",
-   "title": "Standing On a Pin",
-   "artistId": "olivia-porter",
-   "artistName": "Olivia Porter",
-   "medium": "oil pastel",
-   "createdAt": "2026-06-22T19:47:30.093436+00:00",
-   "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/6d5d1d9d-2dcd-440b-e70d-0fd64096fd00/public",
-   "year": 2026,
-   "price": null,
-   "offersOnly": true,
-   "isSold": false,
-   "url": "https://iris.ooo/artwork?id=standing-on-a-pin",
-   "artistUrl": "https://iris.ooo/artists/olivia-porter"
   }
  ]
 }

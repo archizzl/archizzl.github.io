@@ -34,8 +34,8 @@
    "artistUrl": "https://iris.ooo/artists/eve-oshea"
   },
   {
-   "id": "pathway-2",
-   "slug": "pathway-2",
+   "id": "pathway",
+   "slug": "pathway",
    "title": "Pathway",
    "artistId": "eve-oshea",
    "artistName": "Eve O'Shea",
@@ -43,10 +43,10 @@
    "createdAt": "2025-12-29T22:58:49.730673+00:00",
    "imageUrl": "https://imagedelivery.net/-6Yk5DaucfcPwhTnPVaQWg/8d0719e9-fcbc-4c27-00bf-981bdddf1600/public",
    "year": 2019,
-   "price": null,
-   "offersOnly": true,
+   "price": 200,
+   "offersOnly": false,
    "isSold": false,
-   "url": "https://iris.ooo/artwork?id=pathway-2",
+   "url": "https://iris.ooo/artwork?id=pathway",
    "artistUrl": "https://iris.ooo/artists/eve-oshea"
   }
  ]
